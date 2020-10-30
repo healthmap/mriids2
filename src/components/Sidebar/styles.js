@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-const SidebarWrapper = styled.div`
+export const SidebarWrapper = styled.div`
   position: absolute;
   top: 4.5rem; /* $header-height make variable */
   left: 0;
@@ -12,6 +12,4 @@ const SidebarWrapper = styled.div`
   h4 {
     padding-top: 1em;
   }
-`
-
-export default SidebarWrapper;
+`;
