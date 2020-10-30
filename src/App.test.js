@@ -1,7 +1,7 @@
 import React from "react";
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { shallow } from "enzyme";
+import App from "./App";
 
-test('renders component without crashing', () => {
-  render(<App />);
+test("renders component without crashing", () => {
+  shallow(<App />);
 });

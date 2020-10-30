@@ -1,7 +1,7 @@
 import React from "react";
 import Map from "../index"
-import {render} from "@testing-library/react";
+import {shallow} from "enzyme"
 
 test('renders component without crashing', () => {
-    render(<Map />);
+    shallow(<Map />);
 });
