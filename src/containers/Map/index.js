@@ -36,6 +36,7 @@ class Index extends Component {
       <ReactMapGL
         {...this.state.viewport}
         onViewportChange={(viewport) => this.onViewportChange(viewport)}
+        mapStyle="mapbox://styles/compepi/cjnxgpr991b6h2rpcvqmh5j4f"
       />
     );
   }
