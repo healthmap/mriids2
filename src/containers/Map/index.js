@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
 import ReactMapGL from 'react-map-gl';
 
-class Map extends Component {
+class Index extends Component {
     constructor(props) {
         super(props);
         this.state =  {
             viewport: {
-                width: 400,
-                height: 400,
-                latitude: 37.7577,
-                longitude: -122.4376,
-                zoom: 8
+                width: 500,
+                height: 300,
+                latitude: 8.555216,
+                longitude: -11.322184,
+                zoom: 5,
+                minZoom: 2,
+                pitch: 0,
+                bearing: 0
             }
         };
     }
@@ -25,4 +28,4 @@ class Map extends Component {
     }
 }
 
-export default Map
+export default Index
