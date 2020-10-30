@@ -11,7 +11,7 @@ export const SelectOutbreakWrapper = styled.div`
   }
 `;
 
-export const SelectSearchWrapper = styled.div`
+export const SelectCountryWrapper = styled.div`
   select {
     color: #fff;
     background-color: #000;
