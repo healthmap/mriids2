@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const IconNavWrapper = styled.ul`
   list-style: none;
@@ -12,13 +12,13 @@ const IconNavWrapper = styled.ul`
   li {
     display: flex;
     align-items: center;
-    margin: 0 .25em;
-    padding: .5em;
+    margin: 0 0.25em;
+    padding: 0.5em;
     border-radius: 50%;
     &:hover {
       background-color: #ececec;
     }
   }
-`
+`;
 
-export default IconNavWrapper
+export default IconNavWrapper;

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import {Button} from 'react-bootstrap'
+import styled from "styled-components";
+import { Button } from "react-bootstrap";
 
 const ModalButton = styled(Button)`
   text-align: left;
@@ -10,10 +10,13 @@ const ModalButton = styled(Button)`
   &.active {
     font-weight: 500;
   }
-  &:focus, &:active:focus {
+  &:focus,
+  &:active:focus {
     outline: none;
   }
-  ${props => props.secondary ? `
+  ${(props) =>
+    props.secondary
+      ? `
   color: #53ABA4;
   background: #FFF;
   border-color: #53ABA4;
@@ -26,7 +29,7 @@ const ModalButton = styled(Button)`
     border-color: #479892;
     box-shadow: none;
   }`
-  : `
+      : `
   color: #FFF;
   background: #53ABA4;
   border-color: #53ABA4;
@@ -38,8 +41,7 @@ const ModalButton = styled(Button)`
     background: #479892;
     border-color: #479892;
     box-shadow: none;
-  };`
-  }
-`
+  };`}
+`;
 
 export default ModalButton;

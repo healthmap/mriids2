@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { media } from '../../assets/style-utils'
+import styled from "styled-components";
+import { media } from "../../assets/style-utils";
 
 const Root = styled.div`
   display: flex;
@@ -9,6 +9,6 @@ const Root = styled.div`
   ${media.handheld`
     flex-wrap: wrap;
   `}
-`
+`;
 
 export default Root;

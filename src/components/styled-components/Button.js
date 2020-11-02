@@ -1,8 +1,8 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Button = styled.button`
   position: relative;
-  padding: .2em 1.5em;
+  padding: 0.2em 1.5em;
   color: #000;
   text-decoration: none;
   background-color: #fff;
@@ -26,13 +26,13 @@ export const Button = styled.button`
   }
   &:disabled {
     cursor: auto;
-    opacity: .65;
+    opacity: 0.65;
   }
-`
+`;
 
 export const ButtonIcon = styled.button`
   position: relative;
-  padding: 0 .5em;
+  padding: 0 0.5em;
   text-decoration: none;
   border: 0;
   border-radius: 2px;
@@ -53,13 +53,13 @@ export const ButtonIcon = styled.button`
   }
   &:disabled {
     cursor: auto;
-    opacity: .65;
+    opacity: 0.65;
   }
-`
+`;
 
 export const ButtonLink = styled.button`
   position: relative;
-  padding: .2em 1em;
+  padding: 0.2em 1em;
   color: #000;
   text-decoration: none;
   background-color: #fff;
@@ -82,6 +82,6 @@ export const ButtonLink = styled.button`
   }
   &:disabled {
     cursor: auto;
-    opacity: .65;
+    opacity: 0.65;
   }
-`
+`;

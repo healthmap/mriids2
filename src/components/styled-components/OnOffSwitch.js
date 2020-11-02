@@ -1,13 +1,13 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const OnOffSwitch = styled.div`
   position: relative;
   width: 50px;
-  -webkit-user-select:none;
-  -moz-user-select:none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
   -ms-user-select: none;
 
-  input[type=checkbox] {
+  input[type="checkbox"] {
     display: none;
     &:checked + label .onoffswitch-inner {
       margin-left: 0;
@@ -31,7 +31,8 @@ const OnOffSwitch = styled.div`
     width: 200%;
     margin-left: -100%;
     transition: margin 0.3s ease-in 0s;
-    &:before, &:after {
+    &:before,
+    &:after {
       display: block;
       float: left;
       width: 50%;
@@ -68,7 +69,6 @@ const OnOffSwitch = styled.div`
     border-radius: 50%;
     transition: all 0.3s ease-in 0s;
   }
-
-`
+`;
 
 export default OnOffSwitch;

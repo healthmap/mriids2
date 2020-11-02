@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const ZoomButtons = styled.div`
   position: absolute;
@@ -8,18 +8,18 @@ export const ZoomButtons = styled.div`
   flex-direction: column;
   align-items: center;
   font-weight: bold;
-  box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.10);
-  border-radius: .5rem;
+  box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
   background-color: #fff;
   overflow: hidden;
-`
+`;
 
 export const ZoomButton = styled.button`
   display: block;
-  padding: .8em;
+  padding: 0.8em;
   color: #000;
   font-size: 16px;
-  line-height: .8;
+  line-height: 0.8;
   text-decoration: none;
   text-align: center;
   background-color: #fff;
@@ -39,4 +39,4 @@ export const ZoomButton = styled.button`
   &:last-child {
     border-top: 1px solid #ececec;
   }
-`
+`;

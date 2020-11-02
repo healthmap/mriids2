@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Title = styled.div`
   /*font-size: 14px;
@@ -10,6 +10,6 @@ const Title = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;*/
-`
+`;
 
 export default Title;
