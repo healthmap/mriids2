@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "./App";
+import Select from "../index";
 
 test("renders component without crashing", () => {
-  shallow(<App />);
+  shallow(<Select options={["All", "Guinea", "Liberia", "Sierra Leone"]} />);
 });

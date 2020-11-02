@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
-import App from "./App";
+import Sidebar from "../index";
 
 test("renders component without crashing", () => {
-  shallow(<App />);
+  shallow(<Sidebar />);
 });
