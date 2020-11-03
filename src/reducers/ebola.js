@@ -1,13 +1,13 @@
-const Ebola = (
-  state = {
-    ebolaData: null,
-  },
-  action
-) => {
-  switch (action.type) {
+const initialState = {
+  ebolaData: null,
+};
+
+const Ebola = (state = initialState, action) => {
+  const { type, payload } = action;
+  switch (type) {
     case "FETCH_EBOLA_DATA_SUCCESS":
       return {
-        ebolaData: action.payload,
+        ebolaData: payload,
       };
     default:
       return state;
