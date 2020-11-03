@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Title = styled.div`
+export const Title = styled.div`
   /*font-size: 14px;
   font-weight: 500;
   color: #000;
@@ -11,5 +11,3 @@ const Title = styled.div`
   justify-content: space-between;
   align-items: center;*/
 `;
-
-export default Title;

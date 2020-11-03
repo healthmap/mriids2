@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const OnOffSwitch = styled.div`
+export const OnOffSwitch = styled.div`
   position: relative;
   width: 50px;
   -webkit-user-select: none;
@@ -70,5 +70,3 @@ const OnOffSwitch = styled.div`
     transition: all 0.3s ease-in 0s;
   }
 `;
-
-export default OnOffSwitch;

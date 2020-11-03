@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const IconNavWrapper = styled.ul`
+export const IconNavWrapper = styled.ul`
   list-style: none;
   display: flex;
   align-items: center;
@@ -20,5 +20,3 @@ const IconNavWrapper = styled.ul`
     }
   }
 `;
-
-export default IconNavWrapper;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { media } from "../../assets/style-utils";
 
-const RightColumn = styled.div`
+export const RightColumn = styled.div`
   display: flex;
   margin: 0px;
   flex-direction: column;
@@ -17,5 +17,3 @@ const RightColumn = styled.div`
     flex-basis: 100%;
   `}
 `;
-
-export default RightColumn;
