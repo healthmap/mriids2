@@ -33,9 +33,6 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/index.js"
-    ],
-    "coverageReporters": [
-      "text"
     ]
   },
   "browserslist": {
