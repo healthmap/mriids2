@@ -1,17 +1,33 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchEbolaData } from "./actions/ebola";
 import Map from "./containers/Map";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import { StyledAppContainer } from "./styles";
 
-function App() {
-  return (
-    <StyledAppContainer>
-      <Header />
-      <Sidebar />
-      <Map />
-    </StyledAppContainer>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchEbolaData();
+  }
+
+  render() {
+    return (
+      <StyledAppContainer>
+        <Header />
+        <Sidebar />
+        <Map />
+      </StyledAppContainer>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  ...state,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchEbolaData: () => dispatch(fetchEbolaData()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
