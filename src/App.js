@@ -22,12 +22,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  ...state,
-});
-
 const mapDispatchToProps = (dispatch) => ({
   fetchEbolaData: () => dispatch(fetchEbolaData()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
