@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const TimespanButtonsWrapper = styled.div`
+export const TimespanButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
   margin: 25px 0 0 80px;
@@ -14,5 +14,3 @@ const TimespanButtonsWrapper = styled.div`
     text-transform: uppercase;
   }
 `;
-
-export default TimespanButtonsWrapper;
