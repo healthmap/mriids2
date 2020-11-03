@@ -1,0 +1,31 @@
+name: Build and Test with Node.js
+
+on:
+  push:
+    branches: [master, development]
+  pull_request:
+    branches: [master, development]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.18.3]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm build --if-present
+      - run: npm test -- --coverage --watchAll=false
+
+      - name: Codacy  coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@master
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: coverage/lcov.info
