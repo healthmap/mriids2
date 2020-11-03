@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ProjectionToggleWrapper = styled.div`
+export const ProjectionToggleWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,5 +17,3 @@ const ProjectionToggleWrapper = styled.div`
     background-color: #f8ae32;
   }
 `;
-
-export default ProjectionToggleWrapper;

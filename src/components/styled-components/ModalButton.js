@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
 
-const ModalButton = styled(Button)`
+export const ModalButton = styled(Button)`
   text-align: left;
   align-items: center;
   align-content: center;
@@ -43,5 +43,3 @@ const ModalButton = styled(Button)`
     box-shadow: none;
   };`}
 `;
-
-export default ModalButton;
