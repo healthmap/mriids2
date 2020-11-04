@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchEbolaData, fetchEbolaDataCombined } from "./actions/ebola";
+import {
+  fetchEbolaData,
+  fetchEbolaDataCombined,
+  fetchRiskData,
+} from "./actions/ebola";
 import Map from "./containers/Map";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -10,6 +14,7 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchEbolaData();
     this.props.fetchEbolaDataCombined();
+    this.props.fetchRiskData();
   }
 
   render() {
@@ -26,6 +31,7 @@ class App extends Component {
 const mapDispatchToProps = (dispatch) => ({
   fetchEbolaData: () => dispatch(fetchEbolaData()),
   fetchEbolaDataCombined: () => dispatch(fetchEbolaDataCombined()),
+  fetchRiskData: () => dispatch(fetchRiskData()),
 });
 
 export default connect(null, mapDispatchToProps)(App);

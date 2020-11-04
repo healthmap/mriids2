@@ -23,6 +23,7 @@ const Ebola = (state = initialState, action) => {
       return {
         ...state,
         ebolaData: {
+          ...state.ebolaData,
           isFetching: state.ebolaData.isFetching + 1,
         },
       };
@@ -30,6 +31,7 @@ const Ebola = (state = initialState, action) => {
       return {
         ...state,
         ebolaData: {
+          ...state.ebolaData,
           isFetching: state.ebolaData.isFetching - 1,
           data: payload,
         },
@@ -38,6 +40,7 @@ const Ebola = (state = initialState, action) => {
       return {
         ...state,
         ebolaData: {
+          ...state.ebolaData,
           isFetching: state.ebolaData.isFetching - 1,
           error,
         },
@@ -46,6 +49,7 @@ const Ebola = (state = initialState, action) => {
       return {
         ...state,
         ebolaDataCombined: {
+          ...state.ebolaDataCombined,
           isFetching: state.ebolaDataCombined.isFetching + 1,
         },
       };
@@ -53,6 +57,7 @@ const Ebola = (state = initialState, action) => {
       return {
         ...state,
         ebolaDataCombined: {
+          ...state.ebolaDataCombined,
           isFetching: state.ebolaDataCombined.isFetching - 1,
           data: payload,
         },
@@ -61,7 +66,34 @@ const Ebola = (state = initialState, action) => {
       return {
         ...state,
         ebolaDataCombined: {
+          ...state.ebolaDataCombined,
           isFetching: state.ebolaDataCombined.isFetching - 1,
+          error: error,
+        },
+      };
+    case "FETCH_RISK_DATA_REQUEST":
+      return {
+        ...state,
+        riskData: {
+          ...state.riskData,
+          isFetching: state.riskData.isFetching + 1,
+        },
+      };
+    case "FETCH_RISK_DATA_SUCCESS":
+      return {
+        ...state,
+        riskData: {
+          ...state.riskData,
+          isFetching: state.riskData.isFetching - 1,
+          data: payload,
+        },
+      };
+    case "FETCH_RISK_DATA_FAILURE":
+      return {
+        ...state,
+        riskData: {
+          ...state.riskData,
+          isFetching: state.riskData.isFetching - 1,
           error,
         },
       };

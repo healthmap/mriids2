@@ -39,3 +39,23 @@ export const fetchEbolaDataCombined = () => (dispatch) => {
       });
     });
 };
+
+export const fetchRiskData = () => (dispatch) => {
+  dispatch({
+    type: "FETCH_RISK_DATA_REQUEST",
+  });
+  return axios
+    .get("csv/weighted_flow.csv")
+    .then((response) => {
+      dispatch({
+        type: "FETCH_RISK_DATA_SUCCESS",
+        payload: response,
+      });
+    })
+    .catch((error) => {
+      dispatch({
+        type: "FETCH_RISK_DATA_FAILURE",
+        error,
+      });
+    });
+};
