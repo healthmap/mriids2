@@ -1,4 +1,5 @@
 import * as d3 from "d3-fetch";
+import { prepareEbolaData } from "../utils/ebolaDataHelpers";
 
 export const fetchEbolaData = () => (dispatch) => {
   dispatch({
@@ -7,9 +8,10 @@ export const fetchEbolaData = () => (dispatch) => {
   return d3
     .csv("csv/healthmap_projections_2018-08-10.csv")
     .then((data) => {
+      const preparedData = prepareEbolaData(data);
       dispatch({
         type: "FETCH_EBOLA_DATA_SUCCESS",
-        payload: data,
+        payload: preparedData,
       });
     })
     .catch((error) => {
