@@ -16,7 +16,7 @@ const initialState = {
   },
 };
 
-const Ebola = (state = initialState, action) => {
+const Ebola = function (state = initialState, action) {
   const { type, payload, error } = action;
   switch (type) {
     case "FETCH_EBOLA_DATA_REQUEST":
