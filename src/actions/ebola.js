@@ -19,3 +19,23 @@ export const fetchEbolaData = () => (dispatch) => {
       });
     });
 };
+
+export const fetchEbolaDataCombined = () => (dispatch) => {
+  dispatch({
+    type: "FETCH_EBOLA_DATA_COMBINED_REQUEST",
+  });
+  return axios
+    .get("csv/healthmap_projections_2018-08-10.csv")
+    .then((response) => {
+      dispatch({
+        type: "FETCH_EBOLA_DATA_COMBINED_SUCCESS",
+        payload: response,
+      });
+    })
+    .catch((error) => {
+      dispatch({
+        type: "FETCH_EBOLA_DATA_COMBINED_FAILURE",
+        error,
+      });
+    });
+};
