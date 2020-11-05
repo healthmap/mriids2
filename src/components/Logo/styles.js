@@ -1,6 +1,6 @@
 import Styled from "styled-components";
 
-export const Logo = Styled.div`
+export const Logo = Styled.span`
   display: flex;
   width: ${(props) => props.theme.sidebarWidth};
   justify-content: center;

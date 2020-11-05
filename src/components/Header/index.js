@@ -1,17 +1,12 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import * as Styled from "./styles";
 import Logo from "../Logo";
 
 const Header = () => {
   return (
     <Styled.HeaderWrapper>
-      <Logo />
+        <Logo />
       <Styled.HeaderNavWrapper>
         <li>
           <NavLink activeClassName="is-active" exact to="/">
