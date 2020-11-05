@@ -1,3 +1,5 @@
+import * as types from "../constants/ActionTypes";
+
 const initialState = {
   country: "All",
   outbreak: "Ebola Outbreak",
@@ -8,6 +10,11 @@ const initialState = {
 
 const Filters = function (state = initialState, action) {
   switch (action.type) {
+    case types.CHANGE_COUNTRY:
+      return {
+        ...state,
+        country: action.payload,
+      };
     default:
       return state;
   }
