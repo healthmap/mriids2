@@ -3,11 +3,17 @@ import { connect } from "react-redux";
 import {
   fetchEbolaData,
   fetchEbolaDataCombined,
-  fetchRiskData,
+  fetchRiskData
 } from "./actions/ebola";
 import Map from "./containers/Map";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink
+} from "react-router-dom";
 import { StyledAppContainer } from "./styles";
 
 class App extends Component {
@@ -19,19 +25,35 @@ class App extends Component {
 
   render() {
     return (
+        <Router>
       <StyledAppContainer>
         <Header />
-        <Sidebar />
-        <Map />
+
+          <Switch>
+            <Route exact path="/">
+              <Sidebar />
+              <Map />
+            </Route>
+            <Route exact path="/about">
+              Test
+            </Route>
+            <Route exact path="/team">
+              Test team
+            </Route>
+          </Switch>
       </StyledAppContainer>
+        </Router>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   fetchEbolaData: () => dispatch(fetchEbolaData()),
   fetchEbolaDataCombined: () => dispatch(fetchEbolaDataCombined()),
-  fetchRiskData: () => dispatch(fetchRiskData()),
+  fetchRiskData: () => dispatch(fetchRiskData())
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);
