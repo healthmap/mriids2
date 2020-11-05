@@ -4,7 +4,7 @@ export const SelectInput = styled.select`
   display: block;
   width: 100%;
   padding: 1.5rem;
-  font-size: 1.4em;
+  font-size: 1.4rem;
   font-weight: bold;
   line-height: 1.3;
   border: 0;
