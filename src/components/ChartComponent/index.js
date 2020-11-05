@@ -4,9 +4,14 @@ import { Chart } from "react-google-charts";
 
 import { ChartContainer } from "../styled-components/ChartContainer";
 import { options } from "../../constants/GoogleChartOptions";
+import { prepareDataForCharts } from "../../utils/chartDataHelpers";
 
-const ChartComponent = () => {
-  const columns = ["Date", "Ebola Cases", "Projected future cases"];
+const ChartComponent = (props) => {
+  const chartData = prepareDataForCharts(
+    props.ebola.ebolaData.data,
+    props.ebola.ebolaDataCombined,
+    props.filters
+  );
 
   return (
     <ChartContainer>
@@ -15,14 +20,7 @@ const ChartComponent = () => {
         height="100%"
         chartType="ColumnChart"
         loader={<div>Loading Chart</div>}
-        data={[
-          columns,
-          ["New York City, NY", 8175000, 8008000],
-          ["Los Angeles, CA", 3792000, 3694000],
-          ["Chicago, IL", 2695000, 2896000],
-          ["Houston, TX", 2099000, 1953000],
-          ["Philadelphia, PA", 1526000, 1517000],
-        ]}
+        data={chartData}
         options={options}
         legendToggle
       />
@@ -30,6 +28,9 @@ const ChartComponent = () => {
   );
 };
 
-const mapStateToProps = (state) => ({ filters: state.filters });
+const mapStateToProps = (state) => ({
+  filters: state.filters,
+  ebola: state.ebola,
+});
 
 export default connect(mapStateToProps)(ChartComponent);
