@@ -41,6 +41,7 @@ exports[`Tests for the connected Sidebar component should render with given stat
     <select
       className="sc-bdfBwQ enfnjO"
       name="outbreak"
+      onChange={[Function]}
       value="Ebola Outbreak"
     >
       <option

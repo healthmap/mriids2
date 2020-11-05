@@ -78,6 +78,7 @@ exports[`Tests for the App component should render with given state from Redux s
       <select
         className="sc-hKgILt jzwbAL"
         name="outbreak"
+        onChange={[Function]}
         value="Ebola Outbreak"
       >
         <option

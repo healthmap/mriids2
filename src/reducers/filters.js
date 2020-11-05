@@ -15,6 +15,11 @@ const Filters = function (state = initialState, action) {
         ...state,
         country: action.payload,
       };
+    case types.CHANGE_OUTBREAK:
+      return {
+        ...state,
+        outbreak: action.payload,
+      };
     default:
       return state;
   }

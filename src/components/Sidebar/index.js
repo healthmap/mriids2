@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { changeCountryFilter } from "../../actions/filters";
+import {
+  changeCountryFilter,
+  changeOutbreakFilter,
+} from "../../actions/filters";
 import Select from "../Select";
 import * as Styled from "./styles";
 import {
@@ -12,6 +15,9 @@ import {
 const Sidebar = (props) => {
   const changeCountry = (selectedValue) => {
     props.changeCountryFilter(selectedValue.target.value);
+  };
+  const changeOutbreak = (selectedValue) => {
+    props.changeOutbreakFilter(selectedValue.target.value);
   };
   return (
     <Styled.SidebarWrapper>
@@ -30,6 +36,7 @@ const Sidebar = (props) => {
           type="outbreak"
           options={["Ebola Outbreak", "COVID 19"]}
           value={props.filters.outbreak}
+          changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
     </Styled.SidebarWrapper>
@@ -42,6 +49,7 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       changeCountryFilter,
+      changeOutbreakFilter,
     },
     dispatch
   );
