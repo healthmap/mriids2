@@ -17,8 +17,7 @@ const initialState = {
 };
 
 const Ebola = function (state = initialState, action) {
-  const { type, payload, error } = action;
-  switch (type) {
+  switch (action.type) {
     case "FETCH_EBOLA_DATA_REQUEST":
       return {
         ...state,
@@ -33,7 +32,7 @@ const Ebola = function (state = initialState, action) {
         ebolaData: {
           ...state.ebolaData,
           isFetching: state.ebolaData.isFetching - 1,
-          data: payload,
+          data: action.payload,
         },
       };
     case "FETCH_EBOLA_DATA_ERROR":
@@ -42,7 +41,7 @@ const Ebola = function (state = initialState, action) {
         ebolaData: {
           ...state.ebolaData,
           isFetching: state.ebolaData.isFetching - 1,
-          error,
+          error: action.error,
         },
       };
     case "FETCH_EBOLA_DATA_COMBINED_REQUEST":
@@ -59,7 +58,7 @@ const Ebola = function (state = initialState, action) {
         ebolaDataCombined: {
           ...state.ebolaDataCombined,
           isFetching: state.ebolaDataCombined.isFetching - 1,
-          data: payload,
+          data: action.payload,
         },
       };
     case "FETCH_EBOLA_DATA_COMBINED_ERROR":
@@ -68,7 +67,7 @@ const Ebola = function (state = initialState, action) {
         ebolaDataCombined: {
           ...state.ebolaDataCombined,
           isFetching: state.ebolaDataCombined.isFetching - 1,
-          error: error,
+          error: action.error,
         },
       };
     case "FETCH_RISK_DATA_REQUEST":
@@ -85,7 +84,7 @@ const Ebola = function (state = initialState, action) {
         riskData: {
           ...state.riskData,
           isFetching: state.riskData.isFetching - 1,
-          data: payload,
+          data: action.payload,
         },
       };
     case "FETCH_RISK_DATA_FAILURE":
@@ -94,7 +93,7 @@ const Ebola = function (state = initialState, action) {
         riskData: {
           ...state.riskData,
           isFetching: state.riskData.isFetching - 1,
-          error,
+          error: action.error,
         },
       };
     default:
