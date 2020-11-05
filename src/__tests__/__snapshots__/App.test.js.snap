@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the App component should render with given state from Redux store 1`] = `
+<div
+  className="sc-iBPRYJ feYRZa"
+>
+  <div
+    className="sc-gsTCUz hnDaqq"
+  >
+    <div
+      className="sc-dlfnbm lmstyB"
+    >
+      <img
+        alt="mriids"
+        src="/mriids.svg"
+      />
+    </div>
+    <ul
+      className="sc-bdfBwQ dMpwxB"
+    >
+      <li
+        className="is-active"
+      >
+        <a
+          href=""
+        >
+          Outbreak
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/ISIDOrg/MRIIDS/wiki/Mapping-the-Risk-of-International-Infectious-Disease-Spread"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          About
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div
+    className="sc-eCssSg kjTDgf"
+  >
+    <div
+      className="sc-gKsewC bMeVrn"
+    >
+      <select
+        className="sc-hKgILt jzwbAL"
+        name="location"
+      >
+        <option
+          value="All"
+        >
+          All
+        </option>
+        <option
+          value="Guinea"
+        >
+          Guinea
+        </option>
+        <option
+          value="Liberia"
+        >
+          Liberia
+        </option>
+        <option
+          value="Sierra Leone"
+        >
+          Sierra Leone
+        </option>
+      </select>
+    </div>
+    <div
+      className="sc-jSgupP bjqQFi"
+    >
+      <select
+        className="sc-hKgILt jzwbAL"
+        name="outbreak"
+      >
+        <option
+          value="Ebola Outbreak"
+        >
+          Ebola Outbreak
+        </option>
+        <option
+          value="COVID 19"
+        >
+          COVID 19
+        </option>
+      </select>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "cursor": "grab",
+        "height": 0,
+        "position": "relative",
+        "width": 0,
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": "100%",
+          "position": "relative",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className=""
+        style={
+          Object {
+            "height": "100%",
+            "overflow": "hidden",
+            "position": "absolute",
+            "visibility": "inherit",
+            "width": "100%",
+          }
+        }
+      />
+      <div
+        style={
+          Object {
+            "height": 0,
+            "overflow": "visible",
+            "width": 0,
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
