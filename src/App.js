@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink
+} from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./assets/theme";
+import {
   fetchEbolaData,
   fetchEbolaDataCombined,
   fetchRiskData
@@ -8,12 +16,6 @@ import {
 import Map from "./containers/Map";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink
-} from "react-router-dom";
 import { StyledAppContainer } from "./styles";
 
 class App extends Component {
@@ -25,24 +27,25 @@ class App extends Component {
 
   render() {
     return (
+      <ThemeProvider theme={theme}>
         <Router>
-      <StyledAppContainer>
-        <Header />
-
-          <Switch>
-            <Route exact path="/">
-              <Sidebar />
-              <Map />
-            </Route>
-            <Route exact path="/about">
-              Test
-            </Route>
-            <Route exact path="/team">
-              Test team
-            </Route>
-          </Switch>
-      </StyledAppContainer>
+          <StyledAppContainer>
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <Sidebar />
+                <Map />
+              </Route>
+              <Route exact path="/about">
+                Test
+              </Route>
+              <Route exact path="/team">
+                Test team
+              </Route>
+            </Switch>
+          </StyledAppContainer>
         </Router>
+      </ThemeProvider>
     );
   }
 }

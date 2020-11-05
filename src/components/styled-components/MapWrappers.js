@@ -2,16 +2,16 @@ import styled from "styled-components";
 
 export const MapOuterWrapper = styled.div`
   position: relative;
-  margin-left: 18rem; /* $sidebar-width; */
-  width: calc(100vw - 18rem); /* calc(100vw - #{$sidebar-width}); */
+  margin-left: ${(props) => props.theme.sidebarWidth};
+  width: calc(100vw - ${(props) => props.theme.sidebarWidth}); 
   height: calc(
-    100vh - 4.5rem
+    100vh - ${(props) => props.theme.headerHeight};
   ); /* calc(100vh - #{$risk-height} - #{$header-height}); */
   z-index: 1;
   overflow: hidden;
   &.has-chart {
     height: calc(
-      100vh - 28rem - 4.5rem
+      100vh - 28rem - ${(props) => props.theme.headerHeight};
     ); /* calc(100vh - #{$risk-height} - #{$header-height}); */
   }
 `;

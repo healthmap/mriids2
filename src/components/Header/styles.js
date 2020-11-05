@@ -5,6 +5,8 @@ export const HeaderNavWrapper = styled.ul`
   display: flex;
   margin: 0;
   padding: 0;
+  font-size: 1.4rem;
+line-height: 2;
   li {
     display: flex;
     align-items: center;
@@ -33,7 +35,7 @@ export const HeaderWrapper = styled.div`
   justify-content: space-between;
   flex: none;
   width: 100%;
-  height: 4.5rem; /* $header-height */
+  height: ${(props) => props.theme.headerHeight}; 
   box-shadow: 0 10px 12px -8px rgba(0, 0, 0, 0.1); /* $box-shadow--bottom */
   z-index: 3; /* $z-index--header */
   > div {
