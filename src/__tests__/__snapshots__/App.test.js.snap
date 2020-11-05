@@ -47,6 +47,7 @@ exports[`Tests for the App component should render with given state from Redux s
       <select
         className="sc-hKgILt jzwbAL"
         name="location"
+        value="All"
       >
         <option
           value="All"
@@ -76,6 +77,7 @@ exports[`Tests for the App component should render with given state from Redux s
       <select
         className="sc-hKgILt jzwbAL"
         name="outbreak"
+        value="Ebola Outbreak"
       >
         <option
           value="Ebola Outbreak"

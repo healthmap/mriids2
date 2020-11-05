@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import Select from "../Select";
 import * as Styled from "./styles";
 import {
@@ -6,7 +7,7 @@ import {
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return (
     <Styled.SidebarWrapper>
       <SelectCountryWrapper>
@@ -14,6 +15,7 @@ const Sidebar = () => {
           name="location"
           type="location"
           options={["All", "Guinea", "Liberia", "Sierra Leone"]}
+          value={props.filters.country}
         />
       </SelectCountryWrapper>
       <SelectOutbreakWrapper>
@@ -21,10 +23,13 @@ const Sidebar = () => {
           name="outbreak"
           type="outbreak"
           options={["Ebola Outbreak", "COVID 19"]}
+          value={props.filters.outbreak}
         />
       </SelectOutbreakWrapper>
     </Styled.SidebarWrapper>
   );
 };
 
-export default Sidebar;
+const mapStateToProps = (state) => ({ filters: state.filters });
+
+export default connect(mapStateToProps)(Sidebar);

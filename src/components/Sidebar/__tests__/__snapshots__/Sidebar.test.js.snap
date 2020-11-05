@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the connected Sidebar component should render with given state from Redux store 1`] = `
+<div
+  className="sc-gsTCUz gyUyLp"
+>
+  <div
+    className="sc-hKgILt hHBbSk"
+  >
+    <select
+      className="sc-bdfBwQ enfnjO"
+      name="location"
+      value="All"
+    >
+      <option
+        value="All"
+      >
+        All
+      </option>
+      <option
+        value="Guinea"
+      >
+        Guinea
+      </option>
+      <option
+        value="Liberia"
+      >
+        Liberia
+      </option>
+      <option
+        value="Sierra Leone"
+      >
+        Sierra Leone
+      </option>
+    </select>
+  </div>
+  <div
+    className="sc-dlfnbm cczaiW"
+  >
+    <select
+      className="sc-bdfBwQ enfnjO"
+      name="outbreak"
+      value="Ebola Outbreak"
+    >
+      <option
+        value="Ebola Outbreak"
+      >
+        Ebola Outbreak
+      </option>
+      <option
+        value="COVID 19"
+      >
+        COVID 19
+      </option>
+    </select>
+  </div>
+</div>
+`;
