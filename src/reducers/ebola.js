@@ -1,3 +1,5 @@
+import * as types from "../constants/ActionTypes";
+
 const initialState = {
   ebolaData: {
     isFetching: 0,
@@ -18,7 +20,7 @@ const initialState = {
 
 const Ebola = function (state = initialState, action) {
   switch (action.type) {
-    case "FETCH_EBOLA_DATA_REQUEST":
+    case types.FETCH_EBOLA_DATA_REQUEST:
       return {
         ...state,
         ebolaData: {
@@ -26,7 +28,7 @@ const Ebola = function (state = initialState, action) {
           isFetching: state.ebolaData.isFetching + 1,
         },
       };
-    case "FETCH_EBOLA_DATA_SUCCESS":
+    case types.FETCH_EBOLA_DATA_SUCCESS:
       return {
         ...state,
         ebolaData: {
@@ -35,7 +37,7 @@ const Ebola = function (state = initialState, action) {
           data: action.payload,
         },
       };
-    case "FETCH_EBOLA_DATA_ERROR":
+    case types.FETCH_EBOLA_DATA_FAILURE:
       return {
         ...state,
         ebolaData: {
@@ -44,7 +46,7 @@ const Ebola = function (state = initialState, action) {
           error: action.error,
         },
       };
-    case "FETCH_EBOLA_DATA_COMBINED_REQUEST":
+    case types.FETCH_EBOLA_DATA_COMBINED_REQUEST:
       return {
         ...state,
         ebolaDataCombined: {
@@ -52,7 +54,7 @@ const Ebola = function (state = initialState, action) {
           isFetching: state.ebolaDataCombined.isFetching + 1,
         },
       };
-    case "FETCH_EBOLA_DATA_COMBINED_SUCCESS":
+    case types.FETCH_EBOLA_DATA_COMBINED_SUCCESS:
       return {
         ...state,
         ebolaDataCombined: {
@@ -61,7 +63,7 @@ const Ebola = function (state = initialState, action) {
           data: action.payload,
         },
       };
-    case "FETCH_EBOLA_DATA_COMBINED_ERROR":
+    case types.FETCH_EBOLA_DATA_COMBINED_FAILURE:
       return {
         ...state,
         ebolaDataCombined: {
@@ -70,7 +72,7 @@ const Ebola = function (state = initialState, action) {
           error: action.error,
         },
       };
-    case "FETCH_RISK_DATA_REQUEST":
+    case types.FETCH_RISK_DATA_REQUEST:
       return {
         ...state,
         riskData: {
@@ -78,7 +80,7 @@ const Ebola = function (state = initialState, action) {
           isFetching: state.riskData.isFetching + 1,
         },
       };
-    case "FETCH_RISK_DATA_SUCCESS":
+    case types.FETCH_RISK_DATA_SUCCESS:
       return {
         ...state,
         riskData: {
@@ -87,7 +89,7 @@ const Ebola = function (state = initialState, action) {
           data: action.payload,
         },
       };
-    case "FETCH_RISK_DATA_FAILURE":
+    case types.FETCH_RISK_DATA_FAILURE:
       return {
         ...state,
         riskData: {
