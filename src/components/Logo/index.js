@@ -1,10 +1,13 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import * as Styled from "./styles";
 
 const Logo = () => {
   return (
     <Styled.Logo>
-      <img src="/mriids.svg" alt="mriids" />
+      <NavLink exact to="/">
+        <img src="/mriids.svg" alt="mriids" />
+      </NavLink>
     </Styled.Logo>
   );
 };

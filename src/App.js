@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./assets/theme";
 import {
   fetchEbolaData,
   fetchEbolaDataCombined,
@@ -18,16 +21,30 @@ class App extends Component {
     this.props.fetchRiskData();
   }
 
-  render() {
-    return (
-      <StyledAppContainer>
-        <Header />
-        <Sidebar />
-        <Map />
-        <ChartComponent />
-      </StyledAppContainer>
-    );
-  }
+    render() {
+        return (
+            <ThemeProvider theme={theme}>
+                <Router>
+                    <StyledAppContainer>
+                        <Header />
+                        <Switch>
+                            <Route exact path="/">
+                                <Sidebar />
+                                <Map />
+                              <ChartComponent />
+                            </Route>
+                            <Route exact path="/about">
+                                Test
+                            </Route>
+                            <Route exact path="/team">
+                                Test team
+                            </Route>
+                        </Switch>
+                    </StyledAppContainer>
+                </Router>
+            </ThemeProvider>
+        );
+    }
 }
 
 const mapDispatchToProps = (dispatch) => ({
