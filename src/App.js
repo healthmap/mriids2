@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink
 } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/theme";

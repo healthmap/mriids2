@@ -20,5 +20,5 @@ test("renders HeaderNavWrapper child component", () => {
 
 test("renders 2 nav buttons", () => {
   const wrapper = shallow(<Header />);
-  expect(wrapper.find(Styled.HeaderNavWrapper).children()).toHaveLength(2);
+  expect(wrapper.find(Styled.HeaderNavWrapper).children()).toHaveLength(3);
 });
