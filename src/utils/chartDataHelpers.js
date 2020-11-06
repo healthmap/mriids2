@@ -42,5 +42,24 @@ export const prepareEbolaDataForCharts = (
     });
   }
 
+  // If the ebolaData object has keys and a specific country is selected, show the country-specific ebola data.
+  const showCountryEbolaData =
+    Object.keys(ebolaData).length && filters.country !== "All";
+
+  // Here we are adding the ebola data for a specific country
+  if (showCountryEbolaData) {
+    Object.keys(ebolaData).forEach((key) => {
+      // If the ebolaData key is equal to filters.country, this is the country data that we want.
+      if (key === filters.country) {
+        const countryData = ebolaData[key];
+        // For each date key in the countryData object, push a data row to the chartData array.
+        for (const date in countryData) {
+          const dateValue = new Date(date);
+          chartData.push([dateValue, countryData[date].value]);
+        }
+      }
+    });
+  }
+
   return chartData;
 };
