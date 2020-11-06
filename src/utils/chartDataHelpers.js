@@ -63,3 +63,19 @@ export const prepareEbolaDataForCharts = (
 
   return chartData;
 };
+
+export const prepareCovidDataForCharts = () => {
+  const chartData = [];
+  const columns = [
+    {
+      type: "date",
+      label: "Date",
+    },
+    {
+      type: "number",
+      label: "COVID-19 Cases",
+    },
+  ];
+  chartData.push(columns);
+  return chartData;
+};

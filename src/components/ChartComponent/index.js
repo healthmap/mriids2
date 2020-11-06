@@ -4,7 +4,10 @@ import { Chart } from "react-google-charts";
 
 import { ChartContainer } from "../styled-components/ChartContainer";
 import { options } from "../../constants/GoogleChartOptions";
-import { prepareEbolaDataForCharts } from "../../utils/chartDataHelpers";
+import {
+  prepareEbolaDataForCharts,
+  prepareCovidDataForCharts,
+} from "../../utils/chartDataHelpers";
 
 const ChartComponent = (props) => {
   let chartData;
@@ -14,6 +17,8 @@ const ChartComponent = (props) => {
       props.ebola.ebolaDataCombined.data,
       props.filters
     );
+  } else {
+    chartData = prepareCovidDataForCharts();
   }
 
   return (
