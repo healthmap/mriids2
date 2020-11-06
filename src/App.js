@@ -9,6 +9,7 @@ import {
     fetchRiskData,
 } from "./actions/ebola";
 import Map from "./containers/Map";
+import Team from "./containers/Team";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import { StyledAppContainer } from "./styles";
@@ -35,7 +36,7 @@ class App extends Component {
                                 Test
                             </Route>
                             <Route exact path="/team">
-                                Test team
+                                <Team />
                             </Route>
                         </Switch>
                     </StyledAppContainer>
