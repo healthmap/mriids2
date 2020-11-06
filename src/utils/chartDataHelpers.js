@@ -1,9 +1,4 @@
-export const prepareEbolaDataForCharts = (
-  ebolaData,
-  ebolaDataCombined,
-  filters
-) => {
-  const chartData = [];
+const getChartColumns = (outbreakName, projection = false) => {
   const columns = [
     {
       type: "date",
@@ -11,19 +6,27 @@ export const prepareEbolaDataForCharts = (
     },
     {
       type: "number",
-      label: "Ebola Cases",
+      label: `${outbreakName} Cases`,
     },
   ];
-
   // If filters.projection is True, add "Projected future cases" column to columns array.
-  if (filters.projection) {
+  if (projection) {
     columns.push({
       type: "number",
       label: "Projected future cases",
     });
   }
+  return columns;
+};
+
+export const prepareEbolaDataForCharts = (
+  ebolaData,
+  ebolaDataCombined,
+  filters
+) => {
+  const chartData = [];
   // 1. Add column headers to chartData array.
-  chartData.push(columns);
+  chartData.push(getChartColumns("Ebola", filters.projection));
   // 2. Add ebola data to chartData array.
   const showEbolaDataCombined =
     ebolaDataCombined && ebolaDataCombined.length && filters.country === "All";
@@ -66,23 +69,12 @@ export const prepareEbolaDataForCharts = (
       }
     });
   }
-
   return chartData;
 };
 
 export const prepareCovidDataForCharts = () => {
   const chartData = [];
-  const columns = [
-    {
-      type: "date",
-      label: "Date",
-    },
-    {
-      type: "number",
-      label: "COVID-19 Cases",
-    },
-  ];
   // 1. Add column headers to chartData array.
-  chartData.push(columns);
+  chartData.push(getChartColumns("COVID-19", false));
   return chartData;
 };
