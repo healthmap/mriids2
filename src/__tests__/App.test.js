@@ -3,7 +3,7 @@ import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import renderer from "react-test-renderer";
-import 'jest-styled-components';
+import "jest-styled-components";
 import App from "../App";
 
 const mockStore = configureStore([thunk]);
