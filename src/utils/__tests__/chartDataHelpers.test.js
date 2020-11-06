@@ -6,8 +6,10 @@ import {
 import {
   testGuineaTestData,
   testGuineaFiltersState,
+  testGuineaTestDataOutOfDateRange,
   testEbolaDataCombined,
   testAllCountriesFiltersState,
+  testEbolaDataCombinedOutOfDateRange,
 } from "../testData";
 
 describe("Tests for the chart data helper functions", () => {
@@ -34,6 +36,28 @@ describe("Tests for the chart data helper functions", () => {
     ]);
   });
 
+  test("prepareEbolaDataForCharts returns only Guinea data in date range", () => {
+    expect(
+      prepareEbolaDataForCharts(
+        testGuineaTestDataOutOfDateRange,
+        null,
+        testGuineaFiltersState
+      )
+    ).toEqual([
+      [
+        {
+          type: "date",
+          label: "Date",
+        },
+        {
+          type: "number",
+          label: "Ebola Cases",
+        },
+      ],
+      [new Date("2014-10-13"), "114"],
+    ]);
+  });
+
   test("prepareEbolaDataForCharts returns the combinedEbolaData in the expected format", () => {
     expect(
       prepareEbolaDataForCharts(
@@ -53,6 +77,28 @@ describe("Tests for the chart data helper functions", () => {
         },
       ],
       [new Date("2014-10-06"), "896"],
+      [new Date("2014-10-13"), "859"],
+    ]);
+  });
+
+  test("prepareEbolaDataForCharts returns only combinedEbolaData in date range", () => {
+    expect(
+      prepareEbolaDataForCharts(
+        testGuineaTestData,
+        testEbolaDataCombinedOutOfDateRange,
+        testAllCountriesFiltersState
+      )
+    ).toEqual([
+      [
+        {
+          type: "date",
+          label: "Date",
+        },
+        {
+          type: "number",
+          label: "Ebola Cases",
+        },
+      ],
       [new Date("2014-10-13"), "859"],
     ]);
   });
