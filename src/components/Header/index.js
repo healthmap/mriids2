@@ -1,23 +1,27 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import * as Styled from "./styles";
 import Logo from "../Logo";
 
 const Header = () => {
   return (
     <Styled.HeaderWrapper>
-      <Logo />
+        <Logo />
       <Styled.HeaderNavWrapper>
-        <li className="is-active">
-          <a href="">Outbreak</a>
+        <li>
+          <NavLink activeClassName="is-active" exact to="/">
+            Outbreak
+          </NavLink>
         </li>
         <li>
-          <a
-            href="https://github.com/ISIDOrg/MRIIDS/wiki/Mapping-the-Risk-of-International-Infectious-Disease-Spread"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
+          <NavLink activeClassName="is-active" exact to="/about">
             About
-          </a>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="is-active" exact to="/team">
+            Team
+          </NavLink>
         </li>
       </Styled.HeaderNavWrapper>
     </Styled.HeaderWrapper>

@@ -1,4 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import {
+  changeCountryFilter,
+  changeOutbreakFilter,
+} from "../../actions/filters";
 import Select from "../Select";
 import * as Styled from "./styles";
 import {
@@ -6,7 +12,13 @@ import {
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
+  const changeCountry = (selectedValue) => {
+    props.changeCountryFilter(selectedValue.target.value);
+  };
+  const changeOutbreak = (selectedValue) => {
+    props.changeOutbreakFilter(selectedValue.target.value);
+  };
   return (
     <Styled.SidebarWrapper>
       <SelectCountryWrapper>
@@ -14,6 +26,8 @@ const Sidebar = () => {
           name="location"
           type="location"
           options={["All", "Guinea", "Liberia", "Sierra Leone"]}
+          value={props.filters.country}
+          changeFunction={changeCountry}
         />
       </SelectCountryWrapper>
       <SelectOutbreakWrapper>
@@ -21,10 +35,23 @@ const Sidebar = () => {
           name="outbreak"
           type="outbreak"
           options={["Ebola Outbreak", "COVID 19"]}
+          value={props.filters.outbreak}
+          changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
     </Styled.SidebarWrapper>
   );
 };
 
-export default Sidebar;
+const mapStateToProps = (state) => ({ filters: state.filters });
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      changeCountryFilter,
+      changeOutbreakFilter,
+    },
+    dispatch
+  );
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
