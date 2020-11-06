@@ -76,6 +76,7 @@ export const prepareCovidDataForCharts = () => {
       label: "COVID-19 Cases",
     },
   ];
+  // 1. Add column headers to chartData array.
   chartData.push(columns);
   return chartData;
 };
