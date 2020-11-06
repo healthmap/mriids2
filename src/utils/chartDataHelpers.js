@@ -57,13 +57,16 @@ export const prepareEbolaDataForCharts = (
         const countryData = ebolaData[key];
         // For each date key in the countryData object, push a data row to the chartData array.
         for (const date in countryData) {
-          const dateValue = new Date(date);
-          // Only push the rows if the dateValue is within the filters.dateRange
-          const isDateValueInRange =
-            dateValue > filters.dateRange.from &&
-            dateValue < filters.dateRange.to;
-          if (isDateValueInRange) {
-            chartData.push([dateValue, countryData[date].value]);
+          // this is a check to filter unwanted properties from the countryData object.
+          if (Object.prototype.hasOwnProperty.call(countryData, date)) {
+            const dateValue = new Date(date);
+            // Only push the rows if the dateValue is within the filters.dateRange
+            const isDateValueInRange =
+              dateValue > filters.dateRange.from &&
+              dateValue < filters.dateRange.to;
+            if (isDateValueInRange) {
+              chartData.push([dateValue, countryData[date].value]);
+            }
           }
         }
       }
