@@ -1,11 +1,11 @@
 import Styled from "styled-components";
 
-export const Logo = Styled.div`
+export const Logo = Styled.span`
   display: flex;
-  width: 18rem;
+  width: ${(props) => props.theme.sidebarWidth};
   justify-content: center;
   align-items: center;
   img {
     width: auto;
-    height: 1.8rem;
+    height: 2.4rem;
   }`;

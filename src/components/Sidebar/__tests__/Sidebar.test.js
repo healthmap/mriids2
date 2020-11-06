@@ -4,6 +4,7 @@ import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import Sidebar from "../index";
 import renderer from "react-test-renderer";
+import "jest-styled-components";
 
 const mockStore = configureStore([thunk]);
 
