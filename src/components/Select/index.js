@@ -16,8 +16,8 @@ const Select = (props) => {
   return (
     <Styled.SelectInput
       name={props.name}
-      value={props.countryValueFromState}
-      onChange={props.changeCountry}
+      value={props.value}
+      onChange={props.changeFunction}
     >
       {renderOptions(props.options)}
     </Styled.SelectInput>
