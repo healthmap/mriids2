@@ -4,14 +4,17 @@ import { Chart } from "react-google-charts";
 
 import { ChartContainer } from "../styled-components/ChartContainer";
 import { options } from "../../constants/GoogleChartOptions";
-import { prepareDataForCharts } from "../../utils/chartDataHelpers";
+import { prepareEbolaDataForCharts } from "../../utils/chartDataHelpers";
 
 const ChartComponent = (props) => {
-  const chartData = prepareDataForCharts(
-    props.ebola.ebolaData.data,
-    props.ebola.ebolaDataCombined,
-    props.filters
-  );
+  let chartData;
+  if (props.filters.outbreak === "Ebola Outbreak") {
+    chartData = prepareEbolaDataForCharts(
+      props.ebola.ebolaData.data,
+      props.ebola.ebolaDataCombined.data,
+      props.filters
+    );
+  }
 
   return (
     <ChartContainer>
