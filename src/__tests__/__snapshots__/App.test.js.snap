@@ -152,6 +152,15 @@ exports[`Tests for the App component should render with given state from Redux s
   background-color: #000;
 }
 
+.c8 {
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  padding-left: 21.6rem;
+  height: 28rem;
+  overflow: hidden;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -316,6 +325,13 @@ exports[`Tests for the App component should render with given state from Redux s
           }
         }
       />
+    </div>
+  </div>
+  <div
+    className="c8"
+  >
+    <div>
+      Loading Chart
     </div>
   </div>
 </div>
