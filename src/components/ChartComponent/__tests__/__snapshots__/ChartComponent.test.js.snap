@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the connected ChartComponent should render with given state from Redux store 1`] = `
+.c0 {
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  height: 28rem;
+  overflow: hidden;
+}
+
+<div
+  className="c0"
+>
+  <div>
+    Loading Chart
+  </div>
+</div>
+`;

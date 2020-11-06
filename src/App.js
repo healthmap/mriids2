@@ -4,21 +4,22 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/theme";
 import {
-    fetchEbolaData,
-    fetchEbolaDataCombined,
-    fetchRiskData,
+  fetchEbolaData,
+  fetchEbolaDataCombined,
+  fetchRiskData,
 } from "./actions/ebola";
 import Map from "./containers/Map";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import ChartComponent from "./components/ChartComponent";
 import { StyledAppContainer } from "./styles";
 
 class App extends Component {
-    componentDidMount() {
-        this.props.fetchEbolaData();
-        this.props.fetchEbolaDataCombined();
-        this.props.fetchRiskData();
-    }
+  componentDidMount() {
+    this.props.fetchEbolaData();
+    this.props.fetchEbolaDataCombined();
+    this.props.fetchRiskData();
+  }
 
     render() {
         return (
@@ -30,6 +31,7 @@ class App extends Component {
                             <Route exact path="/">
                                 <Sidebar />
                                 <Map />
+                              <ChartComponent />
                             </Route>
                             <Route exact path="/about">
                                 Test
@@ -46,9 +48,9 @@ class App extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchEbolaData: () => dispatch(fetchEbolaData()),
-    fetchEbolaDataCombined: () => dispatch(fetchEbolaDataCombined()),
-    fetchRiskData: () => dispatch(fetchRiskData()),
+  fetchEbolaData: () => dispatch(fetchEbolaData()),
+  fetchEbolaDataCombined: () => dispatch(fetchEbolaDataCombined()),
+  fetchRiskData: () => dispatch(fetchRiskData()),
 });
 
 export default connect(null, mapDispatchToProps)(App);
