@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tests for the App component should render with given state from Redux store 1`] = `
+.c8 {
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  padding-left: 21.6rem;
+  height: 50rem;
+  overflow: hidden;
+}
+
 .c3 {
   list-style: none;
   display: -webkit-box;
@@ -152,7 +161,7 @@ exports[`Tests for the App component should render with given state from Redux s
   background-color: #000;
 }
 
-.c8 {
+.c9 {
   -webkit-flex: none;
   -ms-flex: none;
   flex: none;
@@ -286,49 +295,53 @@ exports[`Tests for the App component should render with given state from Redux s
     </div>
   </div>
   <div
-    style={
-      Object {
-        "cursor": "grab",
-        "height": 0,
-        "position": "relative",
-        "width": 0,
-      }
-    }
+    className="c8"
   >
     <div
       style={
         Object {
-          "height": "100%",
+          "cursor": "grab",
+          "height": 0,
           "position": "relative",
-          "width": "100%",
+          "width": 0,
         }
       }
     >
       <div
-        className=""
         style={
           Object {
             "height": "100%",
-            "overflow": "hidden",
-            "position": "absolute",
-            "visibility": "inherit",
+            "position": "relative",
             "width": "100%",
           }
         }
-      />
-      <div
-        style={
-          Object {
-            "height": 0,
-            "overflow": "visible",
-            "width": 0,
+      >
+        <div
+          className=""
+          style={
+            Object {
+              "height": "100%",
+              "overflow": "hidden",
+              "position": "absolute",
+              "visibility": "inherit",
+              "width": "100%",
+            }
           }
-        }
-      />
+        />
+        <div
+          style={
+            Object {
+              "height": 0,
+              "overflow": "visible",
+              "width": 0,
+            }
+          }
+        />
+      </div>
     </div>
   </div>
   <div
-    className="c8"
+    className="c9"
   >
     <div>
       Loading Chart
