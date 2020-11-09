@@ -12,6 +12,7 @@ import Map from "./containers/Map";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
+import DateRangeSlider from "./components/DateRangeSlider";
 import { StyledAppContainer } from "./styles";
 
 class App extends Component {
@@ -32,6 +33,7 @@ class App extends Component {
                 <Sidebar />
                 <Map />
                 <ChartComponent />
+                <DateRangeSlider />
               </Route>
               <Route exact path="/about">
                 Test

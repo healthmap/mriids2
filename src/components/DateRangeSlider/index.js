@@ -4,11 +4,15 @@ import { Slider } from "@material-ui/core";
 import { DateRangeSliderContainer } from "../styled-components/DateRangeSliderContainer";
 
 const DateRangeSlider = (props) => {
-  const [numberOfWeeks, setNumberOfWeeks] = useState([20, 68]);
+  const [numberOfWeeks, setNumberOfWeeks] = useState([0, 68]);
+
+  const handleRangeChange = (event, newRangeArray) => {
+    setNumberOfWeeks(newRangeArray);
+  };
 
   return (
     <DateRangeSliderContainer>
-      <Slider value={numberOfWeeks} />
+      <Slider value={numberOfWeeks} onChange={handleRangeChange} />
     </DateRangeSliderContainer>
   );
 };
