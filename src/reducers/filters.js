@@ -20,6 +20,14 @@ const Filters = function (state = initialState, action) {
         ...state,
         outbreak: action.payload,
       };
+    case types.CHANGE_DATE_RANGE:
+      return {
+        ...state,
+        dateRange: {
+          from: action.payload[0],
+          to: action.payload[1],
+        },
+      };
     default:
       return state;
   }
