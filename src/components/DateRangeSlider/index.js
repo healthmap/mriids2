@@ -7,11 +7,11 @@ import { DateRangeSliderContainer } from "../styled-components/DateRangeSliderCo
 import { ebolaInitialDateRange } from "../../constants/DateRanges";
 
 const DateRangeSlider = (props) => {
-  const [numberOfWeeks, setNumberOfWeeks] = useState([0, 68]);
+  const [sliderRange, setSliderRange] = useState([0, 68]);
 
   const handleRangeChange = (event, newRangeArray) => {
     // Only execute this block if the newRangeArray is different from the numberOfWeeks state.
-    if (numberOfWeeks !== newRangeArray) {
+    if (sliderRange !== newRangeArray) {
       // Here we are getting the new dateRange.from date value for the filters
       let newFromDate = new Date(ebolaInitialDateRange.dateRange.from);
       const fromDateChange = 7 * newRangeArray[0];
@@ -22,13 +22,18 @@ const DateRangeSlider = (props) => {
       newToDate.setDate(newToDate.getDate() + toDateChange);
 
       props.changeDateRange([newFromDate, newToDate]);
-      setNumberOfWeeks(newRangeArray);
+      setSliderRange(newRangeArray);
     }
   };
 
   return (
     <DateRangeSliderContainer>
-      <Slider value={numberOfWeeks} onChange={handleRangeChange} />
+      <Slider
+        value={sliderRange}
+        min={0}
+        max={68}
+        onChange={handleRangeChange}
+      />
     </DateRangeSliderContainer>
   );
 };
