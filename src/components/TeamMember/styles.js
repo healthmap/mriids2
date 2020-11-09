@@ -44,7 +44,7 @@ export const TeamMemberTextWrapper = styled.div`
 `;
 
 export const Test = styled.div`
-  overflow: hidden;
+  overflow-y: hidden;
 `;
 export const FullBio = styled.div`
   transition: all 0.25s ease-out;
@@ -69,7 +69,6 @@ export const ToggleButton = styled.button`
   align-items: center;
   padding-bottom: 1.6rem;
   margin-top: -1.6rem;
-//  justify-self: flex-end;
   margin-left: 1.6rem;
   img {
     width: 20px;
