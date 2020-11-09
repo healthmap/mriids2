@@ -12,6 +12,7 @@ import Map from "./containers/Map";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
+import DateRangeSlider from "./components/DateRangeSlider";
 import { StyledAppContainer } from "./styles";
 
 class App extends Component {
@@ -21,30 +22,31 @@ class App extends Component {
     this.props.fetchRiskData();
   }
 
-    render() {
-        return (
-            <ThemeProvider theme={theme}>
-                <Router>
-                    <StyledAppContainer>
-                        <Header />
-                        <Switch>
-                            <Route exact path="/">
-                                <Sidebar />
-                                <Map />
-                              <ChartComponent />
-                            </Route>
-                            <Route exact path="/about">
-                                Test
-                            </Route>
-                            <Route exact path="/team">
-                                Test team
-                            </Route>
-                        </Switch>
-                    </StyledAppContainer>
-                </Router>
-            </ThemeProvider>
-        );
-    }
+  render() {
+    return (
+      <ThemeProvider theme={theme}>
+        <Router>
+          <StyledAppContainer>
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <Sidebar />
+                <Map />
+                <ChartComponent />
+                <DateRangeSlider />
+              </Route>
+              <Route exact path="/about">
+                Test
+              </Route>
+              <Route exact path="/team">
+                Test team
+              </Route>
+            </Switch>
+          </StyledAppContainer>
+        </Router>
+      </ThemeProvider>
+    );
+  }
 }
 
 const mapDispatchToProps = (dispatch) => ({

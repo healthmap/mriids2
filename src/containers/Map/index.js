@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactMapGL from "react-map-gl";
 
+import { MapContainer } from "../../components/styled-components/MapContainer";
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -33,11 +35,13 @@ class Index extends Component {
 
   render() {
     return (
-      <ReactMapGL
-        {...this.state.viewport}
-        onViewportChange={(viewport) => this.onViewportChange(viewport)}
-        mapStyle="mapbox://styles/compepi/cjnxgpr991b6h2rpcvqmh5j4f"
-      />
+      <MapContainer>
+        <ReactMapGL
+          {...this.state.viewport}
+          onViewportChange={(viewport) => this.onViewportChange(viewport)}
+          mapStyle="mapbox://styles/compepi/cjnxgpr991b6h2rpcvqmh5j4f"
+        />
+      </MapContainer>
     );
   }
 }

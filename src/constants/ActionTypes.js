@@ -16,3 +16,4 @@ export const FETCH_RISK_DATA_FAILURE = "FETCH_RISK_DATA_FAILURE";
 // These are used for updating the filters
 export const CHANGE_COUNTRY = "CHANGE_COUNTRY";
 export const CHANGE_OUTBREAK = "CHANGE_OUTBREAK";
+export const CHANGE_DATE_RANGE = "CHANGE_DATE_RANGE";
