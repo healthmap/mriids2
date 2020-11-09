@@ -21,30 +21,30 @@ class App extends Component {
     this.props.fetchRiskData();
   }
 
-    render() {
-        return (
-            <ThemeProvider theme={theme}>
-                <Router>
-                    <StyledAppContainer>
-                        <Header />
-                        <Switch>
-                            <Route exact path="/">
-                                <Sidebar />
-                                <Map />
-                              <ChartComponent />
-                            </Route>
-                            <Route exact path="/about">
-                                Test
-                            </Route>
-                            <Route exact path="/team">
-                                Test team
-                            </Route>
-                        </Switch>
-                    </StyledAppContainer>
-                </Router>
-            </ThemeProvider>
-        );
-    }
+  render() {
+    return (
+      <ThemeProvider theme={theme}>
+        <Router>
+          <StyledAppContainer>
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <Sidebar />
+                <Map />
+                <ChartComponent />
+              </Route>
+              <Route exact path="/about">
+                Test
+              </Route>
+              <Route exact path="/team">
+                Test team
+              </Route>
+            </Switch>
+          </StyledAppContainer>
+        </Router>
+      </ThemeProvider>
+    );
+  }
 }
 
 const mapDispatchToProps = (dispatch) => ({
