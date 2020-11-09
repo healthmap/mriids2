@@ -13,3 +13,10 @@ export const changeOutbreakFilter = (data) => (dispatch) => {
     payload: data,
   });
 };
+
+export const changeDateRange = (dateRangeArray) => (dispatch) => {
+  return dispatch({
+    type: types.CHANGE_DATE_RANGE,
+    payload: dateRangeArray,
+  });
+};
