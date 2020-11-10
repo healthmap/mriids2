@@ -9,6 +9,8 @@ import {
   fetchRiskData,
 } from "./actions/ebola";
 import Map from "./containers/Map";
+import Team from "./components/Team";
+import About from "./components/About";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
@@ -36,10 +38,10 @@ class App extends Component {
                 <DateRangeSlider />
               </Route>
               <Route exact path="/about">
-                Test
+                <About />
               </Route>
               <Route exact path="/team">
-                Test team
+                <Team />
               </Route>
             </Switch>
           </StyledAppContainer>

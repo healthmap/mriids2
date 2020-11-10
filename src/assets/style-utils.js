@@ -11,4 +11,9 @@ export const media = {
       ${css(...args)}
     }
   `,
+  mediumScreen: (...args) => css`
+    @media (min-width: 1024px) {
+      ${css(...args)}
+    }
+  `,
 };
