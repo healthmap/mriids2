@@ -6,6 +6,7 @@ import {
   changeOutbreakFilter,
 } from "../../actions/filters";
 import Select from "../Select";
+import ReportedCases from "./ReportedCases";
 import * as Styled from "./styles";
 import {
   SelectCountryWrapper,
@@ -39,11 +40,20 @@ const Sidebar = (props) => {
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
+      {props.filters.view === "snapshot" && (
+        <ReportedCases
+          projection={props.filters.projection}
+          dateRange={props.filters.dateRange}
+        />
+      )}
     </Styled.SidebarWrapper>
   );
 };
 
-const mapStateToProps = (state) => ({ filters: state.filters });
+const mapStateToProps = (state) => ({
+  filters: state.filters,
+  ebola: state.ebola,
+});
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
