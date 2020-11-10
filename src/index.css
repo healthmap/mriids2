@@ -18,10 +18,10 @@ code {
   outline: 3px solid blue;
 }
 
-:focus:not(:focus-visible) {
-  outline: 0;
-}
-
 :focus-visible {
   outline: 3px solid blue;
+}
+
+:focus:not(:focus-visible) {
+  outline: 0;
 }
