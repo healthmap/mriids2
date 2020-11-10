@@ -9,8 +9,8 @@ import {
   fetchRiskData,
 } from "./actions/ebola";
 import Map from "./containers/Map";
-import Team from "./containers/Team";
-import About from "./containers/About";
+import Team from "./components/Team";
+import About from "./components/About";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
