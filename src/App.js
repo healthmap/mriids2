@@ -10,6 +10,7 @@ import {
 } from "./actions/ebola";
 import Map from "./containers/Map";
 import Team from "./containers/Team";
+import About from "./containers/About";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
@@ -37,11 +38,11 @@ class App extends Component {
                 <DateRangeSlider />
               </Route>
               <Route exact path="/about">
-                Test
+                <About />
               </Route>
               <Route exact path="/team">
-              <Team />  
-	    </Route>
+                <Team />
+              </Route>
             </Switch>
           </StyledAppContainer>
         </Router>
