@@ -11,7 +11,7 @@ class About extends Component {
 
 <Styled.Body>Developed based on data from the 2014-16 West Africa Ebola outbreak, the MRIIDS prototype was designed to be rapidly scalable by extending it to pathogens of significance to humans and animals on a global scale. The tool aims to inform key health decision-makers at national and regional levels of the risks of an outbreak spreading in real-time, and aids government and non-governmental decision-makers as they prepare for the possible arrival of an infectious disease threat to their region.</Styled.Body>
  
-<Styled.Body>The information technology resources developed for MRIIDS are hosted on a public GitHub account which is accessible to all interested parties. Thus, information developed for the program is not stored behind corporate walls and can be used by other organizations to further protect patient health.</Styled.Body> 
+<Styled.Body>The information technology resources developed for MRIIDS are hosted on a <a href="https://github.com/ISIDOrg/MRIIDS/wiki/Mapping-the-Risk-of-International-Infectious-Disease-Spread">public GitHub account</a> which is accessible to all interested parties. Thus, information developed for the program is not stored behind corporate walls and can be used by other organizations to further protect patient health.</Styled.Body> 
 
 <Styled.Body>Initial funding and development support for the MRIIDS program was provided by the United States Agency for International Development - USAID - through the “Combating Zika and Future Threats” grant challenge. </Styled.Body>
 
