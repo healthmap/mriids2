@@ -179,5 +179,27 @@ exports[`Tests for the connected Sidebar component should render with given stat
       </div>
     </div>
   </div>
+  <div
+    className="c4"
+  >
+    <h4>
+      SUMMARY
+    </h4>
+    <p>
+      From 
+      Wed Oct 01 2014
+       to 
+      Sat Feb 20 2016
+      , the Ebola outbreak in 
+      West Africa
+       
+      has affected
+       
+      0
+       people
+       (suspected and confirmed cases)
+      .
+    </p>
+  </div>
 </div>
 `;

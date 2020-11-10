@@ -7,6 +7,7 @@ import {
 } from "../../actions/filters";
 import Select from "../Select";
 import ReportedCases from "./ReportedCases";
+import Summary from "./Summary";
 import * as Styled from "./styles";
 import {
   SelectCountryWrapper,
@@ -41,10 +42,17 @@ const Sidebar = (props) => {
         />
       </SelectOutbreakWrapper>
       {props.filters.view === "snapshot" && (
-        <ReportedCases
-          projection={props.filters.projection}
-          dateRange={props.filters.dateRange}
-        />
+        <>
+          <ReportedCases
+            projection={props.filters.projection}
+            dateRange={props.filters.dateRange}
+          />
+          <Summary
+            projection={props.filters.projection}
+            dateRange={props.filters.dateRange}
+            country={props.filters.country}
+          />
+        </>
       )}
     </Styled.SidebarWrapper>
   );
