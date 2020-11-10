@@ -1,4 +1,4 @@
-export default {
+const TeamMemberContent = {
   sangeeta: {
     name: "Sangeeta Bhatia, PhD",
     org: "Imperial College London",
@@ -132,3 +132,4 @@ export default {
     image: "/images/mark-herringer.jpg",
   },
 };
+export default TeamMemberContent;

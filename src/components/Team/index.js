@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import * as Styled from "../../components/styled-components/Team";
 import TeamMember from "../../components/TeamMember";
 const Team = () => {

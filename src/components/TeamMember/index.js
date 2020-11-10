@@ -18,7 +18,7 @@ const TeamMember = (props) => {
   return (
     <Styled.TeamMemberContentWrapper>
       {teamMemberDisplay.image && (
-        <Styled.Image src={teamMemberDisplay.image} />
+        <Styled.Image src={teamMemberDisplay.image} alt={teamMemberDisplay.name} />
       )}
       <Styled.TeamMemberTextWrapper>
         {teamMemberDisplay.name && (
@@ -42,11 +42,11 @@ const TeamMember = (props) => {
       >
         {!textDisplay ? (
           <>
-            Full Bio <img src="icons/chevron-circle-down-light.svg" />
+            Full Bio <img alt="Expand Arrow" src="icons/chevron-circle-down-light.svg" />
           </>
         ) : (
           <>
-            Full Bio <img src="icons/chevron-circle-up-light.svg" />
+            Full Bio <img alt="Collapse Arrow" src="icons/chevron-circle-up-light.svg" />
           </>
         )}
       </Styled.ToggleButton>

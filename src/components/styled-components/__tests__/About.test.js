@@ -1,7 +1,12 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { About } from "../About";
+import { Title, Body } from "../About";
 
-test("render About", () => {
-  shallow(<About />);
+describe("Tests for About components", () => {
+  test("render Title", () => {
+    shallow(<Title />);
+  });
+  test("render Body", () => {
+    shallow(<Body />);
+  });
 });

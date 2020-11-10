@@ -3,6 +3,6 @@ import { shallow } from "enzyme";
 import TeamMember from "../index";
 
 test("render TeamMember", () => {
-  shallow(<TeamMember />);
+  shallow(<TeamMember content="sangeeta" />);
 });
 
