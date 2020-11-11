@@ -6,11 +6,14 @@ import {
   changeOutbreakFilter,
 } from "../../actions/filters";
 import Select from "../Select";
+import ReportedCases from "./ReportedCases";
+import Summary from "./Summary";
 import * as Styled from "./styles";
 import {
   SelectCountryWrapper,
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
+import { getDiseaseCaseCount } from "../../utils/ebolaDataHelpers";
 
 const Sidebar = (props) => {
   const changeCountry = (selectedValue) => {
@@ -19,6 +22,14 @@ const Sidebar = (props) => {
   const changeOutbreak = (selectedValue) => {
     props.changeOutbreakFilter(selectedValue.target.value);
   };
+  const diseaseCaseCount = getDiseaseCaseCount(
+    props.ebola.ebolaData.data,
+    props.filters
+  );
+  const showReportedCasesAndSummary =
+    props.filters.view === "snapshot" &&
+    props.filters.outbreak === "Ebola Outbreak";
+
   return (
     <Styled.SidebarWrapper>
       <SelectCountryWrapper>
@@ -39,11 +50,29 @@ const Sidebar = (props) => {
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
+      {showReportedCasesAndSummary && (
+        <>
+          <ReportedCases
+            projection={props.filters.projection}
+            dateRange={props.filters.dateRange}
+            diseaseCaseCount={diseaseCaseCount}
+          />
+          <Summary
+            projection={props.filters.projection}
+            dateRange={props.filters.dateRange}
+            country={props.filters.country}
+            diseaseCaseCount={diseaseCaseCount}
+          />
+        </>
+      )}
     </Styled.SidebarWrapper>
   );
 };
 
-const mapStateToProps = (state) => ({ filters: state.filters });
+const mapStateToProps = (state) => ({
+  filters: state.filters,
+  ebola: state.ebola,
+});
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(

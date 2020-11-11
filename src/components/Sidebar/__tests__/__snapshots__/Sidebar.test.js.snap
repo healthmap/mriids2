@@ -26,6 +26,35 @@ exports[`Tests for the connected Sidebar component should render with given stat
   box-shadow: 1px 1px 6px 0px rgba(39,124,218,0.2);
 }
 
+.c4 {
+  padding: 1.3rem;
+}
+
+.c4.reported-cases-wrapper {
+  border-bottom: 1px solid #ccc;
+}
+
+.c5 {
+  margin: 0.6rem 0;
+}
+
+.c6 {
+  margin-bottom: 0.3rem;
+}
+
+.c7 {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: -0.3rem;
+  margin-right: 0.8em;
+}
+
+.c8 {
+  display: inline-block;
+  font-size: 1.8em;
+}
+
 .c0 {
   position: absolute;
   left: 0;
@@ -113,6 +142,64 @@ exports[`Tests for the connected Sidebar component should render with given stat
         COVID 19
       </option>
     </select>
+  </div>
+  <div
+    className="c4 reported-cases-wrapper"
+  >
+    <p>
+      <strong>
+        Reported Cases
+         from:
+        <br />
+        Wed Oct 01 2014
+         to 
+        Sat Feb 20 2016
+      </strong>
+    </p>
+    <div
+      className="c5"
+    >
+      <div
+        className="c6"
+      >
+        Suspected and confirmed
+      </div>
+      <div
+        className="c7"
+        style={
+          Object {
+            "backgroundColor": "#4D73CE",
+          }
+        }
+      />
+      <div
+        className="c8"
+      >
+        0
+      </div>
+    </div>
+  </div>
+  <div
+    className="c4"
+  >
+    <h4>
+      SUMMARY
+    </h4>
+    <p>
+      From 
+      Wed Oct 01 2014
+       to 
+      Sat Feb 20 2016
+      , the Ebola outbreak in 
+      West Africa
+       
+      has affected
+       
+      0
+       people
+       (suspected and confirmed cases)
+      .
+    </p>
   </div>
 </div>
 `;
