@@ -3,6 +3,8 @@ import ReactMapGL from "react-map-gl";
 
 import { MapContainer } from "../../components/styled-components/MapContainer";
 
+import MapZoomButtons from "../../components/MapZoomButtons";
+
 class Index extends Component {
   constructor(props) {
     super(props);
@@ -33,6 +35,15 @@ class Index extends Component {
     this.setState({ viewport });
   };
 
+  changeZoomLevel = (newZoomValue = 0) => {
+    this.setState((currentState) => ({
+      viewport: {
+        ...currentState.viewport,
+        zoom: newZoomValue,
+      },
+    }));
+  };
+
   render() {
     return (
       <MapContainer>
@@ -40,6 +51,10 @@ class Index extends Component {
           {...this.state.viewport}
           onViewportChange={(viewport) => this.onViewportChange(viewport)}
           mapStyle="mapbox://styles/compepi/cjnxgpr991b6h2rpcvqmh5j4f"
+        />
+        <MapZoomButtons
+          viewPortZoom={this.state.viewport.zoom}
+          changeZoomFunction={this.changeZoomLevel}
         />
       </MapContainer>
     );
