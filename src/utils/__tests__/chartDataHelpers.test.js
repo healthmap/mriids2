@@ -4,22 +4,19 @@ import {
 } from "../chartDataHelpers";
 
 import {
-  testGuineaTestData,
+  testGuineaData,
   testGuineaFiltersState,
-  testGuineaTestDataOutOfDateRange,
+  testGuineaDataOutOfDateRange,
   testEbolaDataCombined,
-  testAllCountriesFiltersState,
   testEbolaDataCombinedOutOfDateRange,
 } from "../testData";
+
+import { reduxInitialState } from "../../constants/CommonTestData";
 
 describe("Tests for the chart data helper functions", () => {
   test("prepareEbolaDataForCharts returns Guinea data in expected format", () => {
     expect(
-      prepareEbolaDataForCharts(
-        testGuineaTestData,
-        null,
-        testGuineaFiltersState
-      )
+      prepareEbolaDataForCharts(testGuineaData, null, testGuineaFiltersState)
     ).toEqual([
       [
         {
@@ -39,7 +36,7 @@ describe("Tests for the chart data helper functions", () => {
   test("prepareEbolaDataForCharts returns only Guinea data in date range", () => {
     expect(
       prepareEbolaDataForCharts(
-        testGuineaTestDataOutOfDateRange,
+        testGuineaDataOutOfDateRange,
         null,
         testGuineaFiltersState
       )
@@ -61,9 +58,9 @@ describe("Tests for the chart data helper functions", () => {
   test("prepareEbolaDataForCharts returns the combinedEbolaData in the expected format", () => {
     expect(
       prepareEbolaDataForCharts(
-        testGuineaTestData,
+        testGuineaData,
         testEbolaDataCombined,
-        testAllCountriesFiltersState
+        reduxInitialState.filters
       )
     ).toEqual([
       [
@@ -84,9 +81,9 @@ describe("Tests for the chart data helper functions", () => {
   test("prepareEbolaDataForCharts returns only combinedEbolaData in date range", () => {
     expect(
       prepareEbolaDataForCharts(
-        testGuineaTestData,
+        testGuineaData,
         testEbolaDataCombinedOutOfDateRange,
-        testAllCountriesFiltersState
+        reduxInitialState.filters
       )
     ).toEqual([
       [
