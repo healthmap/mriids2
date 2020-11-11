@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import Sidebar from "../index";
 import renderer from "react-test-renderer";
 import "jest-styled-components";
+import { reduxInitialState } from "../../../constants/CommonTestData";
 
 const mockStore = configureStore([thunk]);
 
@@ -12,35 +13,8 @@ describe("Tests for the connected Sidebar component", () => {
   let store;
   let component;
 
-  const initialState = {
-    ebola: {
-      ebolaData: {
-        isFetching: 0,
-        data: {},
-        error: {},
-      },
-      ebolaDataCombined: {
-        isFetching: 0,
-        data: {},
-        error: {},
-      },
-      riskData: {
-        isFetching: 0,
-        data: {},
-        error: {},
-      },
-    },
-    filters: {
-      country: "All",
-      outbreak: "Ebola Outbreak",
-      view: "snapshot",
-      projection: false,
-      dateRange: { from: new Date(2014, 9, 1), to: new Date(2016, 1, 20) },
-    },
-  };
-
   beforeEach(() => {
-    store = mockStore(initialState);
+    store = mockStore(reduxInitialState);
 
     component = renderer.create(
       <Provider store={store}>
