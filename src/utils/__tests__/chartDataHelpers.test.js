@@ -8,9 +8,10 @@ import {
   testGuineaFiltersState,
   testGuineaDataOutOfDateRange,
   testEbolaDataCombined,
-  testAllCountriesFiltersState,
   testEbolaDataCombinedOutOfDateRange,
 } from "../testData";
+
+import { reduxInitialState } from "../../constants/CommonTestData";
 
 describe("Tests for the chart data helper functions", () => {
   test("prepareEbolaDataForCharts returns Guinea data in expected format", () => {
@@ -59,7 +60,7 @@ describe("Tests for the chart data helper functions", () => {
       prepareEbolaDataForCharts(
         testGuineaData,
         testEbolaDataCombined,
-        testAllCountriesFiltersState
+        reduxInitialState.filters
       )
     ).toEqual([
       [
@@ -82,7 +83,7 @@ describe("Tests for the chart data helper functions", () => {
       prepareEbolaDataForCharts(
         testGuineaData,
         testEbolaDataCombinedOutOfDateRange,
-        testAllCountriesFiltersState
+        reduxInitialState.filters
       )
     ).toEqual([
       [

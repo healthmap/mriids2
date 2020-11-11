@@ -6,16 +6,17 @@ import {
 import {
   allCountriesEbolaData,
   allCountriesEbolaDataLiberiaOutOfDateRange,
-  testAllCountriesFiltersState,
   testGuineaFiltersState,
 } from "../testData";
+
+import { reduxInitialState } from "../../constants/CommonTestData";
 
 describe("Tests for isDateWithinFiltersDateRange", () => {
   test("should return true because date is within filterDates", () => {
     expect(
       isDateWithinFiltersDateRange(
         "2014-10-13",
-        testAllCountriesFiltersState.dateRange
+        reduxInitialState.filters.dateRange
       )
     ).toEqual(true);
   });
@@ -23,7 +24,7 @@ describe("Tests for isDateWithinFiltersDateRange", () => {
     expect(
       isDateWithinFiltersDateRange(
         "2013-10-13",
-        testAllCountriesFiltersState.dateRange
+        reduxInitialState.filters.dateRange
       )
     ).toEqual(false);
   });
@@ -34,7 +35,7 @@ describe("Tests for getEbolaCountriesCaseCounts", () => {
     expect(
       getEbolaCountriesCaseCounts(
         allCountriesEbolaData,
-        testAllCountriesFiltersState
+        reduxInitialState.filters
       )
     ).toEqual({ Guinea: 126, Liberia: 126, "Sierra Leone": 126 });
   });
@@ -42,7 +43,7 @@ describe("Tests for getEbolaCountriesCaseCounts", () => {
     expect(
       getEbolaCountriesCaseCounts(
         allCountriesEbolaDataLiberiaOutOfDateRange,
-        testAllCountriesFiltersState
+        reduxInitialState.filters
       )
     ).toEqual({ Guinea: 126, Liberia: 0, "Sierra Leone": 126 });
   });
@@ -51,7 +52,7 @@ describe("Tests for getEbolaCountriesCaseCounts", () => {
 describe("Tests for getDiseaseCaseCount", () => {
   test("should return count of cases in all countries", () => {
     expect(
-      getDiseaseCaseCount(allCountriesEbolaData, testAllCountriesFiltersState)
+      getDiseaseCaseCount(allCountriesEbolaData, reduxInitialState.filters)
     ).toBe(378);
   });
   test("should only return count of cases in Guinea", () => {
