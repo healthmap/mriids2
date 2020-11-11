@@ -13,6 +13,23 @@ describe("Tests for the connected Sidebar component", () => {
   let component;
 
   const initialState = {
+    ebola: {
+      ebolaData: {
+        isFetching: 0,
+        data: {},
+        error: {},
+      },
+      ebolaDataCombined: {
+        isFetching: 0,
+        data: {},
+        error: {},
+      },
+      riskData: {
+        isFetching: 0,
+        data: {},
+        error: {},
+      },
+    },
     filters: {
       country: "All",
       outbreak: "Ebola Outbreak",
