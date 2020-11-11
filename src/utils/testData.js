@@ -1,6 +1,6 @@
 // This file has test data for the unit tests.
 
-export const testGuineaTestData = {
+export const testGuineaData = {
   Guinea: {
     "2014-10-06": {
       projections: {
@@ -25,7 +25,7 @@ export const testGuineaTestData = {
   },
 };
 
-export const testGuineaTestDataOutOfDateRange = {
+export const testGuineaDataOutOfDateRange = {
   Guinea: {
     "2013-10-06": {
       projections: {
@@ -46,6 +46,84 @@ export const testGuineaTestDataOutOfDateRange = {
         fourWeeks: 190,
       },
       value: "114",
+    },
+  },
+};
+
+export const allCountriesEbolaData = {
+  Guinea: {
+    "2014-10-06": {
+      projections: {
+        oneWeek: 179,
+        originalValue: 126,
+        twoWeeks: 210.5,
+        threeWeeks: 251,
+        fourWeeks: 296,
+      },
+      value: "126",
+    },
+  },
+  Liberia: {
+    "2014-10-06": {
+      projections: {
+        oneWeek: 179,
+        originalValue: 126,
+        twoWeeks: 210.5,
+        threeWeeks: 251,
+        fourWeeks: 296,
+      },
+      value: "126",
+    },
+  },
+  "Sierra Leone": {
+    "2014-10-06": {
+      projections: {
+        oneWeek: 179,
+        originalValue: 126,
+        twoWeeks: 210.5,
+        threeWeeks: 251,
+        fourWeeks: 296,
+      },
+      value: "126",
+    },
+  },
+};
+
+export const allCountriesEbolaDataLiberiaOutOfDateRange = {
+  Guinea: {
+    "2014-10-06": {
+      projections: {
+        oneWeek: 179,
+        originalValue: 126,
+        twoWeeks: 210.5,
+        threeWeeks: 251,
+        fourWeeks: 296,
+      },
+      value: "126",
+    },
+  },
+  Liberia: {
+    "2013-10-06": {
+      projections: {
+        oneWeek: 179,
+        originalValue: 126,
+        twoWeeks: 210.5,
+        threeWeeks: 251,
+        fourWeeks: 296,
+      },
+      value: "126",
+    },
+  },
+  "Sierra Leone": {
+    "2014-10-06": {
+      projections: {
+        oneWeek: 179,
+        originalValue: 126,
+        twoWeeks: 210.5,
+        threeWeeks: 251,
+        fourWeeks: 296,
+      },
+      value: "126",
     },
   },
 };

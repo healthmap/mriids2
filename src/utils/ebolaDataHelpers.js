@@ -35,13 +35,13 @@ export const prepareEbolaData = (csvData) => {
   return newData;
 };
 
-const isDateWithinFiltersDateRange = (weekDateString, dateRange) => {
+export const isDateWithinFiltersDateRange = (weekDateString, dateRange) => {
   // Checks to see if the weekDateString is a date that falls within the dateRange from the filters.
   const dateValue = new Date(weekDateString);
   return dateValue > dateRange.from && dateValue < dateRange.to;
 };
 
-const getEbolaCountriesCaseCounts = (ebolaData, filters) => {
+export const getEbolaCountriesCaseCounts = (ebolaData, filters) => {
   const countries = ["Guinea", "Liberia", "Sierra Leone"];
   let countryCaseCount = {
     Guinea: 0,
