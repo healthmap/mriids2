@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactMapGL from "react-map-gl";
 
 import { MapContainer } from "../../components/styled-components/MapContainer";
-
+import ViewToggle from "../../components/ViewToggle";
 import MapZoomButtons from "../../components/MapZoomButtons";
 
 class Index extends Component {
@@ -47,6 +47,7 @@ class Index extends Component {
   render() {
     return (
       <MapContainer>
+        <ViewToggle />
         <ReactMapGL
           {...this.state.viewport}
           onViewportChange={(viewport) => this.onViewportChange(viewport)}
