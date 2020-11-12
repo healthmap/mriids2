@@ -5,7 +5,7 @@ import { MapContainer } from "../../components/styled-components/MapContainer";
 import ViewToggle from "../../components/ViewToggle";
 import MapZoomButtons from "../../components/MapZoomButtons";
 
-class Index extends Component {
+class EbolaRiskMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,7 +51,7 @@ class Index extends Component {
         <ReactMapGL
           {...this.state.viewport}
           onViewportChange={(viewport) => this.onViewportChange(viewport)}
-          mapStyle="mapbox://styles/compepi/cjnxgpr991b6h2rpcvqmh5j4f"
+          mapStyle="mapbox://styles/compepi/cjnxhx2q84zo12rqom3w1m25i"
         />
         <MapZoomButtons
           viewPortZoom={this.state.viewport.zoom}
@@ -62,4 +62,4 @@ class Index extends Component {
   }
 }
 
-export default Index;
+export default EbolaRiskMap;

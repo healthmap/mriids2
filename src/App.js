@@ -8,7 +8,7 @@ import {
   fetchEbolaDataCombined,
   fetchRiskData,
 } from "./actions/ebola";
-import Map from "./containers/Map";
+import SnapshotMap from "./containers/SnapshotMap";
 import Team from "./components/Team";
 import About from "./components/About";
 import Header from "./components/Header";
@@ -33,7 +33,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/">
                 <Sidebar />
-                <Map />
+                <SnapshotMap />
                 <ChartComponent />
                 <DateRangeSlider />
               </Route>
