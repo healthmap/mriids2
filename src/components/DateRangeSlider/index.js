@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
 import { Slider } from "@material-ui/core";
 import { DateRangeSliderContainer } from "../styled-components/DateRangeSliderContainer";
+import Timespan from "../Timespan";
 import { ebolaInitialDateRange } from "../../constants/DateRanges";
 
 const DateRangeSlider = (props) => {
@@ -34,6 +35,7 @@ const DateRangeSlider = (props) => {
         max={68}
         onChange={handleRangeChange}
       />
+      <Timespan updateSliderRange={setSliderRange} />
     </DateRangeSliderContainer>
   );
 };
