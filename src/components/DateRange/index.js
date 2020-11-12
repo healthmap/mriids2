@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
 import { Slider } from "@material-ui/core";
-import { DateRangeSliderContainer } from "../styled-components/DateRangeSliderContainer";
+import { DateRangeSliderContainer } from "../styled-components/DateRangeComponentContainer";
 import Timespan from "../Timespan";
 import { ebolaInitialDateRange } from "../../constants/DateRanges";
 
