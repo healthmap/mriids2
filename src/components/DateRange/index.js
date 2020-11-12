@@ -7,7 +7,7 @@ import { DateRangeSliderContainer } from "../styled-components/DateRangeSliderCo
 import Timespan from "../Timespan";
 import { ebolaInitialDateRange } from "../../constants/DateRanges";
 
-const DateRangeSlider = (props) => {
+const DateRange = (props) => {
   const [sliderRange, setSliderRange] = useState([0, 72]);
 
   const handleRangeChange = (event, newRangeArray) => {
@@ -52,4 +52,4 @@ const mapDispatchToProps = (dispatch) =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(DateRangeSlider);
+export default connect(mapStateToProps, mapDispatchToProps)(DateRange);
