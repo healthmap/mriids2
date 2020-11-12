@@ -20,3 +20,10 @@ export const changeDateRange = (dateRangeArray) => (dispatch) => {
     payload: dateRangeArray,
   });
 };
+
+export const changeViewFilter = (newViewValue) => (dispatch) => {
+  return dispatch({
+    type: types.CHANGE_VIEW,
+    payload: newViewValue,
+  });
+};
