@@ -3,9 +3,12 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
 import { Slider } from "@material-ui/core";
-import { DateRangeSliderContainer } from "../styled-components/DateRangeComponentContainer";
 import Timespan from "../Timespan";
 import { ebolaInitialDateRange } from "../../constants/DateRanges";
+import {
+  DateRangeComponentContainer,
+  DateRangeSliderContainer,
+} from "../styled-components/DateRangeComponentContainer";
 
 const DateRange = (props) => {
   const [sliderRange, setSliderRange] = useState([0, 72]);
@@ -28,15 +31,17 @@ const DateRange = (props) => {
   };
 
   return (
-    <DateRangeSliderContainer>
-      <Slider
-        value={sliderRange}
-        min={0}
-        max={72}
-        onChange={handleRangeChange}
-      />
+    <DateRangeComponentContainer>
+      <DateRangeSliderContainer>
+        <Slider
+          value={sliderRange}
+          min={0}
+          max={72}
+          onChange={handleRangeChange}
+        />
+      </DateRangeSliderContainer>
       <Timespan updateSliderRange={setSliderRange} />
-    </DateRangeSliderContainer>
+    </DateRangeComponentContainer>
   );
 };
 

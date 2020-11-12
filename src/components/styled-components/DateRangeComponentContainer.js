@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
-export const DateRangeSliderContainer = styled.div`
-  flex: none;
+export const DateRangeComponentContainer = styled.div`
   padding-left: ${(props) => props.theme.sidebarWidth};
-  height: 8rem; /* $risk-height */
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const DateRangeSliderContainer = styled.div`
+  width: 90%;
 `;
