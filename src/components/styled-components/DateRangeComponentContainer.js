@@ -9,5 +9,5 @@ export const DateRangeComponentContainer = styled.div`
 `;
 
 export const DateRangeSliderContainer = styled.div`
-  width: 90%;
+  width: 85%;
 `;

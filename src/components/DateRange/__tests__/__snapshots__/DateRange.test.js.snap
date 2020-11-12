@@ -124,7 +124,7 @@ exports[`Tests for the connected DateRange should render with given state from R
 }
 
 .c1 {
-  width: 90%;
+  width: 85%;
 }
 
 <div
@@ -198,6 +198,9 @@ exports[`Tests for the connected DateRange should render with given state from R
   <div
     className="c2"
   >
+    <label>
+      Timespan:
+    </label>
     <button
       className="c3"
       onClick={[Function]}

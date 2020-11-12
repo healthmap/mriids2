@@ -40,6 +40,7 @@ const Timespan = (props) => {
   };
   return (
     <TimespanButtonsWrapper>
+      <label>Timespan:</label>
       <Button onClick={() => updateDateRange(1, "month")}>1 month</Button>
       <Button onClick={() => updateDateRange(3, "month")}>3 months</Button>
       <Button onClick={() => updateDateRange(6, "month")}>6 months</Button>
