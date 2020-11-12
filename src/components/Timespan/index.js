@@ -13,17 +13,15 @@ const Timespan = (props) => {
   const updateDateRange = (number = 0, unitOfTime) => {
     //  uses the dayjs library to add units of time to the 'from' date in the initial date range.
     const newToDate = new Date(
-      dayjs(ebolaInitialDateRange.dateRange.from)
-        .add(number, unitOfTime)
-        .format()
+      dayjs(ebolaInitialDateRange.from).add(number, unitOfTime).format()
     );
-    props.changeDateRange([ebolaInitialDateRange.dateRange.from, newToDate]);
+    props.changeDateRange([ebolaInitialDateRange.from, newToDate]);
   };
   const resetDateRange = () => {
     //  Reset the date range filter to it's initial state
     props.changeDateRange([
-      ebolaInitialDateRange.dateRange.from,
-      ebolaInitialDateRange.dateRange.to,
+      ebolaInitialDateRange.from,
+      ebolaInitialDateRange.to,
     ]);
   };
   return (

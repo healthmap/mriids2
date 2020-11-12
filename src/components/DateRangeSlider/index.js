@@ -13,11 +13,11 @@ const DateRangeSlider = (props) => {
     // Only execute this block if the newRangeArray is different from the numberOfWeeks state.
     if (sliderRange !== newRangeArray) {
       // Here we are getting the new dateRange.from date value for the filters
-      let newFromDate = new Date(ebolaInitialDateRange.dateRange.from);
+      let newFromDate = new Date(ebolaInitialDateRange.from);
       const fromDateChange = 7 * newRangeArray[0];
       newFromDate.setDate(newFromDate.getDate() + fromDateChange);
       // Here we are getting the new dateRange.to date value for the filters
-      let newToDate = new Date(ebolaInitialDateRange.dateRange.to);
+      let newToDate = new Date(ebolaInitialDateRange.to);
       const toDateChange = 7 * (newRangeArray[1] - 68);
       newToDate.setDate(newToDate.getDate() + toDateChange);
 
