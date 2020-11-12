@@ -17,7 +17,7 @@ const Timespan = (props) => {
     );
     // Updates the date range filter in the redux state.
     props.changeDateRange([ebolaInitialDateRange.from, newToDate]);
-    // Updates the sliderRange in the DateRangeSlider component.
+    // Updates the sliderRange in the DateRange component.
     props.updateSliderRange([
       0,
       getNumberOfWeeksBetweenDates(ebolaInitialDateRange.from, newToDate),
@@ -29,7 +29,7 @@ const Timespan = (props) => {
       ebolaInitialDateRange.from,
       ebolaInitialDateRange.to,
     ]);
-    //  Reset the sliderRange in the DateRangeSlider component.
+    //  Reset the sliderRange in the DateRange component.
     props.updateSliderRange([
       0,
       getNumberOfWeeksBetweenDates(
