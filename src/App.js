@@ -14,7 +14,7 @@ import About from "./components/About";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
-import DateRangeSlider from "./components/DateRangeSlider";
+import DateRange from "./components/DateRange";
 import { StyledAppContainer } from "./styles";
 
 class App extends Component {
@@ -35,7 +35,7 @@ class App extends Component {
                 <Sidebar />
                 <SnapshotMap />
                 <ChartComponent />
-                <DateRangeSlider />
+                <DateRange />
               </Route>
               <Route exact path="/about">
                 <About />

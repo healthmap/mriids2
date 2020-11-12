@@ -4,12 +4,12 @@ import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import renderer from "react-test-renderer";
 import "jest-styled-components";
-import DateRangeSlider from "../index";
+import DateRange from "../index";
 import { reduxInitialState } from "../../../constants/CommonTestData";
 
 const mockStore = configureStore([thunk]);
 
-describe("Tests for the connected DateRangeSlider", () => {
+describe("Tests for the connected DateRange", () => {
   let store;
   let component;
 
@@ -18,7 +18,7 @@ describe("Tests for the connected DateRangeSlider", () => {
 
     component = renderer.create(
       <Provider store={store}>
-        <DateRangeSlider />
+        <DateRange />
       </Provider>
     );
   });
