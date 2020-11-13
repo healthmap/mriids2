@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactMapGL from "react-map-gl";
 
-import { EbolaRiskMapContainer } from "../../components/styled-components/MapContainer";
+import { EbolaRiskMapContainer } from "../../components/styled-components/MapContainers";
 import ViewToggle from "../../components/ViewToggle";
 import MapZoomButtons from "../../components/MapZoomButtons";
 

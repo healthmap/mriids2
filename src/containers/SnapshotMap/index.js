@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactMapGL from "react-map-gl";
 
-import { MapContainer } from "../../components/styled-components/MapContainer";
+import { SnapshotMapContainer } from "../../components/styled-components/MapContainers";
 import ViewToggle from "../../components/ViewToggle";
 import MapZoomButtons from "../../components/MapZoomButtons";
 
@@ -46,7 +46,7 @@ class SnapshotMap extends Component {
 
   render() {
     return (
-      <MapContainer>
+      <SnapshotMapContainer>
         <ViewToggle />
         <ReactMapGL
           {...this.state.viewport}
@@ -57,7 +57,7 @@ class SnapshotMap extends Component {
           viewPortZoom={this.state.viewport.zoom}
           changeZoomFunction={this.changeZoomLevel}
         />
-      </MapContainer>
+      </SnapshotMapContainer>
     );
   }
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MapContainer = styled.div`
+export const SnapshotMapContainer = styled.div`
   flex: none;
   position: relative;
   padding-left: ${(props) => props.theme.sidebarWidth};
