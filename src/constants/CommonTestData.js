@@ -24,3 +24,12 @@ export const reduxInitialState = {
     dateRange: { from: new Date(2014, 9, 1), to: new Date(2016, 1, 20) },
   },
 };
+
+// Same as the reduxInitialState, but with the 'risk' view in the filters.
+export const riskViewState = {
+  ...reduxInitialState,
+  filters: {
+    ...reduxInitialState.filters,
+    view: "risk",
+  },
+};
