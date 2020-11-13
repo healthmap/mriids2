@@ -9,6 +9,7 @@ import {
   fetchRiskData,
 } from "./actions/ebola";
 import SnapshotMap from "./containers/SnapshotMap";
+import EbolaRiskMap from "./containers/EbolaRiskMap";
 import Team from "./components/Team";
 import About from "./components/About";
 import Header from "./components/Header";
@@ -24,6 +25,25 @@ class App extends Component {
     this.props.fetchRiskData();
   }
 
+  renderHomePageComponents = () => {
+    // When we are displaying the EbolaRiskMap, we want this to display on the entire page.
+    if (
+      this.props.filters.view === "risk" &&
+      this.props.filters.outbreak === "Ebola Outbreak"
+    ) {
+      return <EbolaRiskMap />;
+    } else {
+      // If we are not displaying the EbolaRiskMap, we want to display the SnapshotMap, ChartComponent, and DateRange.
+      return (
+        <>
+          <SnapshotMap />
+          <ChartComponent />
+          <DateRange />
+        </>
+      );
+    }
+  };
+
   render() {
     return (
       <ThemeProvider theme={theme}>
@@ -33,9 +53,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/">
                 <Sidebar />
-                <SnapshotMap />
-                <ChartComponent />
-                <DateRange />
+                {this.renderHomePageComponents()}
               </Route>
               <Route exact path="/about">
                 <About />
@@ -51,10 +69,14 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  filters: state.filters,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   fetchEbolaData: () => dispatch(fetchEbolaData()),
   fetchEbolaDataCombined: () => dispatch(fetchEbolaDataCombined()),
   fetchRiskData: () => dispatch(fetchRiskData()),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
