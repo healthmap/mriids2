@@ -1,4 +1,7 @@
  ## Get Started
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6ef8fa8fa1134466ab3aa2a1c3396e6f)](https://app.codacy.com/gh/healthmap/mriids2?utm_source=github.com&utm_medium=referral&utm_content=healthmap/mriids2&utm_campaign=Badge_Grade)
+
  
  1. Clone the `mriids2` repo.
  2. `cd` into the `mriids2` repo.
