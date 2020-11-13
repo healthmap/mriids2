@@ -1,4 +1,8 @@
-import { getMaxValueForSnapshotLegend } from "../snapshotMapHelpers";
+import {
+  getMaxValueForSnapshotLegend,
+  getSnapshotColor,
+  getSnapshotProjectionsColor,
+} from "../snapshotMapHelpers";
 
 describe("Tests for getMaxValueForSnapshotLegend helper function", () => {
   test("returns maxLegendValue of 12000", () => {
@@ -32,5 +36,23 @@ describe("Tests for getMaxValueForSnapshotLegend helper function", () => {
       "Sierra Leone": 0,
     };
     expect(getMaxValueForSnapshotLegend(countryCaseCounts)).toEqual(450);
+  });
+});
+
+describe("Tests for getSnapshotColor", () => {
+  test("returns the reddest color", () => {
+    expect(getSnapshotColor(0.9)).toEqual("#E23D4A");
+  });
+  test("returns the middle red color", () => {
+    expect(getSnapshotColor(0.45)).toEqual("#EE9187");
+  });
+});
+
+describe("Tests for getSnapshotProjectionsColor", () => {
+  test("returns the greenest color", () => {
+    expect(getSnapshotProjectionsColor(0.9)).toEqual("#259994");
+  });
+  test("returns the middle red color", () => {
+    expect(getSnapshotProjectionsColor(0.45)).toEqual("#36B9A7");
   });
 });
