@@ -1,3 +1,5 @@
+import { isDateWithinFiltersDateRange } from "./ebolaDataHelpers";
+
 const getChartColumns = (outbreakName, projection = false) => {
   const columns = [
     {
@@ -36,9 +38,7 @@ export const prepareEbolaDataForCharts = (
     ebolaDataCombined.forEach((row) => {
       const dateValue = new Date(row.projection_from);
       // Only push the rows if the dateValue is within the filters.dateRange
-      const isDateValueInRange =
-        dateValue > filters.dateRange.from && dateValue < filters.dateRange.to;
-      if (isDateValueInRange) {
+      if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
         const aggregatedData = row.aggregated;
         chartData.push([dateValue, aggregatedData]);
       }
@@ -61,10 +61,7 @@ export const prepareEbolaDataForCharts = (
           if (Object.prototype.hasOwnProperty.call(countryData, date)) {
             const dateValue = new Date(date);
             // Only push the rows if the dateValue is within the filters.dateRange
-            const isDateValueInRange =
-              dateValue > filters.dateRange.from &&
-              dateValue < filters.dateRange.to;
-            if (isDateValueInRange) {
+            if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
               chartData.push([dateValue, countryData[date].value]);
             }
           }
