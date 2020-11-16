@@ -3,6 +3,7 @@ import ReactMapGL from "react-map-gl";
 
 import { SnapshotMapContainer } from "../../components/styled-components/MapContainers";
 import ViewToggle from "../../components/ViewToggle";
+import SnapshotMapCaseCountLegend from "../../components/SnapshotMapCaseCountLegend";
 import MapZoomButtons from "../../components/MapZoomButtons";
 
 class SnapshotMap extends Component {
@@ -53,6 +54,7 @@ class SnapshotMap extends Component {
           onViewportChange={(viewport) => this.onViewportChange(viewport)}
           mapStyle="mapbox://styles/compepi/cjnxgpr991b6h2rpcvqmh5j4f"
         />
+        <SnapshotMapCaseCountLegend />
         <MapZoomButtons
           viewPortZoom={this.state.viewport.zoom}
           changeZoomFunction={this.changeZoomLevel}

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const MapLegendWrapperRisk = styled.div`
   position: absolute;
+  padding-left: ${(props) => props.theme.sidebarWidth};
   width: 9rem;
   left: 2rem;
   bottom: 7rem;
@@ -13,6 +14,7 @@ export const MapLegendWrapperRisk = styled.div`
 
 export const MapLegendWrapperSnapshot = styled.div`
   position: absolute;
+  padding-left: ${(props) => props.theme.sidebarWidth};
   top: 2rem;
   left: 2rem;
   bottom: 7rem;
