@@ -14,15 +14,20 @@ import {
 } from "../styled-components/MapLegendWrappers";
 import { BlockDropshadow } from "../styled-components/Block";
 
-const SnapshotMapCaseCountLegend = (props) => {
+const SnapshotMapCaseCountLegend = ({
+  ebolaData,
+  filters,
+  showCaseCounts,
+  toggleCaseCountFunction,
+}) => {
   // Getting the number of case counts for each country.
   // We need this to get the max value for the legend.
   const countriesEbolaCaseCounts = getEbolaCountriesCaseCounts(
-    props.ebolaData,
-    props.filters
+    ebolaData,
+    filters
   );
 
-  const legendHeader = props.filters.projection
+  const legendHeader = filters.projection
     ? "Total outbreak projections"
     : "Case counts";
 
@@ -38,7 +43,7 @@ const SnapshotMapCaseCountLegend = (props) => {
       let value = i / numberOfLevels;
       // If the projections are turned on, we want to use the projections colors.
       // Else, use the regular snapshot colors.
-      const color = props.filters.projection
+      const color = filters.projection
         ? getSnapshotProjectionsColor(value)
         : getSnapshotColor(value);
       levels.push(
@@ -59,8 +64,8 @@ const SnapshotMapCaseCountLegend = (props) => {
         <h3>{legendHeader}</h3>
         <MapLegendItemsWrapper>{renderLegendLevels()}</MapLegendItemsWrapper>
         <CaseCountToggle
-          showCaseCount={props.showCaseCounts}
-          toggleCaseCountFunction={props.toggleCaseCountFunction}
+          showCaseCount={showCaseCounts}
+          toggleCaseCountFunction={toggleCaseCountFunction}
         />
       </BlockDropshadow>
     </MapLegendWrapperSnapshot>
