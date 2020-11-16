@@ -7,7 +7,7 @@ import {
   getSnapshotProjectionsColor,
 } from "../../utils/snapshotMapHelpers";
 import { getEbolaCountriesCaseCounts } from "../../utils/ebolaDataHelpers";
-
+import CaseCountToggle from "../CaseCountToggle";
 import {
   MapLegendWrapperSnapshot,
   MapLegendItemsWrapper,
@@ -58,6 +58,7 @@ const SnapshotMapCaseCountLegend = (props) => {
       <BlockDropshadow>
         <h3>{legendHeader}</h3>
         <MapLegendItemsWrapper>{renderLegendLevels()}</MapLegendItemsWrapper>
+        <CaseCountToggle showCount={false} />
       </BlockDropshadow>
     </MapLegendWrapperSnapshot>
   );
