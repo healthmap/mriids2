@@ -29,6 +29,7 @@ class SnapshotMap extends Component {
         keyboard: true,
         doubleClickZoom: true,
       },
+      showCaseCounts: true,
     };
   }
 
@@ -45,6 +46,12 @@ class SnapshotMap extends Component {
     }));
   };
 
+  showHideCaseCounts = () => {
+    this.setState((currentState) => ({
+      showCaseCounts: !currentState.showCaseCounts,
+    }));
+  };
+
   render() {
     return (
       <SnapshotMapContainer>
@@ -54,7 +61,10 @@ class SnapshotMap extends Component {
           onViewportChange={(viewport) => this.onViewportChange(viewport)}
           mapStyle="mapbox://styles/compepi/cjnxgpr991b6h2rpcvqmh5j4f"
         />
-        <SnapshotMapCaseCountLegend />
+        <SnapshotMapCaseCountLegend
+          showCaseCounts={this.state.showCaseCounts}
+          toggleCaseCountFunction={this.showHideCaseCounts}
+        />
         <MapZoomButtons
           viewPortZoom={this.state.viewport.zoom}
           changeZoomFunction={this.changeZoomLevel}

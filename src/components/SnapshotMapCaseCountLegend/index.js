@@ -58,7 +58,10 @@ const SnapshotMapCaseCountLegend = (props) => {
       <BlockDropshadow>
         <h3>{legendHeader}</h3>
         <MapLegendItemsWrapper>{renderLegendLevels()}</MapLegendItemsWrapper>
-        <CaseCountToggle showCount={false} />
+        <CaseCountToggle
+          showCaseCount={props.showCaseCounts}
+          toggleCaseCountFunction={props.toggleCaseCountFunction}
+        />
       </BlockDropshadow>
     </MapLegendWrapperSnapshot>
   );
