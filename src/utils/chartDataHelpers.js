@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { isDateWithinFiltersDateRange } from "./ebolaDataHelpers";
 
 const getChartColumns = (outbreakName, projection = false) => {
@@ -30,6 +31,14 @@ export const prepareEbolaDataForCharts = (
   // 1. Add column headers to chartData array.
   chartData.push(getChartColumns("Ebola", filters.projection));
   // 2. Add ebola data to chartData array.
+
+  let fourWeekProjections = {
+    oneWeek: null,
+    twoWeeks: null,
+    threeWeeks: null,
+    fourWeeks: null,
+  };
+
   const showEbolaDataCombined =
     ebolaDataCombined && ebolaDataCombined.length && filters.country === "All";
 
@@ -40,9 +49,44 @@ export const prepareEbolaDataForCharts = (
       // Only push the rows if the dateValue is within the filters.dateRange
       if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
         const aggregatedData = row.aggregated;
-        chartData.push([dateValue, aggregatedData]);
+        const dataRow = [dateValue, aggregatedData];
+        if (filters.projection) {
+          fourWeekProjections.oneWeek = parseFloat(row["y1.aggregated"]);
+          fourWeekProjections.twoWeeks = parseFloat(row["y2.aggregated"]);
+          fourWeekProjections.threeWeeks = parseFloat(row["y3.aggregated"]);
+          fourWeekProjections.fourWeeks = parseFloat(row["y4.aggregated"]);
+          dataRow.push(null);
+        }
+        chartData.push(dataRow);
       }
     });
+    if (filters.projection) {
+      const lastWeekDate = chartData[chartData.length - 1][0];
+      const weekOneProjection = [
+        new Date(dayjs(lastWeekDate).add(1, "week").format()),
+        null,
+        fourWeekProjections.oneWeek,
+      ];
+      const weekTwoProjection = [
+        new Date(dayjs(lastWeekDate).add(2, "week").format()),
+        null,
+        fourWeekProjections.twoWeeks,
+      ];
+      const weekThreeProjection = [
+        new Date(dayjs(lastWeekDate).add(3, "week").format()),
+        null,
+        fourWeekProjections.threeWeeks,
+      ];
+      const weekFourProjection = [
+        new Date(dayjs(lastWeekDate).add(4, "week").format()),
+        null,
+        fourWeekProjections.fourWeeks,
+      ];
+      chartData.push(weekOneProjection);
+      chartData.push(weekTwoProjection);
+      chartData.push(weekThreeProjection);
+      chartData.push(weekFourProjection);
+    }
   }
 
   // If the ebolaData object has keys and a specific country is selected, show the country-specific ebola data.
