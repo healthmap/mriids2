@@ -22,6 +22,18 @@ const getChartColumns = (outbreakName, projection = false) => {
   return columns;
 };
 
+const getWeekProjectionData = (
+  lastWeekDate,
+  numberOfWeeks,
+  projectionsData
+) => {
+  return [
+    new Date(dayjs(lastWeekDate).add(numberOfWeeks, "week").format()),
+    null,
+    projectionsData,
+  ];
+};
+
 export const prepareEbolaDataForCharts = (
   ebolaData,
   ebolaDataCombined,
@@ -62,30 +74,18 @@ export const prepareEbolaDataForCharts = (
     });
     if (filters.projection) {
       const lastWeekDate = chartData[chartData.length - 1][0];
-      const weekOneProjection = [
-        new Date(dayjs(lastWeekDate).add(1, "week").format()),
-        null,
-        fourWeekProjections.oneWeek,
-      ];
-      const weekTwoProjection = [
-        new Date(dayjs(lastWeekDate).add(2, "week").format()),
-        null,
-        fourWeekProjections.twoWeeks,
-      ];
-      const weekThreeProjection = [
-        new Date(dayjs(lastWeekDate).add(3, "week").format()),
-        null,
-        fourWeekProjections.threeWeeks,
-      ];
-      const weekFourProjection = [
-        new Date(dayjs(lastWeekDate).add(4, "week").format()),
-        null,
-        fourWeekProjections.fourWeeks,
-      ];
-      chartData.push(weekOneProjection);
-      chartData.push(weekTwoProjection);
-      chartData.push(weekThreeProjection);
-      chartData.push(weekFourProjection);
+      chartData.push(
+        getWeekProjectionData(lastWeekDate, 1, fourWeekProjections.oneWeek)
+      );
+      chartData.push(
+        getWeekProjectionData(lastWeekDate, 2, fourWeekProjections.twoWeeks)
+      );
+      chartData.push(
+        getWeekProjectionData(lastWeekDate, 3, fourWeekProjections.threeWeeks)
+      );
+      chartData.push(
+        getWeekProjectionData(lastWeekDate, 4, fourWeekProjections.fourWeeks)
+      );
     }
   }
 
