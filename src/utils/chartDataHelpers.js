@@ -44,7 +44,7 @@ export const prepareEbolaDataForCharts = (
   chartData.push(getChartColumns("Ebola", filters.projection));
   // 2. Add ebola data to chartData array.
 
-  let fourWeekProjections = {
+  let projectionsData = {
     oneWeek: null,
     twoWeeks: null,
     threeWeeks: null,
@@ -63,28 +63,30 @@ export const prepareEbolaDataForCharts = (
         const aggregatedData = row.aggregated;
         const dataRow = [dateValue, aggregatedData];
         if (filters.projection) {
-          fourWeekProjections.oneWeek = parseFloat(row["y1.aggregated"]);
-          fourWeekProjections.twoWeeks = parseFloat(row["y2.aggregated"]);
-          fourWeekProjections.threeWeeks = parseFloat(row["y3.aggregated"]);
-          fourWeekProjections.fourWeeks = parseFloat(row["y4.aggregated"]);
+          // If projections are enabled, store the weekly projection data in the projectionsData object.
+          projectionsData.oneWeek = parseFloat(row["y1.aggregated"]);
+          projectionsData.twoWeeks = parseFloat(row["y2.aggregated"]);
+          projectionsData.threeWeeks = parseFloat(row["y3.aggregated"]);
+          projectionsData.fourWeeks = parseFloat(row["y4.aggregated"]);
           dataRow.push(null);
         }
         chartData.push(dataRow);
       }
     });
     if (filters.projection) {
+      // If projections are enabled, we are pushing 4 additional rows to the chartData array (one for each week) with the projections data.
       const lastWeekDate = chartData[chartData.length - 1][0];
       chartData.push(
-        getWeekProjectionData(lastWeekDate, 1, fourWeekProjections.oneWeek)
+        getWeekProjectionData(lastWeekDate, 1, projectionsData.oneWeek)
       );
       chartData.push(
-        getWeekProjectionData(lastWeekDate, 2, fourWeekProjections.twoWeeks)
+        getWeekProjectionData(lastWeekDate, 2, projectionsData.twoWeeks)
       );
       chartData.push(
-        getWeekProjectionData(lastWeekDate, 3, fourWeekProjections.threeWeeks)
+        getWeekProjectionData(lastWeekDate, 3, projectionsData.threeWeeks)
       );
       chartData.push(
-        getWeekProjectionData(lastWeekDate, 4, fourWeekProjections.fourWeeks)
+        getWeekProjectionData(lastWeekDate, 4, projectionsData.fourWeeks)
       );
     }
   }
