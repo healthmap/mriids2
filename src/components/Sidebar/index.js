@@ -8,6 +8,7 @@ import {
 import Select from "../Select";
 import ReportedCases from "./ReportedCases";
 import Summary from "./Summary";
+import EbolaRiskList from "./EbolaRiskList";
 import * as Styled from "./styles";
 import {
   SelectCountryWrapper,
@@ -26,8 +27,12 @@ const Sidebar = (props) => {
     props.ebola.ebolaData.data,
     props.filters
   );
-  const showReportedCasesAndSummary =
+  const showReportedCases =
     props.filters.view === "snapshot" &&
+    props.filters.outbreak === "Ebola Outbreak";
+  const showEbolaSummary = props.filters.outbreak === "Ebola Outbreak";
+  const showEbolaRiskList =
+    props.filters.view === "risk" &&
     props.filters.outbreak === "Ebola Outbreak";
 
   return (
@@ -50,21 +55,22 @@ const Sidebar = (props) => {
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
-      {showReportedCasesAndSummary && (
-        <>
-          <ReportedCases
-            projection={props.filters.projection}
-            dateRange={props.filters.dateRange}
-            diseaseCaseCount={diseaseCaseCount}
-          />
-          <Summary
-            projection={props.filters.projection}
-            dateRange={props.filters.dateRange}
-            country={props.filters.country}
-            diseaseCaseCount={diseaseCaseCount}
-          />
-        </>
+      {showReportedCases && (
+        <ReportedCases
+          projection={props.filters.projection}
+          dateRange={props.filters.dateRange}
+          diseaseCaseCount={diseaseCaseCount}
+        />
       )}
+      {showEbolaSummary && (
+        <Summary
+          projection={props.filters.projection}
+          dateRange={props.filters.dateRange}
+          country={props.filters.country}
+          diseaseCaseCount={diseaseCaseCount}
+        />
+      )}
+      {showEbolaRiskList && <EbolaRiskList />}
     </Styled.SidebarWrapper>
   );
 };
