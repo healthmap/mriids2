@@ -27,3 +27,9 @@ export const changeViewFilter = (newViewValue) => (dispatch) => {
     payload: newViewValue,
   });
 };
+
+export const changeProjectionFilter = () => (dispatch) => {
+  return dispatch({
+    type: types.CHANGE_PROJECTION,
+  });
+};

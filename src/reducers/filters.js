@@ -33,6 +33,11 @@ const Filters = function (state = initialState, action) {
         ...state,
         view: action.payload,
       };
+    case types.CHANGE_PROJECTION:
+      return {
+        ...state,
+        projection: !state.projection,
+      };
     default:
       return state;
   }
