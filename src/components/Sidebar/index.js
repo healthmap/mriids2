@@ -14,11 +14,16 @@ import {
   SelectCountryWrapper,
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
-import { getDiseaseCaseCount } from "../../utils/ebolaDataHelpers";
+import {
+  getDiseaseCaseCount,
+  getAllFutureProjectedCasesCount,
+  getCountryFutureProjectedCasesCount,
+} from "../../utils/ebolaDataHelpers";
 
 const Sidebar = ({
   filters,
   ebolaData,
+  ebolaDataCombined,
   changeCountryFilter,
   changeOutbreakFilter,
 }) => {
@@ -28,7 +33,13 @@ const Sidebar = ({
   const changeOutbreak = (selectedValue) => {
     changeOutbreakFilter(selectedValue.target.value);
   };
+  // This is the ebola case count for the ReportedCases child component
   const diseaseCaseCount = getDiseaseCaseCount(ebolaData, filters);
+  // This is the projected ebola case count for the ReportedCases child component
+  const projectedCaseCount =
+    filters.country === "All"
+      ? getAllFutureProjectedCasesCount(ebolaDataCombined, filters.dateRange)
+      : getCountryFutureProjectedCasesCount(ebolaData, filters);
   const showReportedCases =
     filters.view === "snapshot" && filters.outbreak === "Ebola Outbreak";
   const showEbolaSummary = filters.outbreak === "Ebola Outbreak";
@@ -60,6 +71,7 @@ const Sidebar = ({
           projection={filters.projection}
           dateRange={filters.dateRange}
           diseaseCaseCount={diseaseCaseCount}
+          projectedCaseCount={projectedCaseCount}
         />
       )}
       {showEbolaSummary && (
@@ -78,6 +90,7 @@ const Sidebar = ({
 const mapStateToProps = (state) => ({
   filters: state.filters,
   ebolaData: state.ebola.ebolaData.data,
+  ebolaDataCombined: state.ebola.ebolaDataCombined.data,
 });
 
 const mapDispatchToProps = (dispatch) =>

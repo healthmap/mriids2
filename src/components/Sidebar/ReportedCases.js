@@ -10,6 +10,7 @@ import {
 const ReportedCases = ({
   dateRange,
   diseaseCaseCount = 0,
+  projectedCaseCount = 0,
   projection = false,
 }) => {
   const titleText = projection ? "Projection" : "Reported Cases";
@@ -31,6 +32,13 @@ const ReportedCases = ({
         <ReportedCasesColor style={{ backgroundColor: iconColor }} />
         <ReportedCasesValue>{diseaseCaseCount}</ReportedCasesValue>
       </ReportedCasesParent>
+      {projection && (
+        <ReportedCasesParent>
+          <ReportedCasesLabel>Projected future cases</ReportedCasesLabel>
+          <ReportedCasesColor style={{ backgroundColor: "#F2AD33" }} />
+          <ReportedCasesValue>{projectedCaseCount}</ReportedCasesValue>
+        </ReportedCasesParent>
+      )}
     </BlockPadded>
   );
 };
