@@ -87,10 +87,10 @@ export const getAllFutureProjectedCasesCount = (
 ) => {
   let numberOfFutureProjectedCases = 0;
   const fourWeekProjectionsData = {
-    oneWeek: null,
-    twoWeeks: null,
-    threeWeeks: null,
-    fourWeeks: null,
+    oneWeek: 0,
+    twoWeeks: 0,
+    threeWeeks: 0,
+    fourWeeks: 0,
   };
   // Only execute this block if ebolaDataCombined is not an empty array
   if (ebolaDataCombined.length) {
@@ -116,27 +116,30 @@ export const getAllFutureProjectedCasesCount = (
 export const getCountryFutureProjectedCasesCount = (ebolaData, filters) => {
   let numberOfFutureProjectedCases = 0;
   let fourWeekProjectionsData = {
-    oneWeek: null,
-    twoWeeks: null,
-    threeWeeks: null,
-    fourWeeks: null,
+    oneWeek: 0,
+    twoWeeks: 0,
+    threeWeeks: 0,
+    fourWeeks: 0,
   };
-  Object.keys(ebolaData).forEach((countryKey) => {
-    // If the ebolaData countryKey is equal to filters.country, this is the country data that we want.
-    if (countryKey === filters.country) {
-      const countryData = ebolaData[countryKey];
-      for (const date in countryData) {
-        // this is a check to filter unwanted properties from the countryData object.
-        if (Object.prototype.hasOwnProperty.call(countryData, date)) {
-          const dateValue = new Date(date);
-          // Only use row data if the dateValue is within the filters.dateRange
-          if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
-            fourWeekProjectionsData = countryData[date].projections;
+  // Only execute this block if ebolaData is not an empty object
+  if (Object.keys(ebolaData).length) {
+    Object.keys(ebolaData).forEach((countryKey) => {
+      // If the ebolaData countryKey is equal to filters.country, this is the country data that we want.
+      if (countryKey === filters.country) {
+        const countryData = ebolaData[countryKey];
+        for (const date in countryData) {
+          // this is a check to filter unwanted properties from the countryData object.
+          if (Object.prototype.hasOwnProperty.call(countryData, date)) {
+            const dateValue = new Date(date);
+            // Only use row data if the dateValue is within the filters.dateRange
+            if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
+              fourWeekProjectionsData = countryData[date].projections;
+            }
           }
         }
       }
-    }
-  });
+    });
+  }
   // Add the number of projected cases in the fourWeekProjectionsData object to the numberOfFutureProjectedCases counter.
   Object.keys(fourWeekProjectionsData).forEach((weekKey) => {
     numberOfFutureProjectedCases += fourWeekProjectionsData[weekKey];
