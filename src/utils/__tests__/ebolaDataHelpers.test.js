@@ -3,12 +3,14 @@ import {
   getEbolaCountriesCaseCounts,
   getDiseaseCaseCount,
   getAllFutureProjectedCasesCount,
+  getCountryFutureProjectedCasesCount,
 } from "../ebolaDataHelpers";
 import {
   allCountriesEbolaData,
   allCountriesEbolaDataLiberiaOutOfDateRange,
   testEbolaDataCombined,
   testEbolaDataCombinedLastWeekOutOfDateRange,
+  testGuineaData,
   testGuineaFiltersState,
 } from "../testData";
 
@@ -81,5 +83,24 @@ describe("Tests for getAllFutureProjectedCases", () => {
         reduxInitialState.filters.dateRange
       )
     ).toEqual(7272);
+  });
+});
+
+describe("Tests for getCountryFutureProjectedCasesCount", () => {
+  test("count should equal 937 (projections data for Guinea)", () => {
+    expect(
+      getCountryFutureProjectedCasesCount(
+        allCountriesEbolaData,
+        testGuineaFiltersState
+      )
+    ).toEqual(937);
+  });
+  test("count should equal 681 (projections for second data row)", () => {
+    expect(
+      getCountryFutureProjectedCasesCount(
+        testGuineaData,
+        testGuineaFiltersState
+      )
+    ).toEqual(681);
   });
 });

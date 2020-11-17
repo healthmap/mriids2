@@ -106,5 +106,38 @@ export const getAllFutureProjectedCasesCount = (
   Object.keys(fourWeekProjectionsData).forEach((weekKey) => {
     numberOfFutureProjectedCases += fourWeekProjectionsData[weekKey];
   });
-  return numberOfFutureProjectedCases;
+  // return the numberOfFutureProjectedCases rounded to a whole number.
+  return Math.round(numberOfFutureProjectedCases);
+};
+
+export const getCountryFutureProjectedCasesCount = (ebolaData, filters) => {
+  let numberOfFutureProjectedCases = 0;
+  let fourWeekProjectionsData = {
+    oneWeek: null,
+    twoWeeks: null,
+    threeWeeks: null,
+    fourWeeks: null,
+  };
+  Object.keys(ebolaData).forEach((countryKey) => {
+    // If the ebolaData countryKey is equal to filters.country, this is the country data that we want.
+    if (countryKey === filters.country) {
+      const countryData = ebolaData[countryKey];
+      for (const date in countryData) {
+        // this is a check to filter unwanted properties from the countryData object.
+        if (Object.prototype.hasOwnProperty.call(countryData, date)) {
+          const dateValue = new Date(date);
+          // Only use row data if the dateValue is within the filters.dateRange
+          if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
+            fourWeekProjectionsData = countryData[date].projections;
+          }
+        }
+      }
+    }
+  });
+  // Add the number of projected cases in the fourWeekProjectionsData object to the numberOfFutureProjectedCases counter.
+  Object.keys(fourWeekProjectionsData).forEach((weekKey) => {
+    numberOfFutureProjectedCases += fourWeekProjectionsData[weekKey];
+  });
+  // return the numberOfFutureProjectedCases rounded to a whole number.
+  return Math.round(numberOfFutureProjectedCases);
 };
