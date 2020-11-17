@@ -81,7 +81,7 @@ export const getDiseaseCaseCount = (diseaseData, filters) => {
   return diseaseCaseCount;
 };
 
-export const getAllFutureProjectedCases = (
+export const getAllFutureProjectedCasesCount = (
   ebolaDataCombined,
   filtersDateRange
 ) => {

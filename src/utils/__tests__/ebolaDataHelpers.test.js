@@ -2,7 +2,7 @@ import {
   isDateWithinFiltersDateRange,
   getEbolaCountriesCaseCounts,
   getDiseaseCaseCount,
-  getAllFutureProjectedCases,
+  getAllFutureProjectedCasesCount,
 } from "../ebolaDataHelpers";
 import {
   allCountriesEbolaData,
@@ -68,7 +68,7 @@ describe("Tests for getDiseaseCaseCount", () => {
 describe("Tests for getAllFutureProjectedCases", () => {
   test("count should equal 4112 (projections for second data row)", () => {
     expect(
-      getAllFutureProjectedCases(
+      getAllFutureProjectedCasesCount(
         testEbolaDataCombined,
         reduxInitialState.filters.dateRange
       )
@@ -76,7 +76,7 @@ describe("Tests for getAllFutureProjectedCases", () => {
   });
   test("count should equal 7272 (projections for first data row)", () => {
     expect(
-      getAllFutureProjectedCases(
+      getAllFutureProjectedCasesCount(
         testEbolaDataCombinedLastWeekOutOfDateRange,
         reduxInitialState.filters.dateRange
       )
