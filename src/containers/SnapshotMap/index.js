@@ -3,6 +3,7 @@ import ReactMapGL from "react-map-gl";
 
 import { SnapshotMapContainer } from "../../components/styled-components/MapContainers";
 import ViewToggle from "../../components/ViewToggle";
+import SnapshotMapCaseCountLegend from "../../components/SnapshotMapCaseCountLegend";
 import MapZoomButtons from "../../components/MapZoomButtons";
 
 class SnapshotMap extends Component {
@@ -28,6 +29,7 @@ class SnapshotMap extends Component {
         keyboard: true,
         doubleClickZoom: true,
       },
+      showCaseCounts: true,
     };
   }
 
@@ -44,6 +46,12 @@ class SnapshotMap extends Component {
     }));
   };
 
+  showHideCaseCounts = () => {
+    this.setState((currentState) => ({
+      showCaseCounts: !currentState.showCaseCounts,
+    }));
+  };
+
   render() {
     return (
       <SnapshotMapContainer>
@@ -52,6 +60,10 @@ class SnapshotMap extends Component {
           {...this.state.viewport}
           onViewportChange={(viewport) => this.onViewportChange(viewport)}
           mapStyle="mapbox://styles/compepi/cjnxgpr991b6h2rpcvqmh5j4f"
+        />
+        <SnapshotMapCaseCountLegend
+          showCaseCounts={this.state.showCaseCounts}
+          toggleCaseCountFunction={this.showHideCaseCounts}
         />
         <MapZoomButtons
           viewPortZoom={this.state.viewport.zoom}
