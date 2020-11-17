@@ -2,10 +2,13 @@ import {
   isDateWithinFiltersDateRange,
   getEbolaCountriesCaseCounts,
   getDiseaseCaseCount,
+  getAllFutureProjectedCases,
 } from "../ebolaDataHelpers";
 import {
   allCountriesEbolaData,
   allCountriesEbolaDataLiberiaOutOfDateRange,
+  testEbolaDataCombined,
+  testEbolaDataCombinedLastWeekOutOfDateRange,
   testGuineaFiltersState,
 } from "../testData";
 
@@ -59,5 +62,24 @@ describe("Tests for getDiseaseCaseCount", () => {
     expect(
       getDiseaseCaseCount(allCountriesEbolaData, testGuineaFiltersState)
     ).toBe(126);
+  });
+});
+
+describe("Tests for getAllFutureProjectedCases", () => {
+  test("count should equal 4112 (projections for second data row)", () => {
+    expect(
+      getAllFutureProjectedCases(
+        testEbolaDataCombined,
+        reduxInitialState.filters.dateRange
+      )
+    ).toEqual(4112);
+  });
+  test("count should equal 7272 (projections for first data row)", () => {
+    expect(
+      getAllFutureProjectedCases(
+        testEbolaDataCombinedLastWeekOutOfDateRange,
+        reduxInitialState.filters.dateRange
+      )
+    ).toEqual(7272);
   });
 });

@@ -80,3 +80,31 @@ export const getDiseaseCaseCount = (diseaseData, filters) => {
   }
   return diseaseCaseCount;
 };
+
+export const getAllFutureProjectedCases = (
+  ebolaDataCombined,
+  filtersDateRange
+) => {
+  let numberOfFutureProjectedCases = 0;
+  const fourWeekProjectionsData = {
+    oneWeek: null,
+    twoWeeks: null,
+    threeWeeks: null,
+    fourWeeks: null,
+  };
+  ebolaDataCombined.forEach((row) => {
+    const dateValue = new Date(row.projection_from);
+    // Only use row data if the dateValue is within the filters.dateRange
+    if (isDateWithinFiltersDateRange(dateValue, filtersDateRange)) {
+      fourWeekProjectionsData.oneWeek = parseFloat(row["y1.aggregated"]);
+      fourWeekProjectionsData.twoWeeks = parseFloat(row["y2.aggregated"]);
+      fourWeekProjectionsData.threeWeeks = parseFloat(row["y3.aggregated"]);
+      fourWeekProjectionsData.fourWeeks = parseFloat(row["y4.aggregated"]);
+    }
+  });
+  // Add the number of projected cases in the fourWeekProjectionsData object to the numberOfFutureProjectedCases counter.
+  Object.keys(fourWeekProjectionsData).forEach((weekKey) => {
+    numberOfFutureProjectedCases += fourWeekProjectionsData[weekKey];
+  });
+  return numberOfFutureProjectedCases;
+};
