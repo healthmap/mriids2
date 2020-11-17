@@ -10,4 +10,7 @@ export const DateRangeComponentContainer = styled.div`
 
 export const DateRangeSliderContainer = styled.div`
   width: 85%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
