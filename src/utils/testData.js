@@ -5,7 +5,6 @@ export const testGuineaData = {
     "2014-10-06": {
       projections: {
         oneWeek: 179,
-        originalValue: 126,
         twoWeeks: 210.5,
         threeWeeks: 251,
         fourWeeks: 296,
@@ -15,7 +14,6 @@ export const testGuineaData = {
     "2014-10-13": {
       projections: {
         oneWeek: 153,
-        originalValue: 114,
         twoWeeks: 163,
         threeWeeks: 175,
         fourWeeks: 190,
@@ -30,7 +28,6 @@ export const testGuineaDataOutOfDateRange = {
     "2013-10-06": {
       projections: {
         oneWeek: 179,
-        originalValue: 126,
         twoWeeks: 210.5,
         threeWeeks: 251,
         fourWeeks: 296,
@@ -40,7 +37,6 @@ export const testGuineaDataOutOfDateRange = {
     "2014-10-13": {
       projections: {
         oneWeek: 153,
-        originalValue: 114,
         twoWeeks: 163,
         threeWeeks: 175,
         fourWeeks: 190,
@@ -55,7 +51,6 @@ export const allCountriesEbolaData = {
     "2014-10-06": {
       projections: {
         oneWeek: 179,
-        originalValue: 126,
         twoWeeks: 210.5,
         threeWeeks: 251,
         fourWeeks: 296,
@@ -67,7 +62,6 @@ export const allCountriesEbolaData = {
     "2014-10-06": {
       projections: {
         oneWeek: 179,
-        originalValue: 126,
         twoWeeks: 210.5,
         threeWeeks: 251,
         fourWeeks: 296,
@@ -79,7 +73,6 @@ export const allCountriesEbolaData = {
     "2014-10-06": {
       projections: {
         oneWeek: 179,
-        originalValue: 126,
         twoWeeks: 210.5,
         threeWeeks: 251,
         fourWeeks: 296,
@@ -94,7 +87,6 @@ export const allCountriesEbolaDataLiberiaOutOfDateRange = {
     "2014-10-06": {
       projections: {
         oneWeek: 179,
-        originalValue: 126,
         twoWeeks: 210.5,
         threeWeeks: 251,
         fourWeeks: 296,
@@ -106,7 +98,6 @@ export const allCountriesEbolaDataLiberiaOutOfDateRange = {
     "2013-10-06": {
       projections: {
         oneWeek: 179,
-        originalValue: 126,
         twoWeeks: 210.5,
         threeWeeks: 251,
         fourWeeks: 296,
@@ -118,7 +109,6 @@ export const allCountriesEbolaDataLiberiaOutOfDateRange = {
     "2014-10-06": {
       projections: {
         oneWeek: 179,
-        originalValue: 126,
         twoWeeks: 210.5,
         threeWeeks: 251,
         fourWeeks: 296,

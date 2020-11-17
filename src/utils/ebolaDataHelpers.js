@@ -18,9 +18,6 @@ export const prepareEbolaData = (csvData) => {
       newData[country][row.projection_from].projections = {};
       projections.forEach((projection) => {
         newData[country][row.projection_from].projections[projection] = {};
-        newData[country][
-          row.projection_from
-        ].projections.originalValue = parseFloat(row[country]);
         keys.forEach((key) => {
           newData[country][row.projection_from].projections[
             projection
