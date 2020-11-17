@@ -97,11 +97,7 @@ export const prepareEbolaDataForCharts = (
               if (filters.projection) {
                 // If projections are enabled, store the weekly projection data in the projectionsData object.
                 // We also need to add a value of null to the end of the dataRow array.
-                const countryProjections = countryData[date].projections;
-                projectionsData.oneWeek = countryProjections.oneWeek;
-                projectionsData.twoWeeks = countryProjections.twoWeeks;
-                projectionsData.threeWeeks = countryProjections.threeWeeks;
-                projectionsData.fourWeeks = countryProjections.fourWeeks;
+                projectionsData = countryData[date].projections;
                 dataRow.push(null);
               }
               chartData.push(dataRow);
