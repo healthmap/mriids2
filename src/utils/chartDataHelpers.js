@@ -64,6 +64,7 @@ export const prepareEbolaDataForCharts = (
         const dataRow = [dateValue, aggregatedData];
         if (filters.projection) {
           // If projections are enabled, store the weekly projection data in the projectionsData object.
+          // We also need to add a value of null to the end of the dataRow array.
           projectionsData.oneWeek = parseFloat(row["y1.aggregated"]);
           projectionsData.twoWeeks = parseFloat(row["y2.aggregated"]);
           projectionsData.threeWeeks = parseFloat(row["y3.aggregated"]);
@@ -73,22 +74,6 @@ export const prepareEbolaDataForCharts = (
         chartData.push(dataRow);
       }
     });
-    if (filters.projection) {
-      // If projections are enabled, we are pushing 4 additional rows to the chartData array (one for each week) with the projections data.
-      const lastWeekDate = chartData[chartData.length - 1][0];
-      chartData.push(
-        getWeekProjectionData(lastWeekDate, 1, projectionsData.oneWeek)
-      );
-      chartData.push(
-        getWeekProjectionData(lastWeekDate, 2, projectionsData.twoWeeks)
-      );
-      chartData.push(
-        getWeekProjectionData(lastWeekDate, 3, projectionsData.threeWeeks)
-      );
-      chartData.push(
-        getWeekProjectionData(lastWeekDate, 4, projectionsData.fourWeeks)
-      );
-    }
   }
 
   // If the ebolaData object has keys and a specific country is selected, show the country-specific ebola data.
@@ -108,12 +93,39 @@ export const prepareEbolaDataForCharts = (
             const dateValue = new Date(date);
             // Only push the rows if the dateValue is within the filters.dateRange
             if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
-              chartData.push([dateValue, countryData[date].value]);
+              const dataRow = [dateValue, countryData[date].value];
+              if (filters.projection) {
+                // If projections are enabled, store the weekly projection data in the projectionsData object.
+                // We also need to add a value of null to the end of the dataRow array.
+                const countryProjections = countryData[date].projections;
+                projectionsData.oneWeek = countryProjections.oneWeek;
+                projectionsData.twoWeeks = countryProjections.twoWeeks;
+                projectionsData.threeWeeks = countryProjections.threeWeeks;
+                projectionsData.fourWeeks = countryProjections.fourWeeks;
+                dataRow.push(null);
+              }
+              chartData.push(dataRow);
             }
           }
         }
       }
     });
+  }
+  if (filters.projection) {
+    // If projections are enabled, we are pushing 4 additional rows to the chartData array (one for each week) with the projections data.
+    const lastWeekDate = chartData[chartData.length - 1][0];
+    chartData.push(
+      getWeekProjectionData(lastWeekDate, 1, projectionsData.oneWeek)
+    );
+    chartData.push(
+      getWeekProjectionData(lastWeekDate, 2, projectionsData.twoWeeks)
+    );
+    chartData.push(
+      getWeekProjectionData(lastWeekDate, 3, projectionsData.threeWeeks)
+    );
+    chartData.push(
+      getWeekProjectionData(lastWeekDate, 4, projectionsData.fourWeeks)
+    );
   }
   return chartData;
 };
