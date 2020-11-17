@@ -3,6 +3,7 @@ import ReactMapGL from "react-map-gl";
 
 import { EbolaRiskMapContainer } from "../../components/styled-components/MapContainers";
 import ViewToggle from "../../components/ViewToggle";
+import RiskMapLegend from "../../components/RiskMapLegend";
 import MapZoomButtons from "../../components/MapZoomButtons";
 
 class EbolaRiskMap extends Component {
@@ -53,6 +54,7 @@ class EbolaRiskMap extends Component {
           onViewportChange={(viewport) => this.onViewportChange(viewport)}
           mapStyle="mapbox://styles/compepi/cjnxhx2q84zo12rqom3w1m25i"
         />
+        <RiskMapLegend />
         <MapZoomButtons
           viewPortZoom={this.state.viewport.zoom}
           changeZoomFunction={this.changeZoomLevel}
