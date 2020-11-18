@@ -55,7 +55,14 @@ export const getEbolaCountriesCaseCounts = (ebolaData, filters) => {
         // If so, add that count to the countryCaseCount object for the country.
         if (isDateWithinFiltersDateRange(weekDateKey, filters.dateRange)) {
           const weeklyEbolaData = countryEbolaData[weekDateKey];
-          countryCaseCount[country] += parseInt(weeklyEbolaData.value);
+          // if projections are enabled, the count we want is the 'fourWeeks' projections count.
+          if (filters.projection) {
+            countryCaseCount[country] += parseInt(
+              weeklyEbolaData.projections.fourWeeks
+            );
+          } else {
+            countryCaseCount[country] += parseInt(weeklyEbolaData.value);
+          }
         }
       });
     }
