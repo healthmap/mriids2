@@ -14,26 +14,37 @@ import {
   SelectCountryWrapper,
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
-import { getDiseaseCaseCount } from "../../utils/ebolaDataHelpers";
+import {
+  getDiseaseCaseCount,
+  getAllFutureProjectedCasesCount,
+  getCountryFutureProjectedCasesCount,
+} from "../../utils/ebolaDataHelpers";
 
-const Sidebar = (props) => {
+const Sidebar = ({
+  filters,
+  ebolaData,
+  ebolaDataCombined,
+  changeCountryFilter,
+  changeOutbreakFilter,
+}) => {
   const changeCountry = (selectedValue) => {
-    props.changeCountryFilter(selectedValue.target.value);
+    changeCountryFilter(selectedValue.target.value);
   };
   const changeOutbreak = (selectedValue) => {
-    props.changeOutbreakFilter(selectedValue.target.value);
+    changeOutbreakFilter(selectedValue.target.value);
   };
-  const diseaseCaseCount = getDiseaseCaseCount(
-    props.ebola.ebolaData.data,
-    props.filters
-  );
+  // This is the ebola case count for the ReportedCases child component
+  const diseaseCaseCount = getDiseaseCaseCount(ebolaData, filters);
+  // This is the projected ebola case count for the ReportedCases child component
+  const projectedCaseCount =
+    filters.country === "All"
+      ? getAllFutureProjectedCasesCount(ebolaDataCombined, filters.dateRange)
+      : getCountryFutureProjectedCasesCount(ebolaData, filters);
   const showReportedCases =
-    props.filters.view === "snapshot" &&
-    props.filters.outbreak === "Ebola Outbreak";
-  const showEbolaSummary = props.filters.outbreak === "Ebola Outbreak";
+    filters.view === "snapshot" && filters.outbreak === "Ebola Outbreak";
+  const showEbolaSummary = filters.outbreak === "Ebola Outbreak";
   const showEbolaRiskList =
-    props.filters.view === "risk" &&
-    props.filters.outbreak === "Ebola Outbreak";
+    filters.view === "risk" && filters.outbreak === "Ebola Outbreak";
 
   return (
     <Styled.SidebarWrapper>
@@ -42,7 +53,7 @@ const Sidebar = (props) => {
           name="location"
           type="location"
           options={["All", "Guinea", "Liberia", "Sierra Leone"]}
-          value={props.filters.country}
+          value={filters.country}
           changeFunction={changeCountry}
         />
       </SelectCountryWrapper>
@@ -51,22 +62,23 @@ const Sidebar = (props) => {
           name="outbreak"
           type="outbreak"
           options={["Ebola Outbreak", "COVID 19"]}
-          value={props.filters.outbreak}
+          value={filters.outbreak}
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
       {showReportedCases && (
         <ReportedCases
-          projection={props.filters.projection}
-          dateRange={props.filters.dateRange}
+          projection={filters.projection}
+          dateRange={filters.dateRange}
           diseaseCaseCount={diseaseCaseCount}
+          projectedCaseCount={projectedCaseCount}
         />
       )}
       {showEbolaSummary && (
         <Summary
-          projection={props.filters.projection}
-          dateRange={props.filters.dateRange}
-          country={props.filters.country}
+          projection={filters.projection}
+          dateRange={filters.dateRange}
+          country={filters.country}
           diseaseCaseCount={diseaseCaseCount}
         />
       )}
@@ -77,7 +89,8 @@ const Sidebar = (props) => {
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
-  ebola: state.ebola,
+  ebolaData: state.ebola.ebolaData.data,
+  ebolaDataCombined: state.ebola.ebolaDataCombined.data,
 });
 
 const mapDispatchToProps = (dispatch) =>
