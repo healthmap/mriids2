@@ -52,6 +52,18 @@ describe("Tests for getEbolaCountriesCaseCounts", () => {
       )
     ).toEqual({ Guinea: 126, Liberia: 0, "Sierra Leone": 126 });
   });
+  test("when projections are enabled, get the case count from projections.fourWeeks", () => {
+    const projectionsEnabledState = {
+      ...reduxInitialState,
+      filters: { ...reduxInitialState.filters, projection: true },
+    };
+    expect(
+      getEbolaCountriesCaseCounts(
+        allCountriesEbolaData,
+        projectionsEnabledState.filters
+      )
+    ).toEqual({ Guinea: 296, Liberia: 296, "Sierra Leone": 296 });
+  });
 });
 
 describe("Tests for getDiseaseCaseCount", () => {
