@@ -32,8 +32,7 @@ const SnapshotMapCaseCountLegend = ({
     : "Case counts";
 
   const renderLegendLevels = () => {
-    // This is the maximum value for the case count legend.
-    const maxCountryCaseCount = getScale(countriesEbolaCaseCounts);
+    const scale = getScale(countriesEbolaCaseCounts);
     // We want to render 10 levels for the legend.
     const numberOfLevels = 9;
     const levels = [];
@@ -48,7 +47,7 @@ const SnapshotMapCaseCountLegend = ({
         <MapLegendLevel
           key={`legend-level-${i}`}
           color={color}
-          value={Math.round(value * maxCountryCaseCount)}
+          value={Math.round(value * scale)}
         />
       );
     }
