@@ -1,77 +1,76 @@
-import React, { Component } from "react";
-import ReactMapGL from "react-map-gl";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import {
+  ComposableMap,
+  ZoomableGroup,
+  Geographies,
+  Geography,
+} from "react-simple-maps";
+import { geoChamberlinAfrica } from "d3-geo-projection";
 
 import { SnapshotMapContainer } from "../../components/styled-components/MapContainers";
 import ViewToggle from "../../components/ViewToggle";
 import SnapshotMapCaseCountLegend from "../../components/SnapshotMapCaseCountLegend";
 import MapZoomButtons from "../../components/MapZoomButtons";
 
-class SnapshotMap extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      viewport: {
-        width: "100%",
-        height: "100%",
-        latitude: 8.555216,
-        longitude: -11.322184,
-        zoom: 5,
-        minZoom: 2,
-        pitch: 0,
-        bearing: 0,
-      },
-      settings: {
-        dragPan: true,
-        dragRotate: true,
-        scrollZoom: true,
-        touchZoom: true,
-        touchRotate: true,
-        keyboard: true,
-        doubleClickZoom: true,
-      },
-      showCaseCounts: true,
-    };
-  }
+const SnapshotMap = (props) => {
+  const [zoomLevel, setZoomLevel] = useState(5);
+  const [showCaseCounts, changeShowCaseCounts] = useState(true);
 
-  onViewportChange = (viewport) => {
-    this.setState({ viewport });
+  const changeZoomLevel = (newZoomValue = 0) => {
+    setZoomLevel(newZoomValue);
   };
 
-  changeZoomLevel = (newZoomValue = 0) => {
-    this.setState((currentState) => ({
-      viewport: {
-        ...currentState.viewport,
-        zoom: newZoomValue,
-      },
-    }));
+  const getGeographyFillColor = (geoProperties) => {
+    const ebolaCountries = ["Guinea", "Liberia", "Sierra Leone"];
+    if (ebolaCountries.includes(geoProperties.NAME)) {
+      return "#E23D4A";
+    }
   };
 
-  showHideCaseCounts = () => {
-    this.setState((currentState) => ({
-      showCaseCounts: !currentState.showCaseCounts,
-    }));
+  const showHideCaseCounts = () => {
+    changeShowCaseCounts(!showCaseCounts);
   };
 
-  render() {
-    return (
-      <SnapshotMapContainer>
-        <ViewToggle />
-        <ReactMapGL
-          {...this.state.viewport}
-          onViewportChange={(viewport) => this.onViewportChange(viewport)}
-          mapStyle="mapbox://styles/compepi/cjnxgpr991b6h2rpcvqmh5j4f"
-        />
-        <SnapshotMapCaseCountLegend
-          showCaseCounts={this.state.showCaseCounts}
-          toggleCaseCountFunction={this.showHideCaseCounts}
-        />
-        <MapZoomButtons
-          viewPortZoom={this.state.viewport.zoom}
-          changeZoomFunction={this.changeZoomLevel}
-        />
-      </SnapshotMapContainer>
-    );
-  }
-}
+  return (
+    <SnapshotMapContainer>
+      <ViewToggle />
+      <ComposableMap projection={geoChamberlinAfrica()}>
+        <ZoomableGroup zoom={zoomLevel}>
+          <Geographies geography="mapData/world-50m-simplified.json">
+            {({ geographies }) =>
+              geographies.map((geo) => (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  style={{
+                    default: {
+                      fill: getGeographyFillColor(geo.properties),
+                      opacity: 1,
+                      transition: "all .5s ease",
+                    },
+                  }}
+                />
+              ))
+            }
+          </Geographies>
+        </ZoomableGroup>
+      </ComposableMap>
+      <SnapshotMapCaseCountLegend
+        showCaseCounts={showCaseCounts}
+        toggleCaseCountFunction={showHideCaseCounts}
+      />
+      <MapZoomButtons
+        viewPortZoom={zoomLevel}
+        changeZoomFunction={changeZoomLevel}
+      />
+    </SnapshotMapContainer>
+  );
+};
 
-export default SnapshotMap;
+const mapStateToProps = (state) => ({
+  ebolaData: state.ebola.ebolaData,
+  filters: state.filters,
+});
+
+export default connect(mapStateToProps)(SnapshotMap);
