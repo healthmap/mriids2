@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   ComposableMap,
-  ZoomableGroup,
   Geographies,
   Geography,
+  ZoomableGroup,
 } from "react-simple-maps";
 
 import { SnapshotMapContainer } from "../styled-components/MapContainers";
@@ -12,8 +12,8 @@ import ViewToggle from "../ViewToggle";
 import SnapshotMapCaseCountLegend from "../SnapshotMapCaseCountLegend";
 import MapZoomButtons from "../MapZoomButtons";
 import {
+  getScale,
   getSnapshotColor,
-  getMaxValueForSnapshotLegend,
   getSnapshotProjectionsColor,
 } from "../../utils/snapshotMapHelpers";
 import { getEbolaCountriesCaseCounts } from "../../utils/ebolaDataHelpers";
@@ -35,15 +35,13 @@ const SnapshotMap = ({ ebolaData, filters }) => {
         ebolaData,
         filters
       );
-      // Get the highest case count of the 3 ebolaCountries.
-      const scale = getMaxValueForSnapshotLegend(ebolaCountriesCaseCounts);
+      const scale = getScale(ebolaCountriesCaseCounts);
       const percentage = ebolaCountriesCaseCounts[geoProperties.NAME] / scale;
-      // If projections are enabled, get the color using the getSnapshotProjectionsColor function.
-      // Otherwise get it using the getSnapshotColor function.
-      const color = filters.projection
+      // If projections are enabled, return the color value using the getSnapshotProjectionsColor function.
+      // Otherwise return the color value using the getSnapshotColor function.
+      return filters.projection
         ? getSnapshotProjectionsColor(percentage)
         : getSnapshotColor(percentage);
-      return color;
     } else {
       // If the NAME of the geography is not in the ebolaCountries array, add the fill color below.
       return "#FCF1DD";

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import MapLegendLevel from "../MapLegendLevel";
 import {
-  getMaxValueForSnapshotLegend,
+  getScale,
   getSnapshotColor,
   getSnapshotProjectionsColor,
 } from "../../utils/snapshotMapHelpers";
@@ -33,9 +33,7 @@ const SnapshotMapCaseCountLegend = ({
 
   const renderLegendLevels = () => {
     // This is the maximum value for the case count legend.
-    const maxCountryCaseCount = getMaxValueForSnapshotLegend(
-      countriesEbolaCaseCounts
-    );
+    const maxCountryCaseCount = getScale(countriesEbolaCaseCounts);
     // We want to render 10 levels for the legend.
     const numberOfLevels = 9;
     const levels = [];
