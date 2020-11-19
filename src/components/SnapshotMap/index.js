@@ -14,15 +14,11 @@ import MapZoomButtons from "../MapZoomButtons";
 import { getGeographyFillColor } from "../../utils/snapshotMapHelpers";
 
 const SnapshotMap = ({ ebolaData, filters }) => {
-  const [zoomLevel, setZoomLevel] = useState(5);
-  const [showCaseCounts, changeShowCaseCounts] = useState(true);
-
-  const changeZoomLevel = (newZoomValue = 0) => {
-    setZoomLevel(newZoomValue);
-  };
+  const [zoomLevel, changeZoomLevel] = useState(5);
+  const [showCaseCounts, toggleShowHideCaseCounts] = useState(true);
 
   const showHideCaseCounts = () => {
-    changeShowCaseCounts(!showCaseCounts);
+    toggleShowHideCaseCounts(!showCaseCounts);
   };
 
   return (
@@ -80,7 +76,7 @@ const SnapshotMap = ({ ebolaData, filters }) => {
         toggleCaseCountFunction={showHideCaseCounts}
       />
       <MapZoomButtons
-        viewPortZoom={zoomLevel}
+        zoomLevel={zoomLevel}
         changeZoomFunction={changeZoomLevel}
       />
     </SnapshotMapContainer>
