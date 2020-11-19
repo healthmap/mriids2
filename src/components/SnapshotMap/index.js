@@ -11,12 +11,7 @@ import { SnapshotMapContainer } from "../styled-components/MapContainers";
 import ViewToggle from "../ViewToggle";
 import SnapshotMapCaseCountLegend from "../SnapshotMapCaseCountLegend";
 import MapZoomButtons from "../MapZoomButtons";
-import {
-  getScale,
-  getSnapshotColor,
-  getSnapshotProjectionsColor,
-} from "../../utils/snapshotMapHelpers";
-import { getEbolaCountriesCaseCounts } from "../../utils/ebolaDataHelpers";
+import { getGeographyFillColor } from "../../utils/snapshotMapHelpers";
 
 const SnapshotMap = ({ ebolaData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(5);
@@ -24,28 +19,6 @@ const SnapshotMap = ({ ebolaData, filters }) => {
 
   const changeZoomLevel = (newZoomValue = 0) => {
     setZoomLevel(newZoomValue);
-  };
-
-  const getGeographyFillColor = (geoProperties) => {
-    const ebolaCountries = ["Guinea", "Liberia", "Sierra Leone"];
-    // If the NAME of the geography is in the ebolaCountries array, execute this block.
-    if (ebolaCountries.includes(geoProperties.NAME)) {
-      // Get the case count for the 3 ebolaCountries.
-      const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
-        ebolaData,
-        filters
-      );
-      const scale = getScale(ebolaCountriesCaseCounts);
-      const percentage = ebolaCountriesCaseCounts[geoProperties.NAME] / scale;
-      // If projections are enabled, return the color value using the getSnapshotProjectionsColor function.
-      // Otherwise return the color value using the getSnapshotColor function.
-      return filters.projection
-        ? getSnapshotProjectionsColor(percentage)
-        : getSnapshotColor(percentage);
-    } else {
-      // If the NAME of the geography is not in the ebolaCountries array, add the fill color below.
-      return "#FCF1DD";
-    }
   };
 
   const showHideCaseCounts = () => {
@@ -69,17 +42,29 @@ const SnapshotMap = ({ ebolaData, filters }) => {
                   geography={geo}
                   style={{
                     default: {
-                      fill: getGeographyFillColor(geo.properties),
+                      fill: getGeographyFillColor(
+                        ebolaData,
+                        filters,
+                        geo.properties
+                      ),
                       opacity: 1,
                       transition: "all .5s ease",
                     },
                     hover: {
-                      fill: getGeographyFillColor(geo.properties),
+                      fill: getGeographyFillColor(
+                        ebolaData,
+                        filters,
+                        geo.properties
+                      ),
                       opacity: 0.8,
                       transition: "all .5s ease",
                     },
                     pressed: {
-                      fill: getGeographyFillColor(geo.properties),
+                      fill: getGeographyFillColor(
+                        ebolaData,
+                        filters,
+                        geo.properties
+                      ),
                       opacity: 0.8,
                       transition: "all .5s ease",
                     },
