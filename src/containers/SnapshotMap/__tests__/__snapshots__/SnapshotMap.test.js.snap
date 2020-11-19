@@ -211,6 +211,11 @@ exports[`Tests for the connected SnapshotMap component with reduxInitialState sh
   </div>
   <svg
     className="rsm-svg "
+    style={
+      Object {
+        "backgroundColor": "#D6E4EE",
+      }
+    }
     viewBox="0 0 800 600"
   >
     <g>

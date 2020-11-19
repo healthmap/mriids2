@@ -6,14 +6,13 @@ import {
   Geographies,
   Geography,
 } from "react-simple-maps";
-import { geoChamberlinAfrica } from "d3-geo-projection";
 
 import { SnapshotMapContainer } from "../../components/styled-components/MapContainers";
 import ViewToggle from "../../components/ViewToggle";
 import SnapshotMapCaseCountLegend from "../../components/SnapshotMapCaseCountLegend";
 import MapZoomButtons from "../../components/MapZoomButtons";
 
-const SnapshotMap = (props) => {
+const SnapshotMap = ({ ebolaData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(5);
   const [showCaseCounts, changeShowCaseCounts] = useState(true);
 
@@ -35,7 +34,7 @@ const SnapshotMap = (props) => {
   return (
     <SnapshotMapContainer>
       <ViewToggle />
-      <ComposableMap projection={geoChamberlinAfrica()}>
+      <ComposableMap style={{ backgroundColor: "#D6E4EE" }}>
         <ZoomableGroup zoom={zoomLevel}>
           <Geographies geography="mapData/world-50m-simplified.json">
             {({ geographies }) =>
@@ -47,6 +46,16 @@ const SnapshotMap = (props) => {
                     default: {
                       fill: getGeographyFillColor(geo.properties),
                       opacity: 1,
+                      transition: "all .5s ease",
+                    },
+                    hover: {
+                      fill: getGeographyFillColor(geo.properties),
+                      opacity: 0.8,
+                      transition: "all .5s ease",
+                    },
+                    pressed: {
+                      fill: getGeographyFillColor(geo.properties),
+                      opacity: 0.8,
                       transition: "all .5s ease",
                     },
                   }}
