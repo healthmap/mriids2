@@ -11,6 +11,12 @@ import { SnapshotMapContainer } from "../styled-components/MapContainers";
 import ViewToggle from "../ViewToggle";
 import SnapshotMapCaseCountLegend from "../SnapshotMapCaseCountLegend";
 import MapZoomButtons from "../MapZoomButtons";
+import {
+  getSnapshotColor,
+  getMaxValueForSnapshotLegend,
+  getSnapshotProjectionsColor,
+} from "../../utils/snapshotMapHelpers";
+import { getEbolaCountriesCaseCounts } from "../../utils/ebolaDataHelpers";
 
 const SnapshotMap = ({ ebolaData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(5);
@@ -22,9 +28,24 @@ const SnapshotMap = ({ ebolaData, filters }) => {
 
   const getGeographyFillColor = (geoProperties) => {
     const ebolaCountries = ["Guinea", "Liberia", "Sierra Leone"];
+    // If the NAME of the geography is in the ebolaCountries array, execute this block.
     if (ebolaCountries.includes(geoProperties.NAME)) {
-      return "#E23D4A";
+      // Get the case count for the 3 ebolaCountries.
+      const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
+        ebolaData,
+        filters
+      );
+      // Get the highest case count of the 3 ebolaCountries.
+      const scale = getMaxValueForSnapshotLegend(ebolaCountriesCaseCounts);
+      const percentage = ebolaCountriesCaseCounts[geoProperties.NAME] / scale;
+      // If projections are enabled, get the color using the getSnapshotProjectionsColor function.
+      // Otherwise get it using the getSnapshotColor function.
+      const color = filters.projection
+        ? getSnapshotProjectionsColor(percentage)
+        : getSnapshotColor(percentage);
+      return color;
     } else {
+      // If the NAME of the geography is not in the ebolaCountries array, add the fill color below.
       return "#FCF1DD";
     }
   };
@@ -84,7 +105,7 @@ const SnapshotMap = ({ ebolaData, filters }) => {
 };
 
 const mapStateToProps = (state) => ({
-  ebolaData: state.ebola.ebolaData,
+  ebolaData: state.ebola.ebolaData.data,
   filters: state.filters,
 });
 
