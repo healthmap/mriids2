@@ -24,6 +24,8 @@ const SnapshotMap = ({ ebolaData, filters }) => {
     const ebolaCountries = ["Guinea", "Liberia", "Sierra Leone"];
     if (ebolaCountries.includes(geoProperties.NAME)) {
       return "#E23D4A";
+    } else {
+      return "#FCF1DD";
     }
   };
 
@@ -34,7 +36,11 @@ const SnapshotMap = ({ ebolaData, filters }) => {
   return (
     <SnapshotMapContainer>
       <ViewToggle />
-      <ComposableMap style={{ backgroundColor: "#D6E4EE" }}>
+      <ComposableMap
+        style={{ backgroundColor: "#D6E4EE" }}
+        stroke="#000000"
+        strokeWidth={0.05}
+      >
         <ZoomableGroup zoom={zoomLevel}>
           <Geographies geography="mapData/world-50m-simplified.json">
             {({ geographies }) =>
