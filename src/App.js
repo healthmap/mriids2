@@ -8,7 +8,7 @@ import {
   fetchEbolaDataCombined,
   fetchRiskData,
 } from "./actions/ebola";
-import SnapshotMap from "./containers/SnapshotMap";
+import SnapshotMap from "./components/SnapshotMap";
 import EbolaRiskMap from "./containers/EbolaRiskMap";
 import Team from "./components/Team";
 import About from "./components/About";

@@ -7,10 +7,10 @@ import {
   Geography,
 } from "react-simple-maps";
 
-import { SnapshotMapContainer } from "../../components/styled-components/MapContainers";
-import ViewToggle from "../../components/ViewToggle";
-import SnapshotMapCaseCountLegend from "../../components/SnapshotMapCaseCountLegend";
-import MapZoomButtons from "../../components/MapZoomButtons";
+import { SnapshotMapContainer } from "../styled-components/MapContainers";
+import ViewToggle from "../ViewToggle";
+import SnapshotMapCaseCountLegend from "../SnapshotMapCaseCountLegend";
+import MapZoomButtons from "../MapZoomButtons";
 
 const SnapshotMap = ({ ebolaData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(5);
