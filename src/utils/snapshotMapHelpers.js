@@ -79,9 +79,13 @@ export const getSnapshotProjectionsColor = (caseCountValue) => {
 export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
   const ebolaCountries = ["Guinea", "Liberia", "Sierra Leone"];
   const addFillColorToAllEbolaCountries =
-    ebolaCountries.includes(geoProperties.NAME) && filters.country === "All";
+    ebolaCountries.includes(geoProperties.NAME) &&
+    filters.country === "All" &&
+    filters.outbreak === "Ebola Outbreak";
   const addFillColorToSelectedCountry =
-    filters.country !== "All" && filters.country === geoProperties.NAME;
+    filters.country !== "All" &&
+    filters.outbreak === "Ebola Outbreak" &&
+    filters.country === geoProperties.NAME;
   // Get the case count for the 3 ebolaCountries.
   const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
     ebolaData,
