@@ -78,14 +78,25 @@ export const getSnapshotProjectionsColor = (caseCountValue) => {
 
 export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
   const ebolaCountries = ["Guinea", "Liberia", "Sierra Leone"];
-  // If the NAME of the geography is in the ebolaCountries array, execute this block.
-  if (ebolaCountries.includes(geoProperties.NAME)) {
-    // Get the case count for the 3 ebolaCountries.
-    const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
-      ebolaData,
-      filters
-    );
-    const scale = getScale(ebolaCountriesCaseCounts);
+  const addFillColorToAllEbolaCountries =
+    ebolaCountries.includes(geoProperties.NAME) && filters.country === "All";
+  const addFillColorToSelectedCountry =
+    filters.country !== "All" && filters.country === geoProperties.NAME;
+  // Get the case count for the 3 ebolaCountries.
+  const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
+    ebolaData,
+    filters
+  );
+  // Get the scale using the ebolaCountriesCaseCounts object.
+  const scale = getScale(ebolaCountriesCaseCounts);
+  if (addFillColorToAllEbolaCountries) {
+    const percentage = ebolaCountriesCaseCounts[geoProperties.NAME] / scale;
+    // If projections are enabled, return the color value using the getSnapshotProjectionsColor function.
+    // Otherwise return the color value using the getSnapshotColor function.
+    return filters.projection
+      ? getSnapshotProjectionsColor(percentage)
+      : getSnapshotColor(percentage);
+  } else if (addFillColorToSelectedCountry) {
     const percentage = ebolaCountriesCaseCounts[geoProperties.NAME] / scale;
     // If projections are enabled, return the color value using the getSnapshotProjectionsColor function.
     // Otherwise return the color value using the getSnapshotColor function.
