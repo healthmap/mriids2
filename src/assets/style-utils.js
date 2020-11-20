@@ -16,4 +16,9 @@ export const media = {
       ${css(...args)}
     }
   `,
+  largeScreen: (...args) => css`
+    @media (min-width: 1280px) {
+      ${css(...args)}
+    }
+  `,
 };
