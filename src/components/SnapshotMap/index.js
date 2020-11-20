@@ -32,41 +32,37 @@ const SnapshotMap = ({ ebolaData, filters }) => {
         <ZoomableGroup zoom={zoomLevel}>
           <Geographies geography="mapData/world-50m-simplified.json">
             {({ geographies }) =>
-              geographies.map((geo) => (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  style={{
-                    default: {
-                      fill: getGeographyFillColor(
-                        ebolaData,
-                        filters,
-                        geo.properties
-                      ),
-                      opacity: 1,
-                      transition: "all .5s ease",
-                    },
-                    hover: {
-                      fill: getGeographyFillColor(
-                        ebolaData,
-                        filters,
-                        geo.properties
-                      ),
-                      opacity: 0.8,
-                      transition: "all .5s ease",
-                    },
-                    pressed: {
-                      fill: getGeographyFillColor(
-                        ebolaData,
-                        filters,
-                        geo.properties
-                      ),
-                      opacity: 0.8,
-                      transition: "all .5s ease",
-                    },
-                  }}
-                />
-              ))
+              geographies.map((geo) => {
+                //  Gets the fillColor for each country (geo).
+                const fillColor = getGeographyFillColor(
+                  ebolaData,
+                  filters,
+                  geo.properties
+                );
+                return (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    style={{
+                      default: {
+                        fill: fillColor,
+                        opacity: 1,
+                        transition: "all .5s ease",
+                      },
+                      hover: {
+                        fill: fillColor,
+                        opacity: 0.8,
+                        transition: "all .5s ease",
+                      },
+                      pressed: {
+                        fill: fillColor,
+                        opacity: 0.8,
+                        transition: "all .5s ease",
+                      },
+                    }}
+                  />
+                );
+              })
             }
           </Geographies>
         </ZoomableGroup>
