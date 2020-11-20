@@ -89,20 +89,18 @@ export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
   );
   // Get the scale using the ebolaCountriesCaseCounts object.
   const scale = getScale(ebolaCountriesCaseCounts);
+  const percentage = ebolaCountriesCaseCounts[geoProperties.NAME] / scale;
+  // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
+  // Otherwise get the fillColor value using the getSnapshotColor function.
+  const fillColor = filters.projection
+    ? getSnapshotProjectionsColor(percentage)
+    : getSnapshotColor(percentage);
   if (addFillColorToAllEbolaCountries) {
-    const percentage = ebolaCountriesCaseCounts[geoProperties.NAME] / scale;
-    // If projections are enabled, return the color value using the getSnapshotProjectionsColor function.
-    // Otherwise return the color value using the getSnapshotColor function.
-    return filters.projection
-      ? getSnapshotProjectionsColor(percentage)
-      : getSnapshotColor(percentage);
+    // Returns the fillColor for all of the countries in the ebolaCountries array.
+    return fillColor;
   } else if (addFillColorToSelectedCountry) {
-    const percentage = ebolaCountriesCaseCounts[geoProperties.NAME] / scale;
-    // If projections are enabled, return the color value using the getSnapshotProjectionsColor function.
-    // Otherwise return the color value using the getSnapshotColor function.
-    return filters.projection
-      ? getSnapshotProjectionsColor(percentage)
-      : getSnapshotColor(percentage);
+    // Only returns the fill color for the country selected in filters.country.
+    return fillColor;
   } else {
     // If the NAME of the geography is not in the ebolaCountries array, add the fill color below.
     return "#FCF1DD";
