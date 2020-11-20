@@ -14,7 +14,7 @@ import MapZoomButtons from "../MapZoomButtons";
 import { getGeographyFillColor } from "../../utils/snapshotMapHelpers";
 
 const SnapshotMap = ({ ebolaData, filters }) => {
-  const [zoomLevel, changeZoomLevel] = useState(5);
+  const [zoomLevel, changeZoomLevel] = useState(9);
   const [showCaseCounts, toggleShowHideCaseCounts] = useState(true);
 
   const showHideCaseCounts = () => {
@@ -29,7 +29,7 @@ const SnapshotMap = ({ ebolaData, filters }) => {
         stroke="#000000"
         strokeWidth={0.05}
       >
-        <ZoomableGroup zoom={zoomLevel}>
+        <ZoomableGroup zoom={zoomLevel} center={[-10, 4]} maxZoom={9}>
           <Geographies geography="mapData/world-50m-simplified.json">
             {({ geographies }) =>
               geographies.map((geo) => {
