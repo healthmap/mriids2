@@ -14,8 +14,14 @@ import MapZoomButtons from "../MapZoomButtons";
 import { getGeographyFillColor } from "../../utils/snapshotMapHelpers";
 
 const SnapshotMap = ({ ebolaData, filters }) => {
-  const [zoomLevel, changeZoomLevel] = useState(9);
+  const [zoomLevel, setZoomLevel] = useState(9);
   const [showCaseCounts, toggleShowHideCaseCounts] = useState(true);
+
+  const changeZoomLevel = (newZoomLevel) => {
+    //  This prevents zooming in to a level higher than 9 and lower than 1.
+    const validNewZoomLevel = newZoomLevel <= 9 && newZoomLevel >= 1;
+    return validNewZoomLevel ? setZoomLevel(newZoomLevel) : null;
+  };
 
   const showHideCaseCounts = () => {
     toggleShowHideCaseCounts(!showCaseCounts);
