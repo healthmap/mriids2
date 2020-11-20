@@ -78,11 +78,11 @@ export const getSnapshotProjectionsColor = (caseCountValue) => {
 
 export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
   const ebolaCountries = ["Guinea", "Liberia", "Sierra Leone"];
-  const addFillColorToAllEbolaCountries =
+  const getFillColorForAllEbolaCountries =
     ebolaCountries.includes(geoProperties.NAME) &&
     filters.country === "All" &&
     filters.outbreak === "Ebola Outbreak";
-  const addFillColorToSelectedCountry =
+  const getFillColorForSelectedCountry =
     filters.country !== "All" &&
     filters.outbreak === "Ebola Outbreak" &&
     filters.country === geoProperties.NAME;
@@ -99,10 +99,10 @@ export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
   const fillColor = filters.projection
     ? getSnapshotProjectionsColor(percentage)
     : getSnapshotColor(percentage);
-  if (addFillColorToAllEbolaCountries) {
+  if (getFillColorForAllEbolaCountries) {
     // Returns the fillColor for all of the countries in the ebolaCountries array.
     return fillColor;
-  } else if (addFillColorToSelectedCountry) {
+  } else if (getFillColorForSelectedCountry) {
     // Only returns the fill color for the country selected in filters.country.
     return fillColor;
   } else {
