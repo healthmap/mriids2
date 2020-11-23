@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import { connect } from "react-redux";
 import {
   ComposableMap,
@@ -12,10 +12,12 @@ import ViewToggle from "../ViewToggle";
 import SnapshotMapCaseCountLegend from "../SnapshotMapCaseCountLegend";
 import MapZoomButtons from "../MapZoomButtons";
 import { getGeographyFillColor } from "../../utils/snapshotMapHelpers";
+import ReactTooltip from "react-tooltip";
 
 const SnapshotMap = ({ ebolaData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(9);
   const [showCaseCounts, toggleShowHideCaseCounts] = useState(true);
+  const [toolTipContent, setToolTipContent] = useState("");
 
   const changeZoomLevel = (newZoomLevel) => {
     //  This prevents zooming in to a level higher than 9 and lower than 1.
@@ -30,11 +32,13 @@ const SnapshotMap = ({ ebolaData, filters }) => {
   return (
     <SnapshotMapContainer>
       <ViewToggle />
+      <ReactTooltip>{toolTipContent}</ReactTooltip>
       <ComposableMap
         projection="geoMercator"
         style={{ backgroundColor: "#D6E4EE" }}
         stroke="#000000"
         strokeWidth={0.02}
+        data-tip=""
       >
         <ZoomableGroup zoom={zoomLevel} center={[-10, 2]} maxZoom={9}>
           <Geographies geography="mapData/world_50m.json">
@@ -50,6 +54,8 @@ const SnapshotMap = ({ ebolaData, filters }) => {
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
+                    onMouseEnter={() => setToolTipContent(geo.properties.NAME)}
+                    onMouseLeave={() => setToolTipContent("")}
                     style={{
                       default: {
                         fill: fillColor,
@@ -81,6 +87,8 @@ const SnapshotMap = ({ ebolaData, filters }) => {
       <MapZoomButtons
         zoomLevel={zoomLevel}
         changeZoomFunction={changeZoomLevel}
+        maxZoom={9}
+        minZoom={1}
       />
     </SnapshotMapContainer>
   );
@@ -91,4 +99,5 @@ const mapStateToProps = (state) => ({
   filters: state.filters,
 });
 
-export default connect(mapStateToProps)(SnapshotMap);
+// Wrapped SnapshotMap component in memo() as recommended here: https://www.react-simple-maps.io/examples/map-chart-with-tooltip/
+export default connect(mapStateToProps)(memo(SnapshotMap));
