@@ -115,18 +115,16 @@ export const getCountryToolTipContent = (
   ebolaData,
   filters,
   countryName,
-  showCaseCounts
+  showCaseCounts = false
 ) => {
   const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
     ebolaData,
     filters
   );
   const countryCaseCount = ebolaCountriesCaseCounts[countryName];
-  let countryToolTipContent;
-  if (countryCaseCount && showCaseCounts) {
-    countryToolTipContent = `${countryName} - ${countryCaseCount}`;
-  } else {
-    countryToolTipContent = countryName;
-  }
-  return countryToolTipContent;
+  // If the country has a case count and showCaseCounts is true, return the country name and case count.
+  // Else, just return the country name.
+  return countryCaseCount && showCaseCounts
+    ? `${countryName} - ${countryCaseCount}`
+    : countryName;
 };
