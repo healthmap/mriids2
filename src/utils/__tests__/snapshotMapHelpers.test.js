@@ -1,41 +1,41 @@
 import {
-  getMaxValueForSnapshotLegend,
+  getScale,
   getSnapshotColor,
   getSnapshotProjectionsColor,
 } from "../snapshotMapHelpers";
 
-describe("Tests for getMaxValueForSnapshotLegend helper function", () => {
-  test("returns maxLegendValue of 12000", () => {
+describe("Tests for getScale helper function", () => {
+  test("returns scaleValue of 12000", () => {
     const countryCaseCounts = {
       Guinea: 2452,
       Liberia: 6738,
       "Sierra Leone": 11387,
     };
-    expect(getMaxValueForSnapshotLegend(countryCaseCounts)).toEqual(12000);
+    expect(getScale(countryCaseCounts)).toEqual(12000);
   });
-  test("returns maxLegendValue of 4500", () => {
+  test("returns scaleValue of 4500", () => {
     const countryCaseCounts = {
       Guinea: 0,
       Liberia: 0,
       "Sierra Leone": 4400,
     };
-    expect(getMaxValueForSnapshotLegend(countryCaseCounts)).toEqual(4500);
+    expect(getScale(countryCaseCounts)).toEqual(4500);
   });
-  test("returns maxLegendValue of 900", () => {
+  test("returns scaleValue of 900", () => {
     const countryCaseCounts = {
       Guinea: 0,
       Liberia: 850,
       "Sierra Leone": 0,
     };
-    expect(getMaxValueForSnapshotLegend(countryCaseCounts)).toEqual(900);
+    expect(getScale(countryCaseCounts)).toEqual(900);
   });
-  test("returns maxLegendValue of 450", () => {
+  test("returns scaleValue of 450", () => {
     const countryCaseCounts = {
       Guinea: 430,
       Liberia: 0,
       "Sierra Leone": 0,
     };
-    expect(getMaxValueForSnapshotLegend(countryCaseCounts)).toEqual(450);
+    expect(getScale(countryCaseCounts)).toEqual(450);
   });
 });
 

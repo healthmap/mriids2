@@ -1,21 +1,23 @@
-export const getMaxValueForSnapshotLegend = (countryCaseCount) => {
-  // Rounds up the highest value in the countryCaseCount and returns the max number for the case count map legend.
+import { getEbolaCountriesCaseCounts } from "./ebolaDataHelpers";
+
+export const getScale = (countryCaseCount) => {
+  // Gets the scaleValue to be used by the snapshotMap and map legend.
   const maxCaseCountValue = Math.max(...Object.values(countryCaseCount));
-  let maxLegendValue;
+  let scaleValue;
   if (maxCaseCountValue < 20) {
-    maxLegendValue = 20;
+    scaleValue = 20;
   } else if (maxCaseCountValue < 50) {
-    maxLegendValue = 50;
+    scaleValue = 50;
   } else if (maxCaseCountValue < 500) {
-    maxLegendValue = Math.ceil(maxCaseCountValue / 50) * 50;
+    scaleValue = Math.ceil(maxCaseCountValue / 50) * 50;
   } else if (maxCaseCountValue < 1000) {
-    maxLegendValue = Math.ceil(maxCaseCountValue / 100) * 100;
+    scaleValue = Math.ceil(maxCaseCountValue / 100) * 100;
   } else if (maxCaseCountValue < 5000) {
-    maxLegendValue = Math.ceil(maxCaseCountValue / 500) * 500;
+    scaleValue = Math.ceil(maxCaseCountValue / 500) * 500;
   } else {
-    maxLegendValue = Math.ceil(maxCaseCountValue / 1000) * 1000;
+    scaleValue = Math.ceil(maxCaseCountValue / 1000) * 1000;
   }
-  return maxLegendValue;
+  return scaleValue;
 };
 
 export const getSnapshotColor = (caseCountValue) => {
@@ -72,4 +74,57 @@ export const getSnapshotProjectionsColor = (caseCountValue) => {
     color = "#259994";
   }
   return color;
+};
+
+export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
+  const ebolaCountries = ["Guinea", "Liberia", "Sierra Leone"];
+  const getFillColorForAllEbolaCountries =
+    ebolaCountries.includes(geoProperties.NAME) &&
+    filters.country === "All" &&
+    filters.outbreak === "Ebola Outbreak";
+  const getFillColorForSelectedCountry =
+    filters.country !== "All" &&
+    filters.outbreak === "Ebola Outbreak" &&
+    filters.country === geoProperties.NAME;
+  // Get the case count for the 3 ebolaCountries.
+  const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
+    ebolaData,
+    filters
+  );
+  // Get the scale using the ebolaCountriesCaseCounts object.
+  const scale = getScale(ebolaCountriesCaseCounts);
+  const percentage = ebolaCountriesCaseCounts[geoProperties.NAME] / scale;
+  // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
+  // Otherwise get the fillColor value using the getSnapshotColor function.
+  const fillColor = filters.projection
+    ? getSnapshotProjectionsColor(percentage)
+    : getSnapshotColor(percentage);
+  if (getFillColorForAllEbolaCountries) {
+    // Returns the fillColor for all of the countries in the ebolaCountries array.
+    return fillColor;
+  } else if (getFillColorForSelectedCountry) {
+    // Only returns the fill color for the country selected in filters.country.
+    return fillColor;
+  } else {
+    // If the NAME of the geography is not in the ebolaCountries array, add the fill color below.
+    return "#FCF1DD";
+  }
+};
+
+export const getCountryToolTipContent = (
+  ebolaData,
+  filters,
+  countryName,
+  showCaseCounts = false
+) => {
+  const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
+    ebolaData,
+    filters
+  );
+  const countryCaseCount = ebolaCountriesCaseCounts[countryName];
+  // If the country has a case count and showCaseCounts is true, return the country name and case count.
+  // Else, just return the country name.
+  return countryCaseCount && showCaseCounts
+    ? `${countryName} - ${countryCaseCount}`
+    : countryName;
 };
