@@ -19,7 +19,6 @@ export const MapLegendWrapperSnapshot = styled.div`
   left: 2rem;
   bottom: 7rem;
   width: 9rem;
-  overflow: hidden;
   > div {
     width: 100%;
     height: 100%;
