@@ -6,12 +6,9 @@ export const ContentWrapper = styled.div`
   padding: 0 3.2rem;
 `;
 
-export const FirstPageContainer = styled.div`
-  padding: 0 3.2rem;
-`;
+export const FirstPageContainer = styled.div``;
 
 export const SecondPageContainer = styled.div`
-  padding: 0 3.2rem;
   background: #fafbfb;
 `;
 
@@ -25,13 +22,19 @@ export const TeamMemberWrapper = styled.div`
 export const Title = styled.h2`
   font-size: 4.8rem;
   font-weight: 700;
-  margin: 0 0 3.2rem;
+  text-align: center;
+  margin: 0 auto 3.2rem;
 `;
 
 export const BodyLarge = styled.p`
+  font-size: 1.8rem;
+  line-height: 1.7777777;
+  margin: 0 auto;
+  ${media.smallScreen`
   font-size: 2.4rem;
   line-height: 1.6666666666666666;
-  margin: 0;
+  `}
+
   ${media.mediumScreen`
     max-width: calc(8 / 12 * 100%);
   `}

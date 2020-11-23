@@ -15,13 +15,17 @@ export const Title = styled.h2`
   font-size: 4.8rem;
   font-weight: 700;
   margin: 0 0 3.2rem;
+  text-align: center;
 `;
 
 export const SectionTitle = styled.h2`
   font-size: 3.2rem;
   line-height: 1.5;
   font-weight: 700;
-  margin: 0 0 3.2rem;
+  margin: 0 auto 3.2rem;
+  ${media.mediumScreen`
+    max-width: calc(8 / 12 * 100%);
+  `}
   &:after {
     content: "";
     display: block;
@@ -32,9 +36,13 @@ export const SectionTitle = styled.h2`
 `;
 
 export const BodyLarge = styled.p`
+  font-size: 1.8rem;
+  line-height: 1.7777777;
+  margin: 0 auto;
+  ${media.smallScreen`
   font-size: 2.4rem;
   line-height: 1.6666666666666666;
-  margin: 0;
+  `}
   ${media.mediumScreen`
     max-width: calc(8 / 12 * 100%);
   `}
@@ -44,7 +52,7 @@ export const Body = styled.p`
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.75;
-  margin: 2.4rem 0;
+  margin: 2.4rem auto;
   ${media.mediumScreen`
     max-width: calc(8 / 12 * 100%);
   `}
