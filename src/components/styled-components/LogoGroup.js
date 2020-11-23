@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { media } from "../../assets/style-utils";
 
 export const ContentWrapper = styled.div`
   max-width: 1400px;
