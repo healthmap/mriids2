@@ -136,11 +136,6 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       >
         Ebola Outbreak
       </option>
-      <option
-        value="COVID 19"
-      >
-        COVID 19
-      </option>
     </select>
   </div>
   <div
@@ -318,11 +313,6 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
         value="Ebola Outbreak"
       >
         Ebola Outbreak
-      </option>
-      <option
-        value="COVID 19"
-      >
-        COVID 19
       </option>
     </select>
   </div>
