@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { FirstPageContainer, SecondPageContainer, TeamMemberWrapper, Title, BodyText,  } from "../Team";
+import { FirstPageContainer, SecondPageContainer, TeamMemberWrapper, Title, BodyLarge,  } from "../Team";
 
 describe("Tests for Team components", () => {
   test("render FirstPageContainer", () => {
@@ -15,8 +15,8 @@ describe("Tests for Team components", () => {
   test("render Title", () => {
     shallow(<Title />);
   });
-  test("render BodyText", () => {
-    shallow(<BodyText />);
+  test("render BodyLarge", () => {
+    shallow(<BodyLarge />);
   });
 });
 

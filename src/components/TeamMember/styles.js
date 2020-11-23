@@ -35,6 +35,9 @@ export const TeamMemberContentWrapper = styled.div`
   ${media.mediumScreen`
     max-width: calc(33.333333% - 3.2rem);
   `}
+  ${media.largeScreen`
+    max-width: calc(25% - 3.2rem);
+  `}
 `;
 
 export const TeamMemberTextWrapper = styled.div`

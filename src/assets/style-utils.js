@@ -7,12 +7,17 @@ export const media = {
     }
   `,
   smallScreen: (...args) => css`
-    @media (max-width: 1024px) {
+    @media (min-width: 768px) {
       ${css(...args)}
     }
   `,
   mediumScreen: (...args) => css`
     @media (min-width: 1024px) {
+      ${css(...args)}
+    }
+  `,
+  largeScreen: (...args) => css`
+    @media (min-width: 1280px) {
       ${css(...args)}
     }
   `,
