@@ -110,3 +110,23 @@ export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
     return "#FCF1DD";
   }
 };
+
+export const getCountryToolTipContent = (
+  ebolaData,
+  filters,
+  countryName,
+  showCaseCounts
+) => {
+  const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
+    ebolaData,
+    filters
+  );
+  const countryCaseCount = ebolaCountriesCaseCounts[countryName];
+  let countryToolTipContent;
+  if (countryCaseCount && showCaseCounts) {
+    countryToolTipContent = `${countryName} - ${countryCaseCount}`;
+  } else {
+    countryToolTipContent = countryName;
+  }
+  return countryToolTipContent;
+};

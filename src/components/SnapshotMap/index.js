@@ -11,8 +11,11 @@ import { SnapshotMapContainer } from "../styled-components/MapContainers";
 import ViewToggle from "../ViewToggle";
 import SnapshotMapCaseCountLegend from "../SnapshotMapCaseCountLegend";
 import MapZoomButtons from "../MapZoomButtons";
-import { getGeographyFillColor } from "../../utils/snapshotMapHelpers";
 import ReactTooltip from "react-tooltip";
+import {
+  getGeographyFillColor,
+  getCountryToolTipContent,
+} from "../../utils/snapshotMapHelpers";
 
 const SnapshotMap = ({ ebolaData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(9);
@@ -54,7 +57,16 @@ const SnapshotMap = ({ ebolaData, filters }) => {
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    onMouseEnter={() => setToolTipContent(geo.properties.NAME)}
+                    onMouseEnter={() => {
+                      setToolTipContent(
+                        getCountryToolTipContent(
+                          ebolaData,
+                          filters,
+                          geo.properties.NAME,
+                          showCaseCounts
+                        )
+                      );
+                    }}
                     onMouseLeave={() => setToolTipContent("")}
                     style={{
                       default: {
