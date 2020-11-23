@@ -58,6 +58,8 @@ class EbolaRiskMap extends Component {
         <MapZoomButtons
           zoomLevel={this.state.viewport.zoom}
           changeZoomFunction={this.changeZoomLevel}
+          maxZoom={20}
+          minZoom={2}
         />
       </EbolaRiskMapContainer>
     );
