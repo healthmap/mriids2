@@ -19,17 +19,12 @@ import {
 
 const SnapshotMap = ({ ebolaData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(9);
-  const [showCaseCounts, toggleShowHideCaseCounts] = useState(true);
   const [toolTipContent, setToolTipContent] = useState("");
 
   const changeZoomLevel = (newZoomLevel) => {
     //  This prevents zooming in to a level higher than 9 and lower than 1.
     const validNewZoomLevel = newZoomLevel <= 9 && newZoomLevel >= 1;
     return validNewZoomLevel ? setZoomLevel(newZoomLevel) : null;
-  };
-
-  const showHideCaseCounts = () => {
-    toggleShowHideCaseCounts(!showCaseCounts);
   };
 
   return (
@@ -62,8 +57,7 @@ const SnapshotMap = ({ ebolaData, filters }) => {
                         getCountryToolTipContent(
                           ebolaData,
                           filters,
-                          geo.properties.NAME,
-                          showCaseCounts
+                          geo.properties.NAME
                         )
                       );
                     }}
@@ -92,10 +86,7 @@ const SnapshotMap = ({ ebolaData, filters }) => {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-      <SnapshotMapCaseCountLegend
-        showCaseCounts={showCaseCounts}
-        toggleCaseCountFunction={showHideCaseCounts}
-      />
+      <SnapshotMapCaseCountLegend />
       <MapZoomButtons
         zoomLevel={zoomLevel}
         changeZoomFunction={changeZoomLevel}
