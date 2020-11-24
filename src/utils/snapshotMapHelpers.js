@@ -111,20 +111,15 @@ export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
   }
 };
 
-export const getCountryToolTipContent = (
-  ebolaData,
-  filters,
-  countryName,
-  showCaseCounts = false
-) => {
+export const getCountryToolTipContent = (ebolaData, filters, countryName) => {
   const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
     ebolaData,
     filters
   );
   const countryCaseCount = ebolaCountriesCaseCounts[countryName];
-  // If the country has a case count and showCaseCounts is true, return the country name and case count.
+  // If the country has a case count, return the country name and case count.
   // Else, just return the country name.
-  return countryCaseCount && showCaseCounts
+  return countryCaseCount
     ? `${countryName} - ${countryCaseCount}`
     : countryName;
 };

@@ -7,19 +7,13 @@ import {
   getSnapshotProjectionsColor,
 } from "../../utils/snapshotMapHelpers";
 import { getEbolaCountriesCaseCounts } from "../../utils/ebolaDataHelpers";
-import CaseCountToggle from "../CaseCountToggle";
 import {
   MapLegendWrapperSnapshot,
   MapLegendItemsWrapper,
 } from "../styled-components/MapLegendWrappers";
 import { BlockDropshadow } from "../styled-components/Block";
 
-const SnapshotMapCaseCountLegend = ({
-  ebolaData,
-  filters,
-  showCaseCounts,
-  toggleCaseCountFunction,
-}) => {
+const SnapshotMapCaseCountLegend = ({ ebolaData, filters }) => {
   // Getting the number of case counts for each country.
   // We need this to get the max value for the legend.
   const countriesEbolaCaseCounts = getEbolaCountriesCaseCounts(
@@ -60,10 +54,6 @@ const SnapshotMapCaseCountLegend = ({
       <BlockDropshadow>
         <h3>{legendHeader}</h3>
         <MapLegendItemsWrapper>{renderLegendLevels()}</MapLegendItemsWrapper>
-        <CaseCountToggle
-          showCaseCount={showCaseCounts}
-          toggleCaseCountFunction={toggleCaseCountFunction}
-        />
       </BlockDropshadow>
     </MapLegendWrapperSnapshot>
   );

@@ -21,7 +21,7 @@ export const MapLegendWrapperSnapshot = styled.div`
   width: 9rem;
   > div {
     width: 100%;
-    height: 100%;
+    height: 75%;
   }
 `;
 
