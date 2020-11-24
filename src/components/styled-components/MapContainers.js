@@ -12,6 +12,6 @@ export const EbolaRiskMapContainer = styled.div`
   flex: none;
   position: relative;
   padding-left: ${(props) => props.theme.sidebarWidth};
-  height: 85rem; /* $risk-height */
+  height: calc(100vh - 5.6rem); 
   overflow: hidden;
 `;
