@@ -19,6 +19,10 @@ import {
   getAllFutureProjectedCasesCount,
   getCountryFutureProjectedCasesCount,
 } from "../../utils/ebolaDataHelpers";
+import {
+  ebolaOutbreakCountries,
+  allCountries,
+} from "../../constants/Countries";
 
 const Sidebar = ({
   filters,
@@ -45,14 +49,18 @@ const Sidebar = ({
   const showEbolaSummary = filters.outbreak === "Ebola Outbreak";
   const showEbolaRiskList =
     filters.view === "risk" && filters.outbreak === "Ebola Outbreak";
-
+  // Country options for the country select. If "Ebola Outbreak" is selected, only show options for the 3 ebolaOutbreakCountries.
+  const countryOptions =
+    filters.outbreak === "Ebola Outbreak"
+      ? ["All", ...ebolaOutbreakCountries]
+      : ["All", ...allCountries];
   return (
     <Styled.SidebarWrapper>
       <SelectCountryWrapper>
         <Select
           name="location"
           type="location"
-          options={["All", "Guinea", "Liberia", "Sierra Leone"]}
+          options={countryOptions}
           value={filters.country}
           changeFunction={changeCountry}
         />
@@ -61,7 +69,7 @@ const Sidebar = ({
         <Select
           name="outbreak"
           type="outbreak"
-          options={["Ebola Outbreak"]}
+          options={["Ebola Outbreak", "COVID 19"]}
           value={filters.outbreak}
           changeFunction={changeOutbreak}
         />
