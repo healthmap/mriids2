@@ -1,4 +1,5 @@
 import { getEbolaCountriesCaseCounts } from "./ebolaDataHelpers";
+import { ebolaOutbreakCountries } from "../constants/Countries";
 
 export const getScale = (countryCaseCount) => {
   // Gets the scaleValue to be used by the snapshotMap and map legend.
@@ -77,16 +78,15 @@ export const getSnapshotProjectionsColor = (caseCountValue) => {
 };
 
 export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
-  const ebolaCountries = ["Guinea", "Liberia", "Sierra Leone"];
   const getFillColorForAllEbolaCountries =
-    ebolaCountries.includes(geoProperties.NAME) &&
+    ebolaOutbreakCountries.includes(geoProperties.NAME) &&
     filters.country === "All" &&
     filters.outbreak === "Ebola Outbreak";
   const getFillColorForSelectedCountry =
     filters.country !== "All" &&
     filters.outbreak === "Ebola Outbreak" &&
     filters.country === geoProperties.NAME;
-  // Get the case count for the 3 ebolaCountries.
+  // Get the case count for the 3 ebolaOutbreakCountries.
   const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
     ebolaData,
     filters
@@ -100,13 +100,13 @@ export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
     ? getSnapshotProjectionsColor(percentage)
     : getSnapshotColor(percentage);
   if (getFillColorForAllEbolaCountries) {
-    // Returns the fillColor for all of the countries in the ebolaCountries array.
+    // Returns the fillColor for all of the countries in the ebolaOutbreakCountries array.
     return fillColor;
   } else if (getFillColorForSelectedCountry) {
     // Only returns the fill color for the country selected in filters.country.
     return fillColor;
   } else {
-    // If the NAME of the geography is not in the ebolaCountries array, add the fill color below.
+    // If the NAME of the geography is not in the ebolaOutbreakCountries array, add the fill color below.
     return "#FCF1DD";
   }
 };

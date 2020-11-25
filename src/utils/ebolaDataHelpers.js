@@ -1,5 +1,6 @@
+import { ebolaOutbreakCountries } from "../constants/Countries";
+
 export const prepareEbolaData = (csvData) => {
-  const countries = ["Guinea", "Liberia", "Sierra Leone"];
   const keys = ["y"];
   const projections = ["oneWeek", "twoWeeks", "threeWeeks", "fourWeeks"];
   const projectionsMapping = {
@@ -11,7 +12,7 @@ export const prepareEbolaData = (csvData) => {
 
   let newData = {};
 
-  countries.forEach((country) => {
+  ebolaOutbreakCountries.forEach((country) => {
     newData[country] = {};
     csvData.forEach((row) => {
       newData[country][row.projection_from] = {};
@@ -39,13 +40,12 @@ export const isDateWithinFiltersDateRange = (weekDateString, dateRange) => {
 };
 
 export const getEbolaCountriesCaseCounts = (ebolaData, filters) => {
-  const countries = ["Guinea", "Liberia", "Sierra Leone"];
   let countryCaseCount = {
     Guinea: 0,
     Liberia: 0,
     "Sierra Leone": 0,
   };
-  countries.forEach((country) => {
+  ebolaOutbreakCountries.forEach((country) => {
     // Only run this block if ebolaData is not an empty object.
     if (Object.keys(ebolaData).length) {
       // Select the ebolaData for the specific country.
