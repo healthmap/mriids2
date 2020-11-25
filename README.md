@@ -6,4 +6,5 @@
  2. `cd` into the `mriids2` repo.
  3. Create a `.env` file at the root and add the contents from the `env.sample` file.
  4. Run `npm install` to install the dependencies.
- 5. Run `npm start` to start the app in `http://localhost:3000/`
+ 5. Run `npm start` to run the app locally in `http://localhost:3000/`
+ 6. To build the application for deployment, run `npm run build`. This will create a `build` directory in the root of the project which has the optimized production files.
