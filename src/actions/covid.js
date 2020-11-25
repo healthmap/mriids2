@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as types from "../constants/ActionTypes";
+import { parseCovidData } from "../utils/covidDataHelpers";
 import { allCountries } from "../constants/Countries";
 
 export const fetchCovidData = () => (dispatch) => {
@@ -9,11 +10,13 @@ export const fetchCovidData = () => (dispatch) => {
   const countriesString = allCountries.join();
 
   return axios
-    .get(`https://disease.sh/v3/covid-19/historical/${countriesString}`)
+    .get(
+      `https://disease.sh/v3/covid-19/historical/${countriesString}?lastdays=all`
+    )
     .then((response) => {
       dispatch({
         type: types.FETCH_COVID_DATA_SUCCESS,
-        payload: response.data,
+        payload: parseCovidData(response.data),
       });
     })
     .catch((error) => {
