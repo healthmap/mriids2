@@ -1,6 +1,6 @@
 import {
   getEbolaCountriesCaseCounts,
-  getDiseaseCaseCount,
+  getEbolaCaseCount,
   getAllFutureProjectedCasesCount,
   getCountryFutureProjectedCasesCount,
 } from "../ebolaDataHelpers";
@@ -46,15 +46,15 @@ describe("Tests for getEbolaCountriesCaseCounts", () => {
   });
 });
 
-describe("Tests for getDiseaseCaseCount", () => {
+describe("Tests for getEbolaCaseCount", () => {
   test("should return count of cases in all countries", () => {
     expect(
-      getDiseaseCaseCount(allCountriesEbolaData, reduxInitialState.filters)
+      getEbolaCaseCount(allCountriesEbolaData, reduxInitialState.filters)
     ).toBe(378);
   });
   test("should only return count of cases in Guinea", () => {
     expect(
-      getDiseaseCaseCount(allCountriesEbolaData, testGuineaFiltersState)
+      getEbolaCaseCount(allCountriesEbolaData, testGuineaFiltersState)
     ).toBe(126);
   });
 });

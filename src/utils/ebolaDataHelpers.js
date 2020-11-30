@@ -65,7 +65,7 @@ export const getEbolaCountriesCaseCounts = (ebolaData, filters) => {
   return countryCaseCount;
 };
 
-export const getDiseaseCaseCount = (diseaseData, filters) => {
+export const getEbolaCaseCount = (diseaseData, filters) => {
   let diseaseCaseCount = 0;
   const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
     diseaseData,

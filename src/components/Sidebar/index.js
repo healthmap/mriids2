@@ -15,7 +15,7 @@ import {
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
 import {
-  getDiseaseCaseCount,
+  getEbolaCaseCount,
   getAllFutureProjectedCasesCount,
   getCountryFutureProjectedCasesCount,
 } from "../../utils/ebolaDataHelpers";
@@ -40,7 +40,7 @@ const Sidebar = ({
     changeCountryFilter("All");
   };
   // This is the ebola case count for the ReportedCases child component
-  const diseaseCaseCount = getDiseaseCaseCount(ebolaData, filters);
+  const diseaseCaseCount = getEbolaCaseCount(ebolaData, filters);
   // This is the projected ebola case count for the ReportedCases child component
   const projectedCaseCount =
     filters.country === "All"
