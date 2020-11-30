@@ -56,7 +56,7 @@ describe("Tests for the getLastObjectKey helper function", () => {
   });
 });
 
-describe("Tests for getAllCountriesCovidCaseCount helper function", () => {
+describe("Tests for getCovidCaseCount helper function", () => {
   test("should return 92430 which is the case count for both countries", () => {
     expect(
       getCovidCaseCount(testParsedCovidData, allCountriesCovidOutbreakFilters)
