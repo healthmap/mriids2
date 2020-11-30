@@ -1,5 +1,4 @@
 import {
-  isDateWithinFiltersDateRange,
   getEbolaCountriesCaseCounts,
   getDiseaseCaseCount,
   getAllFutureProjectedCasesCount,
@@ -15,25 +14,6 @@ import {
 } from "../testData";
 
 import { reduxInitialState } from "../../constants/CommonTestData";
-
-describe("Tests for isDateWithinFiltersDateRange", () => {
-  test("should return true because date is within filterDates", () => {
-    expect(
-      isDateWithinFiltersDateRange(
-        "2014-10-13",
-        reduxInitialState.filters.dateRange
-      )
-    ).toEqual(true);
-  });
-  test("should return false because date is outside filterDates", () => {
-    expect(
-      isDateWithinFiltersDateRange(
-        "2013-10-13",
-        reduxInitialState.filters.dateRange
-      )
-    ).toEqual(false);
-  });
-});
 
 describe("Tests for getEbolaCountriesCaseCounts", () => {
   test("should return data in expected format", () => {

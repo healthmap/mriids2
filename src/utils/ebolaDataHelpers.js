@@ -1,4 +1,5 @@
 import { ebolaOutbreakCountries } from "../constants/Countries";
+import { isDateWithinFiltersDateRange } from "./dateHelpers";
 
 export const prepareEbolaData = (csvData) => {
   const keys = ["y"];
@@ -31,12 +32,6 @@ export const prepareEbolaData = (csvData) => {
     });
   });
   return newData;
-};
-
-export const isDateWithinFiltersDateRange = (weekDateString, dateRange) => {
-  // Checks to see if the weekDateString is a date that falls within the dateRange from the filters.
-  const dateValue = new Date(weekDateString);
-  return dateValue > dateRange.from && dateValue < dateRange.to;
 };
 
 export const getEbolaCountriesCaseCounts = (ebolaData, filters) => {

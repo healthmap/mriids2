@@ -1,5 +1,9 @@
-import { getNumberOfWeeksBetweenDates } from "../dateHelpers";
+import {
+  getNumberOfWeeksBetweenDates,
+  isDateWithinFiltersDateRange,
+} from "../dateHelpers";
 import { ebolaInitialDateRange } from "../../constants/DateRanges";
+import { reduxInitialState } from "../../constants/CommonTestData";
 
 describe("tests for the getNumberOfWeeksBetweenDates helper function", () => {
   test("using date strings, the dates should be 2 weeks apart", () => {
@@ -22,5 +26,24 @@ describe("tests for the getNumberOfWeeksBetweenDates helper function", () => {
         ebolaInitialDateRange.to
       )
     ).toBe(72);
+  });
+});
+
+describe("Tests for isDateWithinFiltersDateRange", () => {
+  test("should return true because date is within filterDates", () => {
+    expect(
+      isDateWithinFiltersDateRange(
+        "2014-10-13",
+        reduxInitialState.filters.dateRange
+      )
+    ).toEqual(true);
+  });
+  test("should return false because date is outside filterDates", () => {
+    expect(
+      isDateWithinFiltersDateRange(
+        "2013-10-13",
+        reduxInitialState.filters.dateRange
+      )
+    ).toEqual(false);
   });
 });
