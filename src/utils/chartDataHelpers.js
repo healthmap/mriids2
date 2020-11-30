@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { isDateWithinFiltersDateRange } from "./ebolaDataHelpers";
+import { isDateWithinFiltersDateRange } from "./dateHelpers";
 
 const getChartColumns = (outbreakName, projection = false) => {
   const columns = [
