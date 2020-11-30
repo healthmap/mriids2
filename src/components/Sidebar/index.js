@@ -36,6 +36,8 @@ const Sidebar = ({
   };
   const changeOutbreak = (selectedValue) => {
     changeOutbreakFilter(selectedValue.target.value);
+    // This resets the country filter to 'All' whenever you switch between outbreaks
+    changeCountryFilter("All");
   };
   // This is the ebola case count for the ReportedCases child component
   const diseaseCaseCount = getDiseaseCaseCount(ebolaData, filters);
