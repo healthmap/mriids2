@@ -8,7 +8,7 @@ const initialState = {
   },
   ebolaDataCombined: {
     isFetching: 0,
-    data: {},
+    data: [],
     error: {},
   },
   riskData: {

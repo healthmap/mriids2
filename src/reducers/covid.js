@@ -3,7 +3,7 @@ import * as types from "../constants/ActionTypes";
 const initialState = {
   covidData: {
     isFetching: 0,
-    data: {},
+    data: [],
     error: {},
   },
 };

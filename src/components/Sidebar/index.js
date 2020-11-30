@@ -19,6 +19,7 @@ import {
   getAllFutureProjectedCasesCount,
   getCountryFutureProjectedCasesCount,
 } from "../../utils/ebolaDataHelpers";
+import { getCovidCaseCount } from "../../utils/covidDataHelpers";
 import {
   ebolaOutbreakCountries,
   allCountries,
@@ -28,34 +29,43 @@ const Sidebar = ({
   filters,
   ebolaData,
   ebolaDataCombined,
+  covidData,
   changeCountryFilter,
   changeOutbreakFilter,
 }) => {
   const changeCountry = (selectedValue) => {
     changeCountryFilter(selectedValue.target.value);
   };
+
   const changeOutbreak = (selectedValue) => {
     changeOutbreakFilter(selectedValue.target.value);
     // This resets the country filter to 'All' whenever you switch between outbreaks
     changeCountryFilter("All");
   };
-  // This is the ebola case count for the ReportedCases child component
-  const diseaseCaseCount = getEbolaCaseCount(ebolaData, filters);
+
+  // This is the disease case count for the ReportedCases child component
+  const diseaseCaseCount =
+    filters.outbreak === "Ebola Outbreak"
+      ? getEbolaCaseCount(ebolaData, filters)
+      : getCovidCaseCount(covidData, filters);
+
   // This is the projected ebola case count for the ReportedCases child component
   const projectedCaseCount =
     filters.country === "All"
       ? getAllFutureProjectedCasesCount(ebolaDataCombined, filters.dateRange)
       : getCountryFutureProjectedCasesCount(ebolaData, filters);
-  const showReportedCases =
-    filters.view === "snapshot" && filters.outbreak === "Ebola Outbreak";
+
+  const showReportedCases = filters.view === "snapshot";
   const showEbolaSummary = filters.outbreak === "Ebola Outbreak";
   const showEbolaRiskList =
     filters.view === "risk" && filters.outbreak === "Ebola Outbreak";
+
   // Country options for the country select. If "Ebola Outbreak" is selected, only show options for the 3 ebolaOutbreakCountries.
   const countryOptions =
     filters.outbreak === "Ebola Outbreak"
       ? ["All", ...ebolaOutbreakCountries]
       : ["All", ...allCountries];
+
   return (
     <Styled.SidebarWrapper>
       <SelectCountryWrapper>
@@ -101,6 +111,7 @@ const mapStateToProps = (state) => ({
   filters: state.filters,
   ebolaData: state.ebola.ebolaData.data,
   ebolaDataCombined: state.ebola.ebolaDataCombined.data,
+  covidData: state.covid.covidData.data,
 });
 
 const mapDispatchToProps = (dispatch) =>

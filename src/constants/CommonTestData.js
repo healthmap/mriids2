@@ -16,6 +16,13 @@ export const reduxInitialState = {
       error: {},
     },
   },
+  covid: {
+    covidData: {
+      isFetching: 0,
+      data: [],
+      error: {},
+    },
+  },
   filters: {
     country: "All",
     outbreak: "Ebola Outbreak",
