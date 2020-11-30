@@ -13,15 +13,31 @@ export const parseCovidData = (countriesCovidData = []) => {
   return parsedData;
 };
 
-export const getAllCountriesCovidCaseCount = (covidData = []) => {
+export const getLastObjectKey = (dataObject) => {
+  // Gets all the keys of the dataObject.
+  const objectKeys = Object.keys(dataObject);
+  // Returns the last key in the dataObject.
+  return objectKeys[objectKeys.length - 1];
+};
+
+export const getCovidCaseCount = (covidData = [], filters) => {
   let caseCount = 0;
-  covidData.forEach((countryData) => {
-    // Gets all the keys of the countryData.cases object.
-    const objectKeys = Object.keys(countryData.cases);
-    // Gets the last key in the countryData.cases object.
-    const lastDateKey = objectKeys[objectKeys.length - 1];
-    // Adds the case count for the last key/value pair of the countryData.cases object to the caseCount counter.
-    caseCount += countryData.cases[lastDateKey];
-  });
+  if (filters.country === "All") {
+    // Loops through each country in the covidData array.
+    covidData.forEach((countryData) => {
+      // Adds the case count for the last key in the 'cases' object for each country to the caseCount counter.
+      caseCount += countryData.cases[getLastObjectKey(countryData.cases)];
+    });
+  } else {
+    // Finds the data object for the country selected in filters.country.
+    const selectedCountryDataObject = covidData.find(
+      (dataObject) => dataObject.countryName === filters.country
+    );
+    // Adds the case count for the last key in the 'cases' object for the selected country to the caseCount counter.
+    caseCount +=
+      selectedCountryDataObject.cases[
+        getLastObjectKey(selectedCountryDataObject.cases)
+      ];
+  }
   return caseCount;
 };
