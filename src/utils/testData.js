@@ -529,3 +529,16 @@ export const testCovidData = [
     message: "Country not found or doesn't have any historical data",
   },
 ];
+
+export const testParsedCovidData = [
+  {
+    countryName: "Afghanistan",
+    cases: { "11/28/20": 40000, "11/29/20": 46215 },
+    deaths: { "11/29/20": 1763 },
+  },
+  {
+    countryName: "Zimbabwe",
+    cases: { "11/28/20": 40000, "11/29/20": 46215 },
+    deaths: { "11/29/20": 1763 },
+  },
+];

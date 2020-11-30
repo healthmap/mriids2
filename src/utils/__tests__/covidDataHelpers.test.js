@@ -1,5 +1,8 @@
-import { parseCovidData } from "../covidDataHelpers";
-import { testCovidData } from "../testData";
+import {
+  parseCovidData,
+  getAllCountriesCovidCaseCount,
+} from "../covidDataHelpers";
+import { testCovidData, testParsedCovidData } from "../testData";
 
 describe("Tests for the parseCovidData helper function", () => {
   test("should return data in the expected format", () => {
@@ -27,5 +30,11 @@ describe("Tests for the parseCovidData helper function", () => {
         },
       },
     ]);
+  });
+});
+
+describe("Tests for getAllCountriesCovidCaseCount helper function", () => {
+  test("should return 92430", () => {
+    expect(getAllCountriesCovidCaseCount(testParsedCovidData)).toBe(92430);
   });
 });
