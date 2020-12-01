@@ -1,10 +1,7 @@
 version: 0.2
 env:
     parameter-store:
-        GATSBY_CNY_SERVICES_BASE_URL: /ONM_WEB/${ENV}/FNY_SERVICES_BASE_URL
-        GATSBY_RECAPTCHA_SITE_KEY: /ONM_WEB/${ENV}/RECAPTCHA_SITE_KEY
-        GATSBY_GOOGLE_ANALYTICS_ID: /ONM_WEB/${ENV}/GA_TRACKING_CODE
-        GATSBY_MAPBOX_ACCESS_TOKEN: /ONM_WEB/${ENV}/MAPBOX_KEY
+      REACT_APP_MAPBOX_ACCESS_TOKEN: /MRIIDS${ENV}/MAPBOX_KEY
 phases:
   install:
     runtime-versions:
@@ -12,6 +9,7 @@ phases:
   pre_build:
       commands:
       - echo Installing source NPM dependencies...
+      - echo "REACT_APP_MAPBOX_ACCESS_TOKEN='${REACT_APP_MAPBOX_ACCESS_TOKEN}'" > .env
       - npm install  
       - echo INSTALL completed on `date`
   build:
@@ -24,4 +22,4 @@ phases:
 artifacts:
   files:
       - '**/*'
-  base-directory: public
+  base-directory: build
