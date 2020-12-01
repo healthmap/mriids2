@@ -38,10 +38,18 @@ describe("Tests for isDateWithinFiltersDateRange", () => {
       )
     ).toEqual(true);
   });
-  test("should return false because date is outside filterDates", () => {
+  test("should return false because 2013-10-13 is outside filterDates", () => {
     expect(
       isDateWithinFiltersDateRange(
         "2013-10-13",
+        reduxInitialState.filters.dateRange
+      )
+    ).toEqual(false);
+  });
+  test("should return false because 10/28/20 is outside filterDates", () => {
+    expect(
+      isDateWithinFiltersDateRange(
+        "10/28/20",
         reduxInitialState.filters.dateRange
       )
     ).toEqual(false);

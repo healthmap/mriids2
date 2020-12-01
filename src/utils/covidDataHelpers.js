@@ -1,3 +1,5 @@
+import { isDateWithinFiltersDateRange } from "./dateHelpers";
+
 export const parseCovidData = (countriesCovidData = []) => {
   let parsedData = [];
   countriesCovidData.forEach((row) => {
@@ -20,13 +22,31 @@ export const getLastObjectKey = (dataObject) => {
   return objectKeys[objectKeys.length - 1];
 };
 
+export const getCovidCountryCaseCountDataInDateRange = (
+  countryCovidCaseData,
+  dateRange
+) => {
+  let dataInDateRange = {};
+  Object.keys(countryCovidCaseData).forEach((weekKey) => {
+    if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
+      dataInDateRange[weekKey] = countryCovidCaseData[weekKey];
+    }
+  });
+  return dataInDateRange;
+};
+
 export const getCovidCaseCount = (covidData = [], filters) => {
   let caseCount = 0;
   if (filters.country === "All") {
     // Loops through each country in the covidData array.
     covidData.forEach((countryData) => {
+      const countryCasesInDateRange = getCovidCountryCaseCountDataInDateRange(
+        countryData.cases,
+        filters.dateRange
+      );
+      const lastDateKey = getLastObjectKey(countryCasesInDateRange);
       // Adds the case count for the last key in the 'cases' object for each country to the caseCount counter.
-      caseCount += countryData.cases[getLastObjectKey(countryData.cases)];
+      caseCount += countryCasesInDateRange[lastDateKey];
     });
   } else {
     // Finds the data object for the country selected in filters.country.
@@ -35,10 +55,12 @@ export const getCovidCaseCount = (covidData = [], filters) => {
     );
     if (selectedCountryDataObject) {
       // If data for the country is found, adds the case count for the last key in the 'cases' object to the caseCount counter.
-      caseCount +=
-        selectedCountryDataObject.cases[
-          getLastObjectKey(selectedCountryDataObject.cases)
-        ];
+      const countryCasesInDateRange = getCovidCountryCaseCountDataInDateRange(
+        selectedCountryDataObject.cases,
+        filters.dateRange
+      );
+      const lastDateKey = getLastObjectKey(countryCasesInDateRange);
+      caseCount += countryCasesInDateRange[lastDateKey];
     }
   }
   return caseCount;

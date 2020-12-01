@@ -2,6 +2,7 @@ import {
   parseCovidData,
   getLastObjectKey,
   getCovidCaseCount,
+  getCovidCountryCaseCountDataInDateRange,
 } from "../covidDataHelpers";
 import { testCovidData, testParsedCovidData } from "../testData";
 import { reduxInitialState } from "../../constants/CommonTestData";
@@ -52,7 +53,21 @@ describe("Tests for the parseCovidData helper function", () => {
 
 describe("Tests for the getLastObjectKey helper function", () => {
   test("should return key of 11/29/20", () => {
-    expect(getLastObjectKey(testParsedCovidData[0].cases)).toEqual("11/29/20");
+    const countryCaseCount = testParsedCovidData[0].cases;
+    expect(getLastObjectKey(countryCaseCount)).toEqual("11/29/20");
+  });
+});
+
+describe("Tests for getCovidCountryCaseCountInDateRange helper function", () => {
+  test("should only return data for dates between 11/27/20 and 11/30/20", () => {
+    const testDateRange = {
+      from: new Date(2020, 10, 27),
+      to: new Date(2020, 10, 30),
+    };
+    const countryCaseCount = testParsedCovidData[0].cases;
+    expect(
+      getCovidCountryCaseCountDataInDateRange(countryCaseCount, testDateRange)
+    ).toEqual({ "11/28/20": 40000, "11/29/20": 46215 });
   });
 });
 
