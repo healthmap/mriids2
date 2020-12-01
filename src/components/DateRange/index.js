@@ -34,18 +34,29 @@ const DateRange = ({ filters, changeDateRange }) => {
   }, [filters.outbreak, changeDateRange]);
 
   const handleRangeChange = (event, newRangeArray) => {
-    // Only execute this block if the newRangeArray is different from the numberOfWeeks state.
+    // Only execute this block if the newRangeArray is different from the sliderRange.
     if (sliderRange !== newRangeArray) {
+      // Determines which initialDateRange to use based on which outbreak is selected.
+      const initialDateRange =
+        filters.outbreak === "Ebola Outbreak"
+          ? ebolaInitialDateRange
+          : covidInitialDateRange;
+      // Gets the max value for the slider based on how many weeks are between the dates in the initialDateRange.
+      const maxSliderValue = getNumberOfWeeksBetweenDates(
+        initialDateRange.from,
+        initialDateRange.to
+      );
       // Here we are getting the new dateRange.from date value for the filters.
-      let newFromDate = new Date(ebolaInitialDateRange.from);
+      let newFromDate = new Date(initialDateRange.from);
       const fromDateChange = 7 * newRangeArray[0];
       newFromDate.setDate(newFromDate.getDate() + fromDateChange);
       // Here we are getting the new dateRange.to date value for the filters.
-      let newToDate = new Date(ebolaInitialDateRange.to);
-      const toDateChange = 7 * (newRangeArray[1] - 72);
+      let newToDate = new Date(initialDateRange.to);
+      const toDateChange = 7 * (newRangeArray[1] - maxSliderValue);
       newToDate.setDate(newToDate.getDate() + toDateChange);
-
+      // Changes the dateRange filter in the Redux state.
       changeDateRange([newFromDate, newToDate]);
+      // Sets the new sliderRange.
       setSliderRange(newRangeArray);
     }
   };
