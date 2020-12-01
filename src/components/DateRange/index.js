@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
 import { Slider } from "@material-ui/core";
 import Timespan from "../Timespan";
 import ProjectionsToggle from "../ProjectionsToggle";
-import { ebolaInitialDateRange } from "../../constants/DateRanges";
+import {
+  ebolaInitialDateRange,
+  covidInitialDateRange,
+} from "../../constants/DateRanges";
 import {
   DateRangeComponentContainer,
   DateRangeSliderContainer,
 } from "../styled-components/DateRangeComponentContainer";
 
-const DateRange = (props) => {
+const DateRange = ({ filters, changeDateRange }) => {
   const [sliderRange, setSliderRange] = useState([0, 72]);
+
+  useEffect(() => {
+    // Resets the dateRange filter when the filters.outbreak prop changes.
+    const dateRange =
+      filters.outbreak === "Ebola Outbreak"
+        ? ebolaInitialDateRange
+        : covidInitialDateRange;
+    return changeDateRange([dateRange.from, dateRange.to]);
+  }, [filters.outbreak, changeDateRange]);
 
   const handleRangeChange = (event, newRangeArray) => {
     // Only execute this block if the newRangeArray is different from the numberOfWeeks state.
@@ -26,7 +38,7 @@ const DateRange = (props) => {
       const toDateChange = 7 * (newRangeArray[1] - 72);
       newToDate.setDate(newToDate.getDate() + toDateChange);
 
-      props.changeDateRange([newFromDate, newToDate]);
+      changeDateRange([newFromDate, newToDate]);
       setSliderRange(newRangeArray);
     }
   };
