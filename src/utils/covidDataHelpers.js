@@ -33,11 +33,13 @@ export const getCovidCaseCount = (covidData = [], filters) => {
     const selectedCountryDataObject = covidData.find(
       (dataObject) => dataObject.countryName === filters.country
     );
-    // Adds the case count for the last key in the 'cases' object for the selected country to the caseCount counter.
-    caseCount +=
-      selectedCountryDataObject.cases[
-        getLastObjectKey(selectedCountryDataObject.cases)
-      ];
+    if (selectedCountryDataObject) {
+      // If data for the country is found, adds the case count for the last key in the 'cases' object to the caseCount counter.
+      caseCount +=
+        selectedCountryDataObject.cases[
+          getLastObjectKey(selectedCountryDataObject.cases)
+        ];
+    }
   }
   return caseCount;
 };
