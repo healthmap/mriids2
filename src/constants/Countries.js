@@ -28,7 +28,7 @@ export const allCountries = [
   "Bhutan",
   "Bolivia",
   "Bonaire, Sint Eustatius and Saba",
-  "Bosnia and Herzegovina",
+  "Bosnia",
   "Botswana",
   "Bouvet Island",
   "Brazil",
