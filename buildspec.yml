@@ -1,0 +1,27 @@
+version: 0.2
+env:
+    parameter-store:
+        GATSBY_CNY_SERVICES_BASE_URL: /ONM_WEB/${ENV}/FNY_SERVICES_BASE_URL
+        GATSBY_RECAPTCHA_SITE_KEY: /ONM_WEB/${ENV}/RECAPTCHA_SITE_KEY
+        GATSBY_GOOGLE_ANALYTICS_ID: /ONM_WEB/${ENV}/GA_TRACKING_CODE
+        GATSBY_MAPBOX_ACCESS_TOKEN: /ONM_WEB/${ENV}/MAPBOX_KEY
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+  pre_build:
+      commands:
+      - echo Installing source NPM dependencies...
+      - npm install  
+      - echo INSTALL completed on `date`
+  build:
+      commands:
+      - echo Build started on `date`
+      - npm run build
+  post_build:
+      commands:
+      -  echo post build
+artifacts:
+  files:
+      - '**/*'
+  base-directory: public
