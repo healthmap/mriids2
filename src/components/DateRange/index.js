@@ -13,27 +13,34 @@ import {
   DateRangeComponentContainer,
   DateRangeSliderContainer,
 } from "../styled-components/DateRangeComponentContainer";
+import { getNumberOfWeeksBetweenDates } from "../../utils/dateHelpers";
 
 const DateRange = ({ filters, changeDateRange }) => {
   const [sliderRange, setSliderRange] = useState([0, 72]);
 
+  // This useEffect updates the dateRange and sliderRange when the filters.outbreak prop changes.
   useEffect(() => {
-    // Resets the dateRange filter when the filters.outbreak prop changes.
     const dateRange =
       filters.outbreak === "Ebola Outbreak"
         ? ebolaInitialDateRange
         : covidInitialDateRange;
-    return changeDateRange([dateRange.from, dateRange.to]);
+    // Resets the dateRange filter.
+    changeDateRange([dateRange.from, dateRange.to]);
+    // Resets the values for the sliderRange.
+    setSliderRange([
+      0,
+      getNumberOfWeeksBetweenDates(dateRange.from, dateRange.to),
+    ]);
   }, [filters.outbreak, changeDateRange]);
 
   const handleRangeChange = (event, newRangeArray) => {
     // Only execute this block if the newRangeArray is different from the numberOfWeeks state.
     if (sliderRange !== newRangeArray) {
-      // Here we are getting the new dateRange.from date value for the filters
+      // Here we are getting the new dateRange.from date value for the filters.
       let newFromDate = new Date(ebolaInitialDateRange.from);
       const fromDateChange = 7 * newRangeArray[0];
       newFromDate.setDate(newFromDate.getDate() + fromDateChange);
-      // Here we are getting the new dateRange.to date value for the filters
+      // Here we are getting the new dateRange.to date value for the filters.
       let newToDate = new Date(ebolaInitialDateRange.to);
       const toDateChange = 7 * (newRangeArray[1] - 72);
       newToDate.setDate(newToDate.getDate() + toDateChange);
