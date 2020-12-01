@@ -28,6 +28,7 @@ export const getCovidCountryCaseCountDataInDateRange = (
 ) => {
   let dataInDateRange = {};
   Object.keys(countryCovidCaseData).forEach((weekKey) => {
+    // If the weekKey date is within the dateRange, add this data to the dataInDateRange object.
     if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
       dataInDateRange[weekKey] = countryCovidCaseData[weekKey];
     }
@@ -63,5 +64,8 @@ export const getCovidCaseCount = (covidData = [], filters) => {
       caseCount += countryCasesInDateRange[lastDateKey];
     }
   }
-  return caseCount;
+  // Only returns the caseCount value if it is an integer. This ensures the caseCount returned is not NaN.
+  if (Number.isInteger(caseCount)) {
+    return caseCount;
+  }
 };
