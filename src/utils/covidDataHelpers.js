@@ -1,5 +1,6 @@
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { allCountries } from "../constants/Countries";
+import { getValidCountryNameValue } from "./commonHelpers";
 
 export const parseCovidData = (countriesCovidData = []) => {
   let parsedData = [];
@@ -55,7 +56,8 @@ export const getCovidCaseCount = (covidData = [], filters) => {
   } else {
     // Finds the data object for the country selected in filters.country.
     const selectedCountryDataObject = covidData.find(
-      (dataObject) => dataObject.countryName === filters.country
+      (dataObject) =>
+        dataObject.countryName === getValidCountryNameValue(filters.country)
     );
     // If data for the country is found, get the latest case count the country and set it to the caseCount variable.
     if (selectedCountryDataObject) {
@@ -78,7 +80,8 @@ export const getCountriesCovidCaseCounts = (covidData, filters) => {
     let countryCaseCount;
     // 1. Find the data object for the country.
     const countryDataObject = covidData.find(
-      (dataObject) => dataObject.countryName === country
+      (dataObject) =>
+        dataObject.countryName === getValidCountryNameValue(country)
     );
     // 2. If a countryDataObject is found, get the latest case count within the dateRange and set it to countryCaseCount.
     // If no countryDataObject is found, set countryCaseCount to 0
