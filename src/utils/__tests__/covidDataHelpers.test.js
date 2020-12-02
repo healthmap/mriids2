@@ -2,6 +2,7 @@ import {
   parseCovidData,
   getLastObjectKey,
   getCovidCaseCount,
+  getLatestCountryCountInDateRange,
 } from "../covidDataHelpers";
 import { testCovidData, testParsedCovidData } from "../testData";
 import { reduxInitialState } from "../../constants/CommonTestData";
@@ -52,7 +53,27 @@ describe("Tests for the parseCovidData helper function", () => {
 
 describe("Tests for the getLastObjectKey helper function", () => {
   test("should return key of 11/29/20", () => {
-    expect(getLastObjectKey(testParsedCovidData[0].cases)).toEqual("11/29/20");
+    const countryCaseCount = testParsedCovidData[0].cases;
+    expect(getLastObjectKey(countryCaseCount)).toEqual("11/29/20");
+  });
+});
+
+describe("Tests for getLatestCountryCountInDateRange helper function", () => {
+  const testDateRange = {
+    from: new Date(2020, 10, 27),
+    to: new Date(2020, 10, 30),
+  };
+  test("should return 46215 which is the latest case count for Afghanistan", () => {
+    const countryCaseCount = testParsedCovidData[0].cases;
+    expect(
+      getLatestCountryCountInDateRange(countryCaseCount, testDateRange)
+    ).toBe(46215);
+  });
+  test("should return 1763 which is the latest death count for Afghanistan", () => {
+    const countryDeathCount = testParsedCovidData[0].deaths;
+    expect(
+      getLatestCountryCountInDateRange(countryDeathCount, testDateRange)
+    ).toBe(1763);
   });
 });
 
