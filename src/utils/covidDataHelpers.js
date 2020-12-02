@@ -22,18 +22,21 @@ export const getLastObjectKey = (dataObject) => {
   return objectKeys[objectKeys.length - 1];
 };
 
-export const getCovidCountryCaseCountDataInDateRange = (
-  countryCovidCaseData,
+export const getLatestCountryCountInDateRange = (
+  countryCovidData,
   dateRange
 ) => {
+  // 1. Add all of the data within the dateRange to the dataInDateRange object.
   let dataInDateRange = {};
-  Object.keys(countryCovidCaseData).forEach((weekKey) => {
-    // If the weekKey date is within the dateRange, add this data to the dataInDateRange object.
+  Object.keys(countryCovidData).forEach((weekKey) => {
     if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
-      dataInDateRange[weekKey] = countryCovidCaseData[weekKey];
+      dataInDateRange[weekKey] = countryCovidData[weekKey];
     }
   });
-  return dataInDateRange;
+  // 2. Find the last key in the dataInDateRange object.
+  const lastDateKey = getLastObjectKey(dataInDateRange);
+  // 3. Return the last value from the dataInDateRange object.
+  return dataInDateRange[lastDateKey];
 };
 
 export const getCovidCaseCount = (covidData = [], filters) => {
@@ -41,27 +44,23 @@ export const getCovidCaseCount = (covidData = [], filters) => {
   if (filters.country === "All") {
     // Loops through each country in the covidData array.
     covidData.forEach((countryData) => {
-      const countryCasesInDateRange = getCovidCountryCaseCountDataInDateRange(
+      // Adds the latest case count for each country to the caseCount.
+      caseCount += getLatestCountryCountInDateRange(
         countryData.cases,
         filters.dateRange
       );
-      const lastDateKey = getLastObjectKey(countryCasesInDateRange);
-      // Adds the case count for the last key in the 'cases' object for each country to the caseCount counter.
-      caseCount += countryCasesInDateRange[lastDateKey];
     });
   } else {
     // Finds the data object for the country selected in filters.country.
     const selectedCountryDataObject = covidData.find(
       (dataObject) => dataObject.countryName === filters.country
     );
+    // If data for the country is found, get the latest case count the country and set it to the caseCount variable.
     if (selectedCountryDataObject) {
-      // If data for the country is found, adds the case count for the last key in the 'cases' object to the caseCount counter.
-      const countryCasesInDateRange = getCovidCountryCaseCountDataInDateRange(
+      caseCount = getLatestCountryCountInDateRange(
         selectedCountryDataObject.cases,
         filters.dateRange
       );
-      const lastDateKey = getLastObjectKey(countryCasesInDateRange);
-      caseCount += countryCasesInDateRange[lastDateKey];
     }
   }
   // Only returns the caseCount value if it is an integer. This ensures the caseCount returned is not NaN.
