@@ -1,0 +1,26 @@
+version: 0.2
+env:
+    parameter-store:
+      REACT_APP_MAPBOX_ACCESS_TOKEN: /MRIIDS/${ENV}/MAPBOX_KEY
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10
+  pre_build:
+      commands:
+      - echo Installing source NPM dependencies...
+      - echo "REACT_APP_MAPBOX_ACCESS_TOKEN='${REACT_APP_MAPBOX_ACCESS_TOKEN}'" > .env
+      - cat .env
+      - npm install  
+      - echo INSTALL completed on `date`
+  build:
+      commands:
+      - echo Build started on `date`
+      - npm run build
+  post_build:
+      commands:
+      -  echo post build
+artifacts:
+  files:
+      - '**/*'
+  base-directory: build
