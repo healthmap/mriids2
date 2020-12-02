@@ -34,6 +34,7 @@ export const prepareEbolaData = (csvData) => {
   return newData;
 };
 
+// This gets the country case counts for the Snapshot map.
 export const getEbolaCountriesCaseCounts = (ebolaData, filters) => {
   let countryCaseCount = {
     Guinea: 0,
@@ -65,6 +66,7 @@ export const getEbolaCountriesCaseCounts = (ebolaData, filters) => {
   return countryCaseCount;
 };
 
+// This gets the case count for the Sidebar
 export const getEbolaCaseCount = (diseaseData, filters) => {
   let diseaseCaseCount = 0;
   const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(

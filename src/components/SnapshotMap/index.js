@@ -17,15 +17,18 @@ import {
   getCountryToolTipContent,
 } from "../../utils/snapshotMapHelpers";
 
-const SnapshotMap = ({ ebolaData, filters }) => {
+const SnapshotMap = ({ ebolaData, covidData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(9);
   const [toolTipContent, setToolTipContent] = useState("");
 
   const changeZoomLevel = (newZoomLevel) => {
-    //  This prevents zooming in to a level higher than 9 and lower than 1.
+    // This prevents zooming in to a level higher than 9 and lower than 1.
     const validNewZoomLevel = newZoomLevel <= 9 && newZoomLevel >= 1;
     return validNewZoomLevel ? setZoomLevel(newZoomLevel) : null;
   };
+
+  const diseaseData =
+    filters.outbreak === "Ebola Outbreak" ? ebolaData : covidData;
 
   return (
     <SnapshotMapContainer>
@@ -55,7 +58,7 @@ const SnapshotMap = ({ ebolaData, filters }) => {
                     onMouseEnter={() => {
                       setToolTipContent(
                         getCountryToolTipContent(
-                          ebolaData,
+                          diseaseData,
                           filters,
                           geo.properties.NAME
                         )
@@ -99,6 +102,7 @@ const SnapshotMap = ({ ebolaData, filters }) => {
 
 const mapStateToProps = (state) => ({
   ebolaData: state.ebola.ebolaData.data,
+  covidData: state.covid.covidData.data,
   filters: state.filters,
 });
 

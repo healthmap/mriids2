@@ -1,4 +1,5 @@
 import { getEbolaCountriesCaseCounts } from "./ebolaDataHelpers";
+import { getCountriesCovidCaseCounts } from "./covidDataHelpers";
 import { ebolaOutbreakCountries } from "../constants/Countries";
 
 export const getScale = (countryCaseCount) => {
@@ -111,12 +112,21 @@ export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
   }
 };
 
-export const getCountryToolTipContent = (ebolaData, filters, countryName) => {
-  const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
-    ebolaData,
-    filters
-  );
-  const countryCaseCount = ebolaCountriesCaseCounts[countryName];
+export const getCountryToolTipContent = (diseaseData, filters, countryName) => {
+  let countryCaseCount;
+  if (filters.outbreak === "Ebola Outbreak") {
+    const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
+      diseaseData,
+      filters
+    );
+    countryCaseCount = ebolaCountriesCaseCounts[countryName];
+  } else {
+    const covidCountriesCaseCounts = getCountriesCovidCaseCounts(
+      diseaseData,
+      filters
+    );
+    countryCaseCount = covidCountriesCaseCounts[countryName];
+  }
   // If the country has a case count, return the country name and case count.
   // Else, just return the country name.
   return countryCaseCount
