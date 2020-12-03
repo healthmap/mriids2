@@ -26,12 +26,18 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
 
   // Set the fillColorDictionary when the filters are updated.
   useEffect(() => {
+    // Gets the colorDictionary based on which outbreak is selected.
     const colorDictionary =
       filters.outbreak === "Ebola Outbreak"
         ? getEbolaFillColorsDictionary(ebolaData, filters)
         : getCovidFillColorsDictionary(covidData, filters);
     setFillColorDictionary(colorDictionary);
   }, [ebolaData, covidData, filters]);
+
+  // Update the zoomLevel when switching between outbreaks
+  useEffect(() => {
+    filters.outbreak === "Ebola Outbreak" ? setZoomLevel(9) : setZoomLevel(1);
+  }, [filters.outbreak]);
 
   const changeZoomLevel = (newZoomLevel) => {
     // This prevents zooming in to a level higher than 9 and lower than 1.
