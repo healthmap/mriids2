@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import React, { useState, memo, useEffect } from "react";
 import { connect } from "react-redux";
 import {
   ComposableMap,
@@ -13,13 +13,21 @@ import SnapshotMapCaseCountLegend from "../SnapshotMapCaseCountLegend";
 import MapZoomButtons from "../MapZoomButtons";
 import ReactTooltip from "react-tooltip";
 import {
-  getGeographyFillColor,
   getCountryToolTipContent,
+  getEbolaFillColorsDictionary,
+  getCountryFillColor,
 } from "../../utils/snapshotMapHelpers";
 
 const SnapshotMap = ({ ebolaData, covidData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(9);
+  const [fillColorDictionary, setFillColorDictionary] = useState({});
   const [toolTipContent, setToolTipContent] = useState("");
+
+  // Set the fillColorDictionary when the filters are updated.
+  useEffect(() => {
+    const colorDictionary = getEbolaFillColorsDictionary(ebolaData, filters);
+    setFillColorDictionary(colorDictionary);
+  }, [ebolaData, filters]);
 
   const changeZoomLevel = (newZoomLevel) => {
     // This prevents zooming in to a level higher than 9 and lower than 1.
@@ -46,10 +54,10 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
             {({ geographies }) =>
               geographies.map((geo) => {
                 //  Gets the fillColor for each country (geo).
-                const fillColor = getGeographyFillColor(
-                  ebolaData,
+                const fillColor = getCountryFillColor(
+                  geo.properties.NAME,
                   filters,
-                  geo.properties
+                  fillColorDictionary
                 );
                 return (
                   <Geography

@@ -2,7 +2,15 @@ import {
   getScale,
   getSnapshotColor,
   getSnapshotProjectionsColor,
+  getEbolaFillColorsDictionary,
+  getCountryFillColor,
 } from "../snapshotMapHelpers";
+import { reduxInitialState } from "../../constants/CommonTestData";
+import {
+  testRawEbolaData,
+  ebolaFillColorDictionary,
+  testGuineaFiltersState,
+} from "../testData";
 
 describe("Tests for getScale helper function", () => {
   test("returns scaleValue of 12000", () => {
@@ -54,5 +62,34 @@ describe("Tests for getSnapshotProjectionsColor", () => {
   });
   test("returns the middle red color", () => {
     expect(getSnapshotProjectionsColor(0.45)).toEqual("#36B9A7");
+  });
+});
+
+describe("Tests for getEbolaFillColorsDictionary", () => {
+  test("should return the ebola fill colors in the expected format", () => {
+    expect(
+      getEbolaFillColorsDictionary(testRawEbolaData, reduxInitialState.filters)
+    ).toEqual(ebolaFillColorDictionary);
+  });
+});
+
+describe("Tests for getCountryFillColor", () => {
+  test("should return #F5BCA7 fill color for Guinea", () => {
+    expect(
+      getCountryFillColor(
+        "Guinea",
+        testGuineaFiltersState,
+        ebolaFillColorDictionary
+      )
+    ).toEqual("#F5BCA7");
+  });
+  test("should return default #FCF1DD fill color since country is not in ebolaFillColorDictionary", () => {
+    expect(
+      getCountryFillColor(
+        "Fake country",
+        testGuineaFiltersState,
+        ebolaFillColorDictionary
+      )
+    ).toEqual("#FCF1DD");
   });
 });

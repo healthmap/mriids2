@@ -78,15 +78,9 @@ export const getSnapshotProjectionsColor = (caseCountValue) => {
   return color;
 };
 
-export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
-  const getFillColorForAllEbolaCountries =
-    ebolaOutbreakCountries.includes(geoProperties.NAME) &&
-    filters.country === "All" &&
-    filters.outbreak === "Ebola Outbreak";
-  const getFillColorForSelectedCountry =
-    filters.country !== "All" &&
-    filters.outbreak === "Ebola Outbreak" &&
-    filters.country === geoProperties.NAME;
+// This gets a dictionary with key/value pairs of country/fillColor for each Ebola country.
+export const getEbolaFillColorsDictionary = (ebolaData, filters) => {
+  let colorsDictionary = {};
   // Get the case count for the 3 ebolaOutbreakCountries.
   const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
     ebolaData,
@@ -94,21 +88,32 @@ export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
   );
   // Get the scale using the ebolaCountriesCaseCounts object.
   const scale = getScale(ebolaCountriesCaseCounts);
-  const percentage = ebolaCountriesCaseCounts[geoProperties.NAME] / scale;
-  // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
-  // Otherwise get the fillColor value using the getSnapshotColor function.
-  const fillColor = filters.projection
-    ? getSnapshotProjectionsColor(percentage)
-    : getSnapshotColor(percentage);
-  if (getFillColorForAllEbolaCountries) {
-    // Returns the fillColor for all of the countries in the ebolaOutbreakCountries array.
-    return fillColor;
-  } else if (getFillColorForSelectedCountry) {
-    // Only returns the fill color for the country selected in filters.country.
-    return fillColor;
+  ebolaOutbreakCountries.forEach((country) => {
+    const percentage = ebolaCountriesCaseCounts[country] / scale;
+    // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
+    // Otherwise get the fillColor value using the getSnapshotColor function.
+    colorsDictionary[country] = filters.projection
+      ? getSnapshotProjectionsColor(percentage)
+      : getSnapshotColor(percentage);
+  });
+  return colorsDictionary;
+};
+
+export const getCountryFillColor = (
+  countryName,
+  filters,
+  fillColorDictionary
+) => {
+  // If 'All' countries are selected, return the fillColor for each country that has one. Otherwise, return "#FCF1DD".
+  if (filters.country === "All") {
+    return fillColorDictionary[countryName]
+      ? fillColorDictionary[countryName]
+      : "#FCF1DD";
   } else {
-    // If the NAME of the geography is not in the ebolaOutbreakCountries array, add the fill color below.
-    return "#FCF1DD";
+    // If a specific country is selected, only return the fillColor for the selected country. For all other countries, return "#FCF1DD".
+    return countryName === filters.country
+      ? fillColorDictionary[countryName]
+      : "#FCF1DD";
   }
 };
 
