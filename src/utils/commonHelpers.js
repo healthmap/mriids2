@@ -14,6 +14,8 @@ export const getValidCountryNameValue = (countryName) => {
       return "Myanmar";
     case "Lao People's Democratic Republic":
       return "Laos";
+    case "UAE":
+      return "United Arab Emirates";
     default:
       return countryName;
   }

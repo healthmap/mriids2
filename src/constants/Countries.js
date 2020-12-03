@@ -133,6 +133,7 @@ export const allCountries = [
   "Lithuania",
   "Luxembourg",
   "Macao",
+  "Macedonia",
   "Madagascar",
   "Malawi",
   "Malaysia",
