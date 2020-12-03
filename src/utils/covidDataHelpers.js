@@ -57,7 +57,7 @@ export const getCovidCaseCount = (covidData = [], filters) => {
     // Finds the data object for the country selected in filters.country.
     const selectedCountryDataObject = covidData.find(
       (dataObject) =>
-        dataObject.countryName === getValidCountryNameValue(filters.country)
+        getValidCountryNameValue(dataObject.countryName) === filters.country
     );
     // If data for the country is found, get the latest case count the country and set it to the caseCount variable.
     if (selectedCountryDataObject) {
@@ -79,7 +79,7 @@ export const getCountriesCovidCaseCounts = (covidData, filters) => {
     // 1. Find the data object for the country.
     const countryDataObject = covidData.find(
       (dataObject) =>
-        dataObject.countryName === getValidCountryNameValue(country)
+        getValidCountryNameValue(dataObject.countryName) === country
     );
     // 2. If a countryDataObject is found, get the latest case count within the dateRange and set it to countryCaseCount.
     // If no countryDataObject is found, set countryCaseCount to 0

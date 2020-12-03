@@ -1,2 +1,10 @@
-export const getValidCountryNameValue = (countryName) =>
-  countryName === "United States of America" ? "USA" : countryName;
+export const getValidCountryNameValue = (countryName) => {
+  switch (countryName) {
+    case "USA":
+      return "United States of America";
+    case "UK":
+      return "United Kingdom";
+    default:
+      return countryName;
+  }
+};

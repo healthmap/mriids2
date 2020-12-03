@@ -234,7 +234,7 @@ export const allCountries = [
   "Uganda",
   "Ukraine",
   "United Arab Emirates",
-  "United Kingdom of Great Britain and Northern Ireland",
+  "United Kingdom",
   "United States Minor Outlying Islands",
   "United States of America",
   "Uruguay",
