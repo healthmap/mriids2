@@ -2,7 +2,7 @@ import { getEbolaCountriesCaseCounts } from "./ebolaDataHelpers";
 import { getCountriesCovidCaseCounts } from "./covidDataHelpers";
 import { ebolaOutbreakCountries } from "../constants/Countries";
 
-export const getScale = (countryCaseCount) => {
+export const getEbolaScale = (countryCaseCount) => {
   // Gets the scaleValue to be used by the snapshotMap and map legend.
   const maxCaseCountValue = Math.max(...Object.values(countryCaseCount));
   let scaleValue;
@@ -87,7 +87,7 @@ export const getEbolaFillColorsDictionary = (ebolaData, filters) => {
     filters
   );
   // Get the scale using the ebolaCountriesCaseCounts object.
-  const scale = getScale(ebolaCountriesCaseCounts);
+  const scale = getEbolaScale(ebolaCountriesCaseCounts);
   ebolaOutbreakCountries.forEach((country) => {
     const percentage = ebolaCountriesCaseCounts[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.

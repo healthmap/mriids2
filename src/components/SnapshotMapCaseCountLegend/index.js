@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import MapLegendLevel from "../MapLegendLevel";
 import {
-  getScale,
+  getEbolaScale,
   getSnapshotColor,
   getSnapshotProjectionsColor,
 } from "../../utils/snapshotMapHelpers";
@@ -26,7 +26,7 @@ const SnapshotMapCaseCountLegend = ({ ebolaData, filters }) => {
     : "Case counts";
 
   const renderLegendLevels = () => {
-    const scale = getScale(countriesEbolaCaseCounts);
+    const scale = getEbolaScale(countriesEbolaCaseCounts);
     // We want to render 10 levels for the legend.
     const numberOfLevels = 9;
     const levels = [];

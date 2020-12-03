@@ -1,5 +1,5 @@
 import {
-  getScale,
+  getEbolaScale,
   getSnapshotColor,
   getSnapshotProjectionsColor,
   getEbolaFillColorsDictionary,
@@ -12,14 +12,14 @@ import {
   testGuineaFiltersState,
 } from "../testData";
 
-describe("Tests for getScale helper function", () => {
+describe("Tests for getEbolaScale helper function", () => {
   test("returns scaleValue of 12000", () => {
     const countryCaseCounts = {
       Guinea: 2452,
       Liberia: 6738,
       "Sierra Leone": 11387,
     };
-    expect(getScale(countryCaseCounts)).toEqual(12000);
+    expect(getEbolaScale(countryCaseCounts)).toEqual(12000);
   });
   test("returns scaleValue of 4500", () => {
     const countryCaseCounts = {
@@ -27,7 +27,7 @@ describe("Tests for getScale helper function", () => {
       Liberia: 0,
       "Sierra Leone": 4400,
     };
-    expect(getScale(countryCaseCounts)).toEqual(4500);
+    expect(getEbolaScale(countryCaseCounts)).toEqual(4500);
   });
   test("returns scaleValue of 900", () => {
     const countryCaseCounts = {
@@ -35,7 +35,7 @@ describe("Tests for getScale helper function", () => {
       Liberia: 850,
       "Sierra Leone": 0,
     };
-    expect(getScale(countryCaseCounts)).toEqual(900);
+    expect(getEbolaScale(countryCaseCounts)).toEqual(900);
   });
   test("returns scaleValue of 450", () => {
     const countryCaseCounts = {
@@ -43,7 +43,7 @@ describe("Tests for getScale helper function", () => {
       Liberia: 0,
       "Sierra Leone": 0,
     };
-    expect(getScale(countryCaseCounts)).toEqual(450);
+    expect(getEbolaScale(countryCaseCounts)).toEqual(450);
   });
 });
 
