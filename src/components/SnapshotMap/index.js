@@ -50,7 +50,7 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
 
   return (
     <SnapshotMapContainer>
-      <ViewToggle />
+      {filters.outbreak === "Ebola Outbreak" && <ViewToggle />}
       <ReactTooltip>{toolTipContent}</ReactTooltip>
       <ComposableMap
         projection="geoMercator"
