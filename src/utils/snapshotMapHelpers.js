@@ -1,7 +1,8 @@
 import { getEbolaCountriesCaseCounts } from "./ebolaDataHelpers";
-import { ebolaOutbreakCountries } from "../constants/Countries";
+import { getCountriesCovidCaseCounts } from "./covidDataHelpers";
+import { ebolaOutbreakCountries, allCountries } from "../constants/Countries";
 
-export const getScale = (countryCaseCount) => {
+export const getEbolaScale = (countryCaseCount) => {
   // Gets the scaleValue to be used by the snapshotMap and map legend.
   const maxCaseCountValue = Math.max(...Object.values(countryCaseCount));
   let scaleValue;
@@ -17,6 +18,36 @@ export const getScale = (countryCaseCount) => {
     scaleValue = Math.ceil(maxCaseCountValue / 500) * 500;
   } else {
     scaleValue = Math.ceil(maxCaseCountValue / 1000) * 1000;
+  }
+  return scaleValue;
+};
+
+export const getCovidScale = (countryCaseCount) => {
+  // Gets the scaleValue to be used by the snapshotMap and map legend.
+  const maxCaseCountValue = Math.max(...Object.values(countryCaseCount));
+  let scaleValue;
+  if (maxCaseCountValue < 1000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 100) * 100;
+  } else if (maxCaseCountValue < 5000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 500) * 500;
+  } else if (maxCaseCountValue < 10000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 1000) * 1000;
+  } else if (maxCaseCountValue < 20000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 2000) * 2000;
+  } else if (maxCaseCountValue < 50000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 5000) * 5000;
+  } else if (maxCaseCountValue < 100000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 10000) * 10000;
+  } else if (maxCaseCountValue < 500000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 50000) * 50000;
+  } else if (maxCaseCountValue < 1000000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 100000) * 100000;
+  } else if (maxCaseCountValue < 5000000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 500000) * 500000;
+  } else if (maxCaseCountValue < 10000000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 1000000) * 1000000;
+  } else {
+    scaleValue = Math.ceil(maxCaseCountValue / 2000000) * 2000000;
   }
   return scaleValue;
 };
@@ -77,49 +108,84 @@ export const getSnapshotProjectionsColor = (caseCountValue) => {
   return color;
 };
 
-export const getGeographyFillColor = (ebolaData, filters, geoProperties) => {
-  const getFillColorForAllEbolaCountries =
-    ebolaOutbreakCountries.includes(geoProperties.NAME) &&
-    filters.country === "All" &&
-    filters.outbreak === "Ebola Outbreak";
-  const getFillColorForSelectedCountry =
-    filters.country !== "All" &&
-    filters.outbreak === "Ebola Outbreak" &&
-    filters.country === geoProperties.NAME;
+// This gets a dictionary with key/value pairs of country/fillColor for each Ebola country.
+export const getEbolaFillColorsDictionary = (ebolaData, filters) => {
+  let colorsDictionary = {};
   // Get the case count for the 3 ebolaOutbreakCountries.
   const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
     ebolaData,
     filters
   );
   // Get the scale using the ebolaCountriesCaseCounts object.
-  const scale = getScale(ebolaCountriesCaseCounts);
-  const percentage = ebolaCountriesCaseCounts[geoProperties.NAME] / scale;
-  // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
-  // Otherwise get the fillColor value using the getSnapshotColor function.
-  const fillColor = filters.projection
-    ? getSnapshotProjectionsColor(percentage)
-    : getSnapshotColor(percentage);
-  if (getFillColorForAllEbolaCountries) {
-    // Returns the fillColor for all of the countries in the ebolaOutbreakCountries array.
-    return fillColor;
-  } else if (getFillColorForSelectedCountry) {
-    // Only returns the fill color for the country selected in filters.country.
-    return fillColor;
+  const scale = getEbolaScale(ebolaCountriesCaseCounts);
+  ebolaOutbreakCountries.forEach((country) => {
+    const percentage = ebolaCountriesCaseCounts[country] / scale;
+    // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
+    // Otherwise get the fillColor value using the getSnapshotColor function.
+    colorsDictionary[country] = filters.projection
+      ? getSnapshotProjectionsColor(percentage)
+      : getSnapshotColor(percentage);
+  });
+  return colorsDictionary;
+};
+
+// This gets a dictionary with key/value pairs of country/fillColor for each country.
+export const getCovidFillColorsDictionary = (covidData, filters) => {
+  let colorsDictionary = {};
+  // Get the covid case count for all countries.
+  const covidCountriesCaseCounts = getCountriesCovidCaseCounts(
+    covidData,
+    filters
+  );
+  // Get the scale using the covidCountriesCaseCounts object.
+  const scale = getCovidScale(covidCountriesCaseCounts);
+  allCountries.forEach((country) => {
+    const percentage = covidCountriesCaseCounts[country] / scale;
+    // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
+    // Otherwise get the fillColor value using the getSnapshotColor function.
+    colorsDictionary[country] = filters.projection
+      ? getSnapshotProjectionsColor(percentage)
+      : getSnapshotColor(percentage);
+  });
+  return colorsDictionary;
+};
+
+export const getCountryFillColor = (
+  countryName,
+  filters,
+  fillColorDictionary
+) => {
+  // If 'All' countries are selected, return the fillColor for each country that has one. Otherwise, return "#FCF1DD".
+  if (filters.country === "All") {
+    return fillColorDictionary[countryName]
+      ? fillColorDictionary[countryName]
+      : "#FCF1DD";
   } else {
-    // If the NAME of the geography is not in the ebolaOutbreakCountries array, add the fill color below.
-    return "#FCF1DD";
+    // If a specific country is selected, only return the fillColor for the selected country. For all other countries, return "#FCF1DD".
+    return countryName === filters.country
+      ? fillColorDictionary[countryName]
+      : "#FCF1DD";
   }
 };
 
-export const getCountryToolTipContent = (ebolaData, filters, countryName) => {
-  const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
-    ebolaData,
-    filters
-  );
-  const countryCaseCount = ebolaCountriesCaseCounts[countryName];
+export const getCountryToolTipContent = (diseaseData, filters, countryName) => {
+  let countryCaseCount;
+  if (filters.outbreak === "Ebola Outbreak") {
+    const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
+      diseaseData,
+      filters
+    );
+    countryCaseCount = ebolaCountriesCaseCounts[countryName];
+  } else {
+    const covidCountriesCaseCounts = getCountriesCovidCaseCounts(
+      diseaseData,
+      filters
+    );
+    countryCaseCount = covidCountriesCaseCounts[countryName];
+  }
   // If the country has a case count, return the country name and case count.
   // Else, just return the country name.
   return countryCaseCount
-    ? `${countryName} - ${countryCaseCount}`
+    ? `${countryName} - ${countryCaseCount.toLocaleString()}`
     : countryName;
 };

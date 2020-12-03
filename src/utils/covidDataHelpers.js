@@ -1,4 +1,6 @@
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
+import { allCountries } from "../constants/Countries";
+import { getValidCountryNameValue } from "./commonHelpers";
 
 export const parseCovidData = (countriesCovidData = []) => {
   let parsedData = [];
@@ -39,6 +41,7 @@ export const getLatestCountryCountInDateRange = (
   return dataInDateRange[lastDateKey];
 };
 
+// This gets the case count for the Sidebar
 export const getCovidCaseCount = (covidData = [], filters) => {
   let caseCount = 0;
   if (filters.country === "All") {
@@ -53,7 +56,8 @@ export const getCovidCaseCount = (covidData = [], filters) => {
   } else {
     // Finds the data object for the country selected in filters.country.
     const selectedCountryDataObject = covidData.find(
-      (dataObject) => dataObject.countryName === filters.country
+      (dataObject) =>
+        getValidCountryNameValue(dataObject.countryName) === filters.country
     );
     // If data for the country is found, get the latest case count the country and set it to the caseCount variable.
     if (selectedCountryDataObject) {
@@ -64,7 +68,32 @@ export const getCovidCaseCount = (covidData = [], filters) => {
     }
   }
   // Only returns the caseCount value if it is an integer. This ensures the caseCount returned is not NaN.
-  if (Number.isInteger(caseCount)) {
-    return caseCount;
-  }
+  return Number.isInteger(caseCount) ? caseCount : 0;
+};
+
+// This gets the country case counts for the Snapshot map.
+export const getCountriesCovidCaseCounts = (covidData, filters) => {
+  let countriesCaseCounts = {};
+  allCountries.forEach((country) => {
+    let countryCaseCount;
+    // 1. Find the data object for the country.
+    const countryDataObject = covidData.find(
+      (dataObject) =>
+        getValidCountryNameValue(dataObject.countryName) === country
+    );
+    // 2. If a countryDataObject is found, get the latest case count within the dateRange and set it to countryCaseCount.
+    // If no countryDataObject is found, set countryCaseCount to 0
+    if (countryDataObject) {
+      countryCaseCount = getLatestCountryCountInDateRange(
+        countryDataObject.cases,
+        filters.dateRange
+      );
+    } else {
+      countryCaseCount = 0;
+    }
+    // 3. Add the data to the countriesCaseCounts object.
+    // If the case count is an integer, add that. Otherwise add 0.
+    countriesCaseCounts[country] = countryCaseCount;
+  });
+  return countriesCaseCounts;
 };

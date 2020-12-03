@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import React, { useState, memo, useEffect } from "react";
 import { connect } from "react-redux";
 import {
   ComposableMap,
@@ -13,23 +13,44 @@ import SnapshotMapCaseCountLegend from "../SnapshotMapCaseCountLegend";
 import MapZoomButtons from "../MapZoomButtons";
 import ReactTooltip from "react-tooltip";
 import {
-  getGeographyFillColor,
   getCountryToolTipContent,
+  getEbolaFillColorsDictionary,
+  getCovidFillColorsDictionary,
+  getCountryFillColor,
 } from "../../utils/snapshotMapHelpers";
 
-const SnapshotMap = ({ ebolaData, filters }) => {
+const SnapshotMap = ({ ebolaData, covidData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(9);
+  const [fillColorDictionary, setFillColorDictionary] = useState({});
   const [toolTipContent, setToolTipContent] = useState("");
 
+  // Set the fillColorDictionary when the filters are updated.
+  useEffect(() => {
+    // Gets the colorDictionary based on which outbreak is selected.
+    const colorDictionary =
+      filters.outbreak === "Ebola Outbreak"
+        ? getEbolaFillColorsDictionary(ebolaData, filters)
+        : getCovidFillColorsDictionary(covidData, filters);
+    setFillColorDictionary(colorDictionary);
+  }, [ebolaData, covidData, filters]);
+
+  // Update the zoomLevel when switching between outbreaks
+  useEffect(() => {
+    filters.outbreak === "Ebola Outbreak" ? setZoomLevel(9) : setZoomLevel(1);
+  }, [filters.outbreak]);
+
   const changeZoomLevel = (newZoomLevel) => {
-    //  This prevents zooming in to a level higher than 9 and lower than 1.
+    // This prevents zooming in to a level higher than 9 and lower than 1.
     const validNewZoomLevel = newZoomLevel <= 9 && newZoomLevel >= 1;
     return validNewZoomLevel ? setZoomLevel(newZoomLevel) : null;
   };
 
+  const diseaseData =
+    filters.outbreak === "Ebola Outbreak" ? ebolaData : covidData;
+
   return (
     <SnapshotMapContainer>
-      <ViewToggle />
+      {filters.outbreak === "Ebola Outbreak" && <ViewToggle />}
       <ReactTooltip>{toolTipContent}</ReactTooltip>
       <ComposableMap
         projection="geoMercator"
@@ -43,10 +64,10 @@ const SnapshotMap = ({ ebolaData, filters }) => {
             {({ geographies }) =>
               geographies.map((geo) => {
                 //  Gets the fillColor for each country (geo).
-                const fillColor = getGeographyFillColor(
-                  ebolaData,
+                const fillColor = getCountryFillColor(
+                  geo.properties.NAME,
                   filters,
-                  geo.properties
+                  fillColorDictionary
                 );
                 return (
                   <Geography
@@ -55,7 +76,7 @@ const SnapshotMap = ({ ebolaData, filters }) => {
                     onMouseEnter={() => {
                       setToolTipContent(
                         getCountryToolTipContent(
-                          ebolaData,
+                          diseaseData,
                           filters,
                           geo.properties.NAME
                         )
@@ -99,6 +120,7 @@ const SnapshotMap = ({ ebolaData, filters }) => {
 
 const mapStateToProps = (state) => ({
   ebolaData: state.ebola.ebolaData.data,
+  covidData: state.covid.covidData.data,
   filters: state.filters,
 });
 
