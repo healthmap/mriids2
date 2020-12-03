@@ -12,6 +12,8 @@ export const getValidCountryNameValue = (countryName) => {
       return "South Korea";
     case "Burma":
       return "Myanmar";
+    case "Lao People's Democratic Republic":
+      return "Laos";
     default:
       return countryName;
   }

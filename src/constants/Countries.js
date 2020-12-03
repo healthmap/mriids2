@@ -123,7 +123,7 @@ export const allCountries = [
   "South Korea",
   "Kuwait",
   "Kyrgyzstan",
-  "Lao People's Democratic Republic",
+  "Laos",
   "Latvia",
   "Lebanon",
   "Lesotho",
