@@ -1,4 +1,4 @@
-import { getEbolaCountriesCaseCounts } from "./ebolaDataHelpers";
+import { getCountriesEbolaCaseCounts } from "./ebolaDataHelpers";
 import { getCountriesCovidCaseCounts } from "./covidDataHelpers";
 import { ebolaOutbreakCountries, allCountries } from "../constants/Countries";
 
@@ -112,7 +112,7 @@ export const getSnapshotProjectionsColor = (caseCountValue) => {
 export const getEbolaFillColorsDictionary = (ebolaData, filters) => {
   let colorsDictionary = {};
   // Get the case count for the 3 ebolaOutbreakCountries.
-  const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
+  const ebolaCountriesCaseCounts = getCountriesEbolaCaseCounts(
     ebolaData,
     filters
   );
@@ -171,7 +171,7 @@ export const getCountryFillColor = (
 export const getCountryToolTipContent = (diseaseData, filters, countryName) => {
   let countryCaseCount;
   if (filters.outbreak === "Ebola Outbreak") {
-    const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
+    const ebolaCountriesCaseCounts = getCountriesEbolaCaseCounts(
       diseaseData,
       filters
     );

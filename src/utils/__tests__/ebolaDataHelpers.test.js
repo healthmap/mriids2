@@ -1,5 +1,5 @@
 import {
-  getEbolaCountriesCaseCounts,
+  getCountriesEbolaCaseCounts,
   getEbolaCaseCount,
   getAllFutureProjectedCasesCount,
   getCountryFutureProjectedCasesCount,
@@ -15,10 +15,10 @@ import {
 
 import { reduxInitialState } from "../../constants/CommonTestData";
 
-describe("Tests for getEbolaCountriesCaseCounts", () => {
+describe("Tests for getCountriesEbolaCaseCounts", () => {
   test("should return data in expected format", () => {
     expect(
-      getEbolaCountriesCaseCounts(
+      getCountriesEbolaCaseCounts(
         allCountriesEbolaData,
         reduxInitialState.filters
       )
@@ -26,7 +26,7 @@ describe("Tests for getEbolaCountriesCaseCounts", () => {
   });
   test("should only count data within the date range in the filters", () => {
     expect(
-      getEbolaCountriesCaseCounts(
+      getCountriesEbolaCaseCounts(
         allCountriesEbolaDataLiberiaOutOfDateRange,
         reduxInitialState.filters
       )
@@ -38,7 +38,7 @@ describe("Tests for getEbolaCountriesCaseCounts", () => {
       filters: { ...reduxInitialState.filters, projection: true },
     };
     expect(
-      getEbolaCountriesCaseCounts(
+      getCountriesEbolaCaseCounts(
         allCountriesEbolaData,
         projectionsEnabledState.filters
       )

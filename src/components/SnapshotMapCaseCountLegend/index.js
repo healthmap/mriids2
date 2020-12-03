@@ -7,7 +7,7 @@ import {
   getSnapshotColor,
   getSnapshotProjectionsColor,
 } from "../../utils/snapshotMapHelpers";
-import { getEbolaCountriesCaseCounts } from "../../utils/ebolaDataHelpers";
+import { getCountriesEbolaCaseCounts } from "../../utils/ebolaDataHelpers";
 import { getCountriesCovidCaseCounts } from "../../utils/covidDataHelpers";
 import {
   MapLegendWrapperSnapshot,
@@ -22,7 +22,7 @@ const SnapshotMapCaseCountLegend = ({ ebolaData, covidData, filters }) => {
   // Getting the number of case counts for each country.
   // We need this to get the max value for the legend.
   const countriesCaseCounts = ebolaOutbreakSelected
-    ? getEbolaCountriesCaseCounts(ebolaData, filters)
+    ? getCountriesEbolaCaseCounts(ebolaData, filters)
     : getCountriesCovidCaseCounts(covidData, filters);
 
   const legendHeader = filters.projection
