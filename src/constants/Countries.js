@@ -216,7 +216,7 @@ export const allCountries = [
   "Svalbard and Jan Mayen",
   "Sweden",
   "Switzerland",
-  "Syrian Arab Republic",
+  "Syria",
   "Taiwan",
   "Tajikistan",
   "Tanzania",

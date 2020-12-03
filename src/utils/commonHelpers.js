@@ -4,6 +4,10 @@ export const getValidCountryNameValue = (countryName) => {
       return "United States of America";
     case "UK":
       return "United Kingdom";
+    case "Libyan Arab Jamahiriya":
+      return "Libya";
+    case "Syrian Arab Republic":
+      return "Syria";
     default:
       return countryName;
   }
