@@ -119,7 +119,7 @@ export const allCountries = [
   "Kenya",
   "Kiribati",
   "Korea (the Democratic People's Republic of)",
-  "S. Korea",
+  "South Korea",
   "Kuwait",
   "Kyrgyzstan",
   "Lao People's Democratic Republic",

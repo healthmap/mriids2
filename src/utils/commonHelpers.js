@@ -8,6 +8,8 @@ export const getValidCountryNameValue = (countryName) => {
       return "Libya";
     case "Syrian Arab Republic":
       return "Syria";
+    case "S. Korea":
+      return "South Korea";
     default:
       return countryName;
   }
