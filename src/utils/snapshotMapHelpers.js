@@ -26,10 +26,20 @@ export const getCovidScale = (countryCaseCount) => {
   // Gets the scaleValue to be used by the snapshotMap and map legend.
   const maxCaseCountValue = Math.max(...Object.values(countryCaseCount));
   let scaleValue;
-  if (maxCaseCountValue < 100000) {
-    scaleValue = 100000;
+  if (maxCaseCountValue < 1000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 100) * 100;
+  } else if (maxCaseCountValue < 5000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 500) * 500;
+  } else if (maxCaseCountValue < 10000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 1000) * 1000;
+  } else if (maxCaseCountValue < 20000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 2000) * 2000;
+  } else if (maxCaseCountValue < 50000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 5000) * 5000;
+  } else if (maxCaseCountValue < 100000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 10000) * 10000;
   } else if (maxCaseCountValue < 500000) {
-    scaleValue = 500000;
+    scaleValue = Math.ceil(maxCaseCountValue / 50000) * 50000;
   } else if (maxCaseCountValue < 1000000) {
     scaleValue = Math.ceil(maxCaseCountValue / 100000) * 100000;
   } else if (maxCaseCountValue < 5000000) {
