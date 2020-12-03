@@ -68,9 +68,7 @@ export const getCovidCaseCount = (covidData = [], filters) => {
     }
   }
   // Only returns the caseCount value if it is an integer. This ensures the caseCount returned is not NaN.
-  if (Number.isInteger(caseCount)) {
-    return caseCount;
-  }
+  return Number.isInteger(caseCount) ? caseCount : 0;
 };
 
 // This gets the country case counts for the Snapshot map.

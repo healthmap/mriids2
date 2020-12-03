@@ -15,6 +15,7 @@ import ReactTooltip from "react-tooltip";
 import {
   getCountryToolTipContent,
   getEbolaFillColorsDictionary,
+  getCovidFillColorsDictionary,
   getCountryFillColor,
 } from "../../utils/snapshotMapHelpers";
 
@@ -25,9 +26,12 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
 
   // Set the fillColorDictionary when the filters are updated.
   useEffect(() => {
-    const colorDictionary = getEbolaFillColorsDictionary(ebolaData, filters);
+    const colorDictionary =
+      filters.outbreak === "Ebola Outbreak"
+        ? getEbolaFillColorsDictionary(ebolaData, filters)
+        : getCovidFillColorsDictionary(covidData, filters);
     setFillColorDictionary(colorDictionary);
-  }, [ebolaData, filters]);
+  }, [ebolaData, covidData, filters]);
 
   const changeZoomLevel = (newZoomLevel) => {
     // This prevents zooming in to a level higher than 9 and lower than 1.

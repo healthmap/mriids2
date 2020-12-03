@@ -1,6 +1,6 @@
 import { getEbolaCountriesCaseCounts } from "./ebolaDataHelpers";
 import { getCountriesCovidCaseCounts } from "./covidDataHelpers";
-import { ebolaOutbreakCountries } from "../constants/Countries";
+import { ebolaOutbreakCountries, allCountries } from "../constants/Countries";
 
 export const getEbolaScale = (countryCaseCount) => {
   // Gets the scaleValue to be used by the snapshotMap and map legend.
@@ -18,6 +18,26 @@ export const getEbolaScale = (countryCaseCount) => {
     scaleValue = Math.ceil(maxCaseCountValue / 500) * 500;
   } else {
     scaleValue = Math.ceil(maxCaseCountValue / 1000) * 1000;
+  }
+  return scaleValue;
+};
+
+export const getCovidScale = (countryCaseCount) => {
+  // Gets the scaleValue to be used by the snapshotMap and map legend.
+  const maxCaseCountValue = Math.max(...Object.values(countryCaseCount));
+  let scaleValue;
+  if (maxCaseCountValue < 100000) {
+    scaleValue = 100000;
+  } else if (maxCaseCountValue < 500000) {
+    scaleValue = 500000;
+  } else if (maxCaseCountValue < 1000000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 100000) * 100000;
+  } else if (maxCaseCountValue < 5000000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 500000) * 500000;
+  } else if (maxCaseCountValue < 10000000) {
+    scaleValue = Math.ceil(maxCaseCountValue / 1000000) * 1000000;
+  } else {
+    scaleValue = Math.ceil(maxCaseCountValue / 2000000) * 2000000;
   }
   return scaleValue;
 };
@@ -90,6 +110,27 @@ export const getEbolaFillColorsDictionary = (ebolaData, filters) => {
   const scale = getEbolaScale(ebolaCountriesCaseCounts);
   ebolaOutbreakCountries.forEach((country) => {
     const percentage = ebolaCountriesCaseCounts[country] / scale;
+    // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
+    // Otherwise get the fillColor value using the getSnapshotColor function.
+    colorsDictionary[country] = filters.projection
+      ? getSnapshotProjectionsColor(percentage)
+      : getSnapshotColor(percentage);
+  });
+  return colorsDictionary;
+};
+
+// This gets a dictionary with key/value pairs of country/fillColor for each country.
+export const getCovidFillColorsDictionary = (covidData, filters) => {
+  let colorsDictionary = {};
+  // Get the covid case count for all countries.
+  const covidCountriesCaseCounts = getCountriesCovidCaseCounts(
+    covidData,
+    filters
+  );
+  // Get the scale using the covidCountriesCaseCounts object.
+  const scale = getCovidScale(covidCountriesCaseCounts);
+  allCountries.forEach((country) => {
+    const percentage = covidCountriesCaseCounts[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
     // Otherwise get the fillColor value using the getSnapshotColor function.
     colorsDictionary[country] = filters.projection
