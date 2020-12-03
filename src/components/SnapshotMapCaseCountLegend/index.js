@@ -41,7 +41,7 @@ const SnapshotMapCaseCountLegend = ({ ebolaData, filters }) => {
         <MapLegendLevel
           key={`legend-level-${i}`}
           color={color}
-          value={Math.round(value * scale)}
+          value={Math.round(value * scale).toLocaleString()}
         />
       );
     }

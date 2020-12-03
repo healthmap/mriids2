@@ -90,8 +90,8 @@ const Sidebar = ({
         <ReportedCases
           projection={filters.projection}
           dateRange={filters.dateRange}
-          diseaseCaseCount={diseaseCaseCount}
-          projectedCaseCount={projectedCaseCount}
+          diseaseCaseCount={diseaseCaseCount.toLocaleString()}
+          projectedCaseCount={projectedCaseCount.toLocaleString()}
         />
       )}
       {showEbolaSummary && (
@@ -99,7 +99,7 @@ const Sidebar = ({
           projection={filters.projection}
           dateRange={filters.dateRange}
           country={filters.country}
-          diseaseCaseCount={diseaseCaseCount}
+          diseaseCaseCount={diseaseCaseCount.toLocaleString()}
         />
       )}
       {showEbolaRiskList && <EbolaRiskList />}

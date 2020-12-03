@@ -135,6 +135,6 @@ export const getCountryToolTipContent = (diseaseData, filters, countryName) => {
   // If the country has a case count, return the country name and case count.
   // Else, just return the country name.
   return countryCaseCount
-    ? `${countryName} - ${countryCaseCount}`
+    ? `${countryName} - ${countryCaseCount.toLocaleString()}`
     : countryName;
 };
