@@ -4,14 +4,19 @@ import {
   getCovidCaseCount,
   getLatestCountryCountInDateRange,
 } from "../covidDataHelpers";
-import { testCovidData, testParsedCovidData } from "../testData";
+import {
+  testCovidData,
+  testParsedCovidData,
+  testCovidDataCombined,
+} from "../testData";
 import { reduxInitialState } from "../../constants/CommonTestData";
+import { covidInitialDateRange } from "../../constants/DateRanges";
 
 // Filters for the covid outbreak in all countries.
 const allCountriesCovidOutbreakFilters = {
   ...reduxInitialState.filters,
   outbreak: "COVID 19",
-  dateRange: { from: new Date(2020, 1, 20), to: new Date(2020, 12, 20) },
+  dateRange: covidInitialDateRange,
 };
 
 // Filters for the covid outbreak in a specific country.
@@ -19,7 +24,7 @@ const specificCountryCovidOutbreakFilters = {
   ...reduxInitialState.filters,
   country: "Afghanistan",
   outbreak: "COVID 19",
-  dateRange: { from: new Date(2020, 1, 20), to: new Date(2020, 12, 20) },
+  dateRange: covidInitialDateRange,
 };
 
 describe("Tests for the parseCovidData helper function", () => {
@@ -78,15 +83,20 @@ describe("Tests for getLatestCountryCountInDateRange helper function", () => {
 });
 
 describe("Tests for getCovidCaseCount helper function", () => {
-  test("should return 92430 which is the case count for both countries", () => {
+  test("should return 6167", () => {
     expect(
-      getCovidCaseCount(testParsedCovidData, allCountriesCovidOutbreakFilters)
-    ).toBe(92430);
+      getCovidCaseCount(
+        null,
+        testCovidDataCombined.data,
+        allCountriesCovidOutbreakFilters
+      )
+    ).toBe(6167);
   });
   test("should return 46215 which is the case count for Afghanistan", () => {
     expect(
       getCovidCaseCount(
         testParsedCovidData,
+        null,
         specificCountryCovidOutbreakFilters
       )
     ).toBe(46215);

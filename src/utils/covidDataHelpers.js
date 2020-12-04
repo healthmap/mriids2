@@ -42,17 +42,18 @@ export const getLatestCountryCountInDateRange = (
 };
 
 // This gets the case count for the Sidebar
-export const getCovidCaseCount = (covidData = [], filters) => {
+export const getCovidCaseCount = (
+  covidData = [],
+  covidDataCombined,
+  filters
+) => {
   let caseCount = 0;
   if (filters.country === "All") {
-    // Loops through each country in the covidData array.
-    covidData.forEach((countryData) => {
-      // Adds the latest case count for each country to the caseCount.
-      caseCount += getLatestCountryCountInDateRange(
-        countryData.cases,
-        filters.dateRange
-      );
-    });
+    // If "All" countries are selected, get the latest value from the covidDataCombined.cases object within the dateRange.
+    caseCount = getLatestCountryCountInDateRange(
+      covidDataCombined.cases,
+      filters.dateRange
+    );
   } else {
     // Finds the data object for the country selected in filters.country.
     const selectedCountryDataObject = covidData.find(
