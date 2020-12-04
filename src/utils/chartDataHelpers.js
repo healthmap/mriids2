@@ -153,16 +153,20 @@ export const prepareCovidDataForCharts = (
       }
     });
   } else if (getSpecificCountryCovidData) {
+    // Find a data object for the country in the filters
     const countryDataObject = findCountryDataObject(covidData, filters.country);
-    // Get an array of keys from the countryDataObject.cases object where the dates are 7 days apart.
-    const weekDateKeys = getWeeklyDateObjectKeys(countryDataObject.cases);
-    // Loop through all the 'weekDateKeys'.
-    weekDateKeys.forEach((dateKey) => {
-      // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
-      if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
-        chartData.push([new Date(dateKey), countryDataObject.cases[dateKey]]);
-      }
-    });
+    // If a countryDataObject is found, execute this block.
+    if (countryDataObject) {
+      // Get an array of keys from the countryDataObject.cases object where the dates are 7 days apart.
+      const weekDateKeys = getWeeklyDateObjectKeys(countryDataObject.cases);
+      // Loop through all the 'weekDateKeys'.
+      weekDateKeys.forEach((dateKey) => {
+        // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
+        if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
+          chartData.push([new Date(dateKey), countryDataObject.cases[dateKey]]);
+        }
+      });
+    }
   }
   return chartData;
 };
