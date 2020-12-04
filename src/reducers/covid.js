@@ -8,7 +8,7 @@ const initialState = {
   },
   covidDataCombined: {
     isFetching: 0,
-    data: [],
+    data: {},
     error: {},
   },
 };

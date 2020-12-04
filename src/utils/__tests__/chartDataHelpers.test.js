@@ -9,7 +9,9 @@ import {
   testGuineaDataOutOfDateRange,
   testEbolaDataCombined,
   testEbolaDataCombinedOutOfDateRange,
+  testCovidDataCombined,
 } from "../testData";
+import { covidInitialDateRange } from "../../constants/DateRanges";
 
 import { reduxInitialState } from "../../constants/CommonTestData";
 
@@ -101,7 +103,17 @@ describe("Tests for the chart data helper functions", () => {
   });
 
   test("prepareCovidDataForCharts returns data in expected format", () => {
-    expect(prepareCovidDataForCharts()).toEqual([
+    const covidAllCountriesFilters = {
+      ...reduxInitialState.filters,
+      outbreak: "COVID 19",
+      dateRange: covidInitialDateRange,
+    };
+    expect(
+      prepareCovidDataForCharts(
+        testCovidDataCombined.data,
+        covidAllCountriesFilters
+      )
+    ).toEqual([
       [
         {
           type: "date",
@@ -112,6 +124,8 @@ describe("Tests for the chart data helper functions", () => {
           label: "COVID-19 Cases",
         },
       ],
+      [new Date("1/22/20"), 555],
+      [new Date("1/29/20"), 6167],
     ]);
   });
 });
