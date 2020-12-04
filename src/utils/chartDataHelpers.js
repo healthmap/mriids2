@@ -135,9 +135,9 @@ export const prepareCovidDataForCharts = (covidDataCombined, filters) => {
   chartData.push(getChartColumns("COVID-19", false));
   // If "All" countries are selected and the covidDataCombined object is not empty, execute this block.
   if (filters.country === "All" && Object.keys(covidDataCombined).length) {
-    // Get an array of keys where the dates are 7 days apart. This is to get the weekly data.
+    // Get an array of keys from the covidDataCombined.cases object where the dates are 7 days apart.
     const weekDateKeys = getWeeklyDateObjectKeys(covidDataCombined.cases);
-    // Loop through all the 'weekDateKeys' in the covidDataCombined.cases object.
+    // Loop through all the 'weekDateKeys'.
     weekDateKeys.forEach((dateKey) => {
       // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
       if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
