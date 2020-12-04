@@ -3,36 +3,42 @@ import { connect } from "react-redux";
 import MapLegendLevel from "../MapLegendLevel";
 import {
   getEbolaScale,
+  getCovidScale,
   getSnapshotColor,
   getSnapshotProjectionsColor,
 } from "../../utils/snapshotMapHelpers";
-import { getEbolaCountriesCaseCounts } from "../../utils/ebolaDataHelpers";
+import { getCountriesEbolaCaseCounts } from "../../utils/ebolaDataHelpers";
+import { getCountriesCovidCaseCounts } from "../../utils/covidDataHelpers";
 import {
   MapLegendWrapperSnapshot,
   MapLegendItemsWrapper,
 } from "../styled-components/MapLegendWrappers";
 import { BlockDropshadow } from "../styled-components/Block";
 
-const SnapshotMapCaseCountLegend = ({ ebolaData, filters }) => {
+const SnapshotMapCaseCountLegend = ({ ebolaData, covidData, filters }) => {
+  // Determines whether the ebola outbreak is selected.
+  const ebolaOutbreakSelected = filters.outbreak === "Ebola Outbreak";
+
   // Getting the number of case counts for each country.
   // We need this to get the max value for the legend.
-  const countriesEbolaCaseCounts = getEbolaCountriesCaseCounts(
-    ebolaData,
-    filters
-  );
+  const countriesCaseCounts = ebolaOutbreakSelected
+    ? getCountriesEbolaCaseCounts(ebolaData, filters)
+    : getCountriesCovidCaseCounts(covidData, filters);
 
   const legendHeader = filters.projection
     ? "Total outbreak projections"
     : "Case counts";
 
   const renderLegendLevels = () => {
-    const scale = getEbolaScale(countriesEbolaCaseCounts);
+    const scale = ebolaOutbreakSelected
+      ? getEbolaScale(countriesCaseCounts)
+      : getCovidScale(countriesCaseCounts);
     // We want to render 10 levels for the legend.
     const numberOfLevels = 9;
     const levels = [];
     for (let i = 0; i <= numberOfLevels; i++) {
       let value = i / numberOfLevels;
-      // If the projections are turned on, we want to use the projections colors.
+      // If the projections are enabled, we want to use the projections colors.
       // Else, use the regular snapshot colors.
       const color = filters.projection
         ? getSnapshotProjectionsColor(value)
@@ -61,6 +67,7 @@ const SnapshotMapCaseCountLegend = ({ ebolaData, filters }) => {
 
 const mapStateToProps = (state) => ({
   ebolaData: state.ebola.ebolaData.data,
+  covidData: state.covid.covidData.data,
   filters: state.filters,
 });
 
