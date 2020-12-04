@@ -9,13 +9,13 @@ import {
   prepareCovidDataForCharts,
 } from "../../utils/chartDataHelpers";
 
-const ChartComponent = (props) => {
+const ChartComponent = ({ ebolaData, ebolaDataCombined, filters }) => {
   let chartData;
-  if (props.filters.outbreak === "Ebola Outbreak") {
+  if (filters.outbreak === "Ebola Outbreak") {
     chartData = prepareEbolaDataForCharts(
-      props.ebola.ebolaData.data,
-      props.ebola.ebolaDataCombined.data,
-      props.filters
+      ebolaData,
+      ebolaDataCombined,
+      filters
     );
   } else {
     chartData = prepareCovidDataForCharts();
@@ -38,7 +38,8 @@ const ChartComponent = (props) => {
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
-  ebola: state.ebola,
+  ebolaData: state.ebola.ebolaData.data,
+  ebolaDataCombined: state.ebola.ebolaDataCombined.data,
 });
 
 export default connect(mapStateToProps)(ChartComponent);
