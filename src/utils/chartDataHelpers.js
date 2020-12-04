@@ -126,9 +126,19 @@ export const prepareEbolaDataForCharts = (
   return chartData;
 };
 
-export const prepareCovidDataForCharts = () => {
+export const prepareCovidDataForCharts = (covidDataCombined, filters) => {
   const chartData = [];
   // 1. Add column headers to chartData array.
   chartData.push(getChartColumns("COVID-19", false));
+  // 2. If "All" countries are selected and the covidDataCombined object is not empty, execute this block.
+  if (filters.country === "All" && Object.keys(covidDataCombined).length) {
+    // 3. Loop through all the 'dateKeys' in the covidDataCombined.cases object.
+    Object.keys(covidDataCombined.cases).forEach((dateKey) => {
+      // 4. If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
+      if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
+        chartData.push([new Date(dateKey), covidDataCombined.cases[dateKey]]);
+      }
+    });
+  }
   return chartData;
 };
