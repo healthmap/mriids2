@@ -2,7 +2,7 @@ import {
   parseCovidData,
   getLastObjectKey,
   getCovidCaseCount,
-  getLatestCountryCountInDateRange,
+  getLatestCountInDateRange,
 } from "../covidDataHelpers";
 import {
   testCovidData,
@@ -63,22 +63,22 @@ describe("Tests for the getLastObjectKey helper function", () => {
   });
 });
 
-describe("Tests for getLatestCountryCountInDateRange helper function", () => {
+describe("Tests for getLatestCountInDateRange helper function", () => {
   const testDateRange = {
     from: new Date(2020, 10, 27),
     to: new Date(2020, 10, 30),
   };
   test("should return 46215 which is the latest case count for Afghanistan", () => {
     const countryCaseCount = testParsedCovidData[0].cases;
-    expect(
-      getLatestCountryCountInDateRange(countryCaseCount, testDateRange)
-    ).toBe(46215);
+    expect(getLatestCountInDateRange(countryCaseCount, testDateRange)).toBe(
+      46215
+    );
   });
   test("should return 1763 which is the latest death count for Afghanistan", () => {
     const countryDeathCount = testParsedCovidData[0].deaths;
-    expect(
-      getLatestCountryCountInDateRange(countryDeathCount, testDateRange)
-    ).toBe(1763);
+    expect(getLatestCountInDateRange(countryDeathCount, testDateRange)).toBe(
+      1763
+    );
   });
 });
 
