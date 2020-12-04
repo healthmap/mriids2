@@ -12,3 +12,7 @@ export const isDateWithinFiltersDateRange = (weekDateString, dateRange) => {
   const dateValue = new Date(weekDateString);
   return dateValue > dateRange.from && dateValue < dateRange.to;
 };
+
+// Returns an array of keys where the dates are 7 days apart. This is to get the weekly data.
+export const getWeeklyDateObjectKeys = (dataObject) =>
+  Object.keys(dataObject).filter((value, index) => index % 7 === 0);

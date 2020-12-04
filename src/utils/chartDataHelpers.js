@@ -1,5 +1,8 @@
 import dayjs from "dayjs";
-import { isDateWithinFiltersDateRange } from "./dateHelpers";
+import {
+  isDateWithinFiltersDateRange,
+  getWeeklyDateObjectKeys,
+} from "./dateHelpers";
 
 const getChartColumns = (outbreakName, projection = false) => {
   const columns = [
@@ -128,21 +131,15 @@ export const prepareEbolaDataForCharts = (
 
 export const prepareCovidDataForCharts = (covidDataCombined, filters) => {
   const chartData = [];
-  // 1. Add column headers to chartData array.
+  // Add column headers to chartData array.
   chartData.push(getChartColumns("COVID-19", false));
-  // 2. If "All" countries are selected and the covidDataCombined object is not empty, execute this block.
+  // If "All" countries are selected and the covidDataCombined object is not empty, execute this block.
   if (filters.country === "All" && Object.keys(covidDataCombined).length) {
-    // 3. Get an array of keys where the dates are 7 days apart. This is to get the weekly data.
-    const weekDateKeys = Object.keys(covidDataCombined.cases).filter(function (
-      value,
-      index,
-      Arr
-    ) {
-      return index % 7 === 0;
-    });
-    // 4. Loop through all the 'weekDateKeys' in the covidDataCombined.cases object.
+    // Get an array of keys where the dates are 7 days apart. This is to get the weekly data.
+    const weekDateKeys = getWeeklyDateObjectKeys(covidDataCombined.cases);
+    // Loop through all the 'weekDateKeys' in the covidDataCombined.cases object.
     weekDateKeys.forEach((dateKey) => {
-      // 5. If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
+      // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
       if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
         chartData.push([new Date(dateKey), covidDataCombined.cases[dateKey]]);
       }
