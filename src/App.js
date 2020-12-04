@@ -3,11 +3,7 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/theme";
-import {
-  fetchEbolaData,
-  fetchEbolaDataCombined,
-  fetchRiskData,
-} from "./actions/ebola";
+import { fetchEbolaData, fetchEbolaDataCombined } from "./actions/ebola";
 import { fetchCovidData, fetchCovidDataCombined } from "./actions/covid";
 import SnapshotMap from "./components/SnapshotMap";
 import EbolaRiskMap from "./containers/EbolaRiskMap";
@@ -23,7 +19,6 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchEbolaData();
     this.props.fetchEbolaDataCombined();
-    this.props.fetchRiskData();
     this.props.fetchCovidData();
     this.props.fetchCovidDataCombined();
   }
@@ -79,7 +74,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchEbolaData: () => dispatch(fetchEbolaData()),
   fetchEbolaDataCombined: () => dispatch(fetchEbolaDataCombined()),
-  fetchRiskData: () => dispatch(fetchRiskData()),
   fetchCovidData: () => dispatch(fetchCovidData()),
   fetchCovidDataCombined: () => dispatch(fetchCovidDataCombined()),
 });
