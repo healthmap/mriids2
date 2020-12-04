@@ -10,6 +10,7 @@ import {
   testEbolaDataCombined,
   testEbolaDataCombinedOutOfDateRange,
   testCovidDataCombined,
+  testCountryCovidData,
 } from "../testData";
 import { covidInitialDateRange } from "../../constants/DateRanges";
 
@@ -102,7 +103,7 @@ describe("Tests for the chart data helper functions", () => {
     ]);
   });
 
-  test("prepareCovidDataForCharts returns data in expected format", () => {
+  test("prepareCovidDataForCharts returns all country data in expected format", () => {
     const covidAllCountriesFilters = {
       ...reduxInitialState.filters,
       outbreak: "COVID 19",
@@ -110,6 +111,7 @@ describe("Tests for the chart data helper functions", () => {
     };
     expect(
       prepareCovidDataForCharts(
+        null,
         testCovidDataCombined.data,
         covidAllCountriesFilters
       )
@@ -126,6 +128,35 @@ describe("Tests for the chart data helper functions", () => {
       ],
       [new Date("1/22/20"), 555],
       [new Date("1/29/20"), 6167],
+    ]);
+  });
+  test("prepareCovidDataForCharts returns specific country data in expected format", () => {
+    const covidAfghanistanFilters = {
+      ...reduxInitialState.filters,
+      country: "Afghanistan",
+      outbreak: "COVID 19",
+      dateRange: covidInitialDateRange,
+    };
+    expect(
+      prepareCovidDataForCharts(
+        testCountryCovidData,
+        null,
+        covidAfghanistanFilters
+      )
+    ).toEqual([
+      [
+        {
+          type: "date",
+          label: "Date",
+        },
+        {
+          type: "number",
+          label: "COVID-19 Cases",
+        },
+      ],
+      [new Date("2/24/20"), 1],
+      [new Date("3/2/20"), 1],
+      [new Date("3/9/20"), 7],
     ]);
   });
 });

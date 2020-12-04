@@ -3,6 +3,7 @@ import {
   isDateWithinFiltersDateRange,
   getWeeklyDateObjectKeys,
 } from "./dateHelpers";
+import { findCountryDataObject } from "./covidDataHelpers";
 
 const getChartColumns = (outbreakName, projection = false) => {
   const columns = [
@@ -129,12 +130,19 @@ export const prepareEbolaDataForCharts = (
   return chartData;
 };
 
-export const prepareCovidDataForCharts = (covidDataCombined, filters) => {
+export const prepareCovidDataForCharts = (
+  covidData,
+  covidDataCombined,
+  filters
+) => {
   const chartData = [];
+  const getAllCountriesCovidData =
+    filters.country === "All" && Object.keys(covidDataCombined).length;
+  const getSpecificCountryCovidData =
+    filters.country !== "All" && Object.keys(covidData).length;
   // Add column headers to chartData array.
   chartData.push(getChartColumns("COVID-19", false));
-  // If "All" countries are selected and the covidDataCombined object is not empty, execute this block.
-  if (filters.country === "All" && Object.keys(covidDataCombined).length) {
+  if (getAllCountriesCovidData) {
     // Get an array of keys from the covidDataCombined.cases object where the dates are 7 days apart.
     const weekDateKeys = getWeeklyDateObjectKeys(covidDataCombined.cases);
     // Loop through all the 'weekDateKeys'.
@@ -142,6 +150,17 @@ export const prepareCovidDataForCharts = (covidDataCombined, filters) => {
       // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
       if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
         chartData.push([new Date(dateKey), covidDataCombined.cases[dateKey]]);
+      }
+    });
+  } else if (getSpecificCountryCovidData) {
+    const countryDataObject = findCountryDataObject(covidData, filters.country);
+    // Get an array of keys from the countryDataObject.cases object where the dates are 7 days apart.
+    const weekDateKeys = getWeeklyDateObjectKeys(countryDataObject.cases);
+    // Loop through all the 'weekDateKeys'.
+    weekDateKeys.forEach((dateKey) => {
+      // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
+      if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
+        chartData.push([new Date(dateKey), countryDataObject.cases[dateKey]]);
       }
     });
   }
