@@ -71,16 +71,20 @@ export const getCovidCaseCount = (covidData = [], filters) => {
   return Number.isInteger(caseCount) ? caseCount : 0;
 };
 
+// Find data object for the specified country.
+export const findCountryDataObject = (covidData, countryName) =>
+  covidData.find(
+    (dataObject) =>
+      getValidCountryNameValue(dataObject.countryName) === countryName
+  );
+
 // This gets the country case counts for the Snapshot map.
 export const getCountriesCovidCaseCounts = (covidData, filters) => {
   let countriesCaseCounts = {};
   allCountries.forEach((country) => {
     let countryCaseCount;
     // 1. Find the data object for the country.
-    const countryDataObject = covidData.find(
-      (dataObject) =>
-        getValidCountryNameValue(dataObject.countryName) === country
-    );
+    const countryDataObject = findCountryDataObject(covidData, country);
     // 2. If a countryDataObject is found, get the latest case count within the dateRange and set it to countryCaseCount.
     // If no countryDataObject is found, set countryCaseCount to 0
     if (countryDataObject) {
