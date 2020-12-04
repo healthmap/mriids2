@@ -22,6 +22,11 @@ export const reduxInitialState = {
       data: [],
       error: {},
     },
+    covidDataCombined: {
+      isFetching: 0,
+      data: [],
+      error: {},
+    },
   },
   filters: {
     country: "All",

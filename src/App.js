@@ -8,7 +8,7 @@ import {
   fetchEbolaDataCombined,
   fetchRiskData,
 } from "./actions/ebola";
-import { fetchCovidData } from "./actions/covid";
+import { fetchCovidData, fetchCovidDataCombined } from "./actions/covid";
 import SnapshotMap from "./components/SnapshotMap";
 import EbolaRiskMap from "./containers/EbolaRiskMap";
 import Team from "./components/Team";
@@ -25,6 +25,7 @@ class App extends Component {
     this.props.fetchEbolaDataCombined();
     this.props.fetchRiskData();
     this.props.fetchCovidData();
+    this.props.fetchCovidDataCombined();
   }
 
   renderHomePageComponents = () => {
@@ -80,6 +81,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchEbolaDataCombined: () => dispatch(fetchEbolaDataCombined()),
   fetchRiskData: () => dispatch(fetchRiskData()),
   fetchCovidData: () => dispatch(fetchCovidData()),
+  fetchCovidDataCombined: () => dispatch(fetchCovidDataCombined()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

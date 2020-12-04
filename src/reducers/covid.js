@@ -6,6 +6,11 @@ const initialState = {
     data: [],
     error: {},
   },
+  covidDataCombined: {
+    isFetching: 0,
+    data: [],
+    error: {},
+  },
 };
 
 const Covid = function (state = initialState, action) {
@@ -33,6 +38,32 @@ const Covid = function (state = initialState, action) {
         covidData: {
           ...state.covidData,
           isFetching: state.covidData.isFetching - 1,
+          error: action.error,
+        },
+      };
+    case types.FETCH_COVID_DATA_COMBINED_REQUEST:
+      return {
+        ...state,
+        covidDataCombined: {
+          ...state.covidDataCombined,
+          isFetching: state.covidDataCombined.isFetching + 1,
+        },
+      };
+    case types.FETCH_COVID_DATA_COMBINED_SUCCESS:
+      return {
+        ...state,
+        covidDataCombined: {
+          ...state.covidDataCombined,
+          isFetching: state.covidDataCombined.isFetching - 1,
+          data: action.payload,
+        },
+      };
+    case types.FETCH_COVID_DATA_COMBINED_FAILURE:
+      return {
+        ...state,
+        covidDataCombined: {
+          ...state.covidDataCombined,
+          isFetching: state.covidDataCombined.isFetching - 1,
           error: action.error,
         },
       };
