@@ -1,6 +1,7 @@
 import {
   prepareEbolaDataForCharts,
-  getCovidDataForCharts,
+  getAllCountriesChartData,
+  getSelectedCountryChartData,
 } from "../chartDataHelpers";
 
 import {
@@ -16,7 +17,7 @@ import { covidInitialDateRange } from "../../constants/DateRanges";
 
 import { reduxInitialState } from "../../constants/CommonTestData";
 
-describe("Tests for the chart data helper functions", () => {
+describe("Tests for prepareEbolaDataForCharts helper function", () => {
   test("prepareEbolaDataForCharts returns Guinea data in expected format", () => {
     expect(
       prepareEbolaDataForCharts(testGuineaData, null, testGuineaFiltersState)
@@ -102,57 +103,56 @@ describe("Tests for the chart data helper functions", () => {
       [new Date("2014-10-13"), "859"],
     ]);
   });
+});
 
-  test("getCovidDataForCharts returns all country data in expected format", () => {
-    const covidAllCountriesFilters = {
-      ...reduxInitialState.filters,
-      outbreak: "COVID 19",
-      dateRange: covidInitialDateRange,
-    };
-    expect(
-      getCovidDataForCharts(
-        null,
-        testCovidDataCombined.data,
-        covidAllCountriesFilters
-      )
-    ).toEqual([
-      [
-        {
-          type: "date",
-          label: "Date",
-        },
-        {
-          type: "number",
-          label: "COVID-19 Cases",
-        },
-      ],
-      [new Date("1/22/20"), 555],
-      [new Date("1/29/20"), 6167],
-    ]);
-  });
-  test("getCovidDataForCharts returns specific country data in expected format", () => {
-    const covidAfghanistanFilters = {
-      ...reduxInitialState.filters,
-      country: "Afghanistan",
-      outbreak: "COVID 19",
-      dateRange: covidInitialDateRange,
-    };
-    expect(
-      getCovidDataForCharts(testCountryCovidData, null, covidAfghanistanFilters)
-    ).toEqual([
-      [
-        {
-          type: "date",
-          label: "Date",
-        },
-        {
-          type: "number",
-          label: "COVID-19 Cases",
-        },
-      ],
-      [new Date("2/24/20"), 1],
-      [new Date("3/2/20"), 1],
-      [new Date("3/9/20"), 7],
-    ]);
-  });
+test("getAllCountriesChartData returns all country data in expected format", () => {
+  const covidAllCountriesFilters = {
+    ...reduxInitialState.filters,
+    outbreak: "COVID 19",
+    dateRange: covidInitialDateRange,
+  };
+  expect(
+    getAllCountriesChartData(
+      testCovidDataCombined.data,
+      covidAllCountriesFilters
+    )
+  ).toEqual([
+    [
+      {
+        type: "date",
+        label: "Date",
+      },
+      {
+        type: "number",
+        label: "COVID-19 Cases",
+      },
+    ],
+    [new Date("1/22/20"), 555],
+    [new Date("1/29/20"), 6167],
+  ]);
+});
+test("getSelectedCountryChartData returns specific country data in expected format", () => {
+  const covidAfghanistanFilters = {
+    ...reduxInitialState.filters,
+    country: "Afghanistan",
+    outbreak: "COVID 19",
+    dateRange: covidInitialDateRange,
+  };
+  expect(
+    getSelectedCountryChartData(testCountryCovidData, covidAfghanistanFilters)
+  ).toEqual([
+    [
+      {
+        type: "date",
+        label: "Date",
+      },
+      {
+        type: "number",
+        label: "COVID-19 Cases",
+      },
+    ],
+    [new Date("2/24/20"), 1],
+    [new Date("3/2/20"), 1],
+    [new Date("3/9/20"), 7],
+  ]);
 });
