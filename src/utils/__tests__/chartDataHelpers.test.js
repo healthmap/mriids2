@@ -1,6 +1,6 @@
 import {
   prepareEbolaDataForCharts,
-  prepareCovidDataForCharts,
+  getCovidDataForCharts,
 } from "../chartDataHelpers";
 
 import {
@@ -103,14 +103,14 @@ describe("Tests for the chart data helper functions", () => {
     ]);
   });
 
-  test("prepareCovidDataForCharts returns all country data in expected format", () => {
+  test("getCovidDataForCharts returns all country data in expected format", () => {
     const covidAllCountriesFilters = {
       ...reduxInitialState.filters,
       outbreak: "COVID 19",
       dateRange: covidInitialDateRange,
     };
     expect(
-      prepareCovidDataForCharts(
+      getCovidDataForCharts(
         null,
         testCovidDataCombined.data,
         covidAllCountriesFilters
@@ -130,7 +130,7 @@ describe("Tests for the chart data helper functions", () => {
       [new Date("1/29/20"), 6167],
     ]);
   });
-  test("prepareCovidDataForCharts returns specific country data in expected format", () => {
+  test("getCovidDataForCharts returns specific country data in expected format", () => {
     const covidAfghanistanFilters = {
       ...reduxInitialState.filters,
       country: "Afghanistan",
@@ -138,11 +138,7 @@ describe("Tests for the chart data helper functions", () => {
       dateRange: covidInitialDateRange,
     };
     expect(
-      prepareCovidDataForCharts(
-        testCountryCovidData,
-        null,
-        covidAfghanistanFilters
-      )
+      getCovidDataForCharts(testCountryCovidData, null, covidAfghanistanFilters)
     ).toEqual([
       [
         {

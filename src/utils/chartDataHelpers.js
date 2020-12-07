@@ -130,43 +130,57 @@ export const prepareEbolaDataForCharts = (
   return chartData;
 };
 
-export const prepareCovidDataForCharts = (
-  covidData,
-  covidDataCombined,
-  filters
-) => {
+export const getAllCountriesChartData = (covidDataCombined, filters) => {
   const chartData = [];
-  const getAllCountriesCovidData =
-    filters.country === "All" && Object.keys(covidDataCombined).length;
-  const getSpecificCountryCovidData =
-    filters.country !== "All" && Object.keys(covidData).length;
   // Add column headers to chartData array.
   chartData.push(getChartColumns("COVID-19", false));
-  if (getAllCountriesCovidData) {
-    // Get an array of keys from the covidDataCombined.cases object where the dates are 7 days apart.
-    const weekDateKeys = getWeeklyDateObjectKeys(covidDataCombined.cases);
+  // Get an array of keys from the covidDataCombined.cases object where the dates are 7 days apart.
+  const weekDateKeys = getWeeklyDateObjectKeys(covidDataCombined.cases);
+  // Loop through all the 'weekDateKeys'.
+  weekDateKeys.forEach((dateKey) => {
+    // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
+    if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
+      const dataRow = [new Date(dateKey), covidDataCombined.cases[dateKey]];
+      chartData.push(dataRow);
+    }
+  });
+  return chartData;
+};
+
+export const getSelectedCountryChartData = (covidData, filters) => {
+  const chartData = [];
+  // Add column headers to chartData array.
+  chartData.push(getChartColumns("COVID-19", false));
+  // Find a data object for the country in the filters
+  const countryDataObject = findCountryDataObject(covidData, filters.country);
+  // If a countryDataObject is found, execute this block.
+  if (countryDataObject) {
+    // Get an array of keys from the countryDataObject.cases object where the dates are 7 days apart.
+    const weekDateKeys = getWeeklyDateObjectKeys(countryDataObject.cases);
     // Loop through all the 'weekDateKeys'.
     weekDateKeys.forEach((dateKey) => {
       // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
       if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
-        chartData.push([new Date(dateKey), covidDataCombined.cases[dateKey]]);
+        const dataRow = [new Date(dateKey), countryDataObject.cases[dateKey]];
+        chartData.push(dataRow);
       }
     });
-  } else if (getSpecificCountryCovidData) {
-    // Find a data object for the country in the filters
-    const countryDataObject = findCountryDataObject(covidData, filters.country);
-    // If a countryDataObject is found, execute this block.
-    if (countryDataObject) {
-      // Get an array of keys from the countryDataObject.cases object where the dates are 7 days apart.
-      const weekDateKeys = getWeeklyDateObjectKeys(countryDataObject.cases);
-      // Loop through all the 'weekDateKeys'.
-      weekDateKeys.forEach((dateKey) => {
-        // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
-        if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
-          chartData.push([new Date(dateKey), countryDataObject.cases[dateKey]]);
-        }
-      });
-    }
   }
   return chartData;
+};
+
+export const getCovidDataForCharts = (
+  covidData,
+  covidDataCombined,
+  filters
+) => {
+  const getAllCountriesCovidData =
+    filters.country === "All" && Object.keys(covidDataCombined).length;
+  const getSpecificCountryCovidData =
+    filters.country !== "All" && Object.keys(covidData).length;
+  if (getAllCountriesCovidData) {
+    return getAllCountriesChartData(covidDataCombined, filters);
+  } else if (getSpecificCountryCovidData) {
+    return getSelectedCountryChartData(covidData, filters);
+  }
 };
