@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ZoomButtons = styled.div`
   position: absolute;
   right: 10px;
-  bottom: 40px;
+  bottom: 3.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;

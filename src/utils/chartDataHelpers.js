@@ -1,3 +1,6 @@
+import dayjs from "dayjs";
+import { isDateWithinFiltersDateRange } from "./ebolaDataHelpers";
+
 const getChartColumns = (outbreakName, projection = false) => {
   const columns = [
     {
@@ -19,6 +22,18 @@ const getChartColumns = (outbreakName, projection = false) => {
   return columns;
 };
 
+const getWeekProjectionData = (
+  lastWeekDate,
+  numberOfWeeks,
+  projectionsData
+) => {
+  return [
+    new Date(dayjs(lastWeekDate).add(numberOfWeeks, "week").format()),
+    null,
+    projectionsData,
+  ];
+};
+
 export const prepareEbolaDataForCharts = (
   ebolaData,
   ebolaDataCombined,
@@ -28,6 +43,14 @@ export const prepareEbolaDataForCharts = (
   // 1. Add column headers to chartData array.
   chartData.push(getChartColumns("Ebola", filters.projection));
   // 2. Add ebola data to chartData array.
+
+  let projectionsData = {
+    oneWeek: null,
+    twoWeeks: null,
+    threeWeeks: null,
+    fourWeeks: null,
+  };
+
   const showEbolaDataCombined =
     ebolaDataCombined && ebolaDataCombined.length && filters.country === "All";
 
@@ -36,11 +59,19 @@ export const prepareEbolaDataForCharts = (
     ebolaDataCombined.forEach((row) => {
       const dateValue = new Date(row.projection_from);
       // Only push the rows if the dateValue is within the filters.dateRange
-      const isDateValueInRange =
-        dateValue > filters.dateRange.from && dateValue < filters.dateRange.to;
-      if (isDateValueInRange) {
+      if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
         const aggregatedData = row.aggregated;
-        chartData.push([dateValue, aggregatedData]);
+        const dataRow = [dateValue, aggregatedData];
+        if (filters.projection) {
+          // If projections are enabled, store the weekly projection data in the projectionsData object.
+          // We also need to add a value of null to the end of the dataRow array.
+          projectionsData.oneWeek = parseFloat(row["y1.aggregated"]);
+          projectionsData.twoWeeks = parseFloat(row["y2.aggregated"]);
+          projectionsData.threeWeeks = parseFloat(row["y3.aggregated"]);
+          projectionsData.fourWeeks = parseFloat(row["y4.aggregated"]);
+          dataRow.push(null);
+        }
+        chartData.push(dataRow);
       }
     });
   }
@@ -61,16 +92,36 @@ export const prepareEbolaDataForCharts = (
           if (Object.prototype.hasOwnProperty.call(countryData, date)) {
             const dateValue = new Date(date);
             // Only push the rows if the dateValue is within the filters.dateRange
-            const isDateValueInRange =
-              dateValue > filters.dateRange.from &&
-              dateValue < filters.dateRange.to;
-            if (isDateValueInRange) {
-              chartData.push([dateValue, countryData[date].value]);
+            if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
+              const dataRow = [dateValue, countryData[date].value];
+              if (filters.projection) {
+                // If projections are enabled, store the weekly projection data in the projectionsData object.
+                // We also need to add a value of null to the end of the dataRow array.
+                projectionsData = countryData[date].projections;
+                dataRow.push(null);
+              }
+              chartData.push(dataRow);
             }
           }
         }
       }
     });
+  }
+  if (filters.projection) {
+    // If projections are enabled, we are pushing 4 additional rows to the chartData array (one for each week) with the projections data.
+    const lastWeekDate = chartData[chartData.length - 1][0];
+    chartData.push(
+      getWeekProjectionData(lastWeekDate, 1, projectionsData.oneWeek)
+    );
+    chartData.push(
+      getWeekProjectionData(lastWeekDate, 2, projectionsData.twoWeeks)
+    );
+    chartData.push(
+      getWeekProjectionData(lastWeekDate, 3, projectionsData.threeWeeks)
+    );
+    chartData.push(
+      getWeekProjectionData(lastWeekDate, 4, projectionsData.fourWeeks)
+    );
   }
   return chartData;
 };

@@ -28,6 +28,16 @@ const Filters = function (state = initialState, action) {
           to: action.payload[1],
         },
       };
+    case types.CHANGE_VIEW:
+      return {
+        ...state,
+        view: action.payload,
+      };
+    case types.CHANGE_PROJECTION:
+      return {
+        ...state,
+        projection: !state.projection,
+      };
     default:
       return state;
   }

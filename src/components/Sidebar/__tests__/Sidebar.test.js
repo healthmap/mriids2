@@ -5,25 +5,37 @@ import thunk from "redux-thunk";
 import Sidebar from "../index";
 import renderer from "react-test-renderer";
 import "jest-styled-components";
+import {
+  reduxInitialState,
+  riskViewState,
+} from "../../../constants/CommonTestData";
 
 const mockStore = configureStore([thunk]);
 
-describe("Tests for the connected Sidebar component", () => {
+describe("Tests for the connected Sidebar component with reduxInitialState", () => {
   let store;
   let component;
 
-  const initialState = {
-    filters: {
-      country: "All",
-      outbreak: "Ebola Outbreak",
-      view: "snapshot",
-      projection: false,
-      dateRange: { from: new Date(2014, 9, 1), to: new Date(2016, 1, 20) },
-    },
-  };
+  beforeEach(() => {
+    store = mockStore(reduxInitialState);
+
+    component = renderer.create(
+      <Provider store={store}>
+        <Sidebar />
+      </Provider>
+    );
+  });
+  test("should render with given state from Redux store", () => {
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+});
+
+describe("Tests for the connected Sidebar component with riskViewState", () => {
+  let store;
+  let component;
 
   beforeEach(() => {
-    store = mockStore(initialState);
+    store = mockStore(riskViewState);
 
     component = renderer.create(
       <Provider store={store}>
