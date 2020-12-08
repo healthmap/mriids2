@@ -8,14 +8,17 @@ import {
   allCountries,
 } from "../../constants/Countries";
 import { changeCountryFilter } from "../../actions/filters";
+import { withStyles } from "@material-ui/core/styles";
+import { styles } from "./styles";
 
-const CountrySelect = ({ outbreak, country, changeCountryFilter }) => {
+const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
   const countryOptions =
     outbreak === "Ebola Outbreak"
       ? ["All", ...ebolaOutbreakCountries]
       : ["All", ...allCountries];
 
   const onSelectCountry = (selectedValue) => {
+    // If the selectedValue is not null, change the country in the filters Redux state.
     if (selectedValue) {
       changeCountryFilter(selectedValue);
     }
@@ -23,12 +26,13 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter }) => {
 
   return (
     <Autocomplete
-      renderInput={(params) => (
-        <TextField {...params} label="Combo box" variant="outlined" />
-      )}
+      renderInput={(params) => <TextField {...params} variant="outlined" />}
       onChange={(event, value) => onSelectCountry(value)}
       options={countryOptions}
       value={country}
+      classes={classes}
+      disableClearable
+      forcePopupIcon={false}
     />
   );
 };
@@ -46,4 +50,8 @@ const mapDispatchToProps = (dispatch) =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(CountrySelect);
+// The withStyles higher-order component takes in the 'styles' and makes them accessible via the 'classes' prop.
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(CountrySelect));
