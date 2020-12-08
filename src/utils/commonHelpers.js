@@ -16,6 +16,8 @@ export const getValidCountryNameValue = (countryName) => {
       return "Laos";
     case "UAE":
       return "United Arab Emirates";
+    case "Swaziland":
+      return "eSwatini";
     default:
       return countryName;
   }
