@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tests for the connected Sidebar component with reduxInitialState should render with given state from Redux store 1`] = `
-.c2 {
+.c3 {
   display: block;
   width: 100%;
   padding: 1.5rem;
@@ -20,7 +20,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   appearance: none;
 }
 
-.c2:focus {
+.c3:focus {
   outline: none;
   border-color: transparent;
   box-shadow: 1px 1px 6px 0px rgba(39,124,218,0.2);
@@ -68,12 +68,12 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   padding-top: 1em;
 }
 
-.c3 select {
+.c2 select {
   color: #fff;
   background-color: #e43b46;
 }
 
-.c3 option {
+.c2 option {
   color: #fff;
   background-color: #e43b46;
 }
@@ -94,39 +94,81 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   <div
     className="c1"
   >
-    <select
-      className="c2"
-      name="location"
-      onChange={[Function]}
-      value="All"
+    <div
+      aria-expanded={false}
+      aria-owns={null}
+      className="MuiAutocomplete-root"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      role="combobox"
     >
-      <option
-        value="All"
+      <div
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
-        All
-      </option>
-      <option
-        value="Guinea"
-      >
-        Guinea
-      </option>
-      <option
-        value="Liberia"
-      >
-        Liberia
-      </option>
-      <option
-        value="Sierra Leone"
-      >
-        Sierra Leone
-      </option>
-    </select>
+        <div
+          className="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot CountrySelect-inputRoot-1 MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+          onClick={[Function]}
+        >
+          <input
+            aria-activedescendant={null}
+            aria-autocomplete="list"
+            aria-controls={null}
+            aria-invalid={false}
+            autoCapitalize="none"
+            autoComplete="off"
+            autoFocus={false}
+            className="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+            disabled={false}
+            id="country-select"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            required={false}
+            spellCheck="false"
+            type="text"
+            value=""
+          />
+          <div
+            className="MuiAutocomplete-endAdornment"
+          />
+          <fieldset
+            aria-hidden={true}
+            className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+            style={
+              Object {
+                "paddingLeft": 8,
+              }
+            }
+          >
+            <legend
+              className="PrivateNotchedOutline-legend-3"
+              style={
+                Object {
+                  "width": 0.01,
+                }
+              }
+            >
+              <span
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "&#8203;",
+                  }
+                }
+              />
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+    </div>
   </div>
   <div
-    className="c3"
+    className="c2"
   >
     <select
-      className="c2"
+      className="c3"
       name="outbreak"
       onChange={[Function]}
       value="Ebola Outbreak"
@@ -205,7 +247,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 `;
 
 exports[`Tests for the connected Sidebar component with riskViewState should render with given state from Redux store 1`] = `
-.c2 {
+.c3 {
   display: block;
   width: 100%;
   padding: 1.5rem;
@@ -224,7 +266,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   appearance: none;
 }
 
-.c2:focus {
+.c3:focus {
   outline: none;
   border-color: transparent;
   box-shadow: 1px 1px 6px 0px rgba(39,124,218,0.2);
@@ -251,12 +293,12 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   padding-top: 1em;
 }
 
-.c3 select {
+.c2 select {
   color: #fff;
   background-color: #e43b46;
 }
 
-.c3 option {
+.c2 option {
   color: #fff;
   background-color: #e43b46;
 }
@@ -277,39 +319,81 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   <div
     className="c1"
   >
-    <select
-      className="c2"
-      name="location"
-      onChange={[Function]}
-      value="All"
+    <div
+      aria-expanded={false}
+      aria-owns={null}
+      className="MuiAutocomplete-root"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      role="combobox"
     >
-      <option
-        value="All"
+      <div
+        className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
-        All
-      </option>
-      <option
-        value="Guinea"
-      >
-        Guinea
-      </option>
-      <option
-        value="Liberia"
-      >
-        Liberia
-      </option>
-      <option
-        value="Sierra Leone"
-      >
-        Sierra Leone
-      </option>
-    </select>
+        <div
+          className="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot CountrySelect-inputRoot-1 MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+          onClick={[Function]}
+        >
+          <input
+            aria-activedescendant={null}
+            aria-autocomplete="list"
+            aria-controls={null}
+            aria-invalid={false}
+            autoCapitalize="none"
+            autoComplete="off"
+            autoFocus={false}
+            className="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd"
+            disabled={false}
+            id="country-select"
+            onAnimationStart={[Function]}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            required={false}
+            spellCheck="false"
+            type="text"
+            value="All"
+          />
+          <div
+            className="MuiAutocomplete-endAdornment"
+          />
+          <fieldset
+            aria-hidden={true}
+            className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+            style={
+              Object {
+                "paddingLeft": 8,
+              }
+            }
+          >
+            <legend
+              className="PrivateNotchedOutline-legend-3"
+              style={
+                Object {
+                  "width": 0.01,
+                }
+              }
+            >
+              <span
+                dangerouslySetInnerHTML={
+                  Object {
+                    "__html": "&#8203;",
+                  }
+                }
+              />
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+    </div>
   </div>
   <div
-    className="c3"
+    className="c2"
   >
     <select
-      className="c2"
+      className="c3"
       name="outbreak"
       onChange={[Function]}
       value="Ebola Outbreak"

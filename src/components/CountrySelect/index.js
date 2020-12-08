@@ -26,6 +26,7 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
 
   return (
     <Autocomplete
+      id="country-select"
       renderInput={(params) => <TextField {...params} variant="outlined" />}
       onChange={(event, value) => onSelectCountry(value)}
       options={countryOptions}
