@@ -29,7 +29,6 @@ export const allCountries = [
   "Brunei",
   "Bulgaria",
   "Burkina Faso",
-  "Burma",
   "Burundi",
   "Cabo Verde",
   "Cambodia",

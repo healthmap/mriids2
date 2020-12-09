@@ -7,7 +7,8 @@ export const fetchCovidData = () => (dispatch) => {
   dispatch({
     type: types.FETCH_COVID_DATA_REQUEST,
   });
-  const countriesString = allCountries.join();
+  const countries = ["Burma", ...allCountries];
+  const countriesString = countries.join();
 
   return axios
     .get(
