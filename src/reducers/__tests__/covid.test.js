@@ -7,6 +7,7 @@ const covidInitialState = reduxInitialState.covid;
 test("covid reducer should return the covidInitialState", () => {
   expect(covid(covidInitialState, {})).toEqual(covidInitialState);
 });
+
 describe("Tests for updating the covidData", () => {
   test("should handle request to update the covidData", () => {
     const newCovidState = {
@@ -41,19 +42,19 @@ describe("Tests for updating the covidData", () => {
     ).toEqual(updatedCovidDataState);
   });
   test("should handle failure to update the covidData", () => {
-    const errorMessage = { error: "Something went wrong fetching the data" };
+    const errorObject = { error: "Something went wrong fetching the data" };
     const newCovidState = {
       ...covidInitialState,
       covidData: {
         isFetching: -1,
         data: [],
-        error: errorMessage,
+        error: errorObject,
       },
     };
     expect(
       covid(covidInitialState, {
         type: types.FETCH_COVID_DATA_FAILURE,
-        error: errorMessage,
+        error: errorObject,
       })
     ).toEqual(newCovidState);
   });
