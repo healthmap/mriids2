@@ -6,7 +6,6 @@ export const allCountries = [
   "Algeria",
   "Andorra",
   "Angola",
-  "Antarctica",
   "Antigua and Barbuda",
   "Argentina",
   "Armenia",
