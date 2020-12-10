@@ -2,9 +2,13 @@ import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { allCountries } from "../constants/Countries";
 import { getValidCountryNameValue } from "./commonHelpers";
 
-export const parseCovidData = (countriesCovidData = []) => {
+export const parseCovidData = (jhuCovidData = []) => {
+  // This ensures that there are no 'null' values in the jhuCovidData array.
+  const covidDataNoNullValues = jhuCovidData.filter(
+    (dataRow) => dataRow !== null
+  );
   let parsedData = [];
-  countriesCovidData.forEach((row) => {
+  covidDataNoNullValues.forEach((row) => {
     // If the row contains data covid data for a country, execute this block.
     if (Object.prototype.hasOwnProperty.call(row, "country")) {
       parsedData.push({
