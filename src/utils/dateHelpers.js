@@ -1,4 +1,8 @@
 import dayjs from "dayjs";
+import {
+  ebolaInitialDateRange,
+  covidInitialDateRange,
+} from "../constants/DateRanges";
 
 export const getNumberOfWeeksBetweenDates = (firstDate, secondDate) => {
   const startDate = dayjs(firstDate);
@@ -16,3 +20,9 @@ export const isDateWithinFiltersDateRange = (weekDateString, dateRange) => {
 // Returns an array of keys where the dates are 7 days apart. This is to get the weekly data.
 export const getWeeklyDateObjectKeys = (dataObject) =>
   Object.keys(dataObject).filter((value, index) => index % 7 === 0);
+
+//  Returns the initial date range depending on which outbreak is selected.
+export const getOutbreakInitialDateRange = (outbreakSelected) =>
+  outbreakSelected === "Ebola Outbreak"
+    ? ebolaInitialDateRange
+    : covidInitialDateRange;

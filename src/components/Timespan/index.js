@@ -4,38 +4,36 @@ import dayjs from "dayjs";
 
 import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
-import { getNumberOfWeeksBetweenDates } from "../../utils/dateHelpers";
+import {
+  getNumberOfWeeksBetweenDates,
+  getOutbreakInitialDateRange,
+} from "../../utils/dateHelpers";
 import { TimespanButtonsWrapper } from "../styled-components/TimespanButtonsWrapper";
 import { Button, ButtonLink } from "../styled-components/Button";
-import { ebolaInitialDateRange } from "../../constants/DateRanges";
 
-const Timespan = (props) => {
+const Timespan = ({ changeDateRange, updateSliderRange, outbreak }) => {
+  //  Determines which initialDateRange to use depending on which outbreak is selected.
+  const initialDateRange = getOutbreakInitialDateRange(outbreak);
   const updateDateRange = (number = 0, unitOfTime) => {
     // Uses the dayjs library to add units of time to the 'from' date in the initial date range.
     const newToDate = new Date(
-      dayjs(ebolaInitialDateRange.from).add(number, unitOfTime).format()
+      dayjs(initialDateRange.from).add(number, unitOfTime).format()
     );
     // Updates the date range filter in the redux state.
-    props.changeDateRange([ebolaInitialDateRange.from, newToDate]);
+    changeDateRange([initialDateRange.from, newToDate]);
     // Updates the sliderRange in the DateRange component.
-    props.updateSliderRange([
+    updateSliderRange([
       0,
-      getNumberOfWeeksBetweenDates(ebolaInitialDateRange.from, newToDate),
+      getNumberOfWeeksBetweenDates(initialDateRange.from, newToDate),
     ]);
   };
   const resetDateRange = () => {
     //  Reset the date range filter in the redux state to it's initial state.
-    props.changeDateRange([
-      ebolaInitialDateRange.from,
-      ebolaInitialDateRange.to,
-    ]);
+    changeDateRange([initialDateRange.from, initialDateRange.to]);
     //  Reset the sliderRange in the DateRange component.
-    props.updateSliderRange([
+    updateSliderRange([
       0,
-      getNumberOfWeeksBetweenDates(
-        ebolaInitialDateRange.from,
-        ebolaInitialDateRange.to
-      ),
+      getNumberOfWeeksBetweenDates(initialDateRange.from, initialDateRange.to),
     ]);
   };
   return (
@@ -59,4 +57,8 @@ const mapDispatchToProps = (dispatch) =>
     dispatch
   );
 
-export default connect(null, mapDispatchToProps)(Timespan);
+const mapStateToProps = (state) => ({
+  outbreak: state.filters.outbreak,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Timespan);
