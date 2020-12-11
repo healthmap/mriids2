@@ -1,4 +1,5 @@
 import {
+  getChartColumns,
   prepareEbolaDataForCharts,
   getAllCountriesChartData,
   getSelectedCountryChartData,
@@ -16,6 +17,37 @@ import {
 import { covidInitialDateRange } from "../../constants/DateRanges";
 
 import { reduxInitialState } from "../../constants/CommonTestData";
+
+describe("Tests for getChartColumns", () => {
+  test("should just return 'Date' and 'Ebola Cases' column headers", () => {
+    expect(getChartColumns("Ebola", false)).toEqual([
+      {
+        type: "date",
+        label: "Date",
+      },
+      {
+        type: "number",
+        label: "Ebola Cases",
+      },
+    ]);
+  });
+  test("should return projections column header", () => {
+    expect(getChartColumns("Ebola", true)).toEqual([
+      {
+        type: "date",
+        label: "Date",
+      },
+      {
+        type: "number",
+        label: "Ebola Cases",
+      },
+      {
+        type: "number",
+        label: "Projected future cases",
+      },
+    ]);
+  });
+});
 
 describe("Tests for prepareEbolaDataForCharts helper function", () => {
   test("prepareEbolaDataForCharts returns Guinea data in expected format", () => {
