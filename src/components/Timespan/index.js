@@ -4,21 +4,16 @@ import dayjs from "dayjs";
 
 import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
-import { getNumberOfWeeksBetweenDates } from "../../utils/dateHelpers";
+import {
+  getNumberOfWeeksBetweenDates,
+  getOutbreakInitialDateRange,
+} from "../../utils/dateHelpers";
 import { TimespanButtonsWrapper } from "../styled-components/TimespanButtonsWrapper";
 import { Button, ButtonLink } from "../styled-components/Button";
-import {
-  ebolaInitialDateRange,
-  covidInitialDateRange,
-} from "../../constants/DateRanges";
 
 const Timespan = ({ changeDateRange, updateSliderRange, outbreak }) => {
   //  Determines which initialDateRange to use depending on which outbreak is selected.
-  const initialDateRange =
-    outbreak === "Ebola Outbreak"
-      ? ebolaInitialDateRange
-      : covidInitialDateRange;
-
+  const initialDateRange = getOutbreakInitialDateRange(outbreak);
   const updateDateRange = (number = 0, unitOfTime) => {
     // Uses the dayjs library to add units of time to the 'from' date in the initial date range.
     const newToDate = new Date(
