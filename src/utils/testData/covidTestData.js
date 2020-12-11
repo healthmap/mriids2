@@ -1,3 +1,19 @@
+import { reduxInitialState } from "../../constants/CommonTestData";
+import { covidInitialDateRange } from "../../constants/DateRanges";
+
+export const covidAllCountriesFilters = {
+  ...reduxInitialState.filters,
+  outbreak: "COVID 19",
+  dateRange: covidInitialDateRange,
+};
+
+export const covidAfghanistanFilters = {
+  ...reduxInitialState.filters,
+  country: "Afghanistan",
+  outbreak: "COVID 19",
+  dateRange: covidInitialDateRange,
+};
+
 export const testCovidData = [
   {
     country: "Canada",
