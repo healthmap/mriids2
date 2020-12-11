@@ -11,7 +11,7 @@ import {
   testEbolaDataCombinedLastWeekOutOfDateRange,
   testGuineaData,
   testGuineaFiltersState,
-} from "../testData";
+} from "../testData/ebolaTestData";
 
 import { reduxInitialState } from "../../constants/CommonTestData";
 

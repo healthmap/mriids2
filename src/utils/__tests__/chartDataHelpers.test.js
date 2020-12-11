@@ -12,9 +12,9 @@ import {
   testGuineaDataOutOfDateRange,
   testEbolaDataCombined,
   testEbolaDataCombinedOutOfDateRange,
-  testCovidDataCombined,
-  testCountryCovidData,
-} from "../testData";
+} from "../testData/ebolaTestData";
+
+import { testCovidDataCombined, testCountryCovidData } from "../testData";
 import { covidInitialDateRange } from "../../constants/DateRanges";
 
 import { reduxInitialState } from "../../constants/CommonTestData";
