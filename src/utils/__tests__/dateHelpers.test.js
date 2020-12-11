@@ -9,7 +9,7 @@ import {
   covidInitialDateRange,
 } from "../../constants/DateRanges";
 import { reduxInitialState } from "../../constants/CommonTestData";
-import { testObjectDateKeys } from "../testData";
+import { testObjectDateKeys } from "../testData/covidTestData";
 
 describe("tests for the getNumberOfWeeksBetweenDates helper function", () => {
   test("using date strings, the dates should be 2 weeks apart", () => {

@@ -9,7 +9,7 @@ import {
   testCovidData,
   testParsedCovidData,
   testCovidDataCombined,
-} from "../testData";
+} from "../testData/covidTestData";
 import { reduxInitialState } from "../../constants/CommonTestData";
 import { covidInitialDateRange } from "../../constants/DateRanges";
 

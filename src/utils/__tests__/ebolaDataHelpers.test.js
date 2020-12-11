@@ -12,7 +12,6 @@ import {
   testGuineaData,
   testGuineaFiltersState,
 } from "../testData/ebolaTestData";
-
 import { reduxInitialState } from "../../constants/CommonTestData";
 
 describe("Tests for getCountriesEbolaCaseCounts", () => {

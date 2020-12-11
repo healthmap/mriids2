@@ -5,7 +5,6 @@ import {
   getSelectedCountryChartData,
   getWeekProjectionData,
 } from "../chartDataHelpers";
-
 import {
   testGuineaData,
   testGuineaFiltersState,
@@ -13,10 +12,11 @@ import {
   testEbolaDataCombined,
   testEbolaDataCombinedOutOfDateRange,
 } from "../testData/ebolaTestData";
-
-import { testCovidDataCombined, testCountryCovidData } from "../testData";
+import {
+  testCovidDataCombined,
+  testCountryCovidData,
+} from "../testData/covidTestData";
 import { covidInitialDateRange } from "../../constants/DateRanges";
-
 import { reduxInitialState } from "../../constants/CommonTestData";
 import dayjs from "dayjs";
 
