@@ -26,7 +26,7 @@ export const getChartColumns = (outbreakName, projection = false) => {
   return columns;
 };
 
-const getWeekProjectionData = (
+export const getWeekProjectionData = (
   lastWeekDate,
   numberOfWeeks,
   projectionsData

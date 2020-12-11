@@ -3,6 +3,7 @@ import {
   prepareEbolaDataForCharts,
   getAllCountriesChartData,
   getSelectedCountryChartData,
+  getWeekProjectionData,
 } from "../chartDataHelpers";
 
 import {
@@ -17,6 +18,7 @@ import {
 import { covidInitialDateRange } from "../../constants/DateRanges";
 
 import { reduxInitialState } from "../../constants/CommonTestData";
+import dayjs from "dayjs";
 
 describe("Tests for getChartColumns", () => {
   test("should just return 'Date' and 'Ebola Cases' column headers", () => {
@@ -46,6 +48,19 @@ describe("Tests for getChartColumns", () => {
         label: "Projected future cases",
       },
     ]);
+  });
+});
+
+describe("Tests for getWeekProjectionData", () => {
+  test("should return the week projection data in the expected format", () => {
+    const expectedProjectionsDataRow = [
+      new Date(dayjs("2014-10-13").format()),
+      null,
+      50,
+    ];
+    expect(getWeekProjectionData("2014-10-06", 1, 50)).toEqual(
+      expectedProjectionsDataRow
+    );
   });
 });
 
