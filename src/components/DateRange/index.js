@@ -6,41 +6,37 @@ import { Slider } from "@material-ui/core";
 import Timespan from "../Timespan";
 import ProjectionsToggle from "../ProjectionsToggle";
 import {
-  ebolaInitialDateRange,
-  covidInitialDateRange,
-} from "../../constants/DateRanges";
-import {
   DateRangeComponentContainer,
   DateRangeSliderContainer,
 } from "../styled-components/DateRangeComponentContainer";
-import { getNumberOfWeeksBetweenDates } from "../../utils/dateHelpers";
+import {
+  getNumberOfWeeksBetweenDates,
+  getOutbreakInitialDateRange,
+} from "../../utils/dateHelpers";
 
 const DateRange = ({ filters, changeDateRange }) => {
   const [sliderRange, setSliderRange] = useState([0, 72]);
+  const initialDateRange = getOutbreakInitialDateRange(filters.outbreak);
 
   // This useEffect updates the dateRange and sliderRange when the filters.outbreak prop changes.
   useEffect(() => {
-    const dateRange =
-      filters.outbreak === "Ebola Outbreak"
-        ? ebolaInitialDateRange
-        : covidInitialDateRange;
     // Resets the dateRange filter.
-    changeDateRange([dateRange.from, dateRange.to]);
+    changeDateRange([initialDateRange.from, initialDateRange.to]);
     // Resets the values for the sliderRange.
     setSliderRange([
       0,
-      getNumberOfWeeksBetweenDates(dateRange.from, dateRange.to),
+      getNumberOfWeeksBetweenDates(initialDateRange.from, initialDateRange.to),
     ]);
-  }, [filters.outbreak, changeDateRange]);
+  }, [
+    filters.outbreak,
+    changeDateRange,
+    initialDateRange.from,
+    initialDateRange.to,
+  ]);
 
   const handleRangeChange = (event, newRangeArray) => {
     // Only execute this block if the newRangeArray is different from the sliderRange.
     if (sliderRange !== newRangeArray) {
-      // Determines which initialDateRange to use based on which outbreak is selected.
-      const initialDateRange =
-        filters.outbreak === "Ebola Outbreak"
-          ? ebolaInitialDateRange
-          : covidInitialDateRange;
       // Gets the max value for the slider based on how many weeks are between the dates in the initialDateRange.
       const maxSliderValue = getNumberOfWeeksBetweenDates(
         initialDateRange.from,
