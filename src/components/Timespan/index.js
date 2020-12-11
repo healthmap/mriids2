@@ -9,28 +9,25 @@ import { TimespanButtonsWrapper } from "../styled-components/TimespanButtonsWrap
 import { Button, ButtonLink } from "../styled-components/Button";
 import { ebolaInitialDateRange } from "../../constants/DateRanges";
 
-const Timespan = (props) => {
+const Timespan = ({ changeDateRange, updateSliderRange }) => {
   const updateDateRange = (number = 0, unitOfTime) => {
     // Uses the dayjs library to add units of time to the 'from' date in the initial date range.
     const newToDate = new Date(
       dayjs(ebolaInitialDateRange.from).add(number, unitOfTime).format()
     );
     // Updates the date range filter in the redux state.
-    props.changeDateRange([ebolaInitialDateRange.from, newToDate]);
+    changeDateRange([ebolaInitialDateRange.from, newToDate]);
     // Updates the sliderRange in the DateRange component.
-    props.updateSliderRange([
+    updateSliderRange([
       0,
       getNumberOfWeeksBetweenDates(ebolaInitialDateRange.from, newToDate),
     ]);
   };
   const resetDateRange = () => {
     //  Reset the date range filter in the redux state to it's initial state.
-    props.changeDateRange([
-      ebolaInitialDateRange.from,
-      ebolaInitialDateRange.to,
-    ]);
+    changeDateRange([ebolaInitialDateRange.from, ebolaInitialDateRange.to]);
     //  Reset the sliderRange in the DateRange component.
-    props.updateSliderRange([
+    updateSliderRange([
       0,
       getNumberOfWeeksBetweenDates(
         ebolaInitialDateRange.from,
