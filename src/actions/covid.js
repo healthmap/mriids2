@@ -27,3 +27,24 @@ export const fetchCovidData = () => (dispatch) => {
       });
     });
 };
+
+export const fetchCovidDataCombined = () => (dispatch) => {
+  dispatch({
+    type: types.FETCH_COVID_DATA_COMBINED_REQUEST,
+  });
+
+  return axios
+    .get("https://disease.sh/v3/covid-19/historical/all?lastdays=all")
+    .then((response) => {
+      dispatch({
+        type: types.FETCH_COVID_DATA_COMBINED_SUCCESS,
+        payload: response.data,
+      });
+    })
+    .catch((error) => {
+      dispatch({
+        type: types.FETCH_COVID_DATA_COMBINED_FAILURE,
+        error,
+      });
+    });
+};

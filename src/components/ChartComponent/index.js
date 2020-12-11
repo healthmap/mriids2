@@ -6,20 +6,21 @@ import { ChartContainer } from "../styled-components/ChartContainer";
 import { options } from "../../constants/GoogleChartOptions";
 import {
   prepareEbolaDataForCharts,
-  prepareCovidDataForCharts,
+  getCovidDataForCharts,
 } from "../../utils/chartDataHelpers";
 
-const ChartComponent = (props) => {
-  let chartData;
-  if (props.filters.outbreak === "Ebola Outbreak") {
-    chartData = prepareEbolaDataForCharts(
-      props.ebola.ebolaData.data,
-      props.ebola.ebolaDataCombined.data,
-      props.filters
-    );
-  } else {
-    chartData = prepareCovidDataForCharts();
-  }
+const ChartComponent = ({
+  ebolaData,
+  ebolaDataCombined,
+  covidData,
+  covidDataCombined,
+  filters,
+}) => {
+  // // Get the chartData based on the outbreak selected in the filters
+  const chartData =
+    filters.outbreak === "Ebola Outbreak"
+      ? prepareEbolaDataForCharts(ebolaData, ebolaDataCombined, filters)
+      : getCovidDataForCharts(covidData, covidDataCombined, filters);
 
   return (
     <ChartContainer>
@@ -38,7 +39,10 @@ const ChartComponent = (props) => {
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
-  ebola: state.ebola,
+  ebolaData: state.ebola.ebolaData.data,
+  ebolaDataCombined: state.ebola.ebolaDataCombined.data,
+  covidData: state.covid.covidData.data,
+  covidDataCombined: state.covid.covidDataCombined.data,
 });
 
 export default connect(mapStateToProps)(ChartComponent);

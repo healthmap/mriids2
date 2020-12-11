@@ -28,15 +28,12 @@ export const getLastObjectKey = (dataObject) => {
   return objectKeys[objectKeys.length - 1];
 };
 
-export const getLatestCountryCountInDateRange = (
-  countryCovidData,
-  dateRange
-) => {
+export const getLatestCountInDateRange = (covidData, dateRange) => {
   // 1. Add all of the data within the dateRange to the dataInDateRange object.
   let dataInDateRange = {};
-  Object.keys(countryCovidData).forEach((weekKey) => {
+  Object.keys(covidData).forEach((weekKey) => {
     if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
-      dataInDateRange[weekKey] = countryCovidData[weekKey];
+      dataInDateRange[weekKey] = covidData[weekKey];
     }
   });
   // 2. Find the last key in the dataInDateRange object.
@@ -46,17 +43,18 @@ export const getLatestCountryCountInDateRange = (
 };
 
 // This gets the case count for the Sidebar
-export const getCovidCaseCount = (covidData = [], filters) => {
+export const getCovidCaseCount = (
+  covidData = [],
+  covidDataCombined,
+  filters
+) => {
   let caseCount = 0;
   if (filters.country === "All") {
-    // Loops through each country in the covidData array.
-    covidData.forEach((countryData) => {
-      // Adds the latest case count for each country to the caseCount.
-      caseCount += getLatestCountryCountInDateRange(
-        countryData.cases,
-        filters.dateRange
-      );
-    });
+    // If "All" countries are selected, get the latest value from the covidDataCombined.cases object within the dateRange.
+    caseCount = getLatestCountInDateRange(
+      covidDataCombined.cases,
+      filters.dateRange
+    );
   } else {
     // Finds the data object for the country selected in filters.country.
     const selectedCountryDataObject = covidData.find(
@@ -65,7 +63,7 @@ export const getCovidCaseCount = (covidData = [], filters) => {
     );
     // If data for the country is found, get the latest case count the country and set it to the caseCount variable.
     if (selectedCountryDataObject) {
-      caseCount = getLatestCountryCountInDateRange(
+      caseCount = getLatestCountInDateRange(
         selectedCountryDataObject.cases,
         filters.dateRange
       );
@@ -75,20 +73,24 @@ export const getCovidCaseCount = (covidData = [], filters) => {
   return Number.isInteger(caseCount) ? caseCount : 0;
 };
 
+// Find data object for the specified country.
+export const findCountryDataObject = (covidData, countryName) =>
+  covidData.find(
+    (dataObject) =>
+      getValidCountryNameValue(dataObject.countryName) === countryName
+  );
+
 // This gets the country case counts for the Snapshot map.
 export const getCountriesCovidCaseCounts = (covidData, filters) => {
   let countriesCaseCounts = {};
   allCountries.forEach((country) => {
     let countryCaseCount;
     // 1. Find the data object for the country.
-    const countryDataObject = covidData.find(
-      (dataObject) =>
-        getValidCountryNameValue(dataObject.countryName) === country
-    );
+    const countryDataObject = findCountryDataObject(covidData, country);
     // 2. If a countryDataObject is found, get the latest case count within the dateRange and set it to countryCaseCount.
     // If no countryDataObject is found, set countryCaseCount to 0
     if (countryDataObject) {
-      countryCaseCount = getLatestCountryCountInDateRange(
+      countryCaseCount = getLatestCountInDateRange(
         countryDataObject.cases,
         filters.dateRange
       );

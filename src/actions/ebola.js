@@ -43,6 +43,8 @@ export const fetchEbolaDataCombined = () => (dispatch) => {
     });
 };
 
+// Since this data is currently hardcoded in Mapbox style for the Risk map, this is currently not being used.
+// Keeping here in case we decide to use a different map/style for the Risk map.
 export const fetchRiskData = () => (dispatch) => {
   dispatch({
     type: types.FETCH_RISK_DATA_REQUEST,
