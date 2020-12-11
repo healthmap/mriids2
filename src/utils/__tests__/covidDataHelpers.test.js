@@ -3,6 +3,7 @@ import {
   getLastObjectKey,
   getCovidCaseCount,
   getLatestCountInDateRange,
+  findCountryDataObject,
 } from "../covidDataHelpers";
 import {
   testCovidData,
@@ -100,5 +101,15 @@ describe("Tests for getCovidCaseCount helper function", () => {
         specificCountryCovidOutbreakFilters
       )
     ).toBe(46215);
+  });
+});
+
+describe("Tests for findCountryDataObject", () => {
+  test("should return Zimbabwe data object", () => {
+    expect(findCountryDataObject(testParsedCovidData, "Zimbabwe")).toEqual({
+      countryName: "Zimbabwe",
+      cases: { "10/28/20": 30000, "11/28/20": 40000, "11/29/20": 46215 },
+      deaths: { "11/29/20": 1763 },
+    });
   });
 });
