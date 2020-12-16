@@ -1,5 +1,6 @@
 import {
   getEbolaScale,
+  getCovidScale,
   getSnapshotColor,
   getSnapshotProjectionsColor,
   getEbolaFillColorsDictionary,
@@ -44,6 +45,45 @@ describe("Tests for getEbolaScale helper function", () => {
       "Sierra Leone": 0,
     };
     expect(getEbolaScale(countryCaseCounts)).toEqual(450);
+  });
+});
+
+describe("Tests for getCovidScale", () => {
+  test("should return 900", () => {
+    const countryCaseCounts = { Afghanistan: 900, Zimbabwe: 0 };
+    expect(getCovidScale(countryCaseCounts)).toBe(900);
+  });
+  test("should return 5000", () => {
+    const countryCaseCounts = { Afghanistan: 4900, Zimbabwe: 0 };
+    expect(getCovidScale(countryCaseCounts)).toBe(5000);
+  });
+  test("should return 10000", () => {
+    const countryCaseCounts = { Afghanistan: 9900, Zimbabwe: 0 };
+    expect(getCovidScale(countryCaseCounts)).toBe(10000);
+  });
+  test("should return 50000", () => {
+    const countryCaseCounts = { Afghanistan: 46000, Zimbabwe: 0 };
+    expect(getCovidScale(countryCaseCounts)).toBe(50000);
+  });
+  test("should return 100000", () => {
+    const countryCaseCounts = { Afghanistan: 99000, Zimbabwe: 0 };
+    expect(getCovidScale(countryCaseCounts)).toBe(100000);
+  });
+  test("should return 500000", () => {
+    const countryCaseCounts = { Afghanistan: 499000, Zimbabwe: 0 };
+    expect(getCovidScale(countryCaseCounts)).toBe(500000);
+  });
+  test("should return 1000000", () => {
+    const countryCaseCounts = { Afghanistan: 999000, Zimbabwe: 0 };
+    expect(getCovidScale(countryCaseCounts)).toBe(1000000);
+  });
+  test("should return 5000000", () => {
+    const countryCaseCounts = { Afghanistan: 4990000, Zimbabwe: 0 };
+    expect(getCovidScale(countryCaseCounts)).toBe(5000000);
+  });
+  test("should return 10000000", () => {
+    const countryCaseCounts = { Afghanistan: 9990000, Zimbabwe: 0 };
+    expect(getCovidScale(countryCaseCounts)).toBe(10000000);
   });
 });
 
