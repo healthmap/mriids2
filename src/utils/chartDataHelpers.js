@@ -5,7 +5,7 @@ import {
 } from "./dateHelpers";
 import { findCountryDataObject } from "./covidDataHelpers";
 
-const getChartColumns = (outbreakName, projection = false) => {
+export const getChartColumns = (outbreakName, projection = false) => {
   const columns = [
     {
       type: "date",
@@ -26,7 +26,7 @@ const getChartColumns = (outbreakName, projection = false) => {
   return columns;
 };
 
-const getWeekProjectionData = (
+export const getWeekProjectionData = (
   lastWeekDate,
   numberOfWeeks,
   projectionsData

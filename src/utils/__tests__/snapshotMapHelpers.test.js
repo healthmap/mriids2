@@ -10,7 +10,7 @@ import {
   testRawEbolaData,
   ebolaFillColorDictionary,
   testGuineaFiltersState,
-} from "../testData";
+} from "../testData/ebolaTestData";
 
 describe("Tests for getEbolaScale helper function", () => {
   test("returns scaleValue of 12000", () => {

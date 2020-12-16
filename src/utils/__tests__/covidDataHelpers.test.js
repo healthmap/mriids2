@@ -3,12 +3,14 @@ import {
   getLastObjectKey,
   getCovidCaseCount,
   getLatestCountInDateRange,
+  findCountryDataObject,
+  getCountriesCovidCaseCounts,
 } from "../covidDataHelpers";
 import {
   testCovidData,
   testParsedCovidData,
   testCovidDataCombined,
-} from "../testData";
+} from "../testData/covidTestData";
 import { reduxInitialState } from "../../constants/CommonTestData";
 import { covidInitialDateRange } from "../../constants/DateRanges";
 
@@ -100,5 +102,30 @@ describe("Tests for getCovidCaseCount helper function", () => {
         specificCountryCovidOutbreakFilters
       )
     ).toBe(46215);
+  });
+});
+
+describe("Tests for findCountryDataObject", () => {
+  test("should return Zimbabwe data object", () => {
+    expect(findCountryDataObject(testParsedCovidData, "Zimbabwe")).toEqual({
+      countryName: "Zimbabwe",
+      cases: { "10/28/20": 30000, "11/28/20": 40000, "11/29/20": 46215 },
+      deaths: { "11/29/20": 1763 },
+    });
+  });
+});
+
+describe("Tests for getCountriesCovidCaseCounts", () => {
+  test("returned object should have a 'United States of America' key", () => {
+    // 1. Get countryCountObject.
+    const countryCountObject = getCountriesCovidCaseCounts(
+      testParsedCovidData,
+      allCountriesCovidOutbreakFilters
+    );
+    // 2. Get an array of the keys in the countryCountObject.
+    const objectKeysArray = Object.keys(countryCountObject);
+    // 3. hasCountryKey will return true if the 'United States of America' key is in the countryCountObject.
+    const hasCountryKey = objectKeysArray.includes("United States of America");
+    expect(hasCountryKey).toBe(true);
   });
 });
