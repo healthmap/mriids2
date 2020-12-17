@@ -4,6 +4,7 @@ import {
   getSnapshotColor,
   getSnapshotProjectionsColor,
   getEbolaFillColorsDictionary,
+  getCovidFillColorsDictionary,
   getCountryFillColor,
 } from "../snapshotMapHelpers";
 import { reduxInitialState } from "../../constants/CommonTestData";
@@ -12,6 +13,10 @@ import {
   ebolaFillColorDictionary,
   testGuineaFiltersState,
 } from "../testData/ebolaTestData";
+import {
+  covidAllCountriesFilters,
+  testParsedCovidData,
+} from "../testData/covidTestData";
 
 describe("Tests for getEbolaScale helper function", () => {
   test("returns scaleValue of 12000", () => {
@@ -61,6 +66,10 @@ describe("Tests for getCovidScale", () => {
     const countryCaseCounts = { Afghanistan: 9900, Zimbabwe: 0 };
     expect(getCovidScale(countryCaseCounts)).toBe(10000);
   });
+  test("should return 20000", () => {
+    const countryCaseCounts = { Afghanistan: 19900, Zimbabwe: 0 };
+    expect(getCovidScale(countryCaseCounts)).toBe(20000);
+  });
   test("should return 50000", () => {
     const countryCaseCounts = { Afghanistan: 46000, Zimbabwe: 0 };
     expect(getCovidScale(countryCaseCounts)).toBe(50000);
@@ -85,14 +94,21 @@ describe("Tests for getCovidScale", () => {
     const countryCaseCounts = { Afghanistan: 9990000, Zimbabwe: 0 };
     expect(getCovidScale(countryCaseCounts)).toBe(10000000);
   });
+  test("should return 20000000", () => {
+    const countryCaseCounts = { Afghanistan: 20000000, Zimbabwe: 0 };
+    expect(getCovidScale(countryCaseCounts)).toBe(20000000);
+  });
 });
 
 describe("Tests for getSnapshotColor", () => {
-  test("returns the reddest color", () => {
+  test("should return the reddest color", () => {
     expect(getSnapshotColor(0.9)).toEqual("#E23D4A");
   });
-  test("returns the middle red color", () => {
+  test("should return the middle red color", () => {
     expect(getSnapshotColor(0.45)).toEqual("#EE9187");
+  });
+  test("should return the lightest color", () => {
+    expect(getSnapshotColor(0)).toEqual("#FDF1DD");
   });
 });
 
@@ -103,6 +119,9 @@ describe("Tests for getSnapshotProjectionsColor", () => {
   test("returns the middle red color", () => {
     expect(getSnapshotProjectionsColor(0.45)).toEqual("#36B9A7");
   });
+  test("should return the lightest color", () => {
+    expect(getSnapshotProjectionsColor(0)).toEqual("#FDF1DD");
+  });
 });
 
 describe("Tests for getEbolaFillColorsDictionary", () => {
@@ -110,6 +129,21 @@ describe("Tests for getEbolaFillColorsDictionary", () => {
     expect(
       getEbolaFillColorsDictionary(testRawEbolaData, reduxInitialState.filters)
     ).toEqual(ebolaFillColorDictionary);
+  });
+});
+
+describe("Tests for getCovidFillColorsDictionary", () => {
+  const fillColorsDictionary = getCovidFillColorsDictionary(
+    testParsedCovidData,
+    covidAllCountriesFilters
+  );
+  test("Afghanistan should have a fill color of '#E23D4A'", () => {
+    // Should have this color because Afghanistan has data in the testParsedCovidData object
+    expect(fillColorsDictionary.Afghanistan).toEqual("#E23D4A");
+  });
+  test("United States of America should have the default '#FDF1DD' color", () => {
+    // Should have this color because there is no USA data in the testParsedCovidData object
+    expect(fillColorsDictionary["United States of America"]).toEqual("#FDF1DD");
   });
 });
 
