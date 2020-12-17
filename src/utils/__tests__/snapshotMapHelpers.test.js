@@ -13,6 +13,7 @@ import {
   testRawEbolaData,
   ebolaFillColorDictionary,
   testGuineaFiltersState,
+  allCountriesEbolaData,
 } from "../testData/ebolaTestData";
 import {
   covidAllCountriesFilters,
@@ -170,6 +171,22 @@ describe("Tests for getCountryFillColor", () => {
 });
 
 describe("Tests for getCountryToolTipContent", () => {
+  test("should return only country name for ebola outbreak", () => {
+    const toolTipContent = getCountryToolTipContent(
+      allCountriesEbolaData,
+      reduxInitialState.filters,
+      "Honduras"
+    );
+    expect(toolTipContent).toEqual("Honduras");
+  });
+  test("should return country name and case count for ebola outbreak", () => {
+    const toolTipContent = getCountryToolTipContent(
+      allCountriesEbolaData,
+      reduxInitialState.filters,
+      "Guinea"
+    );
+    expect(toolTipContent).toEqual("Guinea - 126");
+  });
   test("should return only country name for covid outbreak", () => {
     const toolTipContent = getCountryToolTipContent(
       testParsedCovidData,
