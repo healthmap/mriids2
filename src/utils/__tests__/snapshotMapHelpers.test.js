@@ -6,6 +6,7 @@ import {
   getEbolaFillColorsDictionary,
   getCovidFillColorsDictionary,
   getCountryFillColor,
+  getCountryToolTipContent,
 } from "../snapshotMapHelpers";
 import { reduxInitialState } from "../../constants/CommonTestData";
 import {
@@ -165,5 +166,24 @@ describe("Tests for getCountryFillColor", () => {
         ebolaFillColorDictionary
       )
     ).toEqual("#FCF1DD");
+  });
+});
+
+describe("Tests for getCountryToolTipContent", () => {
+  test("should return only country name for covid outbreak", () => {
+    const toolTipContent = getCountryToolTipContent(
+      testParsedCovidData,
+      covidAllCountriesFilters,
+      "Honduras"
+    );
+    expect(toolTipContent).toEqual("Honduras");
+  });
+  test("should return country name with case count for covid outbreak", () => {
+    const toolTipContent = getCountryToolTipContent(
+      testParsedCovidData,
+      covidAllCountriesFilters,
+      "Afghanistan"
+    );
+    expect(toolTipContent).toEqual("Afghanistan - 46,215");
   });
 });
