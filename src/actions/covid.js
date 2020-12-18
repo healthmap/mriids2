@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as d3 from "d3-fetch";
 import * as types from "../constants/ActionTypes";
-import { parseCovidData } from "../utils/covidDataHelpers";
+import { parseCovidData, parseCovidCSVData } from "../utils/covidDataHelpers";
 import { allCountries } from "../constants/Countries";
 
 export const fetchCovidData = () => (dispatch) => {
@@ -57,7 +57,7 @@ export const fetchCovidCaseCounts = () => (dispatch) => {
     .then((data) =>
       dispatch({
         type: types.FETCH_COVID_CASE_COUNT_DATA_SUCCESS,
-        payload: data,
+        payload: parseCovidCSVData(data),
       })
     )
     .catch((error) => {

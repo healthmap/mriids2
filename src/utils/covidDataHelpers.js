@@ -1,6 +1,9 @@
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { allCountries } from "../constants/Countries";
-import { getValidCountryNameValue } from "./commonHelpers";
+import {
+  getValidCountryNameValue,
+  addUnderscoreWordSeparator,
+} from "./commonHelpers";
 
 export const parseCovidData = (jhuCovidData = []) => {
   // This ensures that there are no 'null' values in the jhuCovidData array.
@@ -17,6 +20,26 @@ export const parseCovidData = (jhuCovidData = []) => {
         deaths: row.timeline.deaths,
       });
     }
+  });
+  return parsedData;
+};
+
+export const parseCovidCSVData = (csvData = []) => {
+  const parsedData = [];
+  allCountries.forEach((country) => {
+    // The countryData object will store the daily case/death counts for the country.
+    const countryData = {};
+    // If the csvData is not an empty array, get the case/death counts for the country.
+    if (csvData.length) {
+      csvData.forEach((row) => {
+        countryData[row.dates] = row[addUnderscoreWordSeparator(country)];
+      });
+    }
+    // Push an object with the country name and country data to the parsedData array.
+    parsedData.push({
+      countryName: country,
+      countryData,
+    });
   });
   return parsedData;
 };
