@@ -51,6 +51,16 @@ export const getLastObjectKey = (dataObject) => {
   return objectKeys[objectKeys.length - 1];
 };
 
+export const getCountInDateRange = (covidData, dateRange) => {
+  let count = 0;
+  Object.keys(covidData).forEach((weekKey) => {
+    if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
+      count += covidData[weekKey];
+    }
+  });
+  return count;
+};
+
 export const getLatestCountInDateRange = (covidData, dateRange) => {
   // 1. Add all of the data within the dateRange to the dataInDateRange object.
   let dataInDateRange = {};
