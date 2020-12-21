@@ -17,7 +17,7 @@ import {
 } from "../testData/ebolaTestData";
 import {
   covidAllCountriesFilters,
-  testParsedCovidData,
+  testTwoCountryCovidCaseCounts,
 } from "../testData/covidTestData";
 
 describe("Tests for getEbolaScale helper function", () => {
@@ -136,15 +136,15 @@ describe("Tests for getEbolaFillColorsDictionary", () => {
 
 describe("Tests for getCovidFillColorsDictionary", () => {
   const fillColorsDictionary = getCovidFillColorsDictionary(
-    testParsedCovidData,
+    testTwoCountryCovidCaseCounts,
     covidAllCountriesFilters
   );
-  test("Afghanistan should have a fill color of '#E23D4A'", () => {
-    // Should have this color because Afghanistan has data in the testParsedCovidData object
-    expect(fillColorsDictionary.Afghanistan).toEqual("#E23D4A");
+  test("Afghanistan should have a fill color of '#F1A697'", () => {
+    // Should have this color because Afghanistan has data in the testTwoCountryCovidCaseCounts object
+    expect(fillColorsDictionary.Afghanistan).toEqual("#F1A697");
   });
   test("United States of America should have the default '#FDF1DD' color", () => {
-    // Should have this color because there is no USA data in the testParsedCovidData object
+    // Should have this color because there is no USA data in the testTwoCountryCovidCaseCounts object
     expect(fillColorsDictionary["United States of America"]).toEqual("#FDF1DD");
   });
 });
@@ -189,7 +189,7 @@ describe("Tests for getCountryToolTipContent", () => {
   });
   test("should return only country name for covid outbreak", () => {
     const toolTipContent = getCountryToolTipContent(
-      testParsedCovidData,
+      testTwoCountryCovidCaseCounts,
       covidAllCountriesFilters,
       "Honduras"
     );
@@ -197,10 +197,10 @@ describe("Tests for getCountryToolTipContent", () => {
   });
   test("should return country name with case count for covid outbreak", () => {
     const toolTipContent = getCountryToolTipContent(
-      testParsedCovidData,
+      testTwoCountryCovidCaseCounts,
       covidAllCountriesFilters,
       "Afghanistan"
     );
-    expect(toolTipContent).toEqual("Afghanistan - 46,215");
+    expect(toolTipContent).toEqual("Afghanistan - 38");
   });
 });

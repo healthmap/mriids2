@@ -54,11 +54,13 @@ export const getLastObjectKey = (dataObject) => {
 
 export const getCountInDateRange = (covidData, dateRange) => {
   let count = 0;
-  Object.keys(covidData).forEach((weekKey) => {
-    if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
-      count += covidData[weekKey];
-    }
-  });
+  if (covidData) {
+    Object.keys(covidData).forEach((weekKey) => {
+      if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
+        count += covidData[weekKey];
+      }
+    });
+  }
   return count;
 };
 
@@ -123,7 +125,7 @@ export const findCountryDataObject = (covidData, countryName) =>
   );
 
 // This gets the country case counts for the Snapshot map.
-export const getCountriesCovidCaseCounts = (covidData, filters) => {
+export const getCountriesCovidCaseCounts = (covidData = [], filters) => {
   let countriesCaseCounts = {};
   allCountries.forEach((country) => {
     let countryCaseCount;
@@ -132,8 +134,8 @@ export const getCountriesCovidCaseCounts = (covidData, filters) => {
     // 2. If a countryDataObject is found, get the latest case count within the dateRange and set it to countryCaseCount.
     // If no countryDataObject is found, set countryCaseCount to 0
     if (countryDataObject) {
-      countryCaseCount = getLatestCountInDateRange(
-        countryDataObject.cases,
+      countryCaseCount = getCountInDateRange(
+        countryDataObject.countryData,
         filters.dateRange
       );
     } else {
@@ -141,7 +143,9 @@ export const getCountriesCovidCaseCounts = (covidData, filters) => {
     }
     // 3. Add the data to the countriesCaseCounts object.
     // If the case count is an integer, add that. Otherwise add 0.
-    countriesCaseCounts[country] = countryCaseCount;
+    countriesCaseCounts[country] = Number.isInteger(countryCaseCount)
+      ? countryCaseCount
+      : 0;
   });
   return countriesCaseCounts;
 };

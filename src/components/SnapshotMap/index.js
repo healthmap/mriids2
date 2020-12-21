@@ -120,7 +120,7 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
 
 const mapStateToProps = (state) => ({
   ebolaData: state.ebola.ebolaData.data,
-  covidData: state.covid.covidData.data,
+  covidData: state.covid.caseCounts.data,
   filters: state.filters,
 });
 
