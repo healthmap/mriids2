@@ -30,7 +30,6 @@ const Sidebar = ({
   ebolaData,
   ebolaDataCombined,
   covidData,
-  covidDataCombined,
   changeCountryFilter,
   changeOutbreakFilter,
 }) => {
@@ -48,7 +47,7 @@ const Sidebar = ({
   const diseaseCaseCount =
     filters.outbreak === "Ebola Outbreak"
       ? getEbolaCaseCount(ebolaData, filters)
-      : getCovidCaseCount(covidData, covidDataCombined, filters);
+      : getCovidCaseCount(covidData, filters);
 
   // This is the projected ebola case count for the ReportedCases child component
   const projectedCaseCount =
@@ -112,8 +111,7 @@ const mapStateToProps = (state) => ({
   filters: state.filters,
   ebolaData: state.ebola.ebolaData.data,
   ebolaDataCombined: state.ebola.ebolaDataCombined.data,
-  covidData: state.covid.covidData.data,
-  covidDataCombined: state.covid.covidDataCombined.data,
+  covidData: state.covid.caseCounts.data,
 });
 
 const mapDispatchToProps = (dispatch) =>

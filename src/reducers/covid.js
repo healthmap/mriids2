@@ -13,7 +13,7 @@ const initialState = {
   },
   caseCounts: {
     isFetching: 0,
-    data: {},
+    data: [],
     error: {},
   },
 };

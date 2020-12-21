@@ -32,7 +32,8 @@ export const parseCovidCSVData = (csvData = []) => {
     // If the csvData is not an empty array, get the case/death counts for the country.
     if (csvData.length) {
       csvData.forEach((row) => {
-        countryData[row.dates] = row[addUnderscoreWordSeparator(country)];
+        const caseCountForDate = row[addUnderscoreWordSeparator(country)];
+        countryData[row.dates] = parseInt(caseCountForDate);
       });
     }
     // Push an object with the country name and country data to the parsedData array.
@@ -63,8 +64,15 @@ export const getCountInDateRange = (covidData, dateRange) => {
 
 export const getAllCountriesCaseCounts = (covidData = [], dateRange) => {
   let count = 0;
-  covidData.forEach((country) => {
-    count += getCountInDateRange(country.countryData, dateRange);
+  covidData.forEach((countryObject) => {
+    const countryCaseCount = getCountInDateRange(
+      countryObject.countryData,
+      dateRange
+    );
+    // This check prevents NaN from being added to the count.
+    if (Number.isInteger(countryCaseCount)) {
+      count += getCountInDateRange(countryObject.countryData, dateRange);
+    }
   });
   return count;
 };
