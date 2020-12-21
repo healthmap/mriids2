@@ -11,7 +11,6 @@ import {
 import {
   testCovidData,
   testParsedCovidData,
-  testCovidDataCombined,
   testCountryCovidCaseCounts,
   testTwoCountryCovidCaseCounts,
   covidAllCountriesFilters,
@@ -96,19 +95,15 @@ describe("Tests for getAllCountriesCaseCounts", () => {
 });
 
 describe("Tests for getCovidCaseCount helper function", () => {
-  test("should return 6167", () => {
+  test("should return 76", () => {
     expect(
-      getCovidCaseCount(
-        null,
-        testCovidDataCombined.data,
-        covidAllCountriesFilters
-      )
-    ).toBe(6167);
+      getCovidCaseCount(testTwoCountryCovidCaseCounts, covidAllCountriesFilters)
+    ).toBe(76);
   });
-  test("should return 46215 which is the case count for Afghanistan", () => {
+  test("should return 38 which is the case count for Afghanistan", () => {
     expect(
-      getCovidCaseCount(testParsedCovidData, null, covidAfghanistanFilters)
-    ).toBe(46215);
+      getCovidCaseCount(testTwoCountryCovidCaseCounts, covidAfghanistanFilters)
+    ).toBe(38);
   });
 });
 
