@@ -61,6 +61,14 @@ export const getCountInDateRange = (covidData, dateRange) => {
   return count;
 };
 
+export const getAllCountriesCaseCounts = (covidData = [], dateRange) => {
+  let count = 0;
+  covidData.forEach((country) => {
+    count += getCountInDateRange(country.countryData, dateRange);
+  });
+  return count;
+};
+
 export const getLatestCountInDateRange = (covidData, dateRange) => {
   // 1. Add all of the data within the dateRange to the dataInDateRange object.
   let dataInDateRange = {};

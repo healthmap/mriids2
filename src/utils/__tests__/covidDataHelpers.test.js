@@ -4,6 +4,7 @@ import {
   getCovidCaseCount,
   getLatestCountInDateRange,
   getCountInDateRange,
+  getAllCountriesCaseCounts,
   findCountryDataObject,
   getCountriesCovidCaseCounts,
 } from "../covidDataHelpers";
@@ -12,6 +13,7 @@ import {
   testParsedCovidData,
   testCovidDataCombined,
   testCountryCovidCaseCounts,
+  testTwoCountryCovidCaseCounts,
 } from "../testData/covidTestData";
 import { reduxInitialState } from "../../constants/CommonTestData";
 import { covidInitialDateRange } from "../../constants/DateRanges";
@@ -94,6 +96,17 @@ describe("Tests for getCountInDateRange", () => {
         specificCountryCovidOutbreakFilters.dateRange
       )
     ).toBe(38);
+  });
+});
+
+describe("Tests for getAllCountriesCaseCounts", () => {
+  test("should return 76", () => {
+    expect(
+      getAllCountriesCaseCounts(
+        testTwoCountryCovidCaseCounts,
+        allCountriesCovidOutbreakFilters.dateRange
+      )
+    ).toBe(76);
   });
 });
 
