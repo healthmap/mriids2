@@ -283,7 +283,7 @@ export const covidCaseCountsDictionary = {
   "Equatorial Guinea": 38,
   Eritrea: 38,
   Estonia: 38,
-  eSwatini: 38,
+  Eswatini: 38,
   Ethiopia: 38,
   Fiji: 38,
   Finland: 38,

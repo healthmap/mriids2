@@ -57,7 +57,7 @@ export const allCountries = [
   "Equatorial Guinea",
   "Eritrea",
   "Estonia",
-  "eSwatini",
+  "Eswatini",
   "Ethiopia",
   "Fiji",
   "Finland",
