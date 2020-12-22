@@ -91,6 +91,7 @@ export const allCountries = [
   "Jordan",
   "Kazakhstan",
   "Kenya",
+  "Kosovo",
   "South Korea",
   "Kuwait",
   "Kyrgyzstan",

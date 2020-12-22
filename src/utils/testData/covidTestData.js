@@ -317,6 +317,7 @@ export const covidCaseCountsDictionary = {
   Jordan: 38,
   Kazakhstan: 38,
   Kenya: 38,
+  Kosovo: 38,
   "South Korea": 38,
   Kuwait: 38,
   Kyrgyzstan: 38,
