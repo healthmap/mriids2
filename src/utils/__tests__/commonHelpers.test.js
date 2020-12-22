@@ -1,4 +1,7 @@
-import { getValidCountryNameValue } from "../commonHelpers";
+import {
+  getValidCountryNameValue,
+  addUnderscoreWordSeparator,
+} from "../commonHelpers";
 
 describe("Tests for the getValidCountryNameValue helper function", () => {
   test("should return United States of America", () => {
@@ -32,5 +35,13 @@ describe("Tests for the getValidCountryNameValue helper function", () => {
   });
   test("should return Guinea", () => {
     expect(getValidCountryNameValue("Guinea")).toEqual("Guinea");
+  });
+});
+
+describe("Tests for addUnderscoreWordSeparator", () => {
+  test("should return United_States_of_America", () => {
+    expect(addUnderscoreWordSeparator("United States of America")).toEqual(
+      "United_States_of_America"
+    );
   });
 });

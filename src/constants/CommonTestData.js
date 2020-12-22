@@ -27,6 +27,11 @@ export const reduxInitialState = {
       data: {},
       error: {},
     },
+    caseCounts: {
+      isFetching: 0,
+      data: [],
+      error: {},
+    },
   },
   filters: {
     country: "All",

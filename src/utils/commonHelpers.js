@@ -22,3 +22,5 @@ export const getValidCountryNameValue = (countryName) => {
       return countryName;
   }
 };
+
+export const addUnderscoreWordSeparator = (string) => string.replace(/ /g, "_");

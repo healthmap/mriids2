@@ -10,24 +10,18 @@ import {
 } from "../snapshotMapHelpers";
 import { reduxInitialState } from "../../constants/CommonTestData";
 import {
-  testRawEbolaData,
   ebolaFillColorDictionary,
   testGuineaFiltersState,
-  allCountriesEbolaData,
+  ebolaCaseCountsDictionary,
 } from "../testData/ebolaTestData";
 import {
   covidAllCountriesFilters,
-  testParsedCovidData,
+  covidCaseCountsDictionary,
 } from "../testData/covidTestData";
 
 describe("Tests for getEbolaScale helper function", () => {
   test("returns scaleValue of 12000", () => {
-    const countryCaseCounts = {
-      Guinea: 2452,
-      Liberia: 6738,
-      "Sierra Leone": 11387,
-    };
-    expect(getEbolaScale(countryCaseCounts)).toEqual(12000);
+    expect(getEbolaScale(ebolaCaseCountsDictionary)).toEqual(12000);
   });
   test("returns scaleValue of 4500", () => {
     const countryCaseCounts = {
@@ -129,22 +123,25 @@ describe("Tests for getSnapshotProjectionsColor", () => {
 describe("Tests for getEbolaFillColorsDictionary", () => {
   test("should return the ebola fill colors in the expected format", () => {
     expect(
-      getEbolaFillColorsDictionary(testRawEbolaData, reduxInitialState.filters)
+      getEbolaFillColorsDictionary(
+        ebolaCaseCountsDictionary,
+        reduxInitialState.filters.projection
+      )
     ).toEqual(ebolaFillColorDictionary);
   });
 });
 
 describe("Tests for getCovidFillColorsDictionary", () => {
   const fillColorsDictionary = getCovidFillColorsDictionary(
-    testParsedCovidData,
-    covidAllCountriesFilters
+    covidCaseCountsDictionary,
+    covidAllCountriesFilters.projection
   );
-  test("Afghanistan should have a fill color of '#E23D4A'", () => {
-    // Should have this color because Afghanistan has data in the testParsedCovidData object
-    expect(fillColorsDictionary.Afghanistan).toEqual("#E23D4A");
+  test("Afghanistan should have a fill color of '#F1A697'", () => {
+    // Should have this color because Afghanistan has a case count of 38.
+    expect(fillColorsDictionary.Afghanistan).toEqual("#F1A697");
   });
   test("United States of America should have the default '#FDF1DD' color", () => {
-    // Should have this color because there is no USA data in the testParsedCovidData object
+    // Should have this color because USA has a case count of 0.
     expect(fillColorsDictionary["United States of America"]).toEqual("#FDF1DD");
   });
 });
@@ -173,34 +170,30 @@ describe("Tests for getCountryFillColor", () => {
 describe("Tests for getCountryToolTipContent", () => {
   test("should return only country name for ebola outbreak", () => {
     const toolTipContent = getCountryToolTipContent(
-      allCountriesEbolaData,
-      reduxInitialState.filters,
+      ebolaCaseCountsDictionary,
       "Honduras"
     );
     expect(toolTipContent).toEqual("Honduras");
   });
   test("should return country name and case count for ebola outbreak", () => {
     const toolTipContent = getCountryToolTipContent(
-      allCountriesEbolaData,
-      reduxInitialState.filters,
+      ebolaCaseCountsDictionary,
       "Guinea"
     );
-    expect(toolTipContent).toEqual("Guinea - 126");
+    expect(toolTipContent).toEqual("Guinea - 2,452");
   });
   test("should return only country name for covid outbreak", () => {
     const toolTipContent = getCountryToolTipContent(
-      testParsedCovidData,
-      covidAllCountriesFilters,
-      "Honduras"
+      covidCaseCountsDictionary,
+      "United States of America"
     );
-    expect(toolTipContent).toEqual("Honduras");
+    expect(toolTipContent).toEqual("United States of America");
   });
   test("should return country name with case count for covid outbreak", () => {
     const toolTipContent = getCountryToolTipContent(
-      testParsedCovidData,
-      covidAllCountriesFilters,
+      covidCaseCountsDictionary,
       "Afghanistan"
     );
-    expect(toolTipContent).toEqual("Afghanistan - 46,215");
+    expect(toolTipContent).toEqual("Afghanistan - 38");
   });
 });

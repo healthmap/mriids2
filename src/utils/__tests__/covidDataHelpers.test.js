@@ -3,31 +3,19 @@ import {
   getLastObjectKey,
   getCovidCaseCount,
   getLatestCountInDateRange,
+  getCountInDateRange,
+  getAllCountriesCaseCounts,
   findCountryDataObject,
   getCountriesCovidCaseCounts,
 } from "../covidDataHelpers";
 import {
   testCovidData,
   testParsedCovidData,
-  testCovidDataCombined,
+  testCountryCovidCaseCounts,
+  testTwoCountryCovidCaseCounts,
+  covidAllCountriesFilters,
+  covidAfghanistanFilters,
 } from "../testData/covidTestData";
-import { reduxInitialState } from "../../constants/CommonTestData";
-import { covidInitialDateRange } from "../../constants/DateRanges";
-
-// Filters for the covid outbreak in all countries.
-const allCountriesCovidOutbreakFilters = {
-  ...reduxInitialState.filters,
-  outbreak: "COVID 19",
-  dateRange: covidInitialDateRange,
-};
-
-// Filters for the covid outbreak in a specific country.
-const specificCountryCovidOutbreakFilters = {
-  ...reduxInitialState.filters,
-  country: "Afghanistan",
-  outbreak: "COVID 19",
-  dateRange: covidInitialDateRange,
-};
 
 describe("Tests for the parseCovidData helper function", () => {
   test("should return data in the expected format", () => {
@@ -84,24 +72,38 @@ describe("Tests for getLatestCountInDateRange helper function", () => {
   });
 });
 
-describe("Tests for getCovidCaseCount helper function", () => {
-  test("should return 6167", () => {
+describe("Tests for getCountInDateRange", () => {
+  test("should return 38", () => {
     expect(
-      getCovidCaseCount(
-        null,
-        testCovidDataCombined.data,
-        allCountriesCovidOutbreakFilters
+      getCountInDateRange(
+        testCountryCovidCaseCounts.countryData,
+        covidAfghanistanFilters.dateRange
       )
-    ).toBe(6167);
+    ).toBe(38);
   });
-  test("should return 46215 which is the case count for Afghanistan", () => {
+});
+
+describe("Tests for getAllCountriesCaseCounts", () => {
+  test("should return 76", () => {
     expect(
-      getCovidCaseCount(
-        testParsedCovidData,
-        null,
-        specificCountryCovidOutbreakFilters
+      getAllCountriesCaseCounts(
+        testTwoCountryCovidCaseCounts,
+        covidAllCountriesFilters.dateRange
       )
-    ).toBe(46215);
+    ).toBe(76);
+  });
+});
+
+describe("Tests for getCovidCaseCount helper function", () => {
+  test("should return 76", () => {
+    expect(
+      getCovidCaseCount(testTwoCountryCovidCaseCounts, covidAllCountriesFilters)
+    ).toBe(76);
+  });
+  test("should return 38 which is the case count for Afghanistan", () => {
+    expect(
+      getCovidCaseCount(testTwoCountryCovidCaseCounts, covidAfghanistanFilters)
+    ).toBe(38);
   });
 });
 
@@ -120,7 +122,7 @@ describe("Tests for getCountriesCovidCaseCounts", () => {
     // 1. Get countryCountObject.
     const countryCountObject = getCountriesCovidCaseCounts(
       testParsedCovidData,
-      allCountriesCovidOutbreakFilters
+      covidAllCountriesFilters
     );
     // 2. Get an array of the keys in the countryCountObject.
     const objectKeysArray = Object.keys(countryCountObject);
