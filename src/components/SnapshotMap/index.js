@@ -6,7 +6,6 @@ import {
   Geography,
   ZoomableGroup,
 } from "react-simple-maps";
-
 import { SnapshotMapContainer } from "../styled-components/MapContainers";
 import ViewToggle from "../ViewToggle";
 import SnapshotMapCaseCountLegend from "../SnapshotMapCaseCountLegend";
@@ -18,21 +17,32 @@ import {
   getCovidFillColorsDictionary,
   getCountryFillColor,
 } from "../../utils/snapshotMapHelpers";
+import { getCountriesCovidCaseCounts } from "../../utils/covidDataHelpers";
+import { getCountriesEbolaCaseCounts } from "../../utils/ebolaDataHelpers";
 
 const SnapshotMap = ({ ebolaData, covidData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(9);
   const [fillColorDictionary, setFillColorDictionary] = useState({});
+  const [countryCaseCounts, updateCountryCaseCounts] = useState({});
   const [toolTipContent, setToolTipContent] = useState("");
 
-  // Set the fillColorDictionary when the filters are updated.
+  // Getting the country case counts for the selected outbreak when the filters are updated.
   useEffect(() => {
-    // Gets the colorDictionary based on which outbreak is selected.
+    const diseaseCaseCounts =
+      filters.outbreak === "Ebola Outbreak"
+        ? getCountriesEbolaCaseCounts(ebolaData, filters)
+        : getCountriesCovidCaseCounts(covidData, filters);
+    updateCountryCaseCounts(diseaseCaseCounts);
+  }, [ebolaData, covidData, filters]);
+
+  // Set the fillColorDictionary when the countryCaseCounts is updated or the outbreak or projections are changed.
+  useEffect(() => {
     const colorDictionary =
       filters.outbreak === "Ebola Outbreak"
-        ? getEbolaFillColorsDictionary(ebolaData, filters)
-        : getCovidFillColorsDictionary(covidData, filters);
+        ? getEbolaFillColorsDictionary(countryCaseCounts, filters.projection)
+        : getCovidFillColorsDictionary(countryCaseCounts, filters.projection);
     setFillColorDictionary(colorDictionary);
-  }, [ebolaData, covidData, filters]);
+  }, [countryCaseCounts, filters.outbreak, filters.projection]);
 
   // Update the zoomLevel when switching between outbreaks
   useEffect(() => {
@@ -44,9 +54,6 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
     const validNewZoomLevel = newZoomLevel <= 9 && newZoomLevel >= 1;
     return validNewZoomLevel ? setZoomLevel(newZoomLevel) : null;
   };
-
-  const diseaseData =
-    filters.outbreak === "Ebola Outbreak" ? ebolaData : covidData;
 
   return (
     <SnapshotMapContainer>
@@ -76,8 +83,7 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
                     onMouseEnter={() => {
                       setToolTipContent(
                         getCountryToolTipContent(
-                          diseaseData,
-                          filters,
+                          countryCaseCounts,
                           geo.properties.NAME
                         )
                       );
@@ -107,7 +113,7 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-      <SnapshotMapCaseCountLegend />
+      <SnapshotMapCaseCountLegend countryCaseCounts={countryCaseCounts} />
       <MapZoomButtons
         zoomLevel={zoomLevel}
         changeZoomFunction={changeZoomLevel}

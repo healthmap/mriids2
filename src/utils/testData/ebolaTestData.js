@@ -512,3 +512,9 @@ export const testEbolaDataCombinedLastWeekOutOfDateRange = [
     "ymax4.Sierra Leone": "1024",
   },
 ];
+
+export const ebolaCaseCountsDictionary = {
+  Guinea: 2452,
+  Liberia: 6738,
+  "Sierra Leone": 11387,
+};

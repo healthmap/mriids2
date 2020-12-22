@@ -1,5 +1,3 @@
-import { getCountriesEbolaCaseCounts } from "./ebolaDataHelpers";
-import { getCountriesCovidCaseCounts } from "./covidDataHelpers";
 import { ebolaOutbreakCountries, allCountries } from "../constants/Countries";
 
 export const getEbolaScale = (countryCaseCount) => {
@@ -52,7 +50,7 @@ export const getCovidScale = (countryCaseCount) => {
   return scaleValue;
 };
 
-export const getSnapshotColor = (caseCountValue) => {
+export const getSnapshotColor = (caseCountValue = 0) => {
   //  Gets the color values for the snapshot map and case count legend.
   //  This is for non-projection data.
   let color;
@@ -80,7 +78,7 @@ export const getSnapshotColor = (caseCountValue) => {
   return color;
 };
 
-export const getSnapshotProjectionsColor = (caseCountValue) => {
+export const getSnapshotProjectionsColor = (caseCountValue = 0) => {
   //  Gets the color values for the snapshot map and case count legend.
   //  This is for projection data.
   let color;
@@ -109,20 +107,18 @@ export const getSnapshotProjectionsColor = (caseCountValue) => {
 };
 
 // This gets a dictionary with key/value pairs of country/fillColor for each Ebola country.
-export const getEbolaFillColorsDictionary = (ebolaData, filters) => {
+export const getEbolaFillColorsDictionary = (
+  ebolaCountriesCaseCounts,
+  projectionsEnabled
+) => {
   let colorsDictionary = {};
-  // Get the case count for the 3 ebolaOutbreakCountries.
-  const ebolaCountriesCaseCounts = getCountriesEbolaCaseCounts(
-    ebolaData,
-    filters
-  );
   // Get the scale using the ebolaCountriesCaseCounts object.
   const scale = getEbolaScale(ebolaCountriesCaseCounts);
   ebolaOutbreakCountries.forEach((country) => {
     const percentage = ebolaCountriesCaseCounts[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
     // Otherwise get the fillColor value using the getSnapshotColor function.
-    colorsDictionary[country] = filters.projection
+    colorsDictionary[country] = projectionsEnabled
       ? getSnapshotProjectionsColor(percentage)
       : getSnapshotColor(percentage);
   });
@@ -130,20 +126,18 @@ export const getEbolaFillColorsDictionary = (ebolaData, filters) => {
 };
 
 // This gets a dictionary with key/value pairs of country/fillColor for each country.
-export const getCovidFillColorsDictionary = (covidData, filters) => {
+export const getCovidFillColorsDictionary = (
+  covidCountriesCaseCounts,
+  projectionsEnabled
+) => {
   let colorsDictionary = {};
-  // Get the covid case count for all countries.
-  const covidCountriesCaseCounts = getCountriesCovidCaseCounts(
-    covidData,
-    filters
-  );
   // Get the scale using the covidCountriesCaseCounts object.
   const scale = getCovidScale(covidCountriesCaseCounts);
   allCountries.forEach((country) => {
     const percentage = covidCountriesCaseCounts[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
     // Otherwise get the fillColor value using the getSnapshotColor function.
-    colorsDictionary[country] = filters.projection
+    colorsDictionary[country] = projectionsEnabled
       ? getSnapshotProjectionsColor(percentage)
       : getSnapshotColor(percentage);
   });
@@ -168,21 +162,8 @@ export const getCountryFillColor = (
   }
 };
 
-export const getCountryToolTipContent = (diseaseData, filters, countryName) => {
-  let countryCaseCount;
-  if (filters.outbreak === "Ebola Outbreak") {
-    const ebolaCountriesCaseCounts = getCountriesEbolaCaseCounts(
-      diseaseData,
-      filters
-    );
-    countryCaseCount = ebolaCountriesCaseCounts[countryName];
-  } else {
-    const covidCountriesCaseCounts = getCountriesCovidCaseCounts(
-      diseaseData,
-      filters
-    );
-    countryCaseCount = covidCountriesCaseCounts[countryName];
-  }
+export const getCountryToolTipContent = (diseaseCaseCounts, countryName) => {
+  const countryCaseCount = diseaseCaseCounts[countryName];
   // If the country has a case count, return the country name and case count.
   // Else, just return the country name.
   return countryCaseCount

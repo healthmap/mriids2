@@ -7,23 +7,15 @@ import {
   getSnapshotColor,
   getSnapshotProjectionsColor,
 } from "../../utils/snapshotMapHelpers";
-import { getCountriesEbolaCaseCounts } from "../../utils/ebolaDataHelpers";
-import { getCountriesCovidCaseCounts } from "../../utils/covidDataHelpers";
 import {
   MapLegendWrapperSnapshot,
   MapLegendItemsWrapper,
 } from "../styled-components/MapLegendWrappers";
 import { BlockDropshadow } from "../styled-components/Block";
 
-const SnapshotMapCaseCountLegend = ({ ebolaData, covidData, filters }) => {
+const SnapshotMapCaseCountLegend = ({ countryCaseCounts, filters }) => {
   // Determines whether the ebola outbreak is selected.
   const ebolaOutbreakSelected = filters.outbreak === "Ebola Outbreak";
-
-  // Getting the number of case counts for each country.
-  // We need this to get the max value for the legend.
-  const countriesCaseCounts = ebolaOutbreakSelected
-    ? getCountriesEbolaCaseCounts(ebolaData, filters)
-    : getCountriesCovidCaseCounts(covidData, filters);
 
   const legendHeader = filters.projection
     ? "Total outbreak projections"
@@ -31,8 +23,8 @@ const SnapshotMapCaseCountLegend = ({ ebolaData, covidData, filters }) => {
 
   const renderLegendLevels = () => {
     const scale = ebolaOutbreakSelected
-      ? getEbolaScale(countriesCaseCounts)
-      : getCovidScale(countriesCaseCounts);
+      ? getEbolaScale(countryCaseCounts)
+      : getCovidScale(countryCaseCounts);
     // We want to render 10 levels for the legend.
     const numberOfLevels = 9;
     const levels = [];
@@ -66,8 +58,6 @@ const SnapshotMapCaseCountLegend = ({ ebolaData, covidData, filters }) => {
 };
 
 const mapStateToProps = (state) => ({
-  ebolaData: state.ebola.ebolaData.data,
-  covidData: state.covid.caseCounts.data,
   filters: state.filters,
 });
 
