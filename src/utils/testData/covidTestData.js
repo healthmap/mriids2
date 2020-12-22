@@ -248,7 +248,7 @@ export const covidCaseCountsDictionary = {
   Benin: 38,
   Bhutan: 38,
   Bolivia: 38,
-  Bosnia: 38,
+  "Bosnia and Herzegovina": 38,
   Botswana: 38,
   Brazil: 38,
   Brunei: 38,

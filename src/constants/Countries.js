@@ -22,7 +22,7 @@ export const allCountries = [
   "Benin",
   "Bhutan",
   "Bolivia",
-  "Bosnia",
+  "Bosnia and Herzegovina",
   "Botswana",
   "Brazil",
   "Brunei",
