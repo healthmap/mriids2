@@ -45,7 +45,7 @@ export const allCountries = [
   "Cuba",
   "Cyprus",
   "Czechia",
-  "Côte d'Ivoire",
+  "Cote dIvoire",
   "Denmark",
   "Djibouti",
   "Dominica",

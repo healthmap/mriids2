@@ -271,7 +271,7 @@ export const covidCaseCountsDictionary = {
   Cuba: 38,
   Cyprus: 38,
   Czechia: 38,
-  "Côte d'Ivoire": 38,
+  "Cote dIvoire": 38,
   Denmark: 38,
   Djibouti: 38,
   Dominica: 38,
