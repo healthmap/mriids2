@@ -68,6 +68,7 @@ export const allCountries = [
   "Germany",
   "Ghana",
   "Greece",
+  "Greenland",
   "Grenada",
   "Guatemala",
   "Guinea",

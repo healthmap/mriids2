@@ -294,6 +294,7 @@ export const covidCaseCountsDictionary = {
   Germany: 38,
   Ghana: 38,
   Greece: 38,
+  Greenland: 38,
   Grenada: 38,
   Guatemala: 38,
   Guinea: 38,
