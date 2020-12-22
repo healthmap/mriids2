@@ -185,7 +185,6 @@ export const allCountries = [
   "Vanuatu",
   "Venezuela",
   "Vietnam",
-  "Western Sahara",
   "Yemen",
   "Zambia",
   "Zimbabwe",

@@ -411,7 +411,6 @@ export const covidCaseCountsDictionary = {
   Vanuatu: 38,
   Venezuela: 38,
   Vietnam: 38,
-  "Western Sahara": 38,
   Yemen: 38,
   Zambia: 38,
   Zimbabwe: 38,
