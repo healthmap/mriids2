@@ -50,7 +50,7 @@ export const allCountries = [
   "Djibouti",
   "Dominica",
   "Dominican Republic",
-  "DRC",
+  "Democratic Republic of the Congo",
   "Ecuador",
   "Egypt",
   "El Salvador",

@@ -276,7 +276,7 @@ export const covidCaseCountsDictionary = {
   Djibouti: 38,
   Dominica: 38,
   "Dominican Republic": 38,
-  DRC: 38,
+  "Democratic Republic of the Congo": 38,
   Ecuador: 38,
   Egypt: 38,
   "El Salvador": 38,
