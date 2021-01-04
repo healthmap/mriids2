@@ -4,11 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/theme";
 import { fetchEbolaData, fetchEbolaDataCombined } from "./actions/ebola";
-import {
-  fetchCovidData,
-  fetchCovidDataCombined,
-  fetchCovidCaseCounts,
-} from "./actions/covid";
+import { fetchCovidDataCombined, fetchCovidCaseCounts } from "./actions/covid";
 import SnapshotMap from "./components/SnapshotMap";
 import EbolaRiskMap from "./containers/EbolaRiskMap";
 import Team from "./components/Team";
@@ -23,7 +19,6 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchEbolaData();
     this.props.fetchEbolaDataCombined();
-    this.props.fetchCovidData();
     this.props.fetchCovidDataCombined();
     this.props.fetchCovidCaseCounts();
   }
@@ -79,7 +74,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchEbolaData: () => dispatch(fetchEbolaData()),
   fetchEbolaDataCombined: () => dispatch(fetchEbolaDataCombined()),
-  fetchCovidData: () => dispatch(fetchCovidData()),
   fetchCovidDataCombined: () => dispatch(fetchCovidDataCombined()),
   fetchCovidCaseCounts: () => dispatch(fetchCovidCaseCounts()),
 });
