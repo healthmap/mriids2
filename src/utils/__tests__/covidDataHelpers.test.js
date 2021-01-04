@@ -73,13 +73,13 @@ describe("Tests for getLatestCountInDateRange helper function", () => {
 });
 
 describe("Tests for getCountInDateRange", () => {
-  test("should return 38", () => {
+  test("should return 4449", () => {
     expect(
       getCountInDateRange(
         testCountryCovidCaseCounts.countryData,
         covidAfghanistanFilters.dateRange
       )
-    ).toBe(38);
+    ).toBe(4449);
   });
 });
 

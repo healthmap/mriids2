@@ -147,6 +147,35 @@ export const getAllCountriesChartData = (covidDataCombined, filters) => {
   return chartData;
 };
 
+// Returns the sum of the case/death counts for the week ending in dateKey.
+export const returnLastSevenDaysDataCount = (
+  covidDataObject,
+  covidDataDateKeys,
+  dateKey
+) => {
+  let caseCount = 0;
+  // Get the index of the dateKey in the covidDataDateKeys array.
+  const dateKeyIndex = covidDataDateKeys.indexOf(dateKey);
+  // If the dateKey is not the first item in the covidDataDateKeys array (index is not 0), execute this block.
+  if (dateKeyIndex) {
+    // Get the index of the date that is 6 days before the dateKey.
+    const startIndex = dateKeyIndex - 6 > 0 ? dateKeyIndex - 6 : 0;
+    // Get an array of date keys for the week ending in dateKey.
+    const lastSevenDayKeys = covidDataDateKeys.slice(
+      startIndex,
+      dateKeyIndex + 1
+    );
+    // For each of the keys in the lastSevenDayKeys array, add the counts to the caseCount.
+    lastSevenDayKeys.forEach((dateKey) => {
+      caseCount += covidDataObject[dateKey];
+    });
+  } else {
+    // If the dateKey is the first item in the covidDataDateKeys array, this is the caseCount we want.
+    caseCount = covidDataObject[dateKey];
+  }
+  return caseCount;
+};
+
 export const getSelectedCountryChartData = (covidData, filters) => {
   const chartData = [];
   // Add column headers to chartData array.
@@ -155,13 +184,22 @@ export const getSelectedCountryChartData = (covidData, filters) => {
   const countryDataObject = findCountryDataObject(covidData, filters.country);
   // If a countryDataObject is found, execute this block.
   if (countryDataObject) {
-    // Get an array of keys from the countryDataObject.cases object where the dates are 7 days apart.
-    const weekDateKeys = getWeeklyDateObjectKeys(countryDataObject.cases);
+    // Get an array of all of the date keys in the countryDataObject.countryData.
+    const covidDataDateKeys = Object.keys(countryDataObject.countryData);
+    // Get an array of keys from the countryDataObject.countryData object where the dates are 7 days apart.
+    const weekDateKeys = getWeeklyDateObjectKeys(countryDataObject.countryData);
     // Loop through all the 'weekDateKeys'.
     weekDateKeys.forEach((dateKey) => {
       // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
       if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
-        const dataRow = [new Date(dateKey), countryDataObject.cases[dateKey]];
+        const dataRow = [
+          new Date(dateKey),
+          returnLastSevenDaysDataCount(
+            countryDataObject.countryData,
+            covidDataDateKeys,
+            dateKey
+          ),
+        ];
         chartData.push(dataRow);
       }
     });
