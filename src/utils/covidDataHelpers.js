@@ -5,25 +5,6 @@ import {
   addUnderscoreWordSeparator,
 } from "./commonHelpers";
 
-export const parseCovidData = (jhuCovidData = []) => {
-  // This ensures that there are no 'null' values in the jhuCovidData array.
-  const covidDataNoNullValues = jhuCovidData.filter(
-    (dataRow) => dataRow !== null
-  );
-  let parsedData = [];
-  covidDataNoNullValues.forEach((row) => {
-    // If the row contains data covid data for a country, execute this block.
-    if (Object.prototype.hasOwnProperty.call(row, "country")) {
-      parsedData.push({
-        countryName: row.country,
-        cases: row.timeline.cases,
-        deaths: row.timeline.deaths,
-      });
-    }
-  });
-  return parsedData;
-};
-
 export const parseCovidCSVData = (csvData = []) => {
   const parsedData = [];
   allCountries.forEach((country) => {

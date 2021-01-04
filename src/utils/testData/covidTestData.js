@@ -14,65 +14,6 @@ export const covidAfghanistanFilters = {
   dateRange: covidInitialDateRange,
 };
 
-export const testCovidData = [
-  {
-    country: "Canada",
-    province: [
-      "alberta",
-      "british columbia",
-      "diamond princess",
-      "grand princess",
-      "manitoba",
-      "new brunswick",
-      "newfoundland and labrador",
-      "northwest territories",
-      "nova scotia",
-      "nunavut",
-      "ontario",
-      "prince edward island",
-      "quebec",
-      "repatriated travellers",
-      "saskatchewan",
-      "yukon",
-    ],
-    timeline: {
-      cases: {
-        "11/11/20": 280465,
-        "11/12/20": 285939,
-      },
-      deaths: {
-        "11/11/20": 10748,
-        "11/12/20": 10828,
-      },
-      recovered: {
-        "11/11/20": 0,
-        "11/12/20": 0,
-      },
-    },
-  },
-  {
-    country: "Honduras",
-    province: ["mainland"],
-    timeline: {
-      cases: {
-        "11/11/20": 101169,
-        "11/12/20": 101468,
-      },
-      deaths: {
-        "11/11/20": 2797,
-        "11/12/20": 2804,
-      },
-      recovered: {
-        "11/11/20": 43857,
-        "11/12/20": 44068,
-      },
-    },
-  },
-  {
-    message: "Country not found or doesn't have any historical data",
-  },
-];
-
 export const testParsedCovidData = [
   {
     countryName: "Afghanistan",
@@ -139,47 +80,30 @@ export const testObjectDateKeys = {
   "2/12/20": 0,
 };
 
-export const testCountryCovidData = [
-  {
-    countryName: "Afghanistan",
-    cases: {
-      "2/24/20": 1,
-      "2/25/20": 1,
-      "2/26/20": 1,
-      "2/27/20": 1,
-      "2/28/20": 1,
-      "2/29/20": 1,
-      "3/1/20": 1,
-      "3/2/20": 1,
-      "3/3/20": 2,
-      "3/4/20": 4,
-      "3/5/20": 4,
-      "3/6/20": 4,
-      "3/7/20": 4,
-      "3/8/20": 5,
-      "3/9/20": 7,
-    },
-  },
-];
-
 export const testCountryCovidCaseCounts = {
   countryName: "Afghanistan",
   countryData: {
-    "2/24/20": 1,
-    "2/25/20": 1,
-    "2/26/20": 1,
-    "2/27/20": 1,
-    "2/28/20": 1,
-    "2/29/20": 1,
-    "3/1/20": 1,
-    "3/2/20": 1,
-    "3/3/20": 2,
-    "3/4/20": 4,
-    "3/5/20": 4,
-    "3/6/20": 4,
-    "3/7/20": 4,
-    "3/8/20": 5,
-    "3/9/20": 7,
+    "11/23/20": 203,
+    "11/24/20": 282,
+    "11/25/20": 290,
+    "11/26/20": 212,
+    "11/27/20": 226,
+    "11/28/20": 123,
+    "11/29/20": 127,
+    "11/30/20": 249,
+    "12/1/20": 283,
+    "12/2/20": 219,
+    "12/3/20": 263,
+    "12/4/20": 278,
+    "12/5/20": 130,
+    "12/6/20": 253,
+    "12/7/20": 260,
+    "12/8/20": 235,
+    "12/9/20": 230,
+    "12/10/20": 174,
+    "12/11/20": 213,
+    "12/12/20": 73,
+    "12/13/20": 126,
   },
 };
 

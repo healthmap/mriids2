@@ -5,6 +5,7 @@ import {
   getSelectedCountryChartData,
   getWeekProjectionData,
   getCovidDataForCharts,
+  returnLastSevenDaysDataCount,
 } from "../chartDataHelpers";
 import {
   testGuineaData,
@@ -17,7 +18,8 @@ import {
   covidAllCountriesFilters,
   covidAfghanistanFilters,
   testCovidDataCombined,
-  testCountryCovidData,
+  testCountryCovidCaseCounts,
+  testTwoCountryCovidCaseCounts,
 } from "../testData/covidTestData";
 import { reduxInitialState } from "../../constants/CommonTestData";
 import dayjs from "dayjs";
@@ -177,7 +179,10 @@ test("returns all country data in expected format", () => {
 });
 test("returns specific country data in expected format", () => {
   expect(
-    getSelectedCountryChartData(testCountryCovidData, covidAfghanistanFilters)
+    getSelectedCountryChartData(
+      testTwoCountryCovidCaseCounts,
+      covidAfghanistanFilters
+    )
   ).toEqual([
     [
       {
@@ -190,8 +195,8 @@ test("returns specific country data in expected format", () => {
       },
     ],
     [new Date("2/24/20"), 1],
-    [new Date("3/2/20"), 1],
-    [new Date("3/9/20"), 7],
+    [new Date("3/2/20"), 7],
+    [new Date("3/9/20"), 30],
   ]);
 });
 
@@ -199,7 +204,7 @@ describe("Tests for getCovidDataForCharts", () => {
   test("returns all country data in expected format", () => {
     expect(
       getCovidDataForCharts(
-        testCountryCovidData,
+        testCountryCovidCaseCounts,
         testCovidDataCombined.data,
         covidAllCountriesFilters
       )
@@ -221,7 +226,7 @@ describe("Tests for getCovidDataForCharts", () => {
   test("returns specific country data in expected format", () => {
     expect(
       getCovidDataForCharts(
-        testCountryCovidData,
+        testTwoCountryCovidCaseCounts,
         testCovidDataCombined.data,
         covidAfghanistanFilters
       )
@@ -237,8 +242,30 @@ describe("Tests for getCovidDataForCharts", () => {
         },
       ],
       [new Date("2/24/20"), 1],
-      [new Date("3/2/20"), 1],
-      [new Date("3/9/20"), 7],
+      [new Date("3/2/20"), 7],
+      [new Date("3/9/20"), 30],
     ]);
+  });
+});
+
+describe("Tests for returnLastSevenDaysDataCount", () => {
+  const covidDataDateKeys = Object.keys(testCountryCovidCaseCounts.countryData);
+  test("should return 203", () => {
+    expect(
+      returnLastSevenDaysDataCount(
+        testCountryCovidCaseCounts.countryData,
+        covidDataDateKeys,
+        "11/23/20"
+      )
+    ).toBe(203);
+  });
+  test("should return 1509", () => {
+    expect(
+      returnLastSevenDaysDataCount(
+        testCountryCovidCaseCounts.countryData,
+        covidDataDateKeys,
+        "11/30/20"
+      )
+    ).toBe(1509);
   });
 });

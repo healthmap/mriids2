@@ -1,5 +1,4 @@
 import {
-  parseCovidData,
   getLastObjectKey,
   getCovidCaseCount,
   getLatestCountInDateRange,
@@ -9,42 +8,12 @@ import {
   getCountriesCovidCaseCounts,
 } from "../covidDataHelpers";
 import {
-  testCovidData,
   testParsedCovidData,
   testCountryCovidCaseCounts,
   testTwoCountryCovidCaseCounts,
   covidAllCountriesFilters,
   covidAfghanistanFilters,
 } from "../testData/covidTestData";
-
-describe("Tests for the parseCovidData helper function", () => {
-  test("should return data in the expected format", () => {
-    expect(parseCovidData(testCovidData)).toEqual([
-      {
-        countryName: "Canada",
-        cases: {
-          "11/11/20": 280465,
-          "11/12/20": 285939,
-        },
-        deaths: {
-          "11/11/20": 10748,
-          "11/12/20": 10828,
-        },
-      },
-      {
-        countryName: "Honduras",
-        cases: {
-          "11/11/20": 101169,
-          "11/12/20": 101468,
-        },
-        deaths: {
-          "11/11/20": 2797,
-          "11/12/20": 2804,
-        },
-      },
-    ]);
-  });
-});
 
 describe("Tests for the getLastObjectKey helper function", () => {
   test("should return key of 11/29/20", () => {
@@ -73,13 +42,13 @@ describe("Tests for getLatestCountInDateRange helper function", () => {
 });
 
 describe("Tests for getCountInDateRange", () => {
-  test("should return 38", () => {
+  test("should return 4449", () => {
     expect(
       getCountInDateRange(
         testCountryCovidCaseCounts.countryData,
         covidAfghanistanFilters.dateRange
       )
-    ).toBe(38);
+    ).toBe(4449);
   });
 });
 

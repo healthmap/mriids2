@@ -17,11 +17,6 @@ export const reduxInitialState = {
     },
   },
   covid: {
-    covidData: {
-      isFetching: 0,
-      data: [],
-      error: {},
-    },
     covidDataCombined: {
       isFetching: 0,
       data: {},
