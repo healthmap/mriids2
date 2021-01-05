@@ -9,6 +9,7 @@ import Select from "../Select";
 import ReportedCases from "./ReportedCases";
 import Summary from "./Summary";
 import EbolaRiskList from "./EbolaRiskList";
+import SidebarDateRange from "../SidebarDateRange";
 import * as Styled from "./styles";
 import {
   SelectCountryWrapper,
@@ -86,6 +87,7 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
+      <SidebarDateRange />
       {showReportedCases && (
         <ReportedCases
           projection={filters.projection}
