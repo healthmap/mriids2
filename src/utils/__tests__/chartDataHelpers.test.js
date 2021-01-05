@@ -17,7 +17,6 @@ import {
 import {
   covidAllCountriesFilters,
   covidAfghanistanFilters,
-  testCovidDataCombined,
   testCountryCovidCaseCounts,
   testTwoCountryCovidCaseCounts,
 } from "../testData/covidTestData";
@@ -159,7 +158,7 @@ describe("Tests for prepareEbolaDataForCharts helper function", () => {
 test("returns all country data in expected format", () => {
   expect(
     getAllCountriesChartData(
-      testCovidDataCombined.data,
+      testTwoCountryCovidCaseCounts,
       covidAllCountriesFilters
     )
   ).toEqual([
@@ -173,10 +172,12 @@ test("returns all country data in expected format", () => {
         label: "COVID-19 Cases",
       },
     ],
-    [new Date("1/22/20"), 555],
-    [new Date("1/29/20"), 6167],
+    [new Date("2/24/20"), 2],
+    [new Date("3/2/20"), 14],
+    [new Date("3/9/20"), 60],
   ]);
 });
+
 test("returns specific country data in expected format", () => {
   expect(
     getSelectedCountryChartData(
@@ -204,8 +205,7 @@ describe("Tests for getCovidDataForCharts", () => {
   test("returns all country data in expected format", () => {
     expect(
       getCovidDataForCharts(
-        testCountryCovidCaseCounts,
-        testCovidDataCombined.data,
+        testTwoCountryCovidCaseCounts,
         covidAllCountriesFilters
       )
     ).toEqual([
@@ -219,15 +219,15 @@ describe("Tests for getCovidDataForCharts", () => {
           label: "COVID-19 Cases",
         },
       ],
-      [new Date("1/22/20"), 555],
-      [new Date("1/29/20"), 6167],
+      [new Date("2/24/20"), 2],
+      [new Date("3/2/20"), 14],
+      [new Date("3/9/20"), 60],
     ]);
   });
   test("returns specific country data in expected format", () => {
     expect(
       getCovidDataForCharts(
         testTwoCountryCovidCaseCounts,
-        testCovidDataCombined.data,
         covidAfghanistanFilters
       )
     ).toEqual([

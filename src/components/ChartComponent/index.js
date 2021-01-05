@@ -13,14 +13,13 @@ const ChartComponent = ({
   ebolaData,
   ebolaDataCombined,
   covidData,
-  covidDataCombined,
   filters,
 }) => {
   // // Get the chartData based on the outbreak selected in the filters
   const chartData =
     filters.outbreak === "Ebola Outbreak"
       ? prepareEbolaDataForCharts(ebolaData, ebolaDataCombined, filters)
-      : getCovidDataForCharts(covidData, covidDataCombined, filters);
+      : getCovidDataForCharts(covidData, filters);
 
   return (
     <ChartContainer>
@@ -42,7 +41,6 @@ const mapStateToProps = (state) => ({
   ebolaData: state.ebola.ebolaData.data,
   ebolaDataCombined: state.ebola.ebolaDataCombined.data,
   covidData: state.covid.caseCounts.data,
-  covidDataCombined: state.covid.covidDataCombined.data,
 });
 
 export default connect(mapStateToProps)(ChartComponent);
