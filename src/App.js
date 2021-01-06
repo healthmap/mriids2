@@ -4,7 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/theme";
 import { fetchEbolaData, fetchEbolaDataCombined } from "./actions/ebola";
-import { fetchCovidCaseCounts, fetchCovidDeathCounts } from "./actions/covid";
+import {
+  fetchCovidCaseCounts,
+  fetchCovidDeathCounts,
+  fetchCovidProjectionsData,
+} from "./actions/covid";
 import SnapshotMap from "./components/SnapshotMap";
 import EbolaRiskMap from "./containers/EbolaRiskMap";
 import Team from "./components/Team";
@@ -21,6 +25,7 @@ class App extends Component {
     this.props.fetchEbolaDataCombined();
     this.props.fetchCovidCaseCounts();
     this.props.fetchCovidDeathCounts();
+    this.props.fetchCovidProjectionsData();
   }
 
   renderHomePageComponents = () => {
@@ -76,6 +81,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchEbolaDataCombined: () => dispatch(fetchEbolaDataCombined()),
   fetchCovidCaseCounts: () => dispatch(fetchCovidCaseCounts()),
   fetchCovidDeathCounts: () => dispatch(fetchCovidDeathCounts()),
+  fetchCovidProjectionsData: () => dispatch(fetchCovidProjectionsData()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
