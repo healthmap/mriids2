@@ -26,13 +26,6 @@ export const parseCovidCSVData = (csvData = []) => {
   return parsedData;
 };
 
-export const getLastObjectKey = (dataObject) => {
-  // Gets all the keys of the dataObject.
-  const objectKeys = Object.keys(dataObject);
-  // Returns the last key in the dataObject.
-  return objectKeys[objectKeys.length - 1];
-};
-
 export const getCountInDateRange = (covidData, dateRange) => {
   let count = 0;
   if (covidData) {
@@ -58,20 +51,6 @@ export const getAllCountriesCaseCounts = (covidData = [], dateRange) => {
     }
   });
   return count;
-};
-
-export const getLatestCountInDateRange = (covidData, dateRange) => {
-  // 1. Add all of the data within the dateRange to the dataInDateRange object.
-  let dataInDateRange = {};
-  Object.keys(covidData).forEach((weekKey) => {
-    if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
-      dataInDateRange[weekKey] = covidData[weekKey];
-    }
-  });
-  // 2. Find the last key in the dataInDateRange object.
-  const lastDateKey = getLastObjectKey(dataInDateRange);
-  // 3. Return the last value from the dataInDateRange object.
-  return dataInDateRange[lastDateKey];
 };
 
 // This gets the case count for the Sidebar
