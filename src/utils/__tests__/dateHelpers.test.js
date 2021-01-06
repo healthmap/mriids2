@@ -1,7 +1,6 @@
 import {
   getNumberOfWeeksBetweenDates,
   isDateWithinFiltersDateRange,
-  getWeeklyDateObjectKeys,
   getOutbreakInitialDateRange,
 } from "../dateHelpers";
 import {
@@ -9,7 +8,6 @@ import {
   covidInitialDateRange,
 } from "../../constants/DateRanges";
 import { reduxInitialState } from "../../constants/CommonTestData";
-import { testObjectDateKeys } from "../testData/covidTestData";
 
 describe("tests for the getNumberOfWeeksBetweenDates helper function", () => {
   test("using date strings, the dates should be 2 weeks apart", () => {
@@ -59,17 +57,6 @@ describe("Tests for isDateWithinFiltersDateRange", () => {
         reduxInitialState.filters.dateRange
       )
     ).toEqual(false);
-  });
-});
-
-describe("Tests for getWeeklyDateObjectKeys", () => {
-  test("should return array of date keys which are 7 days apart", () => {
-    expect(getWeeklyDateObjectKeys(testObjectDateKeys)).toEqual([
-      "1/22/20",
-      "1/29/20",
-      "2/5/20",
-      "2/12/20",
-    ]);
   });
 });
 
