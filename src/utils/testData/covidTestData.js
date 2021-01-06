@@ -27,31 +27,6 @@ export const testParsedCovidData = [
   },
 ];
 
-export const testObjectDateKeys = {
-  "1/22/20": 0,
-  "1/23/20": 0,
-  "1/24/20": 0,
-  "1/25/20": 0,
-  "1/26/20": 0,
-  "1/27/20": 0,
-  "1/28/20": 0,
-  "1/29/20": 0,
-  "1/30/20": 0,
-  "1/31/20": 0,
-  "2/1/20": 0,
-  "2/2/20": 0,
-  "2/3/20": 0,
-  "2/4/20": 0,
-  "2/5/20": 0,
-  "2/6/20": 0,
-  "2/7/20": 0,
-  "2/8/20": 0,
-  "2/9/20": 0,
-  "2/10/20": 0,
-  "2/11/20": 0,
-  "2/12/20": 0,
-};
-
 export const testCountryCovidCaseCounts = {
   countryName: "Afghanistan",
   countryData: {
@@ -120,6 +95,62 @@ export const testTwoCountryCovidCaseCounts = [
       "3/9/20": 7,
     },
   },
+];
+
+export const expectedAllCountriesChartData = [
+  [
+    {
+      type: "date",
+      label: "Date",
+    },
+    {
+      type: "number",
+      label: "COVID-19 Cases",
+    },
+  ],
+  [new Date("2/24/20"), 2],
+  [new Date("2/25/20"), 2],
+  [new Date("2/26/20"), 2],
+  [new Date("2/27/20"), 2],
+  [new Date("2/28/20"), 2],
+  [new Date("2/29/20"), 2],
+  [new Date("3/01/20"), 2],
+  [new Date("3/02/20"), 2],
+  [new Date("3/03/20"), 4],
+  [new Date("3/04/20"), 8],
+  [new Date("3/05/20"), 8],
+  [new Date("3/06/20"), 8],
+  [new Date("3/07/20"), 8],
+  [new Date("3/08/20"), 10],
+  [new Date("3/09/20"), 14],
+];
+
+export const expectedOneCountryChartData = [
+  [
+    {
+      type: "date",
+      label: "Date",
+    },
+    {
+      type: "number",
+      label: "COVID-19 Cases",
+    },
+  ],
+  [new Date("2/24/20"), 1],
+  [new Date("2/25/20"), 1],
+  [new Date("2/26/20"), 1],
+  [new Date("2/27/20"), 1],
+  [new Date("2/28/20"), 1],
+  [new Date("2/29/20"), 1],
+  [new Date("3/01/20"), 1],
+  [new Date("3/02/20"), 1],
+  [new Date("3/03/20"), 2],
+  [new Date("3/04/20"), 4],
+  [new Date("3/05/20"), 4],
+  [new Date("3/06/20"), 4],
+  [new Date("3/07/20"), 4],
+  [new Date("3/08/20"), 5],
+  [new Date("3/09/20"), 7],
 ];
 
 export const covidCaseCountsDictionary = {
