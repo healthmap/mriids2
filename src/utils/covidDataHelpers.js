@@ -1,9 +1,6 @@
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { allCountries } from "../constants/Countries";
-import {
-  getValidCountryNameValue,
-  addUnderscoreWordSeparator,
-} from "./commonHelpers";
+import { addUnderscoreWordSeparator } from "./commonHelpers";
 
 export const parseCovidCSVData = (csvData = []) => {
   const parsedData = [];
@@ -62,8 +59,7 @@ export const getCovidCaseCount = (covidData = [], filters) => {
   } else {
     // Finds the data object for the country selected in filters.country.
     const selectedCountryDataObject = covidData.find(
-      (dataObject) =>
-        getValidCountryNameValue(dataObject.countryName) === filters.country
+      (dataObject) => dataObject.countryName === filters.country
     );
     // If data for the country is found, get the latest case count the country and set it to the caseCount variable.
     if (selectedCountryDataObject) {
@@ -79,10 +75,7 @@ export const getCovidCaseCount = (covidData = [], filters) => {
 
 // Find data object for the specified country.
 export const findCountryDataObject = (covidData, countryName) =>
-  covidData.find(
-    (dataObject) =>
-      getValidCountryNameValue(dataObject.countryName) === countryName
-  );
+  covidData.find((dataObject) => dataObject.countryName === countryName);
 
 // This gets the country case counts for the Snapshot map.
 export const getCountriesCovidCaseCounts = (covidData = [], filters) => {
