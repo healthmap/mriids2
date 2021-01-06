@@ -14,19 +14,6 @@ export const covidAfghanistanFilters = {
   dateRange: covidInitialDateRange,
 };
 
-export const testParsedCovidData = [
-  {
-    countryName: "Afghanistan",
-    cases: { "10/28/20": 30000, "11/28/20": 40000, "11/29/20": 46215 },
-    deaths: { "11/29/20": 1763 },
-  },
-  {
-    countryName: "Zimbabwe",
-    cases: { "10/28/20": 30000, "11/28/20": 40000, "11/29/20": 46215 },
-    deaths: { "11/29/20": 1763 },
-  },
-];
-
 export const testCountryCovidCaseCounts = {
   countryName: "Afghanistan",
   countryData: {
