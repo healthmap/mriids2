@@ -37,3 +37,21 @@ export const fetchCovidDeathCounts = () => (dispatch) => {
       });
     });
 };
+
+export const fetchCovidProjectionsData = () => (dispatch) => {
+  dispatch({ type: types.FETCH_COVID_PROJECTIONS_DATA_REQUEST });
+  return d3
+    .csv("csv/covidData/latest_model_outputs.csv")
+    .then((data) =>
+      dispatch({
+        type: types.FETCH_COVID_PROJECTIONS_DATA_SUCCESS,
+        payload: data,
+      })
+    )
+    .catch((error) => {
+      dispatch({
+        type: types.FETCH_COVID_PROJECTIONS_DATA_FAILURE,
+        error,
+      });
+    });
+};
