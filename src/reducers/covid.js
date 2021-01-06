@@ -1,11 +1,6 @@
 import * as types from "../constants/ActionTypes";
 
 const initialState = {
-  covidDataCombined: {
-    isFetching: 0,
-    data: {},
-    error: {},
-  },
   caseCounts: {
     isFetching: 0,
     data: [],
@@ -15,32 +10,6 @@ const initialState = {
 
 const Covid = function (state = initialState, action) {
   switch (action.type) {
-    case types.FETCH_COVID_DATA_COMBINED_REQUEST:
-      return {
-        ...state,
-        covidDataCombined: {
-          ...state.covidDataCombined,
-          isFetching: state.covidDataCombined.isFetching + 1,
-        },
-      };
-    case types.FETCH_COVID_DATA_COMBINED_SUCCESS:
-      return {
-        ...state,
-        covidDataCombined: {
-          ...state.covidDataCombined,
-          isFetching: state.covidDataCombined.isFetching - 1,
-          data: action.payload,
-        },
-      };
-    case types.FETCH_COVID_DATA_COMBINED_FAILURE:
-      return {
-        ...state,
-        covidDataCombined: {
-          ...state.covidDataCombined,
-          isFetching: state.covidDataCombined.isFetching - 1,
-          error: action.error,
-        },
-      };
     case types.FETCH_COVID_CASE_COUNT_DATA_REQUEST:
       return {
         ...state,

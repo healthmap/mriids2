@@ -78,7 +78,7 @@ export const getLatestCountInDateRange = (covidData, dateRange) => {
 export const getCovidCaseCount = (covidData = [], filters) => {
   let caseCount = 0;
   if (filters.country === "All") {
-    // If "All" countries are selected, get the latest value from the covidDataCombined.cases object within the dateRange.
+    // If "All" countries are selected, get the case counts for all countries within the dateRange.
     caseCount = getAllCountriesCaseCounts(covidData, filters.dateRange);
   } else {
     // Finds the data object for the country selected in filters.country.
