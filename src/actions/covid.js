@@ -19,3 +19,21 @@ export const fetchCovidCaseCounts = () => (dispatch) => {
       });
     });
 };
+
+export const fetchCovidDeathCounts = () => (dispatch) => {
+  dispatch({ type: types.FETCH_COVID_DEATH_COUNT_DATA_REQUEST });
+  return d3
+    .csv("csv/covidData/deaths_all.csv")
+    .then((data) =>
+      dispatch({
+        type: types.FETCH_COVID_DEATH_COUNT_DATA_SUCCESS,
+        payload: parseCovidCSVData(data),
+      })
+    )
+    .catch((error) => {
+      dispatch({
+        type: types.FETCH_COVID_DEATH_COUNT_DATA_FAILURE,
+        error,
+      });
+    });
+};
