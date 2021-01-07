@@ -1,9 +1,6 @@
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { allCountries } from "../constants/Countries";
-import {
-  getValidCountryNameValue,
-  addUnderscoreWordSeparator,
-} from "./commonHelpers";
+import { addUnderscoreWordSeparator } from "./commonHelpers";
 
 export const parseCovidCSVData = (csvData = []) => {
   const parsedData = [];
@@ -26,11 +23,27 @@ export const parseCovidCSVData = (csvData = []) => {
   return parsedData;
 };
 
-export const getLastObjectKey = (dataObject) => {
-  // Gets all the keys of the dataObject.
-  const objectKeys = Object.keys(dataObject);
-  // Returns the last key in the dataObject.
-  return objectKeys[objectKeys.length - 1];
+export const parseCovidProjectionsData = (csvProjectionsData = []) => {
+  const parsedData = [];
+  allCountries.forEach((country) => {
+    let countryDataObject = {};
+    // Get the data rows for the country.
+    const countryDataRows = csvProjectionsData.filter(
+      (row) => row.country === addUnderscoreWordSeparator(country)
+    );
+    // Loop through the countryDataRows
+    countryDataRows.forEach((row) => {
+      // For each row in the countryDataRows, add an entry to the countryDataObject with the date and the "2.5%", "50%", and "97.5%" projections.
+      countryDataObject[row.date] = {
+        2.5: row["2.5%"],
+        50: row["50%"],
+        97.5: row["97.5%"],
+      };
+    });
+    //  Push the country data to the parsedData array.
+    parsedData.push({ countryName: country, countryData: countryDataObject });
+  });
+  return parsedData;
 };
 
 export const getCountInDateRange = (covidData, dateRange) => {
@@ -60,20 +73,6 @@ export const getAllCountriesCaseCounts = (covidData = [], dateRange) => {
   return count;
 };
 
-export const getLatestCountInDateRange = (covidData, dateRange) => {
-  // 1. Add all of the data within the dateRange to the dataInDateRange object.
-  let dataInDateRange = {};
-  Object.keys(covidData).forEach((weekKey) => {
-    if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
-      dataInDateRange[weekKey] = covidData[weekKey];
-    }
-  });
-  // 2. Find the last key in the dataInDateRange object.
-  const lastDateKey = getLastObjectKey(dataInDateRange);
-  // 3. Return the last value from the dataInDateRange object.
-  return dataInDateRange[lastDateKey];
-};
-
 // This gets the case count for the Sidebar
 export const getCovidCaseCount = (covidData = [], filters) => {
   let caseCount = 0;
@@ -83,8 +82,7 @@ export const getCovidCaseCount = (covidData = [], filters) => {
   } else {
     // Finds the data object for the country selected in filters.country.
     const selectedCountryDataObject = covidData.find(
-      (dataObject) =>
-        getValidCountryNameValue(dataObject.countryName) === filters.country
+      (dataObject) => dataObject.countryName === filters.country
     );
     // If data for the country is found, get the latest case count the country and set it to the caseCount variable.
     if (selectedCountryDataObject) {
@@ -100,10 +98,7 @@ export const getCovidCaseCount = (covidData = [], filters) => {
 
 // Find data object for the specified country.
 export const findCountryDataObject = (covidData, countryName) =>
-  covidData.find(
-    (dataObject) =>
-      getValidCountryNameValue(dataObject.countryName) === countryName
-  );
+  covidData.find((dataObject) => dataObject.countryName === countryName);
 
 // This gets the country case counts for the Snapshot map.
 export const getCountriesCovidCaseCounts = (covidData = [], filters) => {

@@ -1,45 +1,19 @@
 import {
-  getLastObjectKey,
   getCovidCaseCount,
-  getLatestCountInDateRange,
   getCountInDateRange,
   getAllCountriesCaseCounts,
   findCountryDataObject,
   getCountriesCovidCaseCounts,
+  parseCovidProjectionsData,
 } from "../covidDataHelpers";
 import {
-  testParsedCovidData,
   testCountryCovidCaseCounts,
   testTwoCountryCovidCaseCounts,
   covidAllCountriesFilters,
   covidAfghanistanFilters,
+  testRawProjectionsData,
+  expectedParsedChinaProjectionsData,
 } from "../testData/covidTestData";
-
-describe("Tests for the getLastObjectKey helper function", () => {
-  test("should return key of 11/29/20", () => {
-    const countryCaseCount = testParsedCovidData[0].cases;
-    expect(getLastObjectKey(countryCaseCount)).toEqual("11/29/20");
-  });
-});
-
-describe("Tests for getLatestCountInDateRange helper function", () => {
-  const testDateRange = {
-    from: new Date(2020, 10, 27),
-    to: new Date(2020, 10, 30),
-  };
-  test("should return 46215 which is the latest case count for Afghanistan", () => {
-    const countryCaseCount = testParsedCovidData[0].cases;
-    expect(getLatestCountInDateRange(countryCaseCount, testDateRange)).toBe(
-      46215
-    );
-  });
-  test("should return 1763 which is the latest death count for Afghanistan", () => {
-    const countryDeathCount = testParsedCovidData[0].deaths;
-    expect(getLatestCountInDateRange(countryDeathCount, testDateRange)).toBe(
-      1763
-    );
-  });
-});
 
 describe("Tests for getCountInDateRange", () => {
   test("should return 4449", () => {
@@ -77,12 +51,10 @@ describe("Tests for getCovidCaseCount helper function", () => {
 });
 
 describe("Tests for findCountryDataObject", () => {
-  test("should return Zimbabwe data object", () => {
-    expect(findCountryDataObject(testParsedCovidData, "Zimbabwe")).toEqual({
-      countryName: "Zimbabwe",
-      cases: { "10/28/20": 30000, "11/28/20": 40000, "11/29/20": 46215 },
-      deaths: { "11/29/20": 1763 },
-    });
+  test("should return Albania data object (second object in testTwoCountryCovidCaseCounts array)", () => {
+    expect(
+      findCountryDataObject(testTwoCountryCovidCaseCounts, "Albania")
+    ).toEqual(testTwoCountryCovidCaseCounts[1]);
   });
 });
 
@@ -90,7 +62,7 @@ describe("Tests for getCountriesCovidCaseCounts", () => {
   test("returned object should have a 'United States of America' key", () => {
     // 1. Get countryCountObject.
     const countryCountObject = getCountriesCovidCaseCounts(
-      testParsedCovidData,
+      testTwoCountryCovidCaseCounts,
       covidAllCountriesFilters
     );
     // 2. Get an array of the keys in the countryCountObject.
@@ -98,5 +70,19 @@ describe("Tests for getCountriesCovidCaseCounts", () => {
     // 3. hasCountryKey will return true if the 'United States of America' key is in the countryCountObject.
     const hasCountryKey = objectKeysArray.includes("United States of America");
     expect(hasCountryKey).toBe(true);
+  });
+});
+
+describe("Tests for parseCovidProjectionsData", () => {
+  test("should contain parsed China projections data", () => {
+    expect(parseCovidProjectionsData(testRawProjectionsData)).toContainEqual(
+      expectedParsedChinaProjectionsData
+    );
+  });
+  test("should contain Barbados country object with empty countryData", () => {
+    expect(parseCovidProjectionsData(testRawProjectionsData)).toContainEqual({
+      countryName: "Barbados",
+      countryData: {},
+    });
   });
 });

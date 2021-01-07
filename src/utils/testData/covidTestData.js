@@ -14,19 +14,6 @@ export const covidAfghanistanFilters = {
   dateRange: covidInitialDateRange,
 };
 
-export const testParsedCovidData = [
-  {
-    countryName: "Afghanistan",
-    cases: { "10/28/20": 30000, "11/28/20": 40000, "11/29/20": 46215 },
-    deaths: { "11/29/20": 1763 },
-  },
-  {
-    countryName: "Zimbabwe",
-    cases: { "10/28/20": 30000, "11/28/20": 40000, "11/29/20": 46215 },
-    deaths: { "11/29/20": 1763 },
-  },
-];
-
 export const testCountryCovidCaseCounts = {
   countryName: "Afghanistan",
   countryData: {
@@ -343,4 +330,74 @@ export const covidCaseCountsDictionary = {
   Yemen: 38,
   Zambia: 38,
   Zimbabwe: 38,
+};
+
+export const testRawProjectionsData = [
+  {
+    proj: "2020-03-08",
+    country: "China",
+    si: "si_2",
+    date: "2020-03-09",
+    "1%": "12",
+    "2.5%": "13",
+    "5%": "15",
+    "10%": "16",
+    "15%": "17",
+    "20%": "19",
+    "25%": "19",
+    "30%": "20",
+    "35%": "21",
+    "40%": "22",
+    "45%": "23",
+    "50%": "23",
+    "55%": "24",
+    "60%": "25",
+    "65%": "26",
+    "70%": "27",
+    "75%": "28",
+    "80%": "30",
+    "85%": "31",
+    "90%": "33",
+    "95%": "37",
+    "97.5%": "39",
+    "99%": "43",
+    model: "Unweighted Ensemble",
+    deaths: "23",
+  },
+  {
+    proj: "2020-03-08",
+    country: "Belgium",
+    si: "si_2",
+    date: "2020-03-09",
+    "1%": "12",
+    "2.5%": "13",
+    "5%": "15",
+    "10%": "16",
+    "15%": "17",
+    "20%": "19",
+    "25%": "19",
+    "30%": "20",
+    "35%": "21",
+    "40%": "22",
+    "45%": "23",
+    "50%": "23",
+    "55%": "24",
+    "60%": "25",
+    "65%": "26",
+    "70%": "27",
+    "75%": "28",
+    "80%": "30",
+    "85%": "31",
+    "90%": "33",
+    "95%": "37",
+    "97.5%": "39",
+    "99%": "43",
+    model: "Unweighted Ensemble",
+    deaths: "23",
+  },
+];
+
+export const expectedParsedChinaProjectionsData = {
+  countryName: "China",
+  countryData: { "2020-03-09": { 2.5: "13", 50: "23", 97.5: "39" } },
 };
