@@ -11,6 +11,11 @@ const initialState = {
     data: [],
     error: {},
   },
+  projections: {
+    isFetching: 0,
+    data: [],
+    error: {},
+  },
 };
 
 const Covid = function (state = initialState, action) {
@@ -64,6 +69,32 @@ const Covid = function (state = initialState, action) {
         deathCounts: {
           ...state.deathCounts,
           isFetching: state.deathCounts.isFetching - 1,
+          error: action.error,
+        },
+      };
+    case types.FETCH_COVID_PROJECTIONS_DATA_REQUEST:
+      return {
+        ...state,
+        projections: {
+          ...state.projections,
+          isFetching: state.projections.isFetching + 1,
+        },
+      };
+    case types.FETCH_COVID_PROJECTIONS_DATA_SUCCESS:
+      return {
+        ...state,
+        projections: {
+          ...state.projections,
+          isFetching: state.projections.isFetching - 1,
+          data: action.payload,
+        },
+      };
+    case types.FETCH_COVID_PROJECTIONS_DATA_FAILURE:
+      return {
+        ...state,
+        projections: {
+          ...state.projections,
+          isFetching: state.projections.isFetching - 1,
           error: action.error,
         },
       };
