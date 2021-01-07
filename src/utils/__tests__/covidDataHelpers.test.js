@@ -1,94 +1,88 @@
 import {
-  parseCovidData,
-  getLastObjectKey,
   getCovidCaseCount,
-  getLatestCountryCountInDateRange,
+  getCountInDateRange,
+  getAllCountriesCaseCounts,
+  findCountryDataObject,
+  getCountriesCovidCaseCounts,
+  parseCovidProjectionsData,
 } from "../covidDataHelpers";
-import { testCovidData, testParsedCovidData } from "../testData";
-import { reduxInitialState } from "../../constants/CommonTestData";
+import {
+  testCountryCovidCaseCounts,
+  testTwoCountryCovidCaseCounts,
+  covidAllCountriesFilters,
+  covidAfghanistanFilters,
+  testRawProjectionsData,
+  expectedParsedChinaProjectionsData,
+} from "../testData/covidTestData";
 
-// Filters for the covid outbreak in all countries.
-const allCountriesCovidOutbreakFilters = {
-  ...reduxInitialState.filters,
-  outbreak: "COVID 19",
-  dateRange: { from: new Date(2020, 1, 20), to: new Date(2020, 12, 20) },
-};
-
-// Filters for the covid outbreak in a specific country.
-const specificCountryCovidOutbreakFilters = {
-  ...reduxInitialState.filters,
-  country: "Afghanistan",
-  outbreak: "COVID 19",
-  dateRange: { from: new Date(2020, 1, 20), to: new Date(2020, 12, 20) },
-};
-
-describe("Tests for the parseCovidData helper function", () => {
-  test("should return data in the expected format", () => {
-    expect(parseCovidData(testCovidData)).toEqual([
-      {
-        countryName: "Canada",
-        cases: {
-          "11/11/20": 280465,
-          "11/12/20": 285939,
-        },
-        deaths: {
-          "11/11/20": 10748,
-          "11/12/20": 10828,
-        },
-      },
-      {
-        countryName: "Honduras",
-        cases: {
-          "11/11/20": 101169,
-          "11/12/20": 101468,
-        },
-        deaths: {
-          "11/11/20": 2797,
-          "11/12/20": 2804,
-        },
-      },
-    ]);
+describe("Tests for getCountInDateRange", () => {
+  test("should return 4449", () => {
+    expect(
+      getCountInDateRange(
+        testCountryCovidCaseCounts.countryData,
+        covidAfghanistanFilters.dateRange
+      )
+    ).toBe(4449);
   });
 });
 
-describe("Tests for the getLastObjectKey helper function", () => {
-  test("should return key of 11/29/20", () => {
-    const countryCaseCount = testParsedCovidData[0].cases;
-    expect(getLastObjectKey(countryCaseCount)).toEqual("11/29/20");
-  });
-});
-
-describe("Tests for getLatestCountryCountInDateRange helper function", () => {
-  const testDateRange = {
-    from: new Date(2020, 10, 27),
-    to: new Date(2020, 10, 30),
-  };
-  test("should return 46215 which is the latest case count for Afghanistan", () => {
-    const countryCaseCount = testParsedCovidData[0].cases;
+describe("Tests for getAllCountriesCaseCounts", () => {
+  test("should return 76", () => {
     expect(
-      getLatestCountryCountInDateRange(countryCaseCount, testDateRange)
-    ).toBe(46215);
-  });
-  test("should return 1763 which is the latest death count for Afghanistan", () => {
-    const countryDeathCount = testParsedCovidData[0].deaths;
-    expect(
-      getLatestCountryCountInDateRange(countryDeathCount, testDateRange)
-    ).toBe(1763);
+      getAllCountriesCaseCounts(
+        testTwoCountryCovidCaseCounts,
+        covidAllCountriesFilters.dateRange
+      )
+    ).toBe(76);
   });
 });
 
 describe("Tests for getCovidCaseCount helper function", () => {
-  test("should return 92430 which is the case count for both countries", () => {
+  test("should return 76", () => {
     expect(
-      getCovidCaseCount(testParsedCovidData, allCountriesCovidOutbreakFilters)
-    ).toBe(92430);
+      getCovidCaseCount(testTwoCountryCovidCaseCounts, covidAllCountriesFilters)
+    ).toBe(76);
   });
-  test("should return 46215 which is the case count for Afghanistan", () => {
+  test("should return 38 which is the case count for Afghanistan", () => {
     expect(
-      getCovidCaseCount(
-        testParsedCovidData,
-        specificCountryCovidOutbreakFilters
-      )
-    ).toBe(46215);
+      getCovidCaseCount(testTwoCountryCovidCaseCounts, covidAfghanistanFilters)
+    ).toBe(38);
+  });
+});
+
+describe("Tests for findCountryDataObject", () => {
+  test("should return Albania data object (second object in testTwoCountryCovidCaseCounts array)", () => {
+    expect(
+      findCountryDataObject(testTwoCountryCovidCaseCounts, "Albania")
+    ).toEqual(testTwoCountryCovidCaseCounts[1]);
+  });
+});
+
+describe("Tests for getCountriesCovidCaseCounts", () => {
+  test("returned object should have a 'United States of America' key", () => {
+    // 1. Get countryCountObject.
+    const countryCountObject = getCountriesCovidCaseCounts(
+      testTwoCountryCovidCaseCounts,
+      covidAllCountriesFilters
+    );
+    // 2. Get an array of the keys in the countryCountObject.
+    const objectKeysArray = Object.keys(countryCountObject);
+    // 3. hasCountryKey will return true if the 'United States of America' key is in the countryCountObject.
+    const hasCountryKey = objectKeysArray.includes("United States of America");
+    expect(hasCountryKey).toBe(true);
+  });
+});
+
+describe("Tests for parseCovidProjectionsData", () => {
+  test("should contain parsed China projections data", () => {
+    expect(parseCovidProjectionsData(testRawProjectionsData)).toContainEqual(
+      expectedParsedChinaProjectionsData
+    );
+  });
+  test("should contain Barbados country object with empty countryData", () => {
+    expect(parseCovidProjectionsData(testRawProjectionsData)).toContainEqual({
+      countryName: "Barbados",
+      countryData: {},
+    });
   });
 });

@@ -8,11 +8,11 @@ test("covid reducer should return the covidInitialState", () => {
   expect(covid(covidInitialState, {})).toEqual(covidInitialState);
 });
 
-describe("Tests for updating the covidData", () => {
-  test("should handle request to update the covidData", () => {
+describe("Tests for updating the caseCounts", () => {
+  test("should handle request to update the caseCounts", () => {
     const newCovidState = {
       ...covidInitialState,
-      covidData: {
+      caseCounts: {
         isFetching: 1,
         data: [],
         error: {},
@@ -20,15 +20,15 @@ describe("Tests for updating the covidData", () => {
     };
     expect(
       covid(covidInitialState, {
-        type: types.FETCH_COVID_DATA_REQUEST,
+        type: types.FETCH_COVID_CASE_COUNT_DATA_REQUEST,
       })
     ).toEqual(newCovidState);
   });
-  test("should handle successfully updating the covidData", () => {
+  test("should handle successfully updating the caseCounts", () => {
     const newCovidData = [1, 2, 3];
     const updatedCovidDataState = {
       ...covidInitialState,
-      covidData: {
+      caseCounts: {
         isFetching: -1,
         data: newCovidData,
         error: {},
@@ -36,16 +36,16 @@ describe("Tests for updating the covidData", () => {
     };
     expect(
       covid(covidInitialState, {
-        type: types.FETCH_COVID_DATA_SUCCESS,
+        type: types.FETCH_COVID_CASE_COUNT_DATA_SUCCESS,
         payload: newCovidData,
       })
     ).toEqual(updatedCovidDataState);
   });
-  test("should handle failure to update the covidData", () => {
+  test("should handle failure to update the caseCounts", () => {
     const errorObject = { error: "Something went wrong fetching the data" };
     const newCovidState = {
       ...covidInitialState,
-      covidData: {
+      caseCounts: {
         isFetching: -1,
         data: [],
         error: errorObject,
@@ -53,7 +53,111 @@ describe("Tests for updating the covidData", () => {
     };
     expect(
       covid(covidInitialState, {
-        type: types.FETCH_COVID_DATA_FAILURE,
+        type: types.FETCH_COVID_CASE_COUNT_DATA_FAILURE,
+        error: errorObject,
+      })
+    ).toEqual(newCovidState);
+  });
+});
+
+describe("Tests for updating the death counts", () => {
+  test("should handle request to update the deathCounts", () => {
+    const newCovidState = {
+      ...covidInitialState,
+      deathCounts: {
+        isFetching: 1,
+        data: [],
+        error: {},
+      },
+    };
+    expect(
+      covid(covidInitialState, {
+        type: types.FETCH_COVID_DEATH_COUNT_DATA_REQUEST,
+      })
+    ).toEqual(newCovidState);
+  });
+  test("should handle successfully updating the deathCounts", () => {
+    const newCovidData = [1, 2, 3];
+    const updatedCovidDataState = {
+      ...covidInitialState,
+      deathCounts: {
+        isFetching: -1,
+        data: newCovidData,
+        error: {},
+      },
+    };
+    expect(
+      covid(covidInitialState, {
+        type: types.FETCH_COVID_DEATH_COUNT_DATA_SUCCESS,
+        payload: newCovidData,
+      })
+    ).toEqual(updatedCovidDataState);
+  });
+  test("should handle failure to update the deathCounts", () => {
+    const errorObject = { error: "Something went wrong fetching the data" };
+    const newCovidState = {
+      ...covidInitialState,
+      deathCounts: {
+        isFetching: -1,
+        data: [],
+        error: errorObject,
+      },
+    };
+    expect(
+      covid(covidInitialState, {
+        type: types.FETCH_COVID_DEATH_COUNT_DATA_FAILURE,
+        error: errorObject,
+      })
+    ).toEqual(newCovidState);
+  });
+});
+
+describe("Tests for updating the projections", () => {
+  test("should handle request to update the projections", () => {
+    const newCovidState = {
+      ...covidInitialState,
+      projections: {
+        isFetching: 1,
+        data: [],
+        error: {},
+      },
+    };
+    expect(
+      covid(covidInitialState, {
+        type: types.FETCH_COVID_PROJECTIONS_DATA_REQUEST,
+      })
+    ).toEqual(newCovidState);
+  });
+  test("should handle successfully updating the projections", () => {
+    const newCovidData = [1, 2, 3];
+    const updatedCovidDataState = {
+      ...covidInitialState,
+      projections: {
+        isFetching: -1,
+        data: newCovidData,
+        error: {},
+      },
+    };
+    expect(
+      covid(covidInitialState, {
+        type: types.FETCH_COVID_PROJECTIONS_DATA_SUCCESS,
+        payload: newCovidData,
+      })
+    ).toEqual(updatedCovidDataState);
+  });
+  test("should handle failure to update the projections", () => {
+    const errorObject = { error: "Something went wrong fetching the data" };
+    const newCovidState = {
+      ...covidInitialState,
+      projections: {
+        isFetching: -1,
+        data: [],
+        error: errorObject,
+      },
+    };
+    expect(
+      covid(covidInitialState, {
+        type: types.FETCH_COVID_PROJECTIONS_DATA_FAILURE,
         error: errorObject,
       })
     ).toEqual(newCovidState);

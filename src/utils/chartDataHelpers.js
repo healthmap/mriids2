@@ -1,7 +1,8 @@
 import dayjs from "dayjs";
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
+import { findCountryDataObject } from "./covidDataHelpers";
 
-const getChartColumns = (outbreakName, projection = false) => {
+export const getChartColumns = (outbreakName, projection = false) => {
   const columns = [
     {
       type: "date",
@@ -22,7 +23,7 @@ const getChartColumns = (outbreakName, projection = false) => {
   return columns;
 };
 
-const getWeekProjectionData = (
+export const getWeekProjectionData = (
   lastWeekDate,
   numberOfWeeks,
   projectionsData
@@ -126,9 +127,69 @@ export const prepareEbolaDataForCharts = (
   return chartData;
 };
 
-export const prepareCovidDataForCharts = () => {
+export const getAllCountriesChartData = (covidData, filters) => {
   const chartData = [];
-  // 1. Add column headers to chartData array.
+  // Add column headers to chartData array.
   chartData.push(getChartColumns("COVID-19", false));
+  // Get an array of date keys from the countryData object of the first country data object.
+  // Since all country data objects have data for the same dates, we are using the dates from the first country.
+  const covidDataDateKeys = Object.keys(covidData[0].countryData);
+  // Loop through all the 'covidDataDateKeys'.
+  covidDataDateKeys.forEach((dateKey) => {
+    // This is the caseCount for each dateKey.
+    let caseCount = 0;
+    // If the 'dateKey' is within the dates in the filters, execute this block.
+    if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
+      // Loop through each country data object in the covidData array.
+      covidData.forEach((countryDataObject) => {
+        // Get each country's daily case count for the day in the 'dateKey'.
+        const countryDailyCaseCount = countryDataObject.countryData[dateKey];
+        // If the countryDailyCaseCount is an integer, add it to the caseCount counter.
+        if (Number.isInteger(countryDailyCaseCount)) {
+          caseCount += countryDailyCaseCount;
+        }
+      });
+      const dataRow = [new Date(dateKey), caseCount];
+      chartData.push(dataRow);
+    }
+  });
   return chartData;
+};
+
+export const getSelectedCountryChartData = (covidData, filters) => {
+  const chartData = [];
+  // Add column headers to chartData array.
+  chartData.push(getChartColumns("COVID-19", false));
+  // Find a data object for the country in the filters
+  const countryDataObject = findCountryDataObject(covidData, filters.country);
+  // If a countryDataObject is found, execute this block.
+  if (countryDataObject) {
+    // Get an array of all of the date keys in the countryDataObject.countryData.
+    const covidDataDateKeys = Object.keys(countryDataObject.countryData);
+    // Loop through all the 'covidDataDateKeys'.
+    covidDataDateKeys.forEach((dateKey) => {
+      // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
+      if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
+        // If the country has a case/death count for that day, get that value. Otherwise that value is 0.
+        const countryDailyCaseCount = countryDataObject.countryData[dateKey]
+          ? countryDataObject.countryData[dateKey]
+          : 0;
+        const dataRow = [new Date(dateKey), countryDailyCaseCount];
+        chartData.push(dataRow);
+      }
+    });
+  }
+  return chartData;
+};
+
+export const getCovidDataForCharts = (covidData, filters) => {
+  const getAllCountriesCovidData =
+    filters.country === "All" && Object.keys(covidData).length;
+  const getSpecificCountryCovidData =
+    filters.country !== "All" && Object.keys(covidData).length;
+  if (getAllCountriesCovidData) {
+    return getAllCountriesChartData(covidData, filters);
+  } else if (getSpecificCountryCovidData) {
+    return getSelectedCountryChartData(covidData, filters);
+  }
 };

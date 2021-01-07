@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./assets/theme";
+import { fetchEbolaData, fetchEbolaDataCombined } from "./actions/ebola";
 import {
-  fetchEbolaData,
-  fetchEbolaDataCombined,
-  fetchRiskData,
-} from "./actions/ebola";
-import { fetchCovidData } from "./actions/covid";
+  fetchCovidCaseCounts,
+  fetchCovidDeathCounts,
+  fetchCovidProjectionsData,
+} from "./actions/covid";
 import SnapshotMap from "./components/SnapshotMap";
 import EbolaRiskMap from "./containers/EbolaRiskMap";
 import Team from "./components/Team";
@@ -23,8 +23,9 @@ class App extends Component {
   componentDidMount() {
     this.props.fetchEbolaData();
     this.props.fetchEbolaDataCombined();
-    this.props.fetchRiskData();
-    this.props.fetchCovidData();
+    this.props.fetchCovidCaseCounts();
+    this.props.fetchCovidDeathCounts();
+    this.props.fetchCovidProjectionsData();
   }
 
   renderHomePageComponents = () => {
@@ -78,8 +79,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchEbolaData: () => dispatch(fetchEbolaData()),
   fetchEbolaDataCombined: () => dispatch(fetchEbolaDataCombined()),
-  fetchRiskData: () => dispatch(fetchRiskData()),
-  fetchCovidData: () => dispatch(fetchCovidData()),
+  fetchCovidCaseCounts: () => dispatch(fetchCovidCaseCounts()),
+  fetchCovidDeathCounts: () => dispatch(fetchCovidDeathCounts()),
+  fetchCovidProjectionsData: () => dispatch(fetchCovidProjectionsData()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

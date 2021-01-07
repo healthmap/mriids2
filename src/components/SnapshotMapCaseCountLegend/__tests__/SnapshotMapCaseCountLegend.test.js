@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import renderer from "react-test-renderer";
 import "jest-styled-components";
 import { reduxInitialState } from "../../../constants/CommonTestData";
+import { ebolaCaseCountsDictionary } from "../../../utils/testData/ebolaTestData";
 import SnapshotMapCaseCountLegend from "../index";
 
 const mockStore = configureStore([thunk]);
@@ -18,7 +19,9 @@ describe("Tests for the connected SnapshotMapCaseCountLegend component with redu
 
     component = renderer.create(
       <Provider store={store}>
-        <SnapshotMapCaseCountLegend />
+        <SnapshotMapCaseCountLegend
+          countryCaseCounts={ebolaCaseCountsDictionary}
+        />
       </Provider>
     );
   });

@@ -1,8 +1,12 @@
 import {
   getNumberOfWeeksBetweenDates,
   isDateWithinFiltersDateRange,
+  getOutbreakInitialDateRange,
 } from "../dateHelpers";
-import { ebolaInitialDateRange } from "../../constants/DateRanges";
+import {
+  ebolaInitialDateRange,
+  covidInitialDateRange,
+} from "../../constants/DateRanges";
 import { reduxInitialState } from "../../constants/CommonTestData";
 
 describe("tests for the getNumberOfWeeksBetweenDates helper function", () => {
@@ -53,5 +57,18 @@ describe("Tests for isDateWithinFiltersDateRange", () => {
         reduxInitialState.filters.dateRange
       )
     ).toEqual(false);
+  });
+});
+
+describe("Tests for getOutbreakInitialDateRange", () => {
+  test("should return ebolaInitialDateRange", () => {
+    expect(getOutbreakInitialDateRange("Ebola Outbreak")).toEqual(
+      ebolaInitialDateRange
+    );
+  });
+  test("should return covidInitialDateRange", () => {
+    expect(getOutbreakInitialDateRange("COVID 19")).toEqual(
+      covidInitialDateRange
+    );
   });
 });

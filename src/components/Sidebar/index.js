@@ -92,7 +92,7 @@ const mapStateToProps = (state) => ({
   filters: state.filters,
   ebolaData: state.ebola.ebolaData.data,
   ebolaDataCombined: state.ebola.ebolaDataCombined.data,
-  covidData: state.covid.covidData.data,
+  covidData: state.covid.caseCounts.data,
 });
 
 const mapDispatchToProps = (dispatch) =>

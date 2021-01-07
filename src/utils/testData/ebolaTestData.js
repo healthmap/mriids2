@@ -1,4 +1,4 @@
-// This file has test data for the unit tests.
+// This file has ebola test data for the unit tests.
 
 export const testGuineaData = {
   Guinea: {
@@ -513,74 +513,8 @@ export const testEbolaDataCombinedLastWeekOutOfDateRange = [
   },
 ];
 
-export const testCovidData = [
-  {
-    country: "Canada",
-    province: [
-      "alberta",
-      "british columbia",
-      "diamond princess",
-      "grand princess",
-      "manitoba",
-      "new brunswick",
-      "newfoundland and labrador",
-      "northwest territories",
-      "nova scotia",
-      "nunavut",
-      "ontario",
-      "prince edward island",
-      "quebec",
-      "repatriated travellers",
-      "saskatchewan",
-      "yukon",
-    ],
-    timeline: {
-      cases: {
-        "11/11/20": 280465,
-        "11/12/20": 285939,
-      },
-      deaths: {
-        "11/11/20": 10748,
-        "11/12/20": 10828,
-      },
-      recovered: {
-        "11/11/20": 0,
-        "11/12/20": 0,
-      },
-    },
-  },
-  {
-    country: "Honduras",
-    province: ["mainland"],
-    timeline: {
-      cases: {
-        "11/11/20": 101169,
-        "11/12/20": 101468,
-      },
-      deaths: {
-        "11/11/20": 2797,
-        "11/12/20": 2804,
-      },
-      recovered: {
-        "11/11/20": 43857,
-        "11/12/20": 44068,
-      },
-    },
-  },
-  {
-    message: "Country not found or doesn't have any historical data",
-  },
-];
-
-export const testParsedCovidData = [
-  {
-    countryName: "Afghanistan",
-    cases: { "10/28/20": 30000, "11/28/20": 40000, "11/29/20": 46215 },
-    deaths: { "11/29/20": 1763 },
-  },
-  {
-    countryName: "Zimbabwe",
-    cases: { "10/28/20": 30000, "11/28/20": 40000, "11/29/20": 46215 },
-    deaths: { "11/29/20": 1763 },
-  },
-];
+export const ebolaCaseCountsDictionary = {
+  Guinea: 2452,
+  Liberia: 6738,
+  "Sierra Leone": 11387,
+};
