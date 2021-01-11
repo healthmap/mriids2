@@ -2,17 +2,32 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
-import DateRangePicker from "@wojtekmaj/react-daterange-picker";
+import { DateRangePicker } from "react-date-range";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 
-const SidebarDateRange = ({ dateRange, changeDateRange }) => (
-  <div>
-    <DateRangePicker
-      value={[dateRange.from, dateRange.to]}
-      onChange={changeDateRange}
-      clearIcon={null}
-    />
-  </div>
-);
+const SidebarDateRange = ({ dateRange, changeDateRange }) => {
+  return (
+    <div>
+      <DateRangePicker
+        onChange={(item) =>
+          changeDateRange([item.selection.startDate, item.selection.endDate])
+        }
+        showSelectionPreview={true}
+        moveRangeOnFirstSelection={true}
+        months={2}
+        ranges={[
+          {
+            startDate: dateRange.from,
+            endDate: dateRange.to,
+            key: "selection",
+          },
+        ]}
+        direction="horizontal"
+      />
+    </div>
+  );
+};
 
 const mapStateToProps = (state) => ({
   dateRange: state.filters.dateRange,
