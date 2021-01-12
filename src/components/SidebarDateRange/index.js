@@ -2,12 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
-import { covidDateRangeOptions } from "../../constants/DateRanges";
+import {
+  covidDateRangeOptions,
+  ebolaDateRangeOptions,
+} from "../../constants/DateRanges";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
-const SidebarDateRange = ({ dateRange, changeDateRange }) => {
+const SidebarDateRange = ({ dateRange, outbreakSelected, changeDateRange }) => {
+  const dateRangeOptions =
+    outbreakSelected === "Ebola Outbreak"
+      ? ebolaDateRangeOptions
+      : covidDateRangeOptions;
   return (
     <div>
       <DateRangePicker
@@ -24,7 +31,7 @@ const SidebarDateRange = ({ dateRange, changeDateRange }) => {
             key: "selection",
           },
         ]}
-        staticRanges={covidDateRangeOptions}
+        staticRanges={dateRangeOptions}
         direction="horizontal"
       />
     </div>
@@ -33,6 +40,7 @@ const SidebarDateRange = ({ dateRange, changeDateRange }) => {
 
 const mapStateToProps = (state) => ({
   dateRange: state.filters.dateRange,
+  outbreakSelected: state.filters.outbreak,
 });
 
 const mapDispatchToProps = (dispatch) =>
