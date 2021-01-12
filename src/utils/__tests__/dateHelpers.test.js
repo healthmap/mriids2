@@ -2,6 +2,8 @@ import {
   getNumberOfWeeksBetweenDates,
   isDateWithinFiltersDateRange,
   getOutbreakInitialDateRange,
+  getMinimumDateRangeDate,
+  getMaximumDateRangeDate,
 } from "../dateHelpers";
 import {
   ebolaInitialDateRange,
@@ -69,6 +71,32 @@ describe("Tests for getOutbreakInitialDateRange", () => {
   test("should return covidInitialDateRange", () => {
     expect(getOutbreakInitialDateRange("COVID 19")).toEqual(
       covidInitialDateRange
+    );
+  });
+});
+
+describe("Tests for getMinimumDateRangeDate", () => {
+  test("should return return October 1 2014", () => {
+    expect(getMinimumDateRangeDate("Ebola Outbreak")).toEqual(
+      ebolaInitialDateRange.from
+    );
+  });
+  test("should return return January 1 2020", () => {
+    expect(getMinimumDateRangeDate("COVID 19")).toEqual(
+      covidInitialDateRange.from
+    );
+  });
+});
+
+describe("Tests for getMaximumDateRangeDate", () => {
+  test("should return return February 20 2016", () => {
+    expect(getMaximumDateRangeDate("Ebola Outbreak")).toEqual(
+      ebolaInitialDateRange.to
+    );
+  });
+  test("should return return today's date", () => {
+    expect(getMaximumDateRangeDate("COVID 19")).toEqual(
+      covidInitialDateRange.to
     );
   });
 });

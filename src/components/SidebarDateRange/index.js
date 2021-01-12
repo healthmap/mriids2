@@ -6,6 +6,10 @@ import {
   covidDateRangeOptions,
   ebolaDateRangeOptions,
 } from "../../constants/DateRanges";
+import {
+  getMinimumDateRangeDate,
+  getMaximumDateRangeDate,
+} from "../../utils/dateHelpers";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
@@ -24,6 +28,8 @@ const SidebarDateRange = ({ dateRange, outbreakSelected, changeDateRange }) => {
         showSelectionPreview={true}
         moveRangeOnFirstSelection={true}
         months={2}
+        minDate={getMinimumDateRangeDate(outbreakSelected)}
+        maxDate={getMaximumDateRangeDate(outbreakSelected)}
         ranges={[
           {
             startDate: dateRange.from,
