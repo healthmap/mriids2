@@ -40,6 +40,9 @@ export const reduxInitialState = {
     projection: false,
     dateRange: { from: new Date(2014, 9, 1), to: new Date(2016, 1, 20) },
   },
+  ui: {
+    dateSliderRange: [0, 72],
+  },
 };
 
 // Same as the reduxInitialState, but with the 'risk' view in the filters.
