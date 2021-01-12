@@ -38,6 +38,7 @@ const SidebarDateRange = ({ dateRange, outbreakSelected, changeDateRange }) => {
           },
         ]}
         staticRanges={dateRangeOptions}
+        inputRanges={[]}
         direction="horizontal"
       />
     </div>
