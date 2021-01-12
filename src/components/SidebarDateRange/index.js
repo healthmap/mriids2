@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
+import { covidDateRangeOptions } from "../../constants/DateRanges";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
@@ -23,6 +24,7 @@ const SidebarDateRange = ({ dateRange, changeDateRange }) => {
             key: "selection",
           },
         ]}
+        staticRanges={covidDateRangeOptions}
         direction="horizontal"
       />
     </div>
