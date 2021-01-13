@@ -1,20 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import dayjs from "dayjs";
 import {
   changeCountryFilter,
   changeOutbreakFilter,
 } from "../../actions/filters";
+import { openCloseDateRangeModal } from "../../actions/ui";
 import Select from "../Select";
 import ReportedCases from "./ReportedCases";
 import Summary from "./Summary";
 import EbolaRiskList from "./EbolaRiskList";
-import SidebarDateRange from "../SidebarDateRange";
 import * as Styled from "./styles";
 import {
   SelectCountryWrapper,
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
+import { Button } from "../styled-components/Button";
 import {
   getEbolaCaseCount,
   getAllFutureProjectedCasesCount,
@@ -30,6 +32,7 @@ const Sidebar = ({
   covidData,
   changeCountryFilter,
   changeOutbreakFilter,
+  openCloseDateRangeModal,
 }) => {
   const changeOutbreak = (selectedValue) => {
     changeOutbreakFilter(selectedValue.target.value);
@@ -68,7 +71,10 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
-      <SidebarDateRange />
+      <Button onClick={() => openCloseDateRangeModal()}>
+        {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
+        {dayjs(filters.dateRange.to).format("MMM D, YYYY")}
+      </Button>
       {showReportedCases && (
         <ReportedCases
           projection={filters.projection}
@@ -102,6 +108,7 @@ const mapDispatchToProps = (dispatch) =>
     {
       changeCountryFilter,
       changeOutbreakFilter,
+      openCloseDateRangeModal,
     },
     dispatch
   );
