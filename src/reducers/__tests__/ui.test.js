@@ -20,4 +20,13 @@ describe("Tests for ui reducer", () => {
       })
     ).toEqual(changedUiState);
   });
+  test("should handle opening the date range modal", () => {
+    const changedUiState = {
+      ...initialUiState,
+      isDateRangeModalOpen: true,
+    };
+    expect(
+      ui(initialUiState, { type: types.OPEN_CLOSE_DATE_RANGE_MODAL })
+    ).toEqual(changedUiState);
+  });
 });

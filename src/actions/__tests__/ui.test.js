@@ -1,4 +1,4 @@
-import { changeDateSliderRange } from "../ui";
+import { changeDateSliderRange, openCloseDateRangeModal } from "../ui";
 import * as types from "../../constants/ActionTypes";
 
 describe("Tests for ui actions", () => {
@@ -8,5 +8,10 @@ describe("Tests for ui actions", () => {
       payload: [0, 20],
     };
     expect(changeDateSliderRange([0, 20])).toEqual(expectedAction);
+  });
+  test("openCloseDateRangeModal should return the expected action", () => {
+    expect(openCloseDateRangeModal()).toEqual({
+      type: types.OPEN_CLOSE_DATE_RANGE_MODAL,
+    });
   });
 });
