@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
+import { changeDateSliderRange } from "../../actions/ui";
 import {
   covidDateRangeOptions,
   ebolaDateRangeOptions,
@@ -9,21 +10,42 @@ import {
 import {
   getMinimumDateRangeDate,
   getMaximumDateRangeDate,
+  getNumberOfWeeksBetweenDates,
+  getOutbreakInitialDateRange,
 } from "../../utils/dateHelpers";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
-const SidebarDateRange = ({ dateRange, outbreakSelected, changeDateRange }) => {
+const SidebarDateRange = ({
+  dateRange,
+  outbreakSelected,
+  changeDateRange,
+  changeDateSliderRange,
+}) => {
   const dateRangeOptions =
     outbreakSelected === "Ebola Outbreak"
       ? ebolaDateRangeOptions
       : covidDateRangeOptions;
+
+  const updateDateRangeAndSlider = (startDate, endDate) => {
+    const initialDateRange = getOutbreakInitialDateRange(outbreakSelected);
+    // Changes the date range in filters Redux state.
+    changeDateRange([startDate, endDate]);
+    // Changes the range in the date range slider.
+    changeDateSliderRange([
+      getNumberOfWeeksBetweenDates(initialDateRange.from, startDate),
+      getNumberOfWeeksBetweenDates(initialDateRange.from, endDate),
+    ]);
+  };
   return (
     <div>
       <DateRangePicker
         onChange={(item) =>
-          changeDateRange([item.selection.startDate, item.selection.endDate])
+          updateDateRangeAndSlider(
+            item.selection.startDate,
+            item.selection.endDate
+          )
         }
         showSelectionPreview={true}
         moveRangeOnFirstSelection={true}
@@ -54,6 +76,7 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       changeDateRange,
+      changeDateSliderRange,
     },
     dispatch
   );
