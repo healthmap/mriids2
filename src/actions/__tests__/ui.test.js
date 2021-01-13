@@ -10,8 +10,9 @@ describe("Tests for ui actions", () => {
     expect(changeDateSliderRange([0, 20])).toEqual(expectedAction);
   });
   test("openCloseDateRangeModal should return the expected action", () => {
-    expect(openCloseDateRangeModal()).toEqual({
+    expect(openCloseDateRangeModal(true)).toEqual({
       type: types.OPEN_CLOSE_DATE_RANGE_MODAL,
+      payload: true,
     });
   });
 });

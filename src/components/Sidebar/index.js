@@ -71,7 +71,7 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
-      <Button onClick={() => openCloseDateRangeModal()}>
+      <Button onClick={() => openCloseDateRangeModal(true)}>
         {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
         {dayjs(filters.dateRange.to).format("MMM D, YYYY")}
       </Button>

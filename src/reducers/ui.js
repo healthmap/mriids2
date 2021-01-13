@@ -15,7 +15,7 @@ const UiState = function (state = initialState, action) {
     case types.OPEN_CLOSE_DATE_RANGE_MODAL:
       return {
         ...state,
-        isDateRangeModalOpen: !state.isDateRangeModalOpen,
+        isDateRangeModalOpen: action.payload,
       };
     default:
       return initialState;
