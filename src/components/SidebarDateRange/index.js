@@ -25,7 +25,7 @@ class SidebarDateRange extends Component {
     // Changes the date range in filters Redux state.
     this.props.changeDateRange([startDate, endDate]);
     // Changes the range in the date range slider.
-    changeDateSliderRange([
+    this.props.changeDateSliderRange([
       getNumberOfWeeksBetweenDates(initialDateRange.from, startDate),
       getNumberOfWeeksBetweenDates(initialDateRange.from, endDate),
     ]);
