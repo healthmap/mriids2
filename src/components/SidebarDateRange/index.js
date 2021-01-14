@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
@@ -17,55 +17,53 @@ import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
-const SidebarDateRange = ({
-  dateRange,
-  outbreakSelected,
-  changeDateRange,
-  changeDateSliderRange,
-}) => {
-  const dateRangeOptions =
-    outbreakSelected === "Ebola Outbreak"
-      ? ebolaDateRangeOptions
-      : covidDateRangeOptions;
-
-  const updateDateRangeAndSlider = (startDate, endDate) => {
-    const initialDateRange = getOutbreakInitialDateRange(outbreakSelected);
+class SidebarDateRange extends Component {
+  updateDateRangeAndSlider = (startDate, endDate) => {
+    const initialDateRange = getOutbreakInitialDateRange(
+      this.props.outbreakSelected
+    );
     // Changes the date range in filters Redux state.
-    changeDateRange([startDate, endDate]);
+    this.props.changeDateRange([startDate, endDate]);
     // Changes the range in the date range slider.
     changeDateSliderRange([
       getNumberOfWeeksBetweenDates(initialDateRange.from, startDate),
       getNumberOfWeeksBetweenDates(initialDateRange.from, endDate),
     ]);
   };
-  return (
-    <div>
-      <DateRangePicker
-        onChange={(item) =>
-          updateDateRangeAndSlider(
-            item.selection.startDate,
-            item.selection.endDate
-          )
-        }
-        showSelectionPreview={true}
-        moveRangeOnFirstSelection={true}
-        months={2}
-        minDate={getMinimumDateRangeDate(outbreakSelected)}
-        maxDate={getMaximumDateRangeDate(outbreakSelected)}
-        ranges={[
-          {
-            startDate: dateRange.from,
-            endDate: dateRange.to,
-            key: "selection",
-          },
-        ]}
-        staticRanges={dateRangeOptions}
-        inputRanges={[]}
-        direction="horizontal"
-      />
-    </div>
-  );
-};
+  render() {
+    const dateRangeOptions =
+      this.props.outbreakSelected === "Ebola Outbreak"
+        ? ebolaDateRangeOptions
+        : covidDateRangeOptions;
+    return (
+      <div>
+        <DateRangePicker
+          onChange={(item) =>
+            this.updateDateRangeAndSlider(
+              item.selection.startDate,
+              item.selection.endDate
+            )
+          }
+          showSelectionPreview={true}
+          moveRangeOnFirstSelection={true}
+          months={2}
+          minDate={getMinimumDateRangeDate(this.props.outbreakSelected)}
+          maxDate={getMaximumDateRangeDate(this.props.outbreakSelected)}
+          ranges={[
+            {
+              startDate: this.props.dateRange.from,
+              endDate: this.props.dateRange.to,
+              key: "selection",
+            },
+          ]}
+          staticRanges={dateRangeOptions}
+          inputRanges={[]}
+          direction="horizontal"
+        />
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (state) => ({
   dateRange: state.filters.dateRange,
@@ -81,4 +79,6 @@ const mapDispatchToProps = (dispatch) =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(SidebarDateRange);
+export default connect(mapStateToProps, mapDispatchToProps, null, {
+  forwardRef: true,
+})(SidebarDateRange);

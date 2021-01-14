@@ -9,6 +9,7 @@ import {
   fetchCovidDeathCounts,
   fetchCovidProjectionsData,
 } from "./actions/covid";
+import { openCloseDateRangeModal } from "./actions/ui";
 import SnapshotMap from "./components/SnapshotMap";
 import EbolaRiskMap from "./containers/EbolaRiskMap";
 import Team from "./components/Team";
@@ -16,7 +17,10 @@ import About from "./components/About";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
+import SidebarDateRange from "./components/SidebarDateRange";
 import DateRange from "./components/DateRange";
+import Modal from "@material-ui/core/Modal";
+import DialogContent from "@material-ui/core/DialogContent";
 import { StyledAppContainer } from "./styles";
 
 class App extends Component {
@@ -56,6 +60,16 @@ class App extends Component {
             <Switch>
               <Route exact path="/">
                 <Sidebar />
+                <div>
+                  <Modal
+                    open={this.props.isDateRangeModalOpen}
+                    children={
+                      <DialogContent>
+                        <SidebarDateRange />
+                      </DialogContent>
+                    }
+                  />
+                </div>
                 {this.renderHomePageComponents()}
               </Route>
               <Route exact path="/about">
@@ -74,6 +88,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
+  isDateRangeModalOpen: state.ui.isDateRangeModalOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -82,6 +97,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCovidCaseCounts: () => dispatch(fetchCovidCaseCounts()),
   fetchCovidDeathCounts: () => dispatch(fetchCovidDeathCounts()),
   fetchCovidProjectionsData: () => dispatch(fetchCovidProjectionsData()),
+  openCloseDateRangeModal: () => dispatch(openCloseDateRangeModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
