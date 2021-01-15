@@ -9,7 +9,7 @@ import {
   fetchCovidDeathCounts,
   fetchCovidProjectionsData,
 } from "./actions/covid";
-import { openCloseDateRangeModal } from "./actions/ui";
+import { closeDateRangeModal } from "./actions/ui";
 import SnapshotMap from "./components/SnapshotMap";
 import EbolaRiskMap from "./containers/EbolaRiskMap";
 import Team from "./components/Team";
@@ -62,7 +62,10 @@ class App extends Component {
                 <Sidebar />
                 <div>
                   <Modal
+                    aria-labelledby="date-range-picker-modal"
+                    aria-describedby="date-range-picker-modal"
                     open={this.props.isDateRangeModalOpen}
+                    onClose={() => this.props.closeDateRangeModal()}
                     children={
                       <DialogContent>
                         <SidebarDateRange />
@@ -97,7 +100,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchCovidCaseCounts: () => dispatch(fetchCovidCaseCounts()),
   fetchCovidDeathCounts: () => dispatch(fetchCovidDeathCounts()),
   fetchCovidProjectionsData: () => dispatch(fetchCovidProjectionsData()),
-  openCloseDateRangeModal: () => dispatch(openCloseDateRangeModal()),
+  closeDateRangeModal: () => dispatch(closeDateRangeModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

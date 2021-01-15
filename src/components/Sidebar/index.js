@@ -6,7 +6,7 @@ import {
   changeCountryFilter,
   changeOutbreakFilter,
 } from "../../actions/filters";
-import { openCloseDateRangeModal } from "../../actions/ui";
+import { openDateRangeModal } from "../../actions/ui";
 import Select from "../Select";
 import ReportedCases from "./ReportedCases";
 import Summary from "./Summary";
@@ -32,7 +32,7 @@ const Sidebar = ({
   covidData,
   changeCountryFilter,
   changeOutbreakFilter,
-  openCloseDateRangeModal,
+  openDateRangeModal,
 }) => {
   const changeOutbreak = (selectedValue) => {
     changeOutbreakFilter(selectedValue.target.value);
@@ -71,7 +71,7 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
-      <Button onClick={() => openCloseDateRangeModal(true)}>
+      <Button onClick={() => openDateRangeModal()}>
         {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
         {dayjs(filters.dateRange.to).format("MMM D, YYYY")}
       </Button>
@@ -108,7 +108,7 @@ const mapDispatchToProps = (dispatch) =>
     {
       changeCountryFilter,
       changeOutbreakFilter,
-      openCloseDateRangeModal,
+      openDateRangeModal,
     },
     dispatch
   );

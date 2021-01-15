@@ -27,8 +27,7 @@ describe("Tests for ui reducer", () => {
     };
     expect(
       ui(initialUiState, {
-        type: types.OPEN_CLOSE_DATE_RANGE_MODAL,
-        payload: true,
+        type: types.OPEN_DATE_RANGE_MODAL,
       })
     ).toEqual(changedUiState);
   });
@@ -39,8 +38,7 @@ describe("Tests for ui reducer", () => {
     };
     expect(
       ui(initialUiState, {
-        type: types.OPEN_CLOSE_DATE_RANGE_MODAL,
-        payload: false,
+        type: types.CLOSE_DATE_RANGE_MODAL,
       })
     ).toEqual(changedUiState);
   });

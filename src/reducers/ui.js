@@ -12,10 +12,15 @@ const UiState = function (state = initialState, action) {
         ...state,
         dateSliderRange: action.payload,
       };
-    case types.OPEN_CLOSE_DATE_RANGE_MODAL:
+    case types.OPEN_DATE_RANGE_MODAL:
       return {
         ...state,
-        isDateRangeModalOpen: action.payload,
+        isDateRangeModalOpen: true,
+      };
+    case types.CLOSE_DATE_RANGE_MODAL:
+      return {
+        ...state,
+        isDateRangeModalOpen: false,
       };
     default:
       return initialState;

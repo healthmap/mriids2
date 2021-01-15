@@ -5,7 +5,10 @@ export const changeDateSliderRange = (data) => ({
   payload: data,
 });
 
-export const openCloseDateRangeModal = (payload) => ({
-  type: types.OPEN_CLOSE_DATE_RANGE_MODAL,
-  payload,
+export const openDateRangeModal = () => ({
+  type: types.OPEN_DATE_RANGE_MODAL,
+});
+
+export const closeDateRangeModal = () => ({
+  type: types.CLOSE_DATE_RANGE_MODAL,
 });
