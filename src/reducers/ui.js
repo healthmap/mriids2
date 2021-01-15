@@ -23,7 +23,7 @@ const UiState = function (state = initialState, action) {
         isDateRangeModalOpen: false,
       };
     default:
-      return initialState;
+      return state;
   }
 };
 
