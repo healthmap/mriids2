@@ -28,9 +28,9 @@ for country in ebola_outbreak_countries:
             "value": row[country],
             "projections": {
                 "oneWeek": get_number_value(row["{}.{}".format("y1", country)]),
-                "twoWeek": get_number_value(row["{}.{}".format("y2", country)]),
-                "threeWeek": get_number_value(row["{}.{}".format("y3", country)]),
-                "fourWeek": get_number_value(row["{}.{}".format("y4", country)]),
+                "twoWeeks": get_number_value(row["{}.{}".format("y2", country)]),
+                "threeWeeks": get_number_value(row["{}.{}".format("y3", country)]),
+                "fourWeeks": get_number_value(row["{}.{}".format("y4", country)]),
             },
         }
         ebola_country_data[country][row["projection_from"]] = week_data
