@@ -1,50 +1,5 @@
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { allCountries } from "../constants/Countries";
-import { addUnderscoreWordSeparator } from "./commonHelpers";
-
-export const parseCovidCSVData = (csvData = []) => {
-  const parsedData = [];
-  allCountries.forEach((country) => {
-    // The countryData object will store the daily case/death counts for the country.
-    const countryData = {};
-    // If the csvData is not an empty array, get the case/death counts for the country.
-    if (csvData.length) {
-      csvData.forEach((row) => {
-        const caseCountForDate = row[addUnderscoreWordSeparator(country)];
-        countryData[row.dates] = parseInt(caseCountForDate);
-      });
-    }
-    // Push an object with the country name and country data to the parsedData array.
-    parsedData.push({
-      countryName: country,
-      countryData,
-    });
-  });
-  return parsedData;
-};
-
-export const parseCovidProjectionsData = (csvProjectionsData = []) => {
-  const parsedData = [];
-  allCountries.forEach((country) => {
-    let countryDataObject = {};
-    // Get the data rows for the country.
-    const countryDataRows = csvProjectionsData.filter(
-      (row) => row.country === addUnderscoreWordSeparator(country)
-    );
-    // Loop through the countryDataRows
-    countryDataRows.forEach((row) => {
-      // For each row in the countryDataRows, add an entry to the countryDataObject with the date and the "2.5%", "50%", and "97.5%" projections.
-      countryDataObject[row.date] = {
-        2.5: row["2.5%"],
-        50: row["50%"],
-        97.5: row["97.5%"],
-      };
-    });
-    //  Push the country data to the parsedData array.
-    parsedData.push({ countryName: country, countryData: countryDataObject });
-  });
-  return parsedData;
-};
 
 export const getCountInDateRange = (covidData, dateRange) => {
   let count = 0;

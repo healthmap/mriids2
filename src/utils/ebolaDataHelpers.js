@@ -1,39 +1,6 @@
 import { ebolaOutbreakCountries } from "../constants/Countries";
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 
-export const prepareEbolaData = (csvData) => {
-  const keys = ["y"];
-  const projections = ["oneWeek", "twoWeeks", "threeWeeks", "fourWeeks"];
-  const projectionsMapping = {
-    oneWeek: 1,
-    twoWeeks: 2,
-    threeWeeks: 3,
-    fourWeeks: 4,
-  };
-
-  let newData = {};
-
-  ebolaOutbreakCountries.forEach((country) => {
-    newData[country] = {};
-    csvData.forEach((row) => {
-      newData[country][row.projection_from] = {};
-      newData[country][row.projection_from].projections = {};
-      projections.forEach((projection) => {
-        newData[country][row.projection_from].projections[projection] = {};
-        keys.forEach((key) => {
-          newData[country][row.projection_from].projections[
-            projection
-          ] = parseFloat(
-            row[`${key}${projectionsMapping[projection]}.${country}`]
-          );
-        });
-      });
-      newData[country][row.projection_from].value = row[country];
-    });
-  });
-  return newData;
-};
-
 // This gets the country case counts for the Snapshot map.
 export const getCountriesEbolaCaseCounts = (ebolaData, filters) => {
   let countryCaseCount = {

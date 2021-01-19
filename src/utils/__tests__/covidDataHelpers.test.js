@@ -4,15 +4,12 @@ import {
   getAllCountriesCaseCounts,
   findCountryDataObject,
   getCountriesCovidCaseCounts,
-  parseCovidProjectionsData,
 } from "../covidDataHelpers";
 import {
   testCountryCovidCaseCounts,
   testTwoCountryCovidCaseCounts,
   covidAllCountriesFilters,
   covidAfghanistanFilters,
-  testRawProjectionsData,
-  expectedParsedChinaProjectionsData,
 } from "../testData/covidTestData";
 
 describe("Tests for getCountInDateRange", () => {
@@ -70,19 +67,5 @@ describe("Tests for getCountriesCovidCaseCounts", () => {
     // 3. hasCountryKey will return true if the 'United States of America' key is in the countryCountObject.
     const hasCountryKey = objectKeysArray.includes("United States of America");
     expect(hasCountryKey).toBe(true);
-  });
-});
-
-describe("Tests for parseCovidProjectionsData", () => {
-  test("should contain parsed China projections data", () => {
-    expect(parseCovidProjectionsData(testRawProjectionsData)).toContainEqual(
-      expectedParsedChinaProjectionsData
-    );
-  });
-  test("should contain Barbados country object with empty countryData", () => {
-    expect(parseCovidProjectionsData(testRawProjectionsData)).toContainEqual({
-      countryName: "Barbados",
-      countryData: {},
-    });
   });
 });
