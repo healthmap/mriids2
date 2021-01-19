@@ -14,7 +14,7 @@ def get_number_value(number_string):
 
 
 # 1. Open csv file and add the data to the csv_data list.
-with open("healthmap_projections_2018-08-10.csv", newline="") as csv_file:
+with open("../../../public/csv/healthmap_projections_2018-08-10.csv", newline="") as csv_file:
     reader = csv.DictReader(csv_file)
     for row in reader:
         csv_data.append(row)
