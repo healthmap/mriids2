@@ -19,7 +19,7 @@ import {
   getAllFutureProjectedCasesCount,
   getCountryFutureProjectedCasesCount,
 } from "../../utils/ebolaDataHelpers";
-import { getCovidCaseCount } from "../../utils/covidDataHelpers";
+import { getCovidCount } from "../../utils/covidDataHelpers";
 import CountrySelect from "../CountrySelect";
 
 const Sidebar = ({
@@ -36,11 +36,11 @@ const Sidebar = ({
     changeCountryFilter("All");
   };
 
-  // This is the disease case count for the ReportedCases child component
-  const diseaseCaseCount =
+  // This is the disease count for the ReportedCases child component
+  const diseaseCount =
     filters.outbreak === "Ebola Outbreak"
       ? getEbolaCaseCount(ebolaData, filters)
-      : getCovidCaseCount(covidData, filters);
+      : getCovidCount(covidData, filters);
 
   // This is the projected ebola case count for the ReportedCases child component
   const projectedCaseCount =
@@ -71,7 +71,7 @@ const Sidebar = ({
         <ReportedCases
           projection={filters.projection}
           dateRange={filters.dateRange}
-          diseaseCaseCount={diseaseCaseCount.toLocaleString()}
+          diseaseCaseCount={diseaseCount.toLocaleString()}
           projectedCaseCount={projectedCaseCount.toLocaleString()}
         />
       )}
@@ -80,7 +80,7 @@ const Sidebar = ({
           projection={filters.projection}
           dateRange={filters.dateRange}
           country={filters.country}
-          diseaseCaseCount={diseaseCaseCount.toLocaleString()}
+          diseaseCaseCount={diseaseCount.toLocaleString()}
         />
       )}
       {showEbolaRiskList && <EbolaRiskList />}
