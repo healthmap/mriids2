@@ -75,4 +75,17 @@ describe("Tests for the filters reducer", () => {
       })
     ).toEqual(changedDateRangeState);
   });
+  test("should handle chart type change", () => {
+    const newChartType = "cases and deaths";
+    const changedChartTypeState = {
+      ...initialFiltersState,
+      chartType: newChartType,
+    };
+    expect(
+      filters(initialFiltersState, {
+        type: types.CHANGE_CHART_TYPE,
+        payload: newChartType,
+      })
+    ).toEqual(changedChartTypeState);
+  });
 });
