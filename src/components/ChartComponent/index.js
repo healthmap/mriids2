@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Chart } from "react-google-charts";
 
 import { ChartContainer } from "../styled-components/ChartContainer";
+import ChartTypeButtons from "../ChartTypeButtons";
 import { options } from "../../constants/GoogleChartOptions";
 import {
   prepareEbolaDataForCharts,
@@ -21,8 +22,11 @@ const ChartComponent = ({
       ? prepareEbolaDataForCharts(ebolaData, ebolaDataCombined, filters)
       : getCovidDataForCharts(covidData, filters);
 
+  const showChartTypeButtons = filters.outbreak === "COVID 19";
+
   return (
     <ChartContainer>
+      {showChartTypeButtons && <ChartTypeButtons />}
       <Chart
         width="100%"
         height="100%"
