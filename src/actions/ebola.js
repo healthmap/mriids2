@@ -1,18 +1,16 @@
 import * as d3 from "d3-fetch";
 import * as types from "../constants/ActionTypes";
-import { prepareEbolaData } from "../utils/ebolaDataHelpers";
 
 export const fetchEbolaData = () => (dispatch) => {
   dispatch({
     type: types.FETCH_EBOLA_DATA_REQUEST,
   });
   return d3
-    .csv("csv/healthmap_projections_2018-08-10.csv")
+    .json("json/ebolaData/country_ebola_data.json")
     .then((data) => {
-      const preparedData = prepareEbolaData(data);
       dispatch({
         type: types.FETCH_EBOLA_DATA_SUCCESS,
-        payload: preparedData,
+        payload: data,
       });
     })
     .catch((error) => {
