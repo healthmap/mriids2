@@ -28,6 +28,13 @@ export const changeViewFilter = (newViewValue) => {
   };
 };
 
+export const changeChartType = (chartType) => {
+  return {
+    type: types.CHANGE_CHART_TYPE,
+    payload: chartType,
+  };
+};
+
 export const changeProjectionFilter = () => {
   return {
     type: types.CHANGE_PROJECTION,
