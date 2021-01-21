@@ -8,35 +8,39 @@ import {
 } from "../styled-components/SidebarCountStyles";
 
 const SidebarCount = ({
-  dateRange,
-  diseaseCaseCount = 0,
-  projectedCaseCount = 0,
-  projection = false,
+  filters,
+  diseaseCount = 0,
+  projectedDiseaseCount = 0,
 }) => {
-  const titleText = projection ? "Projection" : "Reported Cases";
-  const labelText = projection
+  // If the Covid outbreak is selected, display either "cases" or "deaths" depending which chart type is selected.
+  // If the Ebola outbreak is selected, just display cases.
+  const dataType =
+    filters.outbreak === "COVID 19" ? filters.chartType : "cases";
+  const titleText = filters.projection ? "Projection" : `Reported ${dataType}`;
+  const labelText = filters.projection
     ? "Total outbreak projections"
     : "Suspected and confirmed";
-  const iconColor = projection ? "#259994" : "#4D73CE";
+  const iconColor = filters.projection ? "#259994" : "#4D73CE";
   return (
     <BlockPadded className="reported-cases-wrapper">
       <p>
         <strong>
           {titleText} from:
           <br />
-          {dateRange.from.toDateString()} to {dateRange.to.toDateString()}
+          {filters.dateRange.from.toDateString()} to{" "}
+          {filters.dateRange.to.toDateString()}
         </strong>
       </p>
       <SidebarCountParent>
         <SidebarCountLabel>{labelText}</SidebarCountLabel>
         <SidebarCountColor style={{ backgroundColor: iconColor }} />
-        <SidebarCountValue>{diseaseCaseCount}</SidebarCountValue>
+        <SidebarCountValue>{diseaseCount}</SidebarCountValue>
       </SidebarCountParent>
-      {projection && (
+      {filters.projection && (
         <SidebarCountParent>
           <SidebarCountLabel>Projected future cases</SidebarCountLabel>
           <SidebarCountColor style={{ backgroundColor: "#F2AD33" }} />
-          <SidebarCountValue>{projectedCaseCount}</SidebarCountValue>
+          <SidebarCountValue>{projectedDiseaseCount}</SidebarCountValue>
         </SidebarCountParent>
       )}
     </BlockPadded>

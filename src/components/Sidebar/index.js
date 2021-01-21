@@ -71,10 +71,9 @@ const Sidebar = ({
       </SelectOutbreakWrapper>
       {showSidebarCount && (
         <SidebarCount
-          projection={filters.projection}
-          dateRange={filters.dateRange}
-          diseaseCaseCount={diseaseCount.toLocaleString()}
-          projectedCaseCount={projectedCaseCount.toLocaleString()}
+          filters={filters}
+          diseaseCount={diseaseCount.toLocaleString()}
+          projectedDiseaseCount={projectedCaseCount.toLocaleString()}
         />
       )}
       {showEbolaSummary && (
