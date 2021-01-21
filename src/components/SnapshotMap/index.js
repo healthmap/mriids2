@@ -17,7 +17,7 @@ import {
   getCovidFillColorsDictionary,
   getCountryFillColor,
 } from "../../utils/snapshotMapHelpers";
-import { getCountriesCovidCaseCounts } from "../../utils/covidDataHelpers";
+import { getCountriesCovidCounts } from "../../utils/covidDataHelpers";
 import { getCountriesEbolaCaseCounts } from "../../utils/ebolaDataHelpers";
 
 const SnapshotMap = ({ ebolaData, covidData, filters }) => {
@@ -26,12 +26,12 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
   const [countryCaseCounts, updateCountryCaseCounts] = useState({});
   const [toolTipContent, setToolTipContent] = useState("");
 
-  // Getting the country case counts for the selected outbreak when the filters are updated.
+  // Getting the country disease counts for the selected outbreak when the filters are updated.
   useEffect(() => {
     const diseaseCaseCounts =
       filters.outbreak === "Ebola Outbreak"
         ? getCountriesEbolaCaseCounts(ebolaData, filters)
-        : getCountriesCovidCaseCounts(covidData, filters);
+        : getCountriesCovidCounts(covidData, filters);
     updateCountryCaseCounts(diseaseCaseCounts);
   }, [ebolaData, covidData, filters]);
 

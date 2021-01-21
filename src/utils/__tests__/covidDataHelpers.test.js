@@ -1,9 +1,9 @@
 import {
-  getCovidCaseCount,
+  getCovidCount,
   getCountInDateRange,
-  getAllCountriesCaseCounts,
+  getAllCountriesCount,
   findCountryDataObject,
-  getCountriesCovidCaseCounts,
+  getCountriesCovidCounts,
 } from "../covidDataHelpers";
 import {
   testCountryCovidCaseCounts,
@@ -23,10 +23,10 @@ describe("Tests for getCountInDateRange", () => {
   });
 });
 
-describe("Tests for getAllCountriesCaseCounts", () => {
+describe("Tests for getAllCountriesCount", () => {
   test("should return 76", () => {
     expect(
-      getAllCountriesCaseCounts(
+      getAllCountriesCount(
         testTwoCountryCovidCaseCounts,
         covidAllCountriesFilters.dateRange
       )
@@ -34,15 +34,15 @@ describe("Tests for getAllCountriesCaseCounts", () => {
   });
 });
 
-describe("Tests for getCovidCaseCount helper function", () => {
+describe("Tests for getCovidCount helper function", () => {
   test("should return 76", () => {
     expect(
-      getCovidCaseCount(testTwoCountryCovidCaseCounts, covidAllCountriesFilters)
+      getCovidCount(testTwoCountryCovidCaseCounts, covidAllCountriesFilters)
     ).toBe(76);
   });
   test("should return 38 which is the case count for Afghanistan", () => {
     expect(
-      getCovidCaseCount(testTwoCountryCovidCaseCounts, covidAfghanistanFilters)
+      getCovidCount(testTwoCountryCovidCaseCounts, covidAfghanistanFilters)
     ).toBe(38);
   });
 });
@@ -55,10 +55,10 @@ describe("Tests for findCountryDataObject", () => {
   });
 });
 
-describe("Tests for getCountriesCovidCaseCounts", () => {
+describe("Tests for getCountriesCovidCounts", () => {
   test("returned object should have a 'United States of America' key", () => {
     // 1. Get countryCountObject.
-    const countryCountObject = getCountriesCovidCaseCounts(
+    const countryCountObject = getCountriesCovidCounts(
       testTwoCountryCovidCaseCounts,
       covidAllCountriesFilters
     );
