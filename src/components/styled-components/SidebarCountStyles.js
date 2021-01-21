@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const ReportedCasesParent = styled.div`
+export const SidebarCountParent = styled.div`
   margin: 0.6rem 0;
 `;
 
-export const ReportedCasesLabel = styled.div`
+export const SidebarCountLabel = styled.div`
   margin-bottom: 0.3rem;
 `;
 
-export const ReportedCasesColor = styled.div`
+export const SidebarCountColor = styled.div`
   display: inline-block;
   width: 2rem;
   height: 2rem;
@@ -16,7 +16,7 @@ export const ReportedCasesColor = styled.div`
   margin-right: 0.8em;
 `;
 
-export const ReportedCasesValue = styled.div`
+export const SidebarCountValue = styled.div`
   display: inline-block;
   font-size: 1.8em;
 `;

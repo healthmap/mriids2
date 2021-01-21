@@ -1,11 +1,11 @@
 import React from "react";
 import { BlockPadded } from "../styled-components/Block";
 import {
-  ReportedCasesParent,
-  ReportedCasesColor,
-  ReportedCasesLabel,
-  ReportedCasesValue,
-} from "../styled-components/ReportedCasesStyles";
+  SidebarCountParent,
+  SidebarCountColor,
+  SidebarCountLabel,
+  SidebarCountValue,
+} from "../styled-components/SidebarCountStyles";
 
 const ReportedCases = ({
   dateRange,
@@ -27,17 +27,17 @@ const ReportedCases = ({
           {dateRange.from.toDateString()} to {dateRange.to.toDateString()}
         </strong>
       </p>
-      <ReportedCasesParent>
-        <ReportedCasesLabel>{labelText}</ReportedCasesLabel>
-        <ReportedCasesColor style={{ backgroundColor: iconColor }} />
-        <ReportedCasesValue>{diseaseCaseCount}</ReportedCasesValue>
-      </ReportedCasesParent>
+      <SidebarCountParent>
+        <SidebarCountLabel>{labelText}</SidebarCountLabel>
+        <SidebarCountColor style={{ backgroundColor: iconColor }} />
+        <SidebarCountValue>{diseaseCaseCount}</SidebarCountValue>
+      </SidebarCountParent>
       {projection && (
-        <ReportedCasesParent>
-          <ReportedCasesLabel>Projected future cases</ReportedCasesLabel>
-          <ReportedCasesColor style={{ backgroundColor: "#F2AD33" }} />
-          <ReportedCasesValue>{projectedCaseCount}</ReportedCasesValue>
-        </ReportedCasesParent>
+        <SidebarCountParent>
+          <SidebarCountLabel>Projected future cases</SidebarCountLabel>
+          <SidebarCountColor style={{ backgroundColor: "#F2AD33" }} />
+          <SidebarCountValue>{projectedCaseCount}</SidebarCountValue>
+        </SidebarCountParent>
       )}
     </BlockPadded>
   );
