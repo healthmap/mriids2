@@ -17,7 +17,7 @@ import {
   getCovidFillColorsDictionary,
   getCountryFillColor,
 } from "../../utils/snapshotMapHelpers";
-import { getCountriesCovidCaseCounts } from "../../utils/covidDataHelpers";
+import { getCountriesCovidCounts } from "../../utils/covidDataHelpers";
 import { getCountriesEbolaCaseCounts } from "../../utils/ebolaDataHelpers";
 
 const SnapshotMap = ({ ebolaData, covidData, filters }) => {
@@ -31,7 +31,7 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
     const diseaseCounts =
       filters.outbreak === "Ebola Outbreak"
         ? getCountriesEbolaCaseCounts(ebolaData, filters)
-        : getCountriesCovidCaseCounts(covidData, filters);
+        : getCountriesCovidCounts(covidData, filters);
     updateCountryDiseaseCounts(diseaseCounts);
   }, [ebolaData, covidData, filters]);
 

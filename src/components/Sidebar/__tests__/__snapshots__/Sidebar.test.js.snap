@@ -190,11 +190,12 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   >
     <p>
       <strong>
-        Reported Cases
+        Reported cases
          from:
         <br />
         Wed Oct 01 2014
-         to 
+         to
+         
         Sat Feb 20 2016
       </strong>
     </p>
