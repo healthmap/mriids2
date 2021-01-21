@@ -2,7 +2,14 @@ import dayjs from "dayjs";
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { findCountryDataObject } from "./covidDataHelpers";
 
-export const getChartColumns = (outbreakName, projection = false) => {
+export const getChartColumns = (
+  outbreakName,
+  projection = false,
+  chartType = "cases"
+) => {
+  const dataColumnLabel = `${outbreakName} ${
+    chartType === "deaths" ? "Deaths" : "Cases"
+  }`;
   const columns = [
     {
       type: "date",
@@ -10,14 +17,14 @@ export const getChartColumns = (outbreakName, projection = false) => {
     },
     {
       type: "number",
-      label: `${outbreakName} Cases`,
+      label: dataColumnLabel,
     },
   ];
-  // If filters.projection is True, add "Projected future cases" column to columns array.
+  // If projection is True, add projections column to columns array.
   if (projection) {
     columns.push({
       type: "number",
-      label: "Projected future cases",
+      label: `Projected future ${chartType}`,
     });
   }
   return columns;
@@ -42,7 +49,9 @@ export const prepareEbolaDataForCharts = (
 ) => {
   const chartData = [];
   // 1. Add column headers to chartData array.
-  chartData.push(getChartColumns("Ebola", filters.projection));
+  chartData.push(
+    getChartColumns("Ebola", filters.projection, filters.chartType)
+  );
   // 2. Add ebola data to chartData array.
 
   let projectionsData = {
@@ -130,7 +139,7 @@ export const prepareEbolaDataForCharts = (
 export const getAllCountriesChartData = (covidData, filters) => {
   const chartData = [];
   // Add column headers to chartData array.
-  chartData.push(getChartColumns("COVID-19", false));
+  chartData.push(getChartColumns("COVID-19", false, filters.chartType));
   // Get an array of date keys from the countryData object of the first country data object.
   // Since all country data objects have data for the same dates, we are using the dates from the first country.
   const covidDataDateKeys = Object.keys(covidData[0].countryData);
@@ -159,7 +168,7 @@ export const getAllCountriesChartData = (covidData, filters) => {
 export const getSelectedCountryChartData = (covidData, filters) => {
   const chartData = [];
   // Add column headers to chartData array.
-  chartData.push(getChartColumns("COVID-19", false));
+  chartData.push(getChartColumns("COVID-19", false, filters.chartType));
   // Find a data object for the country in the filters
   const countryDataObject = findCountryDataObject(covidData, filters.country);
   // If a countryDataObject is found, execute this block.

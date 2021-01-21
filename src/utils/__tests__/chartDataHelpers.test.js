@@ -25,7 +25,7 @@ import dayjs from "dayjs";
 
 describe("Tests for getChartColumns", () => {
   test("should just return 'Date' and 'Ebola Cases' column headers", () => {
-    expect(getChartColumns("Ebola", false)).toEqual([
+    expect(getChartColumns("Ebola", false, "cases")).toEqual([
       {
         type: "date",
         label: "Date",
@@ -37,7 +37,7 @@ describe("Tests for getChartColumns", () => {
     ]);
   });
   test("should return projections column header", () => {
-    expect(getChartColumns("Ebola", true)).toEqual([
+    expect(getChartColumns("Ebola", true, "cases")).toEqual([
       {
         type: "date",
         label: "Date",
