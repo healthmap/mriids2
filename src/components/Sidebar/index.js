@@ -6,7 +6,7 @@ import {
   changeOutbreakFilter,
 } from "../../actions/filters";
 import Select from "../Select";
-import ReportedCases from "./ReportedCases";
+import SidebarCount from "./SidebarCount";
 import Summary from "./Summary";
 import EbolaRiskList from "./EbolaRiskList";
 import * as Styled from "./styles";
@@ -68,7 +68,7 @@ const Sidebar = ({
         />
       </SelectOutbreakWrapper>
       {showReportedCases && (
-        <ReportedCases
+        <SidebarCount
           projection={filters.projection}
           dateRange={filters.dateRange}
           diseaseCaseCount={diseaseCount.toLocaleString()}

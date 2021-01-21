@@ -7,7 +7,7 @@ import {
   SidebarCountValue,
 } from "../styled-components/SidebarCountStyles";
 
-const ReportedCases = ({
+const SidebarCount = ({
   dateRange,
   diseaseCaseCount = 0,
   projectedCaseCount = 0,
@@ -43,4 +43,4 @@ const ReportedCases = ({
   );
 };
 
-export default ReportedCases;
+export default SidebarCount;
