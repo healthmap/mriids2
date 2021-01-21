@@ -1,23 +1,12 @@
 import React from "react";
 import { shallow } from "enzyme";
 import SidebarCount from "../SidebarCount";
+import { reduxInitialState } from "../../../constants/CommonTestData";
 
-const filtersState = {
-  country: "All",
-  outbreak: "Ebola Outbreak",
-  view: "snapshot",
-  projection: false,
-  dateRange: { from: new Date(2014, 9, 1), to: new Date(2016, 1, 20) },
-};
+const filtersState = reduxInitialState.filters;
 
 describe("Tests for the SidebarCount component", () => {
   test("renders SidebarCount component", () => {
-    shallow(
-      <SidebarCount
-        dateRange={filtersState.dateRange}
-        projection={filtersState.projection}
-        diseaseCaseCount={5000}
-      />
-    );
+    shallow(<SidebarCount filters={filtersState} diseaseCaseCount={5000} />);
   });
 });

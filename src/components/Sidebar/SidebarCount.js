@@ -13,7 +13,7 @@ const SidebarCount = ({
   projectedDiseaseCount = 0,
 }) => {
   // If the Covid outbreak is selected, display either "cases" or "deaths" depending which chart type is selected.
-  // If the Ebola outbreak is selected, just display cases.
+  // If the Ebola outbreak is selected, just display "cases".
   const dataType =
     filters.outbreak === "COVID 19" ? filters.chartType : "cases";
   const titleText = filters.projection ? "Projection" : `Reported ${dataType}`;
