@@ -14,7 +14,7 @@ export const getDiseaseCount = (
     // If the Covid outbreak is selected and the chartType is "cases", return the covid case count.
   } else if (filters.outbreak === "COVID 19" && filters.chartType === "cases") {
     return getCovidCount(covidCaseCountData, filters);
-    // If the Covid outbreak is selected and the chartType is "death", return the covid death count.
+    // If the Covid outbreak is selected and the chartType is "deaths", return the covid death count.
   } else if (
     filters.outbreak === "COVID 19" &&
     filters.chartType === "deaths"
