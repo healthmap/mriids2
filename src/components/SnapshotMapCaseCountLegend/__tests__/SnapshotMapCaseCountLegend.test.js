@@ -20,7 +20,7 @@ describe("Tests for the connected SnapshotMapCaseCountLegend component with redu
     component = renderer.create(
       <Provider store={store}>
         <SnapshotMapCaseCountLegend
-          countryCaseCounts={ebolaCaseCountsDictionary}
+          countryDiseaseCounts={ebolaCaseCountsDictionary}
         />
       </Provider>
     );

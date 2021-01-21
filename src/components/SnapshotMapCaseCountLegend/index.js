@@ -13,7 +13,7 @@ import {
 } from "../styled-components/MapLegendWrappers";
 import { BlockDropshadow } from "../styled-components/Block";
 
-const SnapshotMapCaseCountLegend = ({ countryCaseCounts, filters }) => {
+const SnapshotMapCaseCountLegend = ({ countryDiseaseCounts, filters }) => {
   // Determines whether the ebola outbreak is selected.
   const ebolaOutbreakSelected = filters.outbreak === "Ebola Outbreak";
 
@@ -23,8 +23,8 @@ const SnapshotMapCaseCountLegend = ({ countryCaseCounts, filters }) => {
 
   const renderLegendLevels = () => {
     const scale = ebolaOutbreakSelected
-      ? getEbolaScale(countryCaseCounts)
-      : getCovidScale(countryCaseCounts);
+      ? getEbolaScale(countryDiseaseCounts)
+      : getCovidScale(countryDiseaseCounts);
     // We want to render 10 levels for the legend.
     const numberOfLevels = 9;
     const levels = [];

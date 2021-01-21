@@ -23,26 +23,29 @@ import { getCountriesEbolaCaseCounts } from "../../utils/ebolaDataHelpers";
 const SnapshotMap = ({ ebolaData, covidData, filters }) => {
   const [zoomLevel, setZoomLevel] = useState(9);
   const [fillColorDictionary, setFillColorDictionary] = useState({});
-  const [countryCaseCounts, updateCountryCaseCounts] = useState({});
+  const [countryDiseaseCounts, updateCountryDiseaseCounts] = useState({});
   const [toolTipContent, setToolTipContent] = useState("");
 
   // Getting the country case counts for the selected outbreak when the filters are updated.
   useEffect(() => {
-    const diseaseCaseCounts =
+    const diseaseCounts =
       filters.outbreak === "Ebola Outbreak"
         ? getCountriesEbolaCaseCounts(ebolaData, filters)
         : getCountriesCovidCaseCounts(covidData, filters);
-    updateCountryCaseCounts(diseaseCaseCounts);
+    updateCountryDiseaseCounts(diseaseCounts);
   }, [ebolaData, covidData, filters]);
 
-  // Set the fillColorDictionary when the countryCaseCounts is updated or the outbreak or projections are changed.
+  // Set the fillColorDictionary when the countryDiseaseCounts is updated or the outbreak or projections are changed.
   useEffect(() => {
     const colorDictionary =
       filters.outbreak === "Ebola Outbreak"
-        ? getEbolaFillColorsDictionary(countryCaseCounts, filters.projection)
-        : getCovidFillColorsDictionary(countryCaseCounts, filters.projection);
+        ? getEbolaFillColorsDictionary(countryDiseaseCounts, filters.projection)
+        : getCovidFillColorsDictionary(
+            countryDiseaseCounts,
+            filters.projection
+          );
     setFillColorDictionary(colorDictionary);
-  }, [countryCaseCounts, filters.outbreak, filters.projection]);
+  }, [countryDiseaseCounts, filters.outbreak, filters.projection]);
 
   // Update the zoomLevel when switching between outbreaks
   useEffect(() => {
@@ -83,7 +86,7 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
                     onMouseEnter={() => {
                       setToolTipContent(
                         getCountryToolTipContent(
-                          countryCaseCounts,
+                          countryDiseaseCounts,
                           geo.properties.NAME
                         )
                       );
@@ -113,7 +116,7 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-      <SnapshotMapCaseCountLegend countryCaseCounts={countryCaseCounts} />
+      <SnapshotMapCaseCountLegend countryDiseaseCounts={countryDiseaseCounts} />
       <MapZoomButtons
         zoomLevel={zoomLevel}
         changeZoomFunction={changeZoomLevel}
