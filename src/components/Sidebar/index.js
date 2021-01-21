@@ -15,18 +15,18 @@ import {
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
 import {
-  getEbolaCaseCount,
   getAllFutureProjectedCasesCount,
   getCountryFutureProjectedCasesCount,
 } from "../../utils/ebolaDataHelpers";
-import { getCovidCount } from "../../utils/covidDataHelpers";
+import { getDiseaseCount } from "../../utils/sidebarDataHelpers";
 import CountrySelect from "../CountrySelect";
 
 const Sidebar = ({
   filters,
   ebolaData,
   ebolaDataCombined,
-  covidData,
+  covidCaseCountData,
+  covidDeathCountData,
   changeCountryFilter,
   changeOutbreakFilter,
 }) => {
@@ -36,19 +36,21 @@ const Sidebar = ({
     changeCountryFilter("All");
   };
 
-  // This is the disease count for the ReportedCases child component
-  const diseaseCount =
-    filters.outbreak === "Ebola Outbreak"
-      ? getEbolaCaseCount(ebolaData, filters)
-      : getCovidCount(covidData, filters);
+  // This is the disease count for the SidebarCount child component
+  const diseaseCount = getDiseaseCount(
+    ebolaData,
+    covidCaseCountData,
+    covidDeathCountData,
+    filters
+  );
 
-  // This is the projected ebola case count for the ReportedCases child component
+  // This is the projected ebola case count for the SidebarCount child component
   const projectedCaseCount =
     filters.country === "All"
       ? getAllFutureProjectedCasesCount(ebolaDataCombined, filters.dateRange)
       : getCountryFutureProjectedCasesCount(ebolaData, filters);
 
-  const showReportedCases = filters.view === "snapshot";
+  const showSidebarCount = filters.view === "snapshot";
   const showEbolaSummary = filters.outbreak === "Ebola Outbreak";
   const showEbolaRiskList =
     filters.view === "risk" && filters.outbreak === "Ebola Outbreak";
@@ -67,7 +69,7 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
-      {showReportedCases && (
+      {showSidebarCount && (
         <SidebarCount
           projection={filters.projection}
           dateRange={filters.dateRange}
@@ -92,7 +94,8 @@ const mapStateToProps = (state) => ({
   filters: state.filters,
   ebolaData: state.ebola.ebolaData.data,
   ebolaDataCombined: state.ebola.ebolaDataCombined.data,
-  covidData: state.covid.caseCounts.data,
+  covidCaseCountData: state.covid.caseCounts.data,
+  covidDeathCountData: state.covid.deathCounts.data,
 });
 
 const mapDispatchToProps = (dispatch) =>
