@@ -13,7 +13,7 @@ import {
 } from "../styled-components/MapLegendWrappers";
 import { BlockDropshadow } from "../styled-components/Block";
 
-const SnapshotMapCaseCountLegend = ({ countryDiseaseCounts, filters }) => {
+const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
   // Determines whether the ebola outbreak is selected.
   const ebolaOutbreakSelected = filters.outbreak === "Ebola Outbreak";
   // If the covid outbreak is selected and the chart type is "deaths", display "Death" in legend header.
@@ -64,4 +64,4 @@ const mapStateToProps = (state) => ({
   filters: state.filters,
 });
 
-export default connect(mapStateToProps)(SnapshotMapCaseCountLegend);
+export default connect(mapStateToProps)(SnapshotMapLegend);

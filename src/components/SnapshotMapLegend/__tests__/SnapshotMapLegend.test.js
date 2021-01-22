@@ -6,11 +6,11 @@ import renderer from "react-test-renderer";
 import "jest-styled-components";
 import { reduxInitialState } from "../../../constants/CommonTestData";
 import { ebolaCaseCountsDictionary } from "../../../utils/testData/ebolaTestData";
-import SnapshotMapCaseCountLegend from "../index";
+import SnapshotMapLegend from "../index";
 
 const mockStore = configureStore([thunk]);
 
-describe("Tests for the connected SnapshotMapCaseCountLegend component with reduxInitialState", () => {
+describe("Tests for the connected SnapshotMapLegend component with reduxInitialState", () => {
   let store;
   let component;
 
@@ -19,9 +19,7 @@ describe("Tests for the connected SnapshotMapCaseCountLegend component with redu
 
     component = renderer.create(
       <Provider store={store}>
-        <SnapshotMapCaseCountLegend
-          countryDiseaseCounts={ebolaCaseCountsDictionary}
-        />
+        <SnapshotMapLegend countryDiseaseCounts={ebolaCaseCountsDictionary} />
       </Provider>
     );
   });

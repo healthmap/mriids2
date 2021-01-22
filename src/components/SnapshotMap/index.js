@@ -8,7 +8,7 @@ import {
 } from "react-simple-maps";
 import { SnapshotMapContainer } from "../styled-components/MapContainers";
 import ViewToggle from "../ViewToggle";
-import SnapshotMapCaseCountLegend from "../SnapshotMapCaseCountLegend";
+import SnapshotMapLegend from "../SnapshotMapLegend";
 import MapZoomButtons from "../MapZoomButtons";
 import ReactTooltip from "react-tooltip";
 import {
@@ -122,7 +122,7 @@ const SnapshotMap = ({
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-      <SnapshotMapCaseCountLegend countryDiseaseCounts={countryDiseaseCounts} />
+      <SnapshotMapLegend countryDiseaseCounts={countryDiseaseCounts} />
       <MapZoomButtons
         zoomLevel={zoomLevel}
         changeZoomFunction={changeZoomLevel}
