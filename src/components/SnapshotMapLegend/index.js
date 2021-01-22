@@ -13,18 +13,21 @@ import {
 } from "../styled-components/MapLegendWrappers";
 import { BlockDropshadow } from "../styled-components/Block";
 
-const SnapshotMapCaseCountLegend = ({ countryCaseCounts, filters }) => {
+const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
   // Determines whether the ebola outbreak is selected.
   const ebolaOutbreakSelected = filters.outbreak === "Ebola Outbreak";
-
+  // If the covid outbreak is selected and the chart type is "deaths", display "Death" in legend header.
+  // Otherwise, show "Case" in legend header.
+  const dataType =
+    !ebolaOutbreakSelected && filters.chartType === "deaths" ? "Death" : "Case";
   const legendHeader = filters.projection
     ? "Total outbreak projections"
-    : "Case counts";
+    : `${dataType} counts`;
 
   const renderLegendLevels = () => {
     const scale = ebolaOutbreakSelected
-      ? getEbolaScale(countryCaseCounts)
-      : getCovidScale(countryCaseCounts);
+      ? getEbolaScale(countryDiseaseCounts)
+      : getCovidScale(countryDiseaseCounts);
     // We want to render 10 levels for the legend.
     const numberOfLevels = 9;
     const levels = [];
@@ -61,4 +64,4 @@ const mapStateToProps = (state) => ({
   filters: state.filters,
 });
 
-export default connect(mapStateToProps)(SnapshotMapCaseCountLegend);
+export default connect(mapStateToProps)(SnapshotMapLegend);

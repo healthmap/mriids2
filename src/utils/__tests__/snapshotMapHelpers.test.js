@@ -7,16 +7,20 @@ import {
   getCovidFillColorsDictionary,
   getCountryFillColor,
   getCountryToolTipContent,
+  getCountryDiseaseCountDictionary,
 } from "../snapshotMapHelpers";
 import { reduxInitialState } from "../../constants/CommonTestData";
 import {
   ebolaFillColorDictionary,
   testGuineaFiltersState,
   ebolaCaseCountsDictionary,
+  allCountriesEbolaData,
 } from "../testData/ebolaTestData";
 import {
   covidAllCountriesFilters,
   covidCaseCountsDictionary,
+  testTwoCountryCovidCaseCounts,
+  testTwoCountryCovidDeathCounts,
 } from "../testData/covidTestData";
 
 describe("Tests for getEbolaScale helper function", () => {
@@ -195,5 +199,66 @@ describe("Tests for getCountryToolTipContent", () => {
       "Afghanistan"
     );
     expect(toolTipContent).toEqual("Afghanistan - 38");
+  });
+});
+
+describe("Tests for the getCountryDiseaseCountDictionary helper function", () => {
+  test("should return countries ebola case count dictionary", () => {
+    expect(
+      getCountryDiseaseCountDictionary(
+        allCountriesEbolaData,
+        testTwoCountryCovidCaseCounts,
+        testTwoCountryCovidDeathCounts,
+        reduxInitialState.filters
+      )
+    ).toEqual({
+      Guinea: 126,
+      Liberia: 126,
+      "Sierra Leone": 126,
+    });
+  });
+  test("should return a dictionary with the Afghanistan case counts", () => {
+    const countriesCovidCaseCountDictionary = getCountryDiseaseCountDictionary(
+      allCountriesEbolaData,
+      testTwoCountryCovidCaseCounts,
+      testTwoCountryCovidDeathCounts,
+      covidAllCountriesFilters
+    );
+    // 1. Check if countriesCovidCaseCountDictionary has an "Afghanistan" key.
+    const objectKeysArray = Object.keys(countriesCovidCaseCountDictionary);
+    expect(objectKeysArray).toContain("Afghanistan");
+    // 2. Check if the "Afghanistan" key has a value of 38.
+    expect(countriesCovidCaseCountDictionary["Afghanistan"]).toEqual(38);
+  });
+  test("should return a dictionary with the Afghanistan death counts", () => {
+    const covidDeathsFilters = {
+      ...covidAllCountriesFilters,
+      chartType: "deaths",
+    };
+    const countriesCovidCaseCountDictionary = getCountryDiseaseCountDictionary(
+      allCountriesEbolaData,
+      testTwoCountryCovidCaseCounts,
+      testTwoCountryCovidDeathCounts,
+      covidDeathsFilters
+    );
+    // 1. Check if countriesCovidCaseCountDictionary has an "Afghanistan" key.
+    const objectKeysArray = Object.keys(countriesCovidCaseCountDictionary);
+    expect(objectKeysArray).toContain("Afghanistan");
+    // 2. Check if the "Afghanistan" key has a value of 16.
+    expect(countriesCovidCaseCountDictionary["Afghanistan"]).toEqual(16);
+  });
+  test("should return empty dictionary", () => {
+    const covidCasesAndDeathsFilters = {
+      ...covidAllCountriesFilters,
+      chartType: "cases and deaths",
+    };
+    expect(
+      getCountryDiseaseCountDictionary(
+        allCountriesEbolaData,
+        testTwoCountryCovidCaseCounts,
+        testTwoCountryCovidDeathCounts,
+        covidCasesAndDeathsFilters
+      )
+    ).toEqual({});
   });
 });

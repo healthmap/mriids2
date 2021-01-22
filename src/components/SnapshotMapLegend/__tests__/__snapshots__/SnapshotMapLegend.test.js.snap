@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tests for the connected SnapshotMapCaseCountLegend component with reduxInitialState should render with given state from Redux store 1`] = `
+exports[`Tests for the connected SnapshotMapLegend component with reduxInitialState should render with given state from Redux store 1`] = `
 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
