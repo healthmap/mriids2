@@ -17,23 +17,29 @@ import {
   getCovidFillColorsDictionary,
   getCountryFillColor,
 } from "../../utils/snapshotMapHelpers";
-import { getCountriesCovidCounts } from "../../utils/covidDataHelpers";
-import { getCountriesEbolaCaseCounts } from "../../utils/ebolaDataHelpers";
+import { getCountryDiseaseCountDictionary } from "../../utils/snapshotMapHelpers";
 
-const SnapshotMap = ({ ebolaData, covidData, filters }) => {
+const SnapshotMap = ({
+  ebolaData,
+  covidCaseCountData,
+  covidDeathCountData,
+  filters,
+}) => {
   const [zoomLevel, setZoomLevel] = useState(9);
   const [fillColorDictionary, setFillColorDictionary] = useState({});
   const [countryDiseaseCounts, updateCountryDiseaseCounts] = useState({});
   const [toolTipContent, setToolTipContent] = useState("");
 
-  // Getting the country case counts for the selected outbreak when the filters are updated.
+  // Getting the country disease counts for the selected outbreak when the filters are updated.
   useEffect(() => {
-    const diseaseCounts =
-      filters.outbreak === "Ebola Outbreak"
-        ? getCountriesEbolaCaseCounts(ebolaData, filters)
-        : getCountriesCovidCounts(covidData, filters);
-    updateCountryDiseaseCounts(diseaseCounts);
-  }, [ebolaData, covidData, filters]);
+    const diseaseCountsDictionary = getCountryDiseaseCountDictionary(
+      ebolaData,
+      covidCaseCountData,
+      covidDeathCountData,
+      filters
+    );
+    updateCountryDiseaseCounts(diseaseCountsDictionary);
+  }, [ebolaData, covidCaseCountData, covidDeathCountData, filters]);
 
   // Set the fillColorDictionary when the countryDiseaseCounts is updated or the outbreak or projections are changed.
   useEffect(() => {
@@ -129,7 +135,8 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
 
 const mapStateToProps = (state) => ({
   ebolaData: state.ebola.ebolaData.data,
-  covidData: state.covid.caseCounts.data,
+  covidCaseCountData: state.covid.caseCounts.data,
+  covidDeathCountData: state.covid.deathCounts.data,
   filters: state.filters,
 });
 
