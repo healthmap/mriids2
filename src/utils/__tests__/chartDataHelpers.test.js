@@ -1,9 +1,12 @@
 import {
   getChartColumns,
-  prepareEbolaDataForCharts,
-  getAllCountriesChartData,
-  getSelectedCountryChartData,
   getWeekProjectionData,
+  addProjectionsData,
+  getSelectedCountryEbolaChartData,
+  getAllCountriesEbolaChartData,
+  getEbolaDataForCharts,
+  getAllCountriesCovidChartData,
+  getSelectedCountryCovidChartData,
   getCovidDataForCharts,
 } from "../chartDataHelpers";
 import {
@@ -67,10 +70,28 @@ describe("Tests for getWeekProjectionData", () => {
   });
 });
 
-describe("Tests for prepareEbolaDataForCharts helper function", () => {
-  test("returns Guinea data in expected format", () => {
+describe("Tests for addProjectionsData", () => {
+  test("should add 4 rows with projections data to chartData array", () => {
+    const chartData = [["2016-01-18", 1, null]];
+    const projectionsData = {
+      oneWeek: 2,
+      twoWeeks: 4,
+      threeWeeks: 6,
+      fourWeeks: 8,
+    };
+    addProjectionsData(projectionsData, chartData);
+    expect(chartData).toHaveLength(5);
+  });
+});
+
+describe("Tests for getEbolaDataForCharts helper function", () => {
+  test("returns Guinea chart data in expected format", () => {
     expect(
-      prepareEbolaDataForCharts(testGuineaData, null, testGuineaFiltersState)
+      getEbolaDataForCharts(
+        testGuineaData,
+        testEbolaDataCombined,
+        testGuineaFiltersState
+      )
     ).toEqual([
       [
         {
@@ -87,11 +108,11 @@ describe("Tests for prepareEbolaDataForCharts helper function", () => {
     ]);
   });
 
-  test("returns only Guinea data in date range", () => {
+  test("returns only Guinea chart data in date range", () => {
     expect(
-      prepareEbolaDataForCharts(
+      getEbolaDataForCharts(
         testGuineaDataOutOfDateRange,
-        null,
+        testEbolaDataCombined,
         testGuineaFiltersState
       )
     ).toEqual([
@@ -109,9 +130,9 @@ describe("Tests for prepareEbolaDataForCharts helper function", () => {
     ]);
   });
 
-  test("returns the combinedEbolaData in the expected format", () => {
+  test("returns the chart data for all countries in the expected format", () => {
     expect(
-      prepareEbolaDataForCharts(
+      getEbolaDataForCharts(
         testGuineaData,
         testEbolaDataCombined,
         reduxInitialState.filters
@@ -132,9 +153,9 @@ describe("Tests for prepareEbolaDataForCharts helper function", () => {
     ]);
   });
 
-  test("returns only combinedEbolaData in date range", () => {
+  test("returns only the all-countries chart data that is in date range", () => {
     expect(
-      prepareEbolaDataForCharts(
+      getEbolaDataForCharts(
         testGuineaData,
         testEbolaDataCombinedOutOfDateRange,
         reduxInitialState.filters
@@ -155,9 +176,54 @@ describe("Tests for prepareEbolaDataForCharts helper function", () => {
   });
 });
 
+describe("Tests for getSelectedCountryEbolaChartData", () => {
+  test("returns Guinea chart data in expected format", () => {
+    expect(
+      getSelectedCountryEbolaChartData(testGuineaData, testGuineaFiltersState)
+    ).toEqual([
+      [
+        {
+          type: "date",
+          label: "Date",
+        },
+        {
+          type: "number",
+          label: "Ebola Cases",
+        },
+      ],
+      [new Date("2014-10-06"), "126"],
+      [new Date("2014-10-13"), "114"],
+    ]);
+  });
+});
+
+describe("Tests for getAllCountriesEbolaChartData", () => {
+  test("returns the chart data for all countries in the expected format", () => {
+    expect(
+      getAllCountriesEbolaChartData(
+        testEbolaDataCombined,
+        reduxInitialState.filters
+      )
+    ).toEqual([
+      [
+        {
+          type: "date",
+          label: "Date",
+        },
+        {
+          type: "number",
+          label: "Ebola Cases",
+        },
+      ],
+      [new Date("2014-10-06"), "896"],
+      [new Date("2014-10-13"), "859"],
+    ]);
+  });
+});
+
 test("returns all country data in expected format", () => {
   expect(
-    getAllCountriesChartData(
+    getAllCountriesCovidChartData(
       testTwoCountryCovidCaseCounts,
       covidAllCountriesFilters
     )
@@ -166,7 +232,7 @@ test("returns all country data in expected format", () => {
 
 test("returns specific country data in expected format", () => {
   expect(
-    getSelectedCountryChartData(
+    getSelectedCountryCovidChartData(
       testTwoCountryCovidCaseCounts,
       covidAfghanistanFilters
     )
