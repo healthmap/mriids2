@@ -42,7 +42,7 @@ export const getWeekProjectionData = (
   ];
 };
 
-export const prepareEbolaDataForCharts = (
+export const getEbolaDataForCharts = (
   ebolaData,
   ebolaDataCombined,
   filters
@@ -70,8 +70,7 @@ export const prepareEbolaDataForCharts = (
       const dateValue = new Date(row.projection_from);
       // Only push the rows if the dateValue is within the filters.dateRange
       if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
-        const aggregatedData = row.aggregated;
-        const dataRow = [dateValue, aggregatedData];
+        const dataRow = [dateValue, row.aggregated];
         if (filters.projection) {
           // If projections are enabled, store the weekly projection data in the projectionsData object.
           // We also need to add a value of null to the end of the dataRow array.

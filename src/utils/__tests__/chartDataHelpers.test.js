@@ -1,6 +1,6 @@
 import {
   getChartColumns,
-  prepareEbolaDataForCharts,
+  getEbolaDataForCharts,
   getAllCountriesChartData,
   getSelectedCountryChartData,
   getWeekProjectionData,
@@ -67,10 +67,10 @@ describe("Tests for getWeekProjectionData", () => {
   });
 });
 
-describe("Tests for prepareEbolaDataForCharts helper function", () => {
+describe("Tests for getEbolaDataForCharts helper function", () => {
   test("returns Guinea data in expected format", () => {
     expect(
-      prepareEbolaDataForCharts(testGuineaData, null, testGuineaFiltersState)
+      getEbolaDataForCharts(testGuineaData, null, testGuineaFiltersState)
     ).toEqual([
       [
         {
@@ -89,7 +89,7 @@ describe("Tests for prepareEbolaDataForCharts helper function", () => {
 
   test("returns only Guinea data in date range", () => {
     expect(
-      prepareEbolaDataForCharts(
+      getEbolaDataForCharts(
         testGuineaDataOutOfDateRange,
         null,
         testGuineaFiltersState
@@ -111,7 +111,7 @@ describe("Tests for prepareEbolaDataForCharts helper function", () => {
 
   test("returns the combinedEbolaData in the expected format", () => {
     expect(
-      prepareEbolaDataForCharts(
+      getEbolaDataForCharts(
         testGuineaData,
         testEbolaDataCombined,
         reduxInitialState.filters
@@ -134,7 +134,7 @@ describe("Tests for prepareEbolaDataForCharts helper function", () => {
 
   test("returns only combinedEbolaData in date range", () => {
     expect(
-      prepareEbolaDataForCharts(
+      getEbolaDataForCharts(
         testGuineaData,
         testEbolaDataCombinedOutOfDateRange,
         reduxInitialState.filters
