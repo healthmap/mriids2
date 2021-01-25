@@ -92,30 +92,26 @@ export const prepareEbolaDataForCharts = (
 
   // Here we are adding the ebola data for a specific country
   if (showCountryEbolaData) {
-    Object.keys(ebolaData).forEach((key) => {
-      // If the ebolaData key is equal to filters.country, this is the country data that we want.
-      if (key === filters.country) {
-        const countryData = ebolaData[key];
-        // For each date key in the countryData object, push a data row to the chartData array.
-        for (const date in countryData) {
-          // this is a check to filter unwanted properties from the countryData object.
-          if (Object.prototype.hasOwnProperty.call(countryData, date)) {
-            const dateValue = new Date(date);
-            // Only push the rows if the dateValue is within the filters.dateRange
-            if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
-              const dataRow = [dateValue, countryData[date].value];
-              if (filters.projection) {
-                // If projections are enabled, store the weekly projection data in the projectionsData object.
-                // We also need to add a value of null to the end of the dataRow array.
-                projectionsData = countryData[date].projections;
-                dataRow.push(null);
-              }
-              chartData.push(dataRow);
-            }
+    // Find the data for the selected country.
+    const countryData = ebolaData[filters.country];
+    // For each date key in the countryData object, push a data row to the chartData array.
+    for (const date in countryData) {
+      // this is a check to filter unwanted properties from the countryData object.
+      if (Object.prototype.hasOwnProperty.call(countryData, date)) {
+        const dateValue = new Date(date);
+        // Only push the rows if the dateValue is within the filters.dateRange
+        if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
+          const dataRow = [dateValue, countryData[date].value];
+          if (filters.projection) {
+            // If projections are enabled, store the weekly projection data in the projectionsData object.
+            // We also need to add a value of null to the end of the dataRow array.
+            projectionsData = countryData[date].projections;
+            dataRow.push(null);
           }
+          chartData.push(dataRow);
         }
       }
-    });
+    }
   }
   if (filters.projection) {
     // If projections are enabled, we are pushing 4 additional rows to the chartData array (one for each week) with the projections data.
