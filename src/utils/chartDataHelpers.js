@@ -69,11 +69,11 @@ export const getAllCountriesEbolaChartData = (ebolaDataCombined, filters) => {
     threeWeeks: null,
     fourWeeks: null,
   };
-  // 1. Add column headers to the chartData array.
+  // Add column headers to the chartData array.
   chartData.push(
     getChartColumns("Ebola", filters.projection, filters.chartType)
   );
-  // 2. Add the data rows to the chartData array.
+  // Add the data rows to the chartData array.
   ebolaDataCombined.forEach((row) => {
     const dateValue = new Date(row.projection_from);
     // Only push the rows if the dateValue is within the filters.dateRange
@@ -106,7 +106,7 @@ export const getSelectedCountryEbolaChartData = (ebolaData, filters) => {
     threeWeeks: null,
     fourWeeks: null,
   };
-  // 1. Add column headers to chartData array.
+  // Add column headers to chartData array.
   chartData.push(
     getChartColumns("Ebola", filters.projection, filters.chartType)
   );
@@ -145,11 +145,11 @@ export const getEbolaDataForCharts = (
     ebolaDataCombined && ebolaDataCombined.length && filters.country === "All";
   const showCountryEbolaData =
     Object.keys(ebolaData).length && filters.country !== "All";
-  // Here we are adding the ebola data for all countries
+  // Here we are returning the ebola chart data for all countries.
   if (showEbolaDataCombined) {
     return getAllCountriesEbolaChartData(ebolaDataCombined, filters);
   }
-  // Here we are adding the ebola data for a specific country
+  // Here we are returning the ebola chart data for a specific country.
   if (showCountryEbolaData) {
     return getSelectedCountryEbolaChartData(ebolaData, filters);
   }
