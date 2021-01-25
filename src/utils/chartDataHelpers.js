@@ -94,24 +94,23 @@ export const prepareEbolaDataForCharts = (
   if (showCountryEbolaData) {
     // Find the data for the selected country.
     const countryData = ebolaData[filters.country];
-    // For each date key in the countryData object, push a data row to the chartData array.
-    for (const date in countryData) {
-      // this is a check to filter unwanted properties from the countryData object.
-      if (Object.prototype.hasOwnProperty.call(countryData, date)) {
-        const dateValue = new Date(date);
-        // Only push the rows if the dateValue is within the filters.dateRange
-        if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
-          const dataRow = [dateValue, countryData[date].value];
-          if (filters.projection) {
-            // If projections are enabled, store the weekly projection data in the projectionsData object.
-            // We also need to add a value of null to the end of the dataRow array.
-            projectionsData = countryData[date].projections;
-            dataRow.push(null);
-          }
-          chartData.push(dataRow);
+    // Get an array of date keys from the countryData object.
+    const dateKeys = Object.keys(countryData);
+    // For each dateKey in the dateKeys array, push a data row to the chartData array.
+    dateKeys.forEach((dateKey) => {
+      const dateValue = new Date(dateKey);
+      // Only push the rows if the dateValue is within the filters.dateRange
+      if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
+        const dataRow = [dateValue, countryData[dateKey].value];
+        if (filters.projection) {
+          // If projections are enabled, store the weekly projection data in the projectionsData object.
+          // We also need to add a value of null to the end of the dataRow array.
+          projectionsData = countryData[dateKey].projections;
+          dataRow.push(null);
         }
+        chartData.push(dataRow);
       }
-    }
+    });
   }
   if (filters.projection) {
     // If projections are enabled, we are pushing 4 additional rows to the chartData array (one for each week) with the projections data.
