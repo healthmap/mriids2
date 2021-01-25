@@ -42,21 +42,23 @@ export const getWeekProjectionData = (
   ];
 };
 
-export const addProjectionsData = (projectionsData, chartDataArray) => {
-  // Adds 4 additional rows to the chartDataArray (one for each week) with the projections data.
+// Adds additional rows to the chartDataArray with the projections data for each week.
+export const addProjectionsData = (projectionsDataObject, chartDataArray) => {
+  // Get the date of the last row in the chartDataArray.
   const lastWeekDate = chartDataArray[chartDataArray.length - 1][0];
-  chartDataArray.push(
-    getWeekProjectionData(lastWeekDate, 1, projectionsData.oneWeek)
-  );
-  chartDataArray.push(
-    getWeekProjectionData(lastWeekDate, 2, projectionsData.twoWeeks)
-  );
-  chartDataArray.push(
-    getWeekProjectionData(lastWeekDate, 3, projectionsData.threeWeeks)
-  );
-  chartDataArray.push(
-    getWeekProjectionData(lastWeekDate, 4, projectionsData.fourWeeks)
-  );
+  // Get the keys in the projectionsDataObject.
+  const projectionsDataKeys = Object.keys(projectionsDataObject);
+  // For each key in the projectionsDataKeys, push the weekly projections data to the chartDataArray.
+  projectionsDataKeys.forEach((key, index) => {
+    const numberOfWeeks = index + 1;
+    chartDataArray.push(
+      getWeekProjectionData(
+        lastWeekDate,
+        numberOfWeeks,
+        projectionsDataObject[key]
+      )
+    );
+  });
 };
 
 export const getAllCountriesEbolaChartData = (ebolaDataCombined, filters) => {
