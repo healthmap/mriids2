@@ -1,8 +1,8 @@
 import {
   getChartColumns,
   getEbolaDataForCharts,
-  getAllCountriesChartData,
-  getSelectedCountryChartData,
+  getAllCountriesCovidChartData,
+  getSelectedCountryCovidChartData,
   getWeekProjectionData,
   getCovidDataForCharts,
 } from "../chartDataHelpers";
@@ -157,7 +157,7 @@ describe("Tests for getEbolaDataForCharts helper function", () => {
 
 test("returns all country data in expected format", () => {
   expect(
-    getAllCountriesChartData(
+    getAllCountriesCovidChartData(
       testTwoCountryCovidCaseCounts,
       covidAllCountriesFilters
     )
@@ -166,7 +166,7 @@ test("returns all country data in expected format", () => {
 
 test("returns specific country data in expected format", () => {
   expect(
-    getSelectedCountryChartData(
+    getSelectedCountryCovidChartData(
       testTwoCountryCovidCaseCounts,
       covidAfghanistanFilters
     )

@@ -130,7 +130,7 @@ export const getEbolaDataForCharts = (
   return chartData;
 };
 
-export const getAllCountriesChartData = (covidData, filters) => {
+export const getAllCountriesCovidChartData = (covidData, filters) => {
   const chartData = [];
   // Add column headers to chartData array.
   chartData.push(getChartColumns("COVID-19", false, filters.chartType));
@@ -159,7 +159,7 @@ export const getAllCountriesChartData = (covidData, filters) => {
   return chartData;
 };
 
-export const getSelectedCountryChartData = (covidData, filters) => {
+export const getSelectedCountryCovidChartData = (covidData, filters) => {
   const chartData = [];
   // Add column headers to chartData array.
   chartData.push(getChartColumns("COVID-19", false, filters.chartType));
@@ -191,8 +191,8 @@ export const getCovidDataForCharts = (covidData, filters) => {
   const getSpecificCountryCovidData =
     filters.country !== "All" && Object.keys(covidData).length;
   if (getAllCountriesCovidData) {
-    return getAllCountriesChartData(covidData, filters);
+    return getAllCountriesCovidChartData(covidData, filters);
   } else if (getSpecificCountryCovidData) {
-    return getSelectedCountryChartData(covidData, filters);
+    return getSelectedCountryCovidChartData(covidData, filters);
   }
 };
