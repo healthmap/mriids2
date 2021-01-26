@@ -1,7 +1,7 @@
 import {
   getNumberOfWeeksBetweenDates,
   isDateWithinFiltersDateRange,
-  getLastDateKeyInDateRange,
+  getLastDateValueWithinDateRange,
   getOutbreakInitialDateRange,
 } from "../dateHelpers";
 import {
@@ -61,11 +61,14 @@ describe("Tests for isDateWithinFiltersDateRange", () => {
   });
 });
 
-describe("Tests for getLastDateKeyInDateRange", () => {
+describe("Tests for getLastDateValueWithinDateRange", () => {
   test("should return 2014-10-27", () => {
-    const dateKeys = ["2014-10-06", "2014-10-13", "2014-10-20", "2014-10-27"];
+    const datesArray = ["2014-10-06", "2014-10-13", "2014-10-20", "2014-10-27"];
     expect(
-      getLastDateKeyInDateRange(dateKeys, reduxInitialState.filters.dateRange)
+      getLastDateValueWithinDateRange(
+        datesArray,
+        reduxInitialState.filters.dateRange
+      )
     ).toEqual("2014-10-27");
   });
 });

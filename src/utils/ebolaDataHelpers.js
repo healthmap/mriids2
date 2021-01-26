@@ -1,7 +1,7 @@
 import { ebolaOutbreakCountries } from "../constants/Countries";
 import {
   isDateWithinFiltersDateRange,
-  getLastDateKeyInDateRange,
+  getLastDateValueWithinDateRange,
 } from "./dateHelpers";
 
 // This gets the country case counts for the Snapshot map.
@@ -68,7 +68,7 @@ export const getAllFutureProjectedCasesCount = (
       projectionDatesArray.push(row.projection_from);
     });
     // Find the latest projection date within the filtersDateRange.
-    const latestProjectionDate = getLastDateKeyInDateRange(
+    const latestProjectionDate = getLastDateValueWithinDateRange(
       projectionDatesArray,
       filtersDateRange
     );
@@ -94,7 +94,7 @@ export const getCountryFutureProjectedCasesCount = (ebolaData, filters) => {
   // Get the keys for the countryData object.
   const countryDataKeys = Object.keys(countryData);
   // Find the last date key that is in the dateRange
-  const lastDateKeyInDateRange = getLastDateKeyInDateRange(
+  const lastDateKeyInDateRange = getLastDateValueWithinDateRange(
     countryDataKeys,
     filters.dateRange
   );
