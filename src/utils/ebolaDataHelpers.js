@@ -60,29 +60,29 @@ export const getAllFutureProjectedCasesCount = (
   filtersDateRange
 ) => {
   let numberOfFutureProjectedCases = 0;
-  const fourWeekProjectionsData = {
-    oneWeek: 0,
-    twoWeeks: 0,
-    threeWeeks: 0,
-    fourWeeks: 0,
-  };
+  const projectionDatesArray = [];
   // Only execute this block if ebolaDataCombined is not an empty array
   if (ebolaDataCombined.length) {
+    // Add the projection date from each row to the projectionDatesArray.
     ebolaDataCombined.forEach((row) => {
-      const dateValue = new Date(row.projection_from);
-      // Only use row data if the dateValue is within the filters.dateRange
-      if (isDateWithinFiltersDateRange(dateValue, filtersDateRange)) {
-        fourWeekProjectionsData.oneWeek = parseFloat(row["y1.aggregated"]);
-        fourWeekProjectionsData.twoWeeks = parseFloat(row["y2.aggregated"]);
-        fourWeekProjectionsData.threeWeeks = parseFloat(row["y3.aggregated"]);
-        fourWeekProjectionsData.fourWeeks = parseFloat(row["y4.aggregated"]);
-      }
+      projectionDatesArray.push(row.projection_from);
     });
+    // Find the latest projection date within the filtersDateRange.
+    const latestProjectionDate = getLastDateKeyInDateRange(
+      projectionDatesArray,
+      filtersDateRange
+    );
+    // Find the row with the latest projections data within the filtersDateRange.
+    const latestProjectionRow = ebolaDataCombined.find(
+      (row) => row.projection_from === latestProjectionDate
+    );
+    // Add the number of projected cases in the latestProjectionRow to the numberOfFutureProjectedCases counter.
+    numberOfFutureProjectedCases =
+      parseFloat(latestProjectionRow["y1.aggregated"]) +
+      parseFloat(latestProjectionRow["y2.aggregated"]) +
+      parseFloat(latestProjectionRow["y3.aggregated"]) +
+      parseFloat(latestProjectionRow["y4.aggregated"]);
   }
-  // Add the number of projected cases in the fourWeekProjectionsData object to the numberOfFutureProjectedCases counter.
-  Object.keys(fourWeekProjectionsData).forEach((weekKey) => {
-    numberOfFutureProjectedCases += fourWeekProjectionsData[weekKey];
-  });
   // return the numberOfFutureProjectedCases rounded to a whole number.
   return Math.round(numberOfFutureProjectedCases);
 };
