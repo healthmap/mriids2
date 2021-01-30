@@ -76,12 +76,14 @@ export const getAllFutureProjectedCasesCount = (
     const latestProjectionRow = ebolaDataCombined.find(
       (row) => row.projection_from === latestProjectionDate
     );
-    // Add the number of projected cases in the latestProjectionRow to the numberOfFutureProjectedCases counter.
-    numberOfFutureProjectedCases =
-      parseFloat(latestProjectionRow["y1.aggregated"]) +
-      parseFloat(latestProjectionRow["y2.aggregated"]) +
-      parseFloat(latestProjectionRow["y3.aggregated"]) +
-      parseFloat(latestProjectionRow["y4.aggregated"]);
+    // If the latestProjectionRow is found, add the number of projected cases in the latestProjectionRow to the numberOfFutureProjectedCases counter.
+    if (latestProjectionRow) {
+      numberOfFutureProjectedCases =
+        parseFloat(latestProjectionRow["y1.aggregated"]) +
+        parseFloat(latestProjectionRow["y2.aggregated"]) +
+        parseFloat(latestProjectionRow["y3.aggregated"]) +
+        parseFloat(latestProjectionRow["y4.aggregated"]);
+    }
   }
   // return the numberOfFutureProjectedCases rounded to a whole number.
   return Math.round(numberOfFutureProjectedCases);
@@ -106,4 +108,21 @@ export const getCountryFutureProjectedCasesCount = (ebolaData, filters) => {
   });
   // return the numberOfFutureProjectedCases rounded to a whole number.
   return Math.round(numberOfFutureProjectedCases);
+};
+
+export const getFutureProjectionCount = (
+  ebolaData,
+  ebolaDataCombined,
+  filters
+) => {
+  if (filters.outbreak === "Ebola Outbreak" && filters.country === "All") {
+    return getAllFutureProjectedCasesCount(ebolaDataCombined, filters);
+  } else if (
+    filters.outbreak === "Ebola Outbreak" &&
+    filters.country !== "All"
+  ) {
+    return getCountryFutureProjectedCasesCount(ebolaData, filters);
+  } else {
+    return 0;
+  }
 };

@@ -14,10 +14,7 @@ import {
   SelectCountryWrapper,
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
-import {
-  getAllFutureProjectedCasesCount,
-  getCountryFutureProjectedCasesCount,
-} from "../../utils/ebolaDataHelpers";
+import { getFutureProjectionCount } from "../../utils/ebolaDataHelpers";
 import { getDiseaseCount } from "../../utils/sidebarDataHelpers";
 import CountrySelect from "../CountrySelect";
 
@@ -44,11 +41,12 @@ const Sidebar = ({
     filters
   );
 
-  // This is the projected ebola case count for the SidebarCount child component
-  const projectedCaseCount =
-    filters.country === "All"
-      ? getAllFutureProjectedCasesCount(ebolaDataCombined, filters.dateRange)
-      : getCountryFutureProjectedCasesCount(ebolaData, filters);
+  // This is the projected disease count for the SidebarCount child component
+  const projectedDiseaseCount = getFutureProjectionCount(
+    ebolaData,
+    ebolaDataCombined,
+    filters
+  );
 
   const showSidebarCount = filters.view === "snapshot";
   const showEbolaSummary = filters.outbreak === "Ebola Outbreak";
@@ -73,7 +71,7 @@ const Sidebar = ({
         <SidebarCount
           filters={filters}
           diseaseCount={diseaseCount.toLocaleString()}
-          projectedDiseaseCount={projectedCaseCount.toLocaleString()}
+          projectedDiseaseCount={projectedDiseaseCount.toLocaleString()}
         />
       )}
       {showEbolaSummary && (
