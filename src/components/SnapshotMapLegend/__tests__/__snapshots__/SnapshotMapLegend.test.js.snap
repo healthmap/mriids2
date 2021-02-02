@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tests for the connected SnapshotMapCaseCountLegend component with reduxInitialState should render with given state from Redux store 1`] = `
+exports[`Tests for the connected SnapshotMapLegend component with reduxInitialState should render with given state from Redux store 1`] = `
 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -79,7 +79,7 @@ exports[`Tests for the connected SnapshotMapCaseCountLegend component with redux
         <div
           className="c5"
         >
-          20
+          12,000
         </div>
       </div>
       <div
@@ -96,7 +96,7 @@ exports[`Tests for the connected SnapshotMapCaseCountLegend component with redux
         <div
           className="c5"
         >
-          18
+          10,667
         </div>
       </div>
       <div
@@ -113,7 +113,7 @@ exports[`Tests for the connected SnapshotMapCaseCountLegend component with redux
         <div
           className="c5"
         >
-          16
+          9,333
         </div>
       </div>
       <div
@@ -130,7 +130,7 @@ exports[`Tests for the connected SnapshotMapCaseCountLegend component with redux
         <div
           className="c5"
         >
-          13
+          8,000
         </div>
       </div>
       <div
@@ -147,7 +147,7 @@ exports[`Tests for the connected SnapshotMapCaseCountLegend component with redux
         <div
           className="c5"
         >
-          11
+          6,667
         </div>
       </div>
       <div
@@ -164,7 +164,7 @@ exports[`Tests for the connected SnapshotMapCaseCountLegend component with redux
         <div
           className="c5"
         >
-          9
+          5,333
         </div>
       </div>
       <div
@@ -181,7 +181,7 @@ exports[`Tests for the connected SnapshotMapCaseCountLegend component with redux
         <div
           className="c5"
         >
-          7
+          4,000
         </div>
       </div>
       <div
@@ -198,7 +198,7 @@ exports[`Tests for the connected SnapshotMapCaseCountLegend component with redux
         <div
           className="c5"
         >
-          4
+          2,667
         </div>
       </div>
       <div
@@ -215,7 +215,7 @@ exports[`Tests for the connected SnapshotMapCaseCountLegend component with redux
         <div
           className="c5"
         >
-          2
+          1,333
         </div>
       </div>
       <div

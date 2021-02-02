@@ -1,51 +1,17 @@
-export const prepareEbolaData = (csvData) => {
-  const countries = ["Guinea", "Liberia", "Sierra Leone"];
-  const keys = ["y"];
-  const projections = ["oneWeek", "twoWeeks", "threeWeeks", "fourWeeks"];
-  const projectionsMapping = {
-    oneWeek: 1,
-    twoWeeks: 2,
-    threeWeeks: 3,
-    fourWeeks: 4,
-  };
+import { ebolaOutbreakCountries } from "../constants/Countries";
+import {
+  isDateWithinFiltersDateRange,
+  getLastDateValueWithinDateRange,
+} from "./dateHelpers";
 
-  let newData = {};
-
-  countries.forEach((country) => {
-    newData[country] = {};
-    csvData.forEach((row) => {
-      newData[country][row.projection_from] = {};
-      newData[country][row.projection_from].projections = {};
-      projections.forEach((projection) => {
-        newData[country][row.projection_from].projections[projection] = {};
-        keys.forEach((key) => {
-          newData[country][row.projection_from].projections[
-            projection
-          ] = parseFloat(
-            row[`${key}${projectionsMapping[projection]}.${country}`]
-          );
-        });
-      });
-      newData[country][row.projection_from].value = row[country];
-    });
-  });
-  return newData;
-};
-
-export const isDateWithinFiltersDateRange = (weekDateString, dateRange) => {
-  // Checks to see if the weekDateString is a date that falls within the dateRange from the filters.
-  const dateValue = new Date(weekDateString);
-  return dateValue > dateRange.from && dateValue < dateRange.to;
-};
-
-export const getEbolaCountriesCaseCounts = (ebolaData, filters) => {
-  const countries = ["Guinea", "Liberia", "Sierra Leone"];
+// This gets the country case counts for the Snapshot map.
+export const getCountriesEbolaCaseCounts = (ebolaData, filters) => {
   let countryCaseCount = {
     Guinea: 0,
     Liberia: 0,
     "Sierra Leone": 0,
   };
-  countries.forEach((country) => {
+  ebolaOutbreakCountries.forEach((country) => {
     // Only run this block if ebolaData is not an empty object.
     if (Object.keys(ebolaData).length) {
       // Select the ebolaData for the specific country.
@@ -70,9 +36,10 @@ export const getEbolaCountriesCaseCounts = (ebolaData, filters) => {
   return countryCaseCount;
 };
 
-export const getDiseaseCaseCount = (diseaseData, filters) => {
+// This gets the case count for the Sidebar
+export const getEbolaCaseCount = (diseaseData, filters) => {
   let diseaseCaseCount = 0;
-  const ebolaCountriesCaseCounts = getEbolaCountriesCaseCounts(
+  const ebolaCountriesCaseCounts = getCountriesEbolaCaseCounts(
     diseaseData,
     filters
   );
@@ -93,64 +60,69 @@ export const getAllFutureProjectedCasesCount = (
   filtersDateRange
 ) => {
   let numberOfFutureProjectedCases = 0;
-  const fourWeekProjectionsData = {
-    oneWeek: 0,
-    twoWeeks: 0,
-    threeWeeks: 0,
-    fourWeeks: 0,
-  };
+  const projectionDatesArray = [];
   // Only execute this block if ebolaDataCombined is not an empty array
   if (ebolaDataCombined.length) {
+    // Add the projection date from each row to the projectionDatesArray.
     ebolaDataCombined.forEach((row) => {
-      const dateValue = new Date(row.projection_from);
-      // Only use row data if the dateValue is within the filters.dateRange
-      if (isDateWithinFiltersDateRange(dateValue, filtersDateRange)) {
-        fourWeekProjectionsData.oneWeek = parseFloat(row["y1.aggregated"]);
-        fourWeekProjectionsData.twoWeeks = parseFloat(row["y2.aggregated"]);
-        fourWeekProjectionsData.threeWeeks = parseFloat(row["y3.aggregated"]);
-        fourWeekProjectionsData.fourWeeks = parseFloat(row["y4.aggregated"]);
-      }
+      projectionDatesArray.push(row.projection_from);
     });
+    // Find the latest projection date within the filtersDateRange.
+    const latestProjectionDate = getLastDateValueWithinDateRange(
+      projectionDatesArray,
+      filtersDateRange
+    );
+    // Find the row with the latest projections data within the filtersDateRange.
+    const latestProjectionRow = ebolaDataCombined.find(
+      (row) => row.projection_from === latestProjectionDate
+    );
+    // If the latestProjectionRow is found, add the number of projected cases in the latestProjectionRow to the numberOfFutureProjectedCases counter.
+    if (latestProjectionRow) {
+      numberOfFutureProjectedCases =
+        parseFloat(latestProjectionRow["y1.aggregated"]) +
+        parseFloat(latestProjectionRow["y2.aggregated"]) +
+        parseFloat(latestProjectionRow["y3.aggregated"]) +
+        parseFloat(latestProjectionRow["y4.aggregated"]);
+    }
   }
-  // Add the number of projected cases in the fourWeekProjectionsData object to the numberOfFutureProjectedCases counter.
-  Object.keys(fourWeekProjectionsData).forEach((weekKey) => {
-    numberOfFutureProjectedCases += fourWeekProjectionsData[weekKey];
-  });
   // return the numberOfFutureProjectedCases rounded to a whole number.
   return Math.round(numberOfFutureProjectedCases);
 };
 
 export const getCountryFutureProjectedCasesCount = (ebolaData, filters) => {
   let numberOfFutureProjectedCases = 0;
-  let fourWeekProjectionsData = {
-    oneWeek: 0,
-    twoWeeks: 0,
-    threeWeeks: 0,
-    fourWeeks: 0,
-  };
-  // Only execute this block if ebolaData is not an empty object
-  if (Object.keys(ebolaData).length) {
-    Object.keys(ebolaData).forEach((countryKey) => {
-      // If the ebolaData countryKey is equal to filters.country, this is the country data that we want.
-      if (countryKey === filters.country) {
-        const countryData = ebolaData[countryKey];
-        for (const date in countryData) {
-          // this is a check to filter unwanted properties from the countryData object.
-          if (Object.prototype.hasOwnProperty.call(countryData, date)) {
-            const dateValue = new Date(date);
-            // Only use row data if the dateValue is within the filters.dateRange
-            if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
-              fourWeekProjectionsData = countryData[date].projections;
-            }
-          }
-        }
-      }
-    });
-  }
-  // Add the number of projected cases in the fourWeekProjectionsData object to the numberOfFutureProjectedCases counter.
-  Object.keys(fourWeekProjectionsData).forEach((weekKey) => {
-    numberOfFutureProjectedCases += fourWeekProjectionsData[weekKey];
+  // Find ebola data for the selected country.
+  const countryData = ebolaData[filters.country];
+  // Get the keys for the countryData object.
+  const countryDataKeys = Object.keys(countryData);
+  // Find the last date key that is in the dateRange
+  const lastDateKeyInDateRange = getLastDateValueWithinDateRange(
+    countryDataKeys,
+    filters.dateRange
+  );
+  // Get the projections data for the last date in the dateRange.
+  const latestProjectionsData = countryData[lastDateKeyInDateRange].projections;
+  // Add the number of projected cases in the latestProjectionsData object to the numberOfFutureProjectedCases counter.
+  Object.keys(latestProjectionsData).forEach((weekKey) => {
+    numberOfFutureProjectedCases += latestProjectionsData[weekKey];
   });
   // return the numberOfFutureProjectedCases rounded to a whole number.
   return Math.round(numberOfFutureProjectedCases);
+};
+
+export const getFutureProjectionCount = (
+  ebolaData,
+  ebolaDataCombined,
+  filters
+) => {
+  if (filters.outbreak === "Ebola Outbreak" && filters.country === "All") {
+    return getAllFutureProjectedCasesCount(ebolaDataCombined, filters);
+  } else if (
+    filters.outbreak === "Ebola Outbreak" &&
+    filters.country !== "All"
+  ) {
+    return getCountryFutureProjectedCasesCount(ebolaData, filters);
+  } else {
+    return 0;
+  }
 };

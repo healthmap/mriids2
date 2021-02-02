@@ -2,9 +2,9 @@ name: Build and Test with Node.js
 
 on:
   push:
-    branches: [master, development]
+    branches: [master, development, covid-outbreak-additions]
   pull_request:
-    branches: [master, development]
+    branches: [master, development, covid-outbreak-additions]
 
 jobs:
   build:

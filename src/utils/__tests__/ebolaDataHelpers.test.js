@@ -1,7 +1,6 @@
 import {
-  isDateWithinFiltersDateRange,
-  getEbolaCountriesCaseCounts,
-  getDiseaseCaseCount,
+  getCountriesEbolaCaseCounts,
+  getEbolaCaseCount,
   getAllFutureProjectedCasesCount,
   getCountryFutureProjectedCasesCount,
 } from "../ebolaDataHelpers";
@@ -12,33 +11,13 @@ import {
   testEbolaDataCombinedLastWeekOutOfDateRange,
   testGuineaData,
   testGuineaFiltersState,
-} from "../testData";
-
+} from "../testData/ebolaTestData";
 import { reduxInitialState } from "../../constants/CommonTestData";
 
-describe("Tests for isDateWithinFiltersDateRange", () => {
-  test("should return true because date is within filterDates", () => {
-    expect(
-      isDateWithinFiltersDateRange(
-        "2014-10-13",
-        reduxInitialState.filters.dateRange
-      )
-    ).toEqual(true);
-  });
-  test("should return false because date is outside filterDates", () => {
-    expect(
-      isDateWithinFiltersDateRange(
-        "2013-10-13",
-        reduxInitialState.filters.dateRange
-      )
-    ).toEqual(false);
-  });
-});
-
-describe("Tests for getEbolaCountriesCaseCounts", () => {
+describe("Tests for getCountriesEbolaCaseCounts", () => {
   test("should return data in expected format", () => {
     expect(
-      getEbolaCountriesCaseCounts(
+      getCountriesEbolaCaseCounts(
         allCountriesEbolaData,
         reduxInitialState.filters
       )
@@ -46,7 +25,7 @@ describe("Tests for getEbolaCountriesCaseCounts", () => {
   });
   test("should only count data within the date range in the filters", () => {
     expect(
-      getEbolaCountriesCaseCounts(
+      getCountriesEbolaCaseCounts(
         allCountriesEbolaDataLiberiaOutOfDateRange,
         reduxInitialState.filters
       )
@@ -58,7 +37,7 @@ describe("Tests for getEbolaCountriesCaseCounts", () => {
       filters: { ...reduxInitialState.filters, projection: true },
     };
     expect(
-      getEbolaCountriesCaseCounts(
+      getCountriesEbolaCaseCounts(
         allCountriesEbolaData,
         projectionsEnabledState.filters
       )
@@ -66,15 +45,15 @@ describe("Tests for getEbolaCountriesCaseCounts", () => {
   });
 });
 
-describe("Tests for getDiseaseCaseCount", () => {
+describe("Tests for getEbolaCaseCount", () => {
   test("should return count of cases in all countries", () => {
     expect(
-      getDiseaseCaseCount(allCountriesEbolaData, reduxInitialState.filters)
+      getEbolaCaseCount(allCountriesEbolaData, reduxInitialState.filters)
     ).toBe(378);
   });
   test("should only return count of cases in Guinea", () => {
     expect(
-      getDiseaseCaseCount(allCountriesEbolaData, testGuineaFiltersState)
+      getEbolaCaseCount(allCountriesEbolaData, testGuineaFiltersState)
     ).toBe(126);
   });
 });

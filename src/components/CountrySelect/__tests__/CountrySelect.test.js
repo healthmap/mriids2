@@ -5,11 +5,11 @@ import thunk from "redux-thunk";
 import renderer from "react-test-renderer";
 import "jest-styled-components";
 import { reduxInitialState } from "../../../constants/CommonTestData";
-import SnapshotMapCaseCountLegend from "../index";
+import CountrySelect from "../index";
 
 const mockStore = configureStore([thunk]);
 
-describe("Tests for the connected SnapshotMapCaseCountLegend component with reduxInitialState", () => {
+describe("Tests for the connected CountrySelect", () => {
   let store;
   let component;
 
@@ -18,7 +18,7 @@ describe("Tests for the connected SnapshotMapCaseCountLegend component with redu
 
     component = renderer.create(
       <Provider store={store}>
-        <SnapshotMapCaseCountLegend />
+        <CountrySelect />
       </Provider>
     );
   });

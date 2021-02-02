@@ -1,4 +1,4 @@
-// This file has test data for the unit tests.
+// This file has ebola test data for the unit tests.
 
 export const testGuineaData = {
   Guinea: {
@@ -116,6 +116,48 @@ export const allCountriesEbolaDataLiberiaOutOfDateRange = {
       value: "126",
     },
   },
+};
+
+export const testRawEbolaData = {
+  Guinea: {
+    "2014-10-06": {
+      projections: {
+        oneWeek: 179,
+        twoWeeks: 210.5,
+        threeWeeks: 251,
+        fourWeeks: 296,
+      },
+      value: "2452",
+    },
+  },
+  Liberia: {
+    "2014-10-06": {
+      projections: {
+        oneWeek: 179,
+        twoWeeks: 210.5,
+        threeWeeks: 251,
+        fourWeeks: 296,
+      },
+      value: "6738",
+    },
+  },
+  "Sierra Leone": {
+    "2014-10-06": {
+      projections: {
+        oneWeek: 179,
+        twoWeeks: 210.5,
+        threeWeeks: 251,
+        fourWeeks: 296,
+      },
+      value: "11387",
+    },
+  },
+};
+
+export const ebolaFillColorDictionary = {
+  Guinea: "#F5BCA7",
+  Liberia: "#EB7C77",
+  "Sierra Leone": "#E23D4A",
 };
 
 export const testGuineaFiltersState = {
@@ -470,3 +512,9 @@ export const testEbolaDataCombinedLastWeekOutOfDateRange = [
     "ymax4.Sierra Leone": "1024",
   },
 ];
+
+export const ebolaCaseCountsDictionary = {
+  Guinea: 2452,
+  Liberia: 6738,
+  "Sierra Leone": 11387,
+};

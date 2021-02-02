@@ -16,10 +16,28 @@ export const reduxInitialState = {
       error: {},
     },
   },
+  covid: {
+    caseCounts: {
+      isFetching: 0,
+      data: [],
+      error: {},
+    },
+    deathCounts: {
+      isFetching: 0,
+      data: [],
+      error: {},
+    },
+    projections: {
+      isFetching: 0,
+      data: [],
+      error: {},
+    },
+  },
   filters: {
     country: "All",
     outbreak: "Ebola Outbreak",
     view: "snapshot",
+    chartType: "cases",
     projection: false,
     dateRange: { from: new Date(2014, 9, 1), to: new Date(2016, 1, 20) },
   },

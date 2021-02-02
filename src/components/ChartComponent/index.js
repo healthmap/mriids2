@@ -3,26 +3,35 @@ import { connect } from "react-redux";
 import { Chart } from "react-google-charts";
 
 import { ChartContainer } from "../styled-components/ChartContainer";
+import ChartTypeButtons from "../ChartTypeButtons";
 import { options } from "../../constants/GoogleChartOptions";
 import {
-  prepareEbolaDataForCharts,
-  prepareCovidDataForCharts,
+  getEbolaDataForCharts,
+  getCovidDataForCharts,
 } from "../../utils/chartDataHelpers";
 
-const ChartComponent = (props) => {
-  let chartData;
-  if (props.filters.outbreak === "Ebola Outbreak") {
-    chartData = prepareEbolaDataForCharts(
-      props.ebola.ebolaData.data,
-      props.ebola.ebolaDataCombined.data,
-      props.filters
-    );
-  } else {
-    chartData = prepareCovidDataForCharts();
-  }
+const ChartComponent = ({
+  ebolaData,
+  ebolaDataCombined,
+  covidCaseCountsData,
+  covidDeathCountsData,
+  filters,
+}) => {
+  // Determines whether we are showing the covid case or death counts in the chart.
+  const covidData =
+    filters.chartType === "deaths" ? covidDeathCountsData : covidCaseCountsData;
+
+  // // Get the chartData based on the outbreak selected in the filters
+  const chartData =
+    filters.outbreak === "Ebola Outbreak"
+      ? getEbolaDataForCharts(ebolaData, ebolaDataCombined, filters)
+      : getCovidDataForCharts(covidData, filters);
+
+  const showChartTypeButtons = filters.outbreak === "COVID 19";
 
   return (
     <ChartContainer>
+      {showChartTypeButtons && <ChartTypeButtons />}
       <Chart
         width="100%"
         height="100%"
@@ -38,7 +47,10 @@ const ChartComponent = (props) => {
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
-  ebola: state.ebola,
+  ebolaData: state.ebola.ebolaData.data,
+  ebolaDataCombined: state.ebola.ebolaDataCombined.data,
+  covidCaseCountsData: state.covid.caseCounts.data,
+  covidDeathCountsData: state.covid.deathCounts.data,
 });
 
 export default connect(mapStateToProps)(ChartComponent);
