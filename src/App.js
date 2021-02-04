@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./assets/theme";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider as StyledComponentsProvider } from "styled-components";
+import styledComponentsTheme from "./assets/sc-theme";
+import theme from "./assets/theme";
 import { fetchEbolaData, fetchEbolaDataCombined } from "./actions/ebola";
 import {
   fetchCovidCaseCounts,
@@ -50,6 +52,7 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
+      <StyledComponentsProvider theme={styledComponentsTheme}>
         <Router>
           <StyledAppContainer>
             <Header />
@@ -67,6 +70,7 @@ class App extends Component {
             </Switch>
           </StyledAppContainer>
         </Router>
+      </StyledComponentsProvider>
       </ThemeProvider>
     );
   }
