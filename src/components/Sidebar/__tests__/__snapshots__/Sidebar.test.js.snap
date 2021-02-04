@@ -33,23 +33,23 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   font-weight: 700;
 }
 
-.c5 {
+.c6 {
   padding: 1.3rem;
 }
 
-.c5.reported-cases-wrapper {
+.c6.reported-cases-wrapper {
   border-bottom: 1px solid #ccc;
 }
 
-.c6 {
+.c7 {
   margin: 0.6rem 0;
 }
 
-.c7 {
+.c8 {
   margin-bottom: 0.3rem;
 }
 
-.c8 {
+.c9 {
   display: inline-block;
   width: 2rem;
   height: 2rem;
@@ -57,7 +57,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   margin-right: 0.8em;
 }
 
-.c9 {
+.c10 {
   display: inline-block;
   font-size: 1.8em;
 }
@@ -90,6 +90,47 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 .c1 option {
   color: #fff;
   background-color: #000;
+}
+
+.c5 {
+  position: relative;
+  padding: 0.2em 1.5em;
+  color: #000;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 2px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+.c5:focus,
+.c5.focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  outline: 0;
+}
+
+.c5:active,
+.c5.is-active {
+  color: #fff;
+  background-color: #000;
+  background-image: none;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c5:disabled {
+  cursor: auto;
+  opacity: 0.65;
 }
 
 <div
@@ -215,8 +256,17 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       </svg>
     </div>
   </div>
+  <button
+    className="c5"
+    onClick={[Function]}
+  >
+    Oct 1, 2014
+     -
+     
+    Feb 20, 2016
+  </button>
   <div
-    className="c5 reported-cases-wrapper"
+    className="c6 reported-cases-wrapper"
   >
     <p>
       <strong>
@@ -230,15 +280,15 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       </strong>
     </p>
     <div
-      className="c6"
+      className="c7"
     >
       <div
-        className="c7"
+        className="c8"
       >
         Suspected and confirmed
       </div>
       <div
-        className="c8"
+        className="c9"
         style={
           Object {
             "backgroundColor": "#4D73CE",
@@ -246,14 +296,14 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
         }
       />
       <div
-        className="c9"
+        className="c10"
       >
         0
       </div>
     </div>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <h4>
       SUMMARY
@@ -310,11 +360,11 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   font-weight: 700;
 }
 
-.c5 {
+.c6 {
   padding: 1.3rem;
 }
 
-.c5.reported-cases-wrapper {
+.c6.reported-cases-wrapper {
   border-bottom: 1px solid #ccc;
 }
 
@@ -346,6 +396,47 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
 .c1 option {
   color: #fff;
   background-color: #000;
+}
+
+.c5 {
+  position: relative;
+  padding: 0.2em 1.5em;
+  color: #000;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 2px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+.c5:focus,
+.c5.focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  outline: 0;
+}
+
+.c5:active,
+.c5.is-active {
+  color: #fff;
+  background-color: #000;
+  background-image: none;
+  outline: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c5:disabled {
+  cursor: auto;
+  opacity: 0.65;
 }
 
 <div
@@ -471,8 +562,17 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
       </svg>
     </div>
   </div>
-  <div
+  <button
     className="c5"
+    onClick={[Function]}
+  >
+    Oct 1, 2014
+     -
+     
+    Feb 20, 2016
+  </button>
+  <div
+    className="c6"
   >
     <h4>
       SUMMARY
@@ -494,7 +594,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
     </p>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <strong>
       <p>
