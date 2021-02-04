@@ -3,5 +3,5 @@ import { shallow } from "enzyme";
 import Select from "../index";
 
 test("renders component without crashing", () => {
-  shallow(<Select options={["All", "Guinea", "Liberia", "Sierra Leone"]} />);
+  shallow(<Select optionsCurrent={["COVID 19"]} optionsPast={["Ebola Outbreak"]} />);
 });

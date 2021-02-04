@@ -62,7 +62,8 @@ const Sidebar = ({
         <Select
           name="outbreak"
           type="outbreak"
-          options={["Ebola Outbreak", "COVID 19"]}
+          optionsCurrent={["COVID 19"]}
+          optionsPast={["Ebola Outbreak"]}
           value={filters.outbreak}
           changeFunction={changeOutbreak}
         />
