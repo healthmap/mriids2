@@ -29,6 +29,7 @@ const Sidebar = ({
   covidDeathCountData,
   changeCountryFilter,
   changeOutbreakFilter,
+  openDateRangeModal,
 }) => {
   const changeOutbreak = (selectedValue) => {
     changeOutbreakFilter(selectedValue.target.value);
@@ -71,16 +72,17 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
-      {showSidebarCount && (
-          <SidebarCount
-              filters={filters}
-              diseaseCount={diseaseCount.toLocaleString()}
-              projectedDiseaseCount={projectedDiseaseCount.toLocaleString()}
-          />)}
       <Button onClick={() => openDateRangeModal()}>
         {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
         {dayjs(filters.dateRange.to).format("MMM D, YYYY")}
       </Button>
+      {showSidebarCount && (
+        <SidebarCount
+          filters={filters}
+          diseaseCount={diseaseCount.toLocaleString()}
+          projectedDiseaseCount={projectedDiseaseCount.toLocaleString()}
+        />
+      )}
       {showEbolaSummary && (
         <Summary
           projection={filters.projection}
