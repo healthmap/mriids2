@@ -21,19 +21,21 @@ const Select = (props) => {
         name={props.name}
         value={props.value}
         onChange={props.changeFunction}
-	  MenuProps={{
-              anchorOrigin: {
-                vertical: "bottom",
-                horizontal: "left"
-              },
-              transformOrigin: {
-                vertical: "top",
-                horizontal: "left"
-              },
-              getContentAnchorEl: null
-            }}
+        MenuProps={{
+          anchorOrigin: {
+            vertical: "bottom",
+            horizontal: "left",
+          },
+          transformOrigin: {
+            vertical: "top",
+            horizontal: "left",
+          },
+          getContentAnchorEl: null,
+        }}
       >
-        <Styled.StyledListSubheader>Current Outbreaks</Styled.StyledListSubheader>
+        <Styled.StyledListSubheader>
+          Current Outbreaks
+        </Styled.StyledListSubheader>
         {renderOptions(props.optionsCurrent)}
         <Styled.StyledListSubheader>Past Outbreaks</Styled.StyledListSubheader>
         {renderOptions(props.optionsPast)}
