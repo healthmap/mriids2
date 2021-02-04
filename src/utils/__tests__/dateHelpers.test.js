@@ -1,6 +1,7 @@
 import {
   getNumberOfWeeksBetweenDates,
   isDateWithinFiltersDateRange,
+  getLastDateValueWithinDateRange,
   getOutbreakInitialDateRange,
   getMinimumDateRangeDate,
   getMaximumDateRangeDate,
@@ -59,6 +60,18 @@ describe("Tests for isDateWithinFiltersDateRange", () => {
         reduxInitialState.filters.dateRange
       )
     ).toEqual(false);
+  });
+});
+
+describe("Tests for getLastDateValueWithinDateRange", () => {
+  test("should return 2014-10-27", () => {
+    const datesArray = ["2014-10-06", "2014-10-13", "2014-10-20", "2014-10-27"];
+    expect(
+      getLastDateValueWithinDateRange(
+        datesArray,
+        reduxInitialState.filters.dateRange
+      )
+    ).toEqual("2014-10-27");
   });
 });
 

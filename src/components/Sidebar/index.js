@@ -8,7 +8,7 @@ import {
 } from "../../actions/filters";
 import { openDateRangeModal } from "../../actions/ui";
 import Select from "../Select";
-import ReportedCases from "./ReportedCases";
+import SidebarCount from "./SidebarCount";
 import Summary from "./Summary";
 import EbolaRiskList from "./EbolaRiskList";
 import * as Styled from "./styles";
@@ -17,22 +17,18 @@ import {
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
 import { Button } from "../styled-components/Button";
-import {
-  getEbolaCaseCount,
-  getAllFutureProjectedCasesCount,
-  getCountryFutureProjectedCasesCount,
-} from "../../utils/ebolaDataHelpers";
-import { getCovidCaseCount } from "../../utils/covidDataHelpers";
+import { getFutureProjectionCount } from "../../utils/ebolaDataHelpers";
+import { getDiseaseCount } from "../../utils/sidebarDataHelpers";
 import CountrySelect from "../CountrySelect";
 
 const Sidebar = ({
   filters,
   ebolaData,
   ebolaDataCombined,
-  covidData,
+  covidCaseCountData,
+  covidDeathCountData,
   changeCountryFilter,
   changeOutbreakFilter,
-  openDateRangeModal,
 }) => {
   const changeOutbreak = (selectedValue) => {
     changeOutbreakFilter(selectedValue.target.value);
@@ -40,19 +36,22 @@ const Sidebar = ({
     changeCountryFilter("All");
   };
 
-  // This is the disease case count for the ReportedCases child component
-  const diseaseCaseCount =
-    filters.outbreak === "Ebola Outbreak"
-      ? getEbolaCaseCount(ebolaData, filters)
-      : getCovidCaseCount(covidData, filters);
+  // This is the disease count for the SidebarCount child component
+  const diseaseCount = getDiseaseCount(
+    ebolaData,
+    covidCaseCountData,
+    covidDeathCountData,
+    filters
+  );
 
-  // This is the projected ebola case count for the ReportedCases child component
-  const projectedCaseCount =
-    filters.country === "All"
-      ? getAllFutureProjectedCasesCount(ebolaDataCombined, filters.dateRange)
-      : getCountryFutureProjectedCasesCount(ebolaData, filters);
+  // This is the projected disease count for the SidebarCount child component
+  const projectedDiseaseCount = getFutureProjectionCount(
+    ebolaData,
+    ebolaDataCombined,
+    filters
+  );
 
-  const showReportedCases = filters.view === "snapshot";
+  const showSidebarCount = filters.view === "snapshot";
   const showEbolaSummary = filters.outbreak === "Ebola Outbreak";
   const showEbolaRiskList =
     filters.view === "risk" && filters.outbreak === "Ebola Outbreak";
@@ -66,29 +65,28 @@ const Sidebar = ({
         <Select
           name="outbreak"
           type="outbreak"
-          options={["Ebola Outbreak", "COVID 19"]}
+          optionsCurrent={["COVID 19"]}
+          optionsPast={["Ebola Outbreak"]}
           value={filters.outbreak}
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
+      {showSidebarCount && (
+          <SidebarCount
+              filters={filters}
+              diseaseCount={diseaseCount.toLocaleString()}
+              projectedDiseaseCount={projectedDiseaseCount.toLocaleString()}
+          />)}
       <Button onClick={() => openDateRangeModal()}>
         {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
         {dayjs(filters.dateRange.to).format("MMM D, YYYY")}
       </Button>
-      {showReportedCases && (
-        <ReportedCases
-          projection={filters.projection}
-          dateRange={filters.dateRange}
-          diseaseCaseCount={diseaseCaseCount.toLocaleString()}
-          projectedCaseCount={projectedCaseCount.toLocaleString()}
-        />
-      )}
       {showEbolaSummary && (
         <Summary
           projection={filters.projection}
           dateRange={filters.dateRange}
           country={filters.country}
-          diseaseCaseCount={diseaseCaseCount.toLocaleString()}
+          diseaseCaseCount={diseaseCount.toLocaleString()}
         />
       )}
       {showEbolaRiskList && <EbolaRiskList />}
@@ -100,7 +98,8 @@ const mapStateToProps = (state) => ({
   filters: state.filters,
   ebolaData: state.ebola.ebolaData.data,
   ebolaDataCombined: state.ebola.ebolaDataCombined.data,
-  covidData: state.covid.caseCounts.data,
+  covidCaseCountData: state.covid.caseCounts.data,
+  covidDeathCountData: state.covid.deathCounts.data,
 });
 
 const mapDispatchToProps = (dispatch) =>

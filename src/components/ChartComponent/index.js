@@ -6,7 +6,7 @@ import { ChartContainer } from "../styled-components/ChartContainer";
 import ChartTypeButtons from "../ChartTypeButtons";
 import { options } from "../../constants/GoogleChartOptions";
 import {
-  prepareEbolaDataForCharts,
+  getEbolaDataForCharts,
   getCovidDataForCharts,
 } from "../../utils/chartDataHelpers";
 
@@ -24,7 +24,7 @@ const ChartComponent = ({
   // // Get the chartData based on the outbreak selected in the filters
   const chartData =
     filters.outbreak === "Ebola Outbreak"
-      ? prepareEbolaDataForCharts(ebolaData, ebolaDataCombined, filters)
+      ? getEbolaDataForCharts(ebolaData, ebolaDataCombined, filters)
       : getCovidDataForCharts(covidData, filters);
 
   const showChartTypeButtons = filters.outbreak === "COVID 19";

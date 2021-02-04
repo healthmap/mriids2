@@ -82,11 +82,5 @@ exports[`Tests for the connected ChartTypeButtons should render with given state
   >
     Deaths
   </button>
-  <button
-    className="c1"
-    onClick={[Function]}
-  >
-    Cases and Deaths
-  </button>
 </div>
 `;

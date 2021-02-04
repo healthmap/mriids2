@@ -17,6 +17,18 @@ export const isDateWithinFiltersDateRange = (weekDateString, dateRange) => {
   return dateValue > dateRange.from && dateValue < dateRange.to;
 };
 
+export const getLastDateValueWithinDateRange = (datesArray = [], dateRange) => {
+  // 1. Get an array of dates that are within the dateRange.
+  const validDatesArray = [];
+  datesArray.forEach((date) => {
+    if (isDateWithinFiltersDateRange(date, dateRange)) {
+      validDatesArray.push(date);
+    }
+  });
+  // 2. Return the last date in the validDatesArray.
+  return validDatesArray[validDatesArray.length - 1];
+};
+
 //  Returns the initial date range depending on which outbreak is selected.
 export const getOutbreakInitialDateRange = (outbreakSelected) =>
   outbreakSelected === "Ebola Outbreak"

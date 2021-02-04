@@ -1,4 +1,6 @@
 import { ebolaOutbreakCountries, allCountries } from "../constants/Countries";
+import { getCountriesCovidCounts } from "./covidDataHelpers";
+import { getCountriesEbolaCaseCounts } from "./ebolaDataHelpers";
 
 export const getEbolaScale = (countryCaseCount) => {
   // Gets the scaleValue to be used by the snapshotMap and map legend.
@@ -169,4 +171,29 @@ export const getCountryToolTipContent = (diseaseCaseCounts, countryName) => {
   return countryCaseCount
     ? `${countryName} - ${countryCaseCount.toLocaleString()}`
     : countryName;
+};
+
+export const getCountryDiseaseCountDictionary = (
+  ebolaData,
+  covidCaseCountData,
+  covidDeathCountData,
+  filters
+) => {
+  // If the ebola outbreak is selected, return a dictionary of all ebola outbreak countries with the ebola case counts.
+  if (filters.outbreak === "Ebola Outbreak") {
+    return getCountriesEbolaCaseCounts(ebolaData, filters);
+    // If the covid outbreak is selected and the chart type is "cases", return a dictionary of all countries with the covid case counts.
+  } else if (filters.outbreak === "COVID 19" && filters.chartType === "cases") {
+    return getCountriesCovidCounts(covidCaseCountData, filters);
+    // If the covid outbreak is selected and the chart type is "deaths", return a dictionary of all countries with the covid death counts.
+  } else if (
+    filters.outbreak === "COVID 19" &&
+    filters.chartType === "deaths"
+  ) {
+    return getCountriesCovidCounts(covidDeathCountData, filters);
+    //  If none of the above conditions are true, return an empty object for now.
+    //  This is a placeholder while we decide how to display the covid "cases and deaths".
+  } else {
+    return {};
+  }
 };

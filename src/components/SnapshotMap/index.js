@@ -8,7 +8,7 @@ import {
 } from "react-simple-maps";
 import { SnapshotMapContainer } from "../styled-components/MapContainers";
 import ViewToggle from "../ViewToggle";
-import SnapshotMapCaseCountLegend from "../SnapshotMapCaseCountLegend";
+import SnapshotMapLegend from "../SnapshotMapLegend";
 import MapZoomButtons from "../MapZoomButtons";
 import ReactTooltip from "react-tooltip";
 import {
@@ -17,32 +17,41 @@ import {
   getCovidFillColorsDictionary,
   getCountryFillColor,
 } from "../../utils/snapshotMapHelpers";
-import { getCountriesCovidCaseCounts } from "../../utils/covidDataHelpers";
-import { getCountriesEbolaCaseCounts } from "../../utils/ebolaDataHelpers";
+import { getCountryDiseaseCountDictionary } from "../../utils/snapshotMapHelpers";
 
-const SnapshotMap = ({ ebolaData, covidData, filters }) => {
+const SnapshotMap = ({
+  ebolaData,
+  covidCaseCountData,
+  covidDeathCountData,
+  filters,
+}) => {
   const [zoomLevel, setZoomLevel] = useState(9);
   const [fillColorDictionary, setFillColorDictionary] = useState({});
-  const [countryCaseCounts, updateCountryCaseCounts] = useState({});
+  const [countryDiseaseCounts, updateCountryDiseaseCounts] = useState({});
   const [toolTipContent, setToolTipContent] = useState("");
 
-  // Getting the country case counts for the selected outbreak when the filters are updated.
+  // Getting the country disease counts for the selected outbreak when the filters are updated.
   useEffect(() => {
-    const diseaseCaseCounts =
-      filters.outbreak === "Ebola Outbreak"
-        ? getCountriesEbolaCaseCounts(ebolaData, filters)
-        : getCountriesCovidCaseCounts(covidData, filters);
-    updateCountryCaseCounts(diseaseCaseCounts);
-  }, [ebolaData, covidData, filters]);
+    const diseaseCountsDictionary = getCountryDiseaseCountDictionary(
+      ebolaData,
+      covidCaseCountData,
+      covidDeathCountData,
+      filters
+    );
+    updateCountryDiseaseCounts(diseaseCountsDictionary);
+  }, [ebolaData, covidCaseCountData, covidDeathCountData, filters]);
 
-  // Set the fillColorDictionary when the countryCaseCounts is updated or the outbreak or projections are changed.
+  // Set the fillColorDictionary when the countryDiseaseCounts is updated or the outbreak or projections are changed.
   useEffect(() => {
     const colorDictionary =
       filters.outbreak === "Ebola Outbreak"
-        ? getEbolaFillColorsDictionary(countryCaseCounts, filters.projection)
-        : getCovidFillColorsDictionary(countryCaseCounts, filters.projection);
+        ? getEbolaFillColorsDictionary(countryDiseaseCounts, filters.projection)
+        : getCovidFillColorsDictionary(
+            countryDiseaseCounts,
+            filters.projection
+          );
     setFillColorDictionary(colorDictionary);
-  }, [countryCaseCounts, filters.outbreak, filters.projection]);
+  }, [countryDiseaseCounts, filters.outbreak, filters.projection]);
 
   // Update the zoomLevel when switching between outbreaks
   useEffect(() => {
@@ -83,7 +92,7 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
                     onMouseEnter={() => {
                       setToolTipContent(
                         getCountryToolTipContent(
-                          countryCaseCounts,
+                          countryDiseaseCounts,
                           geo.properties.NAME
                         )
                       );
@@ -113,7 +122,7 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
-      <SnapshotMapCaseCountLegend countryCaseCounts={countryCaseCounts} />
+      <SnapshotMapLegend countryDiseaseCounts={countryDiseaseCounts} />
       <MapZoomButtons
         zoomLevel={zoomLevel}
         changeZoomFunction={changeZoomLevel}
@@ -126,7 +135,8 @@ const SnapshotMap = ({ ebolaData, covidData, filters }) => {
 
 const mapStateToProps = (state) => ({
   ebolaData: state.ebola.ebolaData.data,
-  covidData: state.covid.caseCounts.data,
+  covidCaseCountData: state.covid.caseCounts.data,
+  covidDeathCountData: state.covid.deathCounts.data,
   filters: state.filters,
 });
 
