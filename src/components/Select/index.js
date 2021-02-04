@@ -3,16 +3,12 @@ import React from "react";
 import * as Styled from "./styles";
 
 const Select = (props) => {
-  const renderOptions = (array) => {
-    const selectOptions = array.map(function (value, index) {
-      return (
-        <Styled.StyledMenuItem key={`select-option-${index}`} value={value}>
-          {value}
-        </Styled.StyledMenuItem>
-      );
-    });
-    return selectOptions;
-  };
+  const renderOptions = (optionsArray = []) =>
+    optionsArray.map((value, index) => (
+      <Styled.StyledMenuItem key={`select-option-${index}`} value={value}>
+        {value}
+      </Styled.StyledMenuItem>
+    ));
 
   return (
     <>
