@@ -10,6 +10,7 @@ import {
 import { changeCountryFilter } from "../../actions/filters";
 import { withStyles } from "@material-ui/core/styles";
 import { styles } from "./styles";
+import * as Styled from "./sc-styles";
 
 const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
   const countryOptions =
@@ -25,16 +26,18 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
   };
 
   return (
-    <Autocomplete
-      id="country-select"
-      renderInput={(params) => <TextField {...params} variant="outlined" />}
-      onChange={(event, value) => onSelectCountry(value)}
-      options={countryOptions}
-      value={country}
-      classes={classes}
-      disableClearable
-      forcePopupIcon={false}
-    />
+    <>
+      <Styled.InputLabel>Location</Styled.InputLabel>
+      <Autocomplete
+        id="country-select"
+        renderInput={(params) => <TextField {...params} variant="outlined" />}
+        onChange={(event, value) => onSelectCountry(value)}
+        options={countryOptions}
+        value={country}
+        classes={classes}
+        disableClearable
+      />
+    </>
   );
 };
 
