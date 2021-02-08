@@ -51,7 +51,7 @@ const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
   };
 
   return (
-    <MapLegendWrapperSnapshot>
+    <MapLegendWrapperSnapshot data-test-id="snapshot-map-legend">
       <BlockDropshadow>
         <h3>{legendHeader}</h3>
         <MapLegendItemsWrapper>{renderLegendLevels()}</MapLegendItemsWrapper>
