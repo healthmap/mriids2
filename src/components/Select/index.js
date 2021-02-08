@@ -2,25 +2,27 @@ import React from "react";
 
 import * as Styled from "./styles";
 
-const Select = (props) => {
-  const renderOptions = (array) => {
-    const selectOptions = array.map(function (value, index) {
-      return (
-        <Styled.StyledMenuItem key={`select-option-${index}`} value={value}>
-          {value}
-        </Styled.StyledMenuItem>
-      );
-    });
-    return selectOptions;
-  };
+const Select = ({
+  name,
+  value,
+  changeFunction,
+  optionsCurrent,
+  optionsPast,
+}) => {
+  const renderOptions = (optionsArray = []) =>
+    optionsArray.map((value, index) => (
+      <Styled.StyledMenuItem key={`select-option-${index}`} value={value}>
+        {value}
+      </Styled.StyledMenuItem>
+    ));
 
   return (
     <>
-      <Styled.InputLabel>{props.name}</Styled.InputLabel>
+      <Styled.InputLabel>{name}</Styled.InputLabel>
       <Styled.StyledMuiSelect
-        name={props.name}
-        value={props.value}
-        onChange={props.changeFunction}
+        name={name}
+        value={value}
+        onChange={changeFunction}
         MenuProps={{
           anchorOrigin: {
             vertical: "bottom",
@@ -36,9 +38,9 @@ const Select = (props) => {
         <Styled.StyledListSubheader>
           Current Outbreaks
         </Styled.StyledListSubheader>
-        {renderOptions(props.optionsCurrent)}
+        {renderOptions(optionsCurrent)}
         <Styled.StyledListSubheader>Past Outbreaks</Styled.StyledListSubheader>
-        {renderOptions(props.optionsPast)}
+        {renderOptions(optionsPast)}
       </Styled.StyledMuiSelect>
     </>
   );
