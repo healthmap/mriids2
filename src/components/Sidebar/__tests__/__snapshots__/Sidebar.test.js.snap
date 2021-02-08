@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tests for the connected Sidebar component with reduxInitialState should render with given state from Redux store 1`] = `
-.c4.c4 {
+.c5.c5 {
   background-color: #fff;
   font-size: 1.4rem;
   line-height: 2;
@@ -11,16 +11,16 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   border: 1px solid;
 }
 
-.c4.c4.c4.c4:hover:before,
-.c4.c4:before {
+.c5.c5.c5.c5:hover:before,
+.c5.c5:before {
   border: 0px;
 }
 
-.c4.c4 .MuiSelect-select:focus {
+.c5.c5 .MuiSelect-select:focus {
   background-color: transparent;
 }
 
-.c3 {
+.c4 {
   margin: 2.4rem 1.2rem 0.4rem;
   font-size: 1.2rem;
   line-height: 2;
@@ -33,23 +33,23 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   font-weight: 700;
 }
 
-.c5 {
+.c6 {
   padding: 1.3rem;
 }
 
-.c5.reported-cases-wrapper {
+.c6.reported-cases-wrapper {
   border-bottom: 1px solid #ccc;
 }
 
-.c6 {
+.c7 {
   margin: 0.6rem 0;
 }
 
-.c7 {
+.c8 {
   margin-bottom: 0.3rem;
 }
 
-.c8 {
+.c9 {
   display: inline-block;
   width: 2rem;
   height: 2rem;
@@ -57,7 +57,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   margin-right: 0.8em;
 }
 
-.c9 {
+.c10 {
   display: inline-block;
   font-size: 1.8em;
 }
@@ -72,12 +72,12 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   z-index: 2;
 }
 
-.c2 select {
+.c3 select {
   color: #fff;
   background-color: #e43b46;
 }
 
-.c2 option {
+.c3 option {
   color: #fff;
   background-color: #e43b46;
 }
@@ -92,16 +92,34 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   background-color: #000;
 }
 
+.c2 {
+  margin: 0rem 1.2rem 0.4rem;
+  font-size: 1.2rem;
+  line-height: 2;
+  -webkit-letter-spacing: 0.05rem;
+  -moz-letter-spacing: 0.05rem;
+  -ms-letter-spacing: 0.05rem;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 700;
+}
+
 <div
   className="c0"
 >
   <div
     className="c1"
   >
+    <label
+      className="c2"
+    >
+      Location
+    </label>
     <div
       aria-expanded={false}
       aria-owns={null}
-      className="MuiAutocomplete-root"
+      className="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon"
       onClick={[Function]}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
@@ -137,7 +155,43 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
           />
           <div
             className="MuiAutocomplete-endAdornment"
-          />
+          >
+            <button
+              aria-label="Open"
+              className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={-1}
+              title="Open"
+              type="button"
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
           <fieldset
             aria-hidden={true}
             className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
@@ -169,15 +223,15 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     </div>
   </div>
   <div
-    className="c2"
+    className="c3"
   >
     <label
-      className="c3"
+      className="c4"
     >
       outbreak
     </label>
     <div
-      className="MuiInputBase-root MuiInput-root MuiInput-underline c4"
+      className="MuiInputBase-root MuiInput-root MuiInput-underline c5"
       onClick={[Function]}
     >
       <div
@@ -216,7 +270,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     </div>
   </div>
   <div
-    className="c5 reported-cases-wrapper"
+    className="c6 reported-cases-wrapper"
   >
     <p>
       <strong>
@@ -230,15 +284,15 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       </strong>
     </p>
     <div
-      className="c6"
+      className="c7"
     >
       <div
-        className="c7"
+        className="c8"
       >
         Suspected and confirmed
       </div>
       <div
-        className="c8"
+        className="c9"
         style={
           Object {
             "backgroundColor": "#4D73CE",
@@ -246,14 +300,14 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
         }
       />
       <div
-        className="c9"
+        className="c10"
       >
         0
       </div>
     </div>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <h4>
       SUMMARY
@@ -278,7 +332,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 `;
 
 exports[`Tests for the connected Sidebar component with riskViewState should render with given state from Redux store 1`] = `
-.c4.c4 {
+.c5.c5 {
   background-color: #fff;
   font-size: 1.4rem;
   line-height: 2;
@@ -288,16 +342,16 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   border: 1px solid;
 }
 
-.c4.c4.c4.c4:hover:before,
-.c4.c4:before {
+.c5.c5.c5.c5:hover:before,
+.c5.c5:before {
   border: 0px;
 }
 
-.c4.c4 .MuiSelect-select:focus {
+.c5.c5 .MuiSelect-select:focus {
   background-color: transparent;
 }
 
-.c3 {
+.c4 {
   margin: 2.4rem 1.2rem 0.4rem;
   font-size: 1.2rem;
   line-height: 2;
@@ -310,11 +364,11 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   font-weight: 700;
 }
 
-.c5 {
+.c6 {
   padding: 1.3rem;
 }
 
-.c5.reported-cases-wrapper {
+.c6.reported-cases-wrapper {
   border-bottom: 1px solid #ccc;
 }
 
@@ -328,12 +382,12 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   z-index: 2;
 }
 
-.c2 select {
+.c3 select {
   color: #fff;
   background-color: #e43b46;
 }
 
-.c2 option {
+.c3 option {
   color: #fff;
   background-color: #e43b46;
 }
@@ -348,16 +402,34 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   background-color: #000;
 }
 
+.c2 {
+  margin: 0rem 1.2rem 0.4rem;
+  font-size: 1.2rem;
+  line-height: 2;
+  -webkit-letter-spacing: 0.05rem;
+  -moz-letter-spacing: 0.05rem;
+  -ms-letter-spacing: 0.05rem;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 700;
+}
+
 <div
   className="c0"
 >
   <div
     className="c1"
   >
+    <label
+      className="c2"
+    >
+      Location
+    </label>
     <div
       aria-expanded={false}
       aria-owns={null}
-      className="MuiAutocomplete-root"
+      className="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon"
       onClick={[Function]}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
@@ -393,7 +465,46 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
           />
           <div
             className="MuiAutocomplete-endAdornment"
-          />
+          >
+            <button
+              aria-label="Open"
+              className="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-popupIndicator"
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={-1}
+              title="Open"
+              type="button"
+            >
+              <span
+                className="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </span>
+              <span
+                className="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
           <fieldset
             aria-hidden={true}
             className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
@@ -425,15 +536,15 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
     </div>
   </div>
   <div
-    className="c2"
+    className="c3"
   >
     <label
-      className="c3"
+      className="c4"
     >
       outbreak
     </label>
     <div
-      className="MuiInputBase-root MuiInput-root MuiInput-underline c4"
+      className="MuiInputBase-root MuiInput-root MuiInput-underline c5"
       onClick={[Function]}
     >
       <div
@@ -472,7 +583,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
     </div>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <h4>
       SUMMARY
@@ -494,7 +605,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
     </p>
   </div>
   <div
-    className="c5"
+    className="c6"
   >
     <strong>
       <p>
