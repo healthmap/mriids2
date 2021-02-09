@@ -17,6 +17,7 @@ import {
 import { getFutureProjectionCount } from "../../utils/ebolaDataHelpers";
 import { getDiseaseCount } from "../../utils/sidebarDataHelpers";
 import CountrySelect from "../CountrySelect";
+import DataRadioButtons from "../DataRadioButtons";
 
 const Sidebar = ({
   filters,
@@ -52,6 +53,7 @@ const Sidebar = ({
   const showEbolaSummary = filters.outbreak === "Ebola Outbreak";
   const showEbolaRiskList =
     filters.view === "risk" && filters.outbreak === "Ebola Outbreak";
+  const showDataRadioButtons = filters.outbreak === "COVID 19";
 
   return (
     <Styled.SidebarWrapper>
@@ -68,6 +70,7 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
+      {showDataRadioButtons && <DataRadioButtons />}
       {showSidebarCount && (
         <SidebarCount
           filters={filters}
