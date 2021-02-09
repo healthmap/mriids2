@@ -20,12 +20,6 @@ const ChartTypeButtons = ({ chartType, changeChartType }) => (
     >
       Deaths
     </Button>
-    {/*<Button*/}
-    {/*  className={chartType === "cases and deaths" && "is-active"}*/}
-    {/*  onClick={() => changeChartType("cases and deaths")}*/}
-    {/*>*/}
-    {/*  Cases and Deaths*/}
-    {/*</Button>*/}
   </ChartTypeButtonsWrapper>
 );
 
