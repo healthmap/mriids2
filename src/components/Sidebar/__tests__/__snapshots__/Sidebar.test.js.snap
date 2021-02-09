@@ -107,6 +107,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 
 <div
   className="c0"
+  data-test-id="sidebar"
 >
   <div
     className="c1"
@@ -417,6 +418,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
 
 <div
   className="c0"
+  data-test-id="sidebar"
 >
   <div
     className="c1"
