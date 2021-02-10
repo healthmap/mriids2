@@ -12,10 +12,6 @@ const DataRadioButtons = ({ chartType, changeChartType, outbreakSelected }) => {
   const handleChange = (event) => {
     changeChartType(event.target.value);
   };
-  const projectionsLabel = `Projected ${
-    outbreakSelected === "COVID 19" ? "Deaths" : "Cases"
-  }`;
-  const showDeathsOption = outbreakSelected === "COVID 19";
   return (
     <FormControl component="fieldset">
       <FormLabel component="legend">DATA</FormLabel>
@@ -26,14 +22,26 @@ const DataRadioButtons = ({ chartType, changeChartType, outbreakSelected }) => {
         onChange={handleChange}
       >
         <FormControlLabel value="cases" control={<Radio />} label="Cases" />
-        {showDeathsOption && (
-          <FormControlLabel value="deaths" control={<Radio />} label="Deaths" />
+        {outbreakSelected === "COVID 19" ? (
+          <>
+            <FormControlLabel
+              value="deaths"
+              control={<Radio />}
+              label="Deaths"
+            />
+            <FormControlLabel
+              value="projected deaths"
+              control={<Radio />}
+              label="Projected Deaths"
+            />
+          </>
+        ) : (
+          <FormControlLabel
+            value="projected cases"
+            control={<Radio />}
+            label="Projected Cases"
+          />
         )}
-        <FormControlLabel
-          value="projections"
-          control={<Radio />}
-          label={projectionsLabel}
-        />
       </RadioGroup>
     </FormControl>
   );
