@@ -53,7 +53,6 @@ const Sidebar = ({
   const showEbolaSummary = filters.outbreak === "Ebola Outbreak";
   const showEbolaRiskList =
     filters.view === "risk" && filters.outbreak === "Ebola Outbreak";
-  const showDataRadioButtons = filters.outbreak === "COVID 19";
 
   return (
     <Styled.SidebarWrapper>
@@ -70,7 +69,7 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
-      {showDataRadioButtons && <DataRadioButtons />}
+      <DataRadioButtons />
       {showSidebarCount && (
         <SidebarCount
           filters={filters}
