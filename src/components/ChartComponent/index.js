@@ -17,7 +17,7 @@ const ChartComponent = ({
 }) => {
   // Determines whether we are showing the covid case or death counts in the chart.
   const covidData =
-    filters.chartType === "deaths" ? covidDeathCountsData : covidCaseCountsData;
+    filters.dataType === "deaths" ? covidDeathCountsData : covidCaseCountsData;
 
   // // Get the chartData based on the outbreak selected in the filters
   const chartData =

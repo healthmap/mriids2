@@ -28,10 +28,10 @@ export const changeViewFilter = (newViewValue) => {
   };
 };
 
-export const changeChartType = (chartType) => {
+export const changeDataType = (dataType) => {
   return {
-    type: types.CHANGE_CHART_TYPE,
-    payload: chartType,
+    type: types.CHANGE_DATA_TYPE,
+    payload: dataType,
   };
 };
 

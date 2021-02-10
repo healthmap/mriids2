@@ -374,7 +374,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
               name="data"
               onChange={[Function]}
               type="radio"
-              value="projections"
+              value="projected cases"
             />
             <div
               className="PrivateRadioButtonIcon-root-10"
@@ -831,7 +831,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
               name="data"
               onChange={[Function]}
               type="radio"
-              value="projections"
+              value="projected cases"
             />
             <div
               className="PrivateRadioButtonIcon-root-10"

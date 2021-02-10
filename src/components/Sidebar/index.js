@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import {
   changeCountryFilter,
   changeOutbreakFilter,
-  changeChartType,
+  changeDataType,
 } from "../../actions/filters";
 import Select from "../Select";
 import SidebarCount from "./SidebarCount";
@@ -28,14 +28,14 @@ const Sidebar = ({
   covidDeathCountData,
   changeCountryFilter,
   changeOutbreakFilter,
-  changeChartType,
+  changeDataType,
 }) => {
   const changeOutbreak = (selectedValue) => {
     changeOutbreakFilter(selectedValue.target.value);
     // This resets the country filter to 'All' whenever you switch between outbreaks
     changeCountryFilter("All");
-    // Reset the chart type to "cases"
-    changeChartType("cases");
+    // Reset the data type to "cases"
+    changeDataType("cases");
   };
 
   // This is the disease count for the SidebarCount child component
@@ -107,7 +107,7 @@ const mapDispatchToProps = (dispatch) =>
     {
       changeCountryFilter,
       changeOutbreakFilter,
-      changeChartType,
+      changeDataType,
     },
     dispatch
   );

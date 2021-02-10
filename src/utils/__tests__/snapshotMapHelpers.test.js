@@ -233,7 +233,7 @@ describe("Tests for the getCountryDiseaseCountDictionary helper function", () =>
   test("should return a dictionary with the Afghanistan death counts", () => {
     const covidDeathsFilters = {
       ...covidAllCountriesFilters,
-      chartType: "deaths",
+      dataType: "deaths",
     };
     const countriesCovidCaseCountDictionary = getCountryDiseaseCountDictionary(
       allCountriesEbolaData,
@@ -250,7 +250,7 @@ describe("Tests for the getCountryDiseaseCountDictionary helper function", () =>
   test("should return empty dictionary", () => {
     const covidCasesAndDeathsFilters = {
       ...covidAllCountriesFilters,
-      chartType: "cases and deaths",
+      dataType: "cases and deaths",
     };
     expect(
       getCountryDiseaseCountDictionary(

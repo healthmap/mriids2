@@ -4,7 +4,7 @@ const initialState = {
   country: "All",
   outbreak: "Ebola Outbreak",
   view: "snapshot",
-  chartType: "cases",
+  dataType: "cases",
   projection: false,
   dateRange: { from: new Date(2014, 9, 1), to: new Date(2016, 1, 20) },
 };
@@ -34,10 +34,10 @@ const Filters = function (state = initialState, action) {
         ...state,
         view: action.payload,
       };
-    case types.CHANGE_CHART_TYPE:
+    case types.CHANGE_DATA_TYPE:
       return {
         ...state,
-        chartType: action.payload,
+        dataType: action.payload,
       };
     case types.CHANGE_PROJECTION:
       return {

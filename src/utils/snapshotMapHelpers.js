@@ -182,14 +182,11 @@ export const getCountryDiseaseCountDictionary = (
   // If the ebola outbreak is selected, return a dictionary of all ebola outbreak countries with the ebola case counts.
   if (filters.outbreak === "Ebola Outbreak") {
     return getCountriesEbolaCaseCounts(ebolaData, filters);
-    // If the covid outbreak is selected and the chart type is "cases", return a dictionary of all countries with the covid case counts.
-  } else if (filters.outbreak === "COVID 19" && filters.chartType === "cases") {
+    // If the covid outbreak is selected and the data type is "cases", return a dictionary of all countries with the covid case counts.
+  } else if (filters.outbreak === "COVID 19" && filters.dataType === "cases") {
     return getCountriesCovidCounts(covidCaseCountData, filters);
-    // If the covid outbreak is selected and the chart type is "deaths", return a dictionary of all countries with the covid death counts.
-  } else if (
-    filters.outbreak === "COVID 19" &&
-    filters.chartType === "deaths"
-  ) {
+    // If the covid outbreak is selected and the data type is "deaths", return a dictionary of all countries with the covid death counts.
+  } else if (filters.outbreak === "COVID 19" && filters.dataType === "deaths") {
     return getCountriesCovidCounts(covidDeathCountData, filters);
     //  If none of the above conditions are true, return an empty object for now.
     //  This is a placeholder while we decide how to display the covid "cases and deaths".

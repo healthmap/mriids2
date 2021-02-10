@@ -31,7 +31,7 @@ describe("Tests for the getDiseaseCount helper function", () => {
   test("should return covid death count of 32", () => {
     const covidDeathCountFilters = {
       ...covidAllCountriesFilters,
-      chartType: "deaths",
+      dataType: "deaths",
     };
     expect(
       getDiseaseCount(
@@ -45,7 +45,7 @@ describe("Tests for the getDiseaseCount helper function", () => {
   test("should return 0", () => {
     const covidCasesAndDeathCountFilters = {
       ...covidAllCountriesFilters,
-      chartType: "cases and deaths",
+      dataType: "cases and deaths",
     };
     expect(
       getDiseaseCount(
