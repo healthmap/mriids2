@@ -8,13 +8,17 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
-const DataRadioButtons = ({ chartType, changeChartType }) => {
+const DataRadioButtons = ({ chartType, changeChartType, outbreakSelected }) => {
   const handleChange = (event) => {
     changeChartType(event.target.value);
   };
+  const projectionsLabel = `Projected ${
+    outbreakSelected === "COVID 19" ? "Deaths" : "Cases"
+  }`;
+  const showDeathsOption = outbreakSelected === "COVID 19";
   return (
     <FormControl component="fieldset">
-      <FormLabel component="legend">Data</FormLabel>
+      <FormLabel component="legend">DATA</FormLabel>
       <RadioGroup
         aria-label="data"
         name="data"
@@ -22,7 +26,14 @@ const DataRadioButtons = ({ chartType, changeChartType }) => {
         onChange={handleChange}
       >
         <FormControlLabel value="cases" control={<Radio />} label="Cases" />
-        <FormControlLabel value="deaths" control={<Radio />} label="Deaths" />
+        {showDeathsOption && (
+          <FormControlLabel value="deaths" control={<Radio />} label="Deaths" />
+        )}
+        <FormControlLabel
+          value="projections"
+          control={<Radio />}
+          label={projectionsLabel}
+        />
       </RadioGroup>
     </FormControl>
   );
@@ -30,6 +41,7 @@ const DataRadioButtons = ({ chartType, changeChartType }) => {
 
 const mapStateToProps = (state) => ({
   chartType: state.filters.chartType,
+  outbreakSelected: state.filters.outbreak,
 });
 
 const mapDispatchToProps = (dispatch) =>
