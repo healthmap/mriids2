@@ -1,4 +1,6 @@
 import {
+  getDataColumnLabel,
+  getProjectionsColumnLabel,
   getChartColumns,
   getWeekProjectionData,
   addProjectionsData,
@@ -25,6 +27,38 @@ import {
 } from "../testData/covidTestData";
 import { reduxInitialState } from "../../constants/CommonTestData";
 import dayjs from "dayjs";
+
+describe("Tests for getDataColumnLabel", () => {
+  test("should return 'Ebola cases'", () => {
+    expect(getDataColumnLabel("Ebola", "cases")).toEqual("Ebola cases");
+  });
+  test("should return 'Ebola deaths'", () => {
+    expect(getDataColumnLabel("Ebola", "deaths")).toEqual("Ebola deaths");
+  });
+  test("should also return 'Covid cases'", () => {
+    expect(getDataColumnLabel("Covid", "projected cases")).toEqual(
+      "Covid cases"
+    );
+  });
+  test("should also return 'Covid deaths'", () => {
+    expect(getDataColumnLabel("Covid", "projected deaths")).toEqual(
+      "Covid deaths"
+    );
+  });
+});
+
+describe("Tests for getProjectionsColumnLabel", () => {
+  test("should return 'Projected cases'", () => {
+    expect(getProjectionsColumnLabel("projected cases")).toEqual(
+      "Projected cases"
+    );
+  });
+  test("should return 'Projected deaths'", () => {
+    expect(getProjectionsColumnLabel("projected deaths")).toEqual(
+      "Projected deaths"
+    );
+  });
+});
 
 describe("Tests for getChartColumns", () => {
   test("should just return 'Date' and 'Ebola Cases' column headers", () => {

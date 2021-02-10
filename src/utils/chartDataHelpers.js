@@ -2,6 +2,22 @@ import dayjs from "dayjs";
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { findCountryDataObject } from "./covidDataHelpers";
 
+export const getDataColumnLabel = (outbreakName, dataType) => {
+  // If the dataType is either "cases" or "deaths", return the outbreak name with either "cases" or "deaths".
+  if (dataType === "cases" || dataType === "deaths") {
+    return `${outbreakName} ${dataType}`;
+  } else {
+    // Otherwise return the outbreak name with the second word in the dataTypeWordArray (either "cases" or "deaths").
+    const dataTypeWordArray = dataType.split(" ");
+    return `${outbreakName} ${dataTypeWordArray[1]}`;
+  }
+};
+
+export const getProjectionsColumnLabel = (dataType) => {
+  const dataTypeWordArray = dataType.split(" ");
+  return `Projected ${dataTypeWordArray[1]}`;
+};
+
 export const getChartColumns = (
   outbreakName,
   projection = false,
