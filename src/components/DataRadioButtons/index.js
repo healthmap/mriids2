@@ -6,44 +6,49 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
+import {
+  DataRadioButtonsContainer,
+  StyledFormLabel,
+} from "../styled-components/RadioButtonStyles";
 
 const DataRadioButtons = ({ dataType, changeDataType, outbreakSelected }) => {
   const handleChange = (event) => {
     changeDataType(event.target.value);
   };
   return (
-    <FormControl component="fieldset">
-      <FormLabel component="legend">DATA</FormLabel>
-      <RadioGroup
-        aria-label="data"
-        name="data"
-        value={dataType}
-        onChange={handleChange}
-      >
-        <FormControlLabel value="cases" control={<Radio />} label="Cases" />
-        {outbreakSelected === "COVID 19" ? (
-          <>
+    <DataRadioButtonsContainer>
+      <FormControl component="fieldset">
+        <StyledFormLabel component="legend">Data</StyledFormLabel>
+        <RadioGroup
+          aria-label="data"
+          name="data"
+          value={dataType}
+          onChange={handleChange}
+        >
+          <FormControlLabel value="cases" control={<Radio />} label="Cases" />
+          {outbreakSelected === "COVID 19" ? (
+            <>
+              <FormControlLabel
+                value="deaths"
+                control={<Radio />}
+                label="Deaths"
+              />
+              <FormControlLabel
+                value="projected deaths"
+                control={<Radio />}
+                label="Projected Deaths"
+              />
+            </>
+          ) : (
             <FormControlLabel
-              value="deaths"
+              value="projected cases"
               control={<Radio />}
-              label="Deaths"
+              label="Projected Cases"
             />
-            <FormControlLabel
-              value="projected deaths"
-              control={<Radio />}
-              label="Projected Deaths"
-            />
-          </>
-        ) : (
-          <FormControlLabel
-            value="projected cases"
-            control={<Radio />}
-            label="Projected Cases"
-          />
-        )}
-      </RadioGroup>
-    </FormControl>
+          )}
+        </RadioGroup>
+      </FormControl>
+    </DataRadioButtonsContainer>
   );
 };
 
