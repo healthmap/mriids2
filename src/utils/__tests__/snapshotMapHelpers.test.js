@@ -127,10 +127,7 @@ describe("Tests for getSnapshotProjectionsColor", () => {
 describe("Tests for getEbolaFillColorsDictionary", () => {
   test("should return the ebola fill colors in the expected format", () => {
     expect(
-      getEbolaFillColorsDictionary(
-        ebolaCaseCountsDictionary,
-        reduxInitialState.filters.projection
-      )
+      getEbolaFillColorsDictionary(ebolaCaseCountsDictionary, "cases")
     ).toEqual(ebolaFillColorDictionary);
   });
 });
@@ -138,7 +135,7 @@ describe("Tests for getEbolaFillColorsDictionary", () => {
 describe("Tests for getCovidFillColorsDictionary", () => {
   const fillColorsDictionary = getCovidFillColorsDictionary(
     covidCaseCountsDictionary,
-    covidAllCountriesFilters.projection
+    "cases"
   );
   test("Afghanistan should have a fill color of '#F1A697'", () => {
     // Should have this color because Afghanistan has a case count of 38.
@@ -233,7 +230,7 @@ describe("Tests for the getCountryDiseaseCountDictionary helper function", () =>
   test("should return a dictionary with the Afghanistan death counts", () => {
     const covidDeathsFilters = {
       ...covidAllCountriesFilters,
-      chartType: "deaths",
+      dataType: "deaths",
     };
     const countriesCovidCaseCountDictionary = getCountryDiseaseCountDictionary(
       allCountriesEbolaData,
@@ -250,7 +247,7 @@ describe("Tests for the getCountryDiseaseCountDictionary helper function", () =>
   test("should return empty dictionary", () => {
     const covidCasesAndDeathsFilters = {
       ...covidAllCountriesFilters,
-      chartType: "cases and deaths",
+      dataType: "cases and deaths",
     };
     expect(
       getCountryDiseaseCountDictionary(

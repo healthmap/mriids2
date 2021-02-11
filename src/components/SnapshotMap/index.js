@@ -45,13 +45,10 @@ const SnapshotMap = ({
   useEffect(() => {
     const colorDictionary =
       filters.outbreak === "Ebola Outbreak"
-        ? getEbolaFillColorsDictionary(countryDiseaseCounts, filters.projection)
-        : getCovidFillColorsDictionary(
-            countryDiseaseCounts,
-            filters.projection
-          );
+        ? getEbolaFillColorsDictionary(countryDiseaseCounts, filters.dataType)
+        : getCovidFillColorsDictionary(countryDiseaseCounts, filters.dataType);
     setFillColorDictionary(colorDictionary);
-  }, [countryDiseaseCounts, filters.outbreak, filters.projection]);
+  }, [countryDiseaseCounts, filters.outbreak, filters.dataType]);
 
   // Update the zoomLevel when switching between outbreaks
   useEffect(() => {
