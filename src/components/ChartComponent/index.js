@@ -30,7 +30,7 @@ const ChartComponent = ({
       : getCovidDataForCharts(covidData, filters);
 
   const chartOptions =
-    filters.chartType === "deaths" ? deathCountOptions : caseCountOptions;
+    filters.dataType === "deaths" ? deathCountOptions : caseCountOptions;
 
   return (
     <ChartContainer>
