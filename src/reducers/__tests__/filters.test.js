@@ -48,17 +48,6 @@ describe("Tests for the filters reducer", () => {
       })
     ).toEqual(changedViewState);
   });
-  test("should handle projection change", () => {
-    const changedProjectionState = {
-      ...initialFiltersState,
-      projection: true,
-    };
-    expect(
-      filters(initialFiltersState, {
-        type: types.CHANGE_PROJECTION,
-      })
-    ).toEqual(changedProjectionState);
-  });
   test("should date range change", () => {
     const newDateRange = [covidInitialDateRange.from, covidInitialDateRange.to];
     const changedDateRangeState = {

@@ -5,7 +5,6 @@ const initialState = {
   outbreak: "Ebola Outbreak",
   view: "snapshot",
   dataType: "cases",
-  projection: false,
   dateRange: { from: new Date(2014, 9, 1), to: new Date(2016, 1, 20) },
 };
 
@@ -38,11 +37,6 @@ const Filters = function (state = initialState, action) {
       return {
         ...state,
         dataType: action.payload,
-      };
-    case types.CHANGE_PROJECTION:
-      return {
-        ...state,
-        projection: !state.projection,
       };
     default:
       return state;

@@ -34,9 +34,3 @@ export const changeDataType = (dataType) => {
     payload: dataType,
   };
 };
-
-export const changeProjectionFilter = () => {
-  return {
-    type: types.CHANGE_PROJECTION,
-  };
-};

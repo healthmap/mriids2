@@ -1,7 +1,6 @@
 import {
   changeCountryFilter,
   changeOutbreakFilter,
-  changeProjectionFilter,
   changeDataType,
   changeViewFilter,
   changeDateRange,
@@ -25,12 +24,6 @@ describe("Tests for the filter actions", () => {
       payload: outbreak,
     };
     expect(changeOutbreakFilter(outbreak)).toEqual(expectedAction);
-  });
-  test("changeProjectionFilter should return the expected action", () => {
-    const expectedAction = {
-      type: types.CHANGE_PROJECTION,
-    };
-    expect(changeProjectionFilter()).toEqual(expectedAction);
   });
   test("changeDataType should return the expected action", () => {
     const dataType = "deaths";
