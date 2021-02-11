@@ -83,7 +83,7 @@ const Sidebar = ({
       )}
       {showEbolaSummary && (
         <Summary
-          projection={filters.projection}
+          dataType={filters.dataType}
           dateRange={filters.dateRange}
           country={filters.country}
           diseaseCaseCount={diseaseCount.toLocaleString()}

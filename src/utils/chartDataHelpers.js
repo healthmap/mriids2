@@ -1,31 +1,26 @@
 import dayjs from "dayjs";
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { findCountryDataObject } from "./covidDataHelpers";
+import { capitalizeString } from "./commonHelpers";
 
 export const getDataColumnLabel = (outbreakName, dataType) => {
-  // If the dataType is either "cases" or "deaths", return the outbreak name with either "cases" or "deaths".
+  // If the dataType is either "cases" or "deaths", return the outbreak name with either "Cases" or "Deaths".
   if (dataType === "cases" || dataType === "deaths") {
-    return `${outbreakName} ${dataType}`;
+    return `${outbreakName} ${capitalizeString(dataType)}`;
   } else {
-    // Otherwise return the outbreak name with the second word in the dataTypeWordArray (either "cases" or "deaths").
+    // Otherwise return the outbreak name with the second word in the dataTypeWordArray (either "Cases" or "Deaths").
     const dataTypeWordArray = dataType.split(" ");
-    return `${outbreakName} ${dataTypeWordArray[1]}`;
+    return `${outbreakName} ${capitalizeString(dataTypeWordArray[1])}`;
   }
 };
 
 export const getProjectionsColumnLabel = (dataType) => {
   const dataTypeWordArray = dataType.split(" ");
-  return `Projected ${dataTypeWordArray[1]}`;
+  return `Projected ${capitalizeString(dataTypeWordArray[1])}`;
 };
 
-export const getChartColumns = (
-  outbreakName,
-  projection = false,
-  dataType = "cases"
-) => {
-  const dataColumnLabel = `${outbreakName} ${
-    dataType === "deaths" ? "Deaths" : "Cases"
-  }`;
+export const getChartColumns = (outbreakName, dataType = "cases") => {
+  const dataColumnLabel = getDataColumnLabel(outbreakName, dataType);
   const columns = [
     {
       type: "date",
@@ -36,11 +31,12 @@ export const getChartColumns = (
       label: dataColumnLabel,
     },
   ];
-  // If projection is True, add projections column to columns array.
-  if (projection) {
+  // If the dataType includes the word 'projected', add projections column to columns array.
+  if (dataType.includes("projected")) {
+    const projectionsColumnLabel = getProjectionsColumnLabel(dataType);
     columns.push({
       type: "number",
-      label: `Projected future ${dataType}`,
+      label: `${projectionsColumnLabel}`,
     });
   }
   return columns;
@@ -86,16 +82,14 @@ export const getAllCountriesEbolaChartData = (ebolaDataCombined, filters) => {
     fourWeeks: null,
   };
   // Add column headers to the chartData array.
-  chartData.push(
-    getChartColumns("Ebola", filters.projection, filters.dataType)
-  );
+  chartData.push(getChartColumns("Ebola", filters.dataType));
   // Add the data rows to the chartData array.
   ebolaDataCombined.forEach((row) => {
     const dateValue = new Date(row.projection_from);
     // Only push the rows if the dateValue is within the filters.dateRange
     if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
       const dataRow = [dateValue, row.aggregated];
-      if (filters.projection) {
+      if (filters.dataType === "projected cases") {
         // If projections are enabled, store the weekly projection data in the projectionsData object.
         // We also need to add a value of null to the end of the dataRow array.
         projectionsData.oneWeek = parseFloat(row["y1.aggregated"]);
@@ -108,7 +102,7 @@ export const getAllCountriesEbolaChartData = (ebolaDataCombined, filters) => {
     }
   });
   // If projections are enabled, add projections data to chartData array.
-  if (filters.projection) {
+  if (filters.dataType === "projected cases") {
     addProjectionsData(projectionsData, chartData);
   }
   return chartData;
@@ -123,9 +117,7 @@ export const getSelectedCountryEbolaChartData = (ebolaData, filters) => {
     fourWeeks: null,
   };
   // Add column headers to chartData array.
-  chartData.push(
-    getChartColumns("Ebola", filters.projection, filters.dataType)
-  );
+  chartData.push(getChartColumns("Ebola", filters.dataType));
   // Find the data for the selected country.
   const countryData = ebolaData[filters.country];
   // Get an array of date keys from the countryData object.
@@ -136,7 +128,7 @@ export const getSelectedCountryEbolaChartData = (ebolaData, filters) => {
     // Only push the rows if the dateValue is within the filters.dateRange
     if (isDateWithinFiltersDateRange(dateValue, filters.dateRange)) {
       const dataRow = [dateValue, countryData[dateKey].value];
-      if (filters.projection) {
+      if (filters.dataType === "projected cases") {
         // If projections are enabled, store the weekly projection data in the projectionsData object.
         // We also need to add a value of null to the end of the dataRow array.
         projectionsData = countryData[dateKey].projections;
@@ -146,7 +138,7 @@ export const getSelectedCountryEbolaChartData = (ebolaData, filters) => {
     }
   });
   // If projections are enabled, add projections data to chartData array.
-  if (filters.projection) {
+  if (filters.dataType === "projected cases") {
     addProjectionsData(projectionsData, chartData);
   }
   return chartData;
@@ -174,7 +166,7 @@ export const getEbolaDataForCharts = (
 export const getAllCountriesCovidChartData = (covidData, filters) => {
   const chartData = [];
   // Add column headers to chartData array.
-  chartData.push(getChartColumns("COVID-19", false, filters.dataType));
+  chartData.push(getChartColumns("COVID-19", filters.dataType));
   // Get an array of date keys from the countryData object of the first country data object.
   // Since all country data objects have data for the same dates, we are using the dates from the first country.
   const covidDataDateKeys = Object.keys(covidData[0].countryData);
@@ -203,7 +195,7 @@ export const getAllCountriesCovidChartData = (covidData, filters) => {
 export const getSelectedCountryCovidChartData = (covidData, filters) => {
   const chartData = [];
   // Add column headers to chartData array.
-  chartData.push(getChartColumns("COVID-19", false, filters.dataType));
+  chartData.push(getChartColumns("COVID-19", filters.dataType));
   // Find a data object for the country in the filters
   const countryDataObject = findCountryDataObject(covidData, filters.country);
   // If a countryDataObject is found, execute this block.

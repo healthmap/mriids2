@@ -111,7 +111,7 @@ export const getSnapshotProjectionsColor = (caseCountValue = 0) => {
 // This gets a dictionary with key/value pairs of country/fillColor for each Ebola country.
 export const getEbolaFillColorsDictionary = (
   ebolaCountriesCaseCounts,
-  projectionsEnabled
+  dataType
 ) => {
   let colorsDictionary = {};
   // Get the scale using the ebolaCountriesCaseCounts object.
@@ -120,9 +120,10 @@ export const getEbolaFillColorsDictionary = (
     const percentage = ebolaCountriesCaseCounts[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
     // Otherwise get the fillColor value using the getSnapshotColor function.
-    colorsDictionary[country] = projectionsEnabled
-      ? getSnapshotProjectionsColor(percentage)
-      : getSnapshotColor(percentage);
+    colorsDictionary[country] =
+      dataType === "projected cases"
+        ? getSnapshotProjectionsColor(percentage)
+        : getSnapshotColor(percentage);
   });
   return colorsDictionary;
 };
@@ -130,7 +131,7 @@ export const getEbolaFillColorsDictionary = (
 // This gets a dictionary with key/value pairs of country/fillColor for each country.
 export const getCovidFillColorsDictionary = (
   covidCountriesCaseCounts,
-  projectionsEnabled
+  dataType
 ) => {
   let colorsDictionary = {};
   // Get the scale using the covidCountriesCaseCounts object.
@@ -139,9 +140,10 @@ export const getCovidFillColorsDictionary = (
     const percentage = covidCountriesCaseCounts[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
     // Otherwise get the fillColor value using the getSnapshotColor function.
-    colorsDictionary[country] = projectionsEnabled
-      ? getSnapshotProjectionsColor(percentage)
-      : getSnapshotColor(percentage);
+    colorsDictionary[country] =
+      dataType === "projected deaths"
+        ? getSnapshotProjectionsColor(percentage)
+        : getSnapshotColor(percentage);
   });
   return colorsDictionary;
 };

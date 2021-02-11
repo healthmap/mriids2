@@ -29,40 +29,40 @@ import { reduxInitialState } from "../../constants/CommonTestData";
 import dayjs from "dayjs";
 
 describe("Tests for getDataColumnLabel", () => {
-  test("should return 'Ebola cases'", () => {
-    expect(getDataColumnLabel("Ebola", "cases")).toEqual("Ebola cases");
+  test("should return 'Ebola Cases'", () => {
+    expect(getDataColumnLabel("Ebola", "cases")).toEqual("Ebola Cases");
   });
-  test("should return 'Ebola deaths'", () => {
-    expect(getDataColumnLabel("Ebola", "deaths")).toEqual("Ebola deaths");
+  test("should return 'Covid Deaths'", () => {
+    expect(getDataColumnLabel("Covid", "deaths")).toEqual("Covid Deaths");
   });
-  test("should also return 'Covid cases'", () => {
+  test("should return 'Covid Cases'", () => {
     expect(getDataColumnLabel("Covid", "projected cases")).toEqual(
-      "Covid cases"
+      "Covid Cases"
     );
   });
-  test("should also return 'Covid deaths'", () => {
+  test("should also return 'Covid Deaths'", () => {
     expect(getDataColumnLabel("Covid", "projected deaths")).toEqual(
-      "Covid deaths"
+      "Covid Deaths"
     );
   });
 });
 
 describe("Tests for getProjectionsColumnLabel", () => {
-  test("should return 'Projected cases'", () => {
+  test("should return 'Projected Cases'", () => {
     expect(getProjectionsColumnLabel("projected cases")).toEqual(
-      "Projected cases"
+      "Projected Cases"
     );
   });
-  test("should return 'Projected deaths'", () => {
+  test("should return 'Projected Deaths'", () => {
     expect(getProjectionsColumnLabel("projected deaths")).toEqual(
-      "Projected deaths"
+      "Projected Deaths"
     );
   });
 });
 
 describe("Tests for getChartColumns", () => {
   test("should just return 'Date' and 'Ebola Cases' column headers", () => {
-    expect(getChartColumns("Ebola", false, "cases")).toEqual([
+    expect(getChartColumns("Ebola", "cases")).toEqual([
       {
         type: "date",
         label: "Date",
@@ -74,7 +74,7 @@ describe("Tests for getChartColumns", () => {
     ]);
   });
   test("should return projections column header", () => {
-    expect(getChartColumns("Ebola", true, "cases")).toEqual([
+    expect(getChartColumns("Ebola", "projected cases")).toEqual([
       {
         type: "date",
         label: "Date",
@@ -85,7 +85,7 @@ describe("Tests for getChartColumns", () => {
       },
       {
         type: "number",
-        label: "Projected future cases",
+        label: "Projected Cases",
       },
     ]);
   });

@@ -1,12 +1,7 @@
 import React from "react";
 import { BlockPadded } from "../styled-components/Block";
 
-const Summary = ({
-  dateRange,
-  country,
-  diseaseCaseCount = 0,
-  projection = false,
-}) => {
+const Summary = ({ dateRange, country, diseaseCaseCount = 0, dataType }) => {
   const locationName = country === "All" ? "West Africa" : country;
   return (
     <BlockPadded>
@@ -14,9 +9,11 @@ const Summary = ({
       <p>
         From {dateRange.from.toDateString()} to {dateRange.to.toDateString()},
         the Ebola outbreak in {locationName}{" "}
-        {projection ? "is projected to affect" : "has affected"}{" "}
+        {dataType === "projected cases"
+          ? "is projected to affect"
+          : "has affected"}{" "}
         {diseaseCaseCount} people
-        {!projection && " (suspected and confirmed cases)"}.
+        {dataType !== "projected cases" && " (suspected and confirmed cases)"}.
       </p>
     </BlockPadded>
   );

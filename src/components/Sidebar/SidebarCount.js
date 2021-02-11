@@ -15,11 +15,15 @@ const SidebarCount = ({
   // If the Covid outbreak is selected, display either "cases" or "deaths" depending which data type is selected.
   // If the Ebola outbreak is selected, just display "cases".
   const dataType = filters.outbreak === "COVID 19" ? filters.dataType : "cases";
-  const titleText = filters.projection ? "Projection" : `Reported ${dataType}`;
-  const labelText = filters.projection
+  const titleText = filters.dataType.includes("projected")
+    ? "Projection"
+    : `Reported ${dataType}`;
+  const labelText = filters.dataType.includes("projected")
     ? "Total outbreak projections"
     : "Suspected and confirmed";
-  const iconColor = filters.projection ? "#259994" : "#4D73CE";
+  const iconColor = filters.dataType.includes("projected")
+    ? "#259994"
+    : "#4D73CE";
   return (
     <BlockPadded className="reported-cases-wrapper">
       <p>
@@ -35,7 +39,7 @@ const SidebarCount = ({
         <SidebarCountColor style={{ backgroundColor: iconColor }} />
         <SidebarCountValue>{diseaseCount}</SidebarCountValue>
       </SidebarCountParent>
-      {filters.projection && (
+      {filters.dataType.includes("projected") && (
         <SidebarCountParent>
           <SidebarCountLabel>Projected future cases</SidebarCountLabel>
           <SidebarCountColor style={{ backgroundColor: "#F2AD33" }} />
