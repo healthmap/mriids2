@@ -33,11 +33,11 @@ const DataRadioButtons = ({ dataType, changeDataType, outbreakSelected }) => {
                 control={<Radio />}
                 label="Deaths"
               />
-              <FormControlLabel
-                value="projected deaths"
-                control={<Radio />}
-                label="Projected Deaths"
-              />
+              {/*<FormControlLabel*/}
+              {/*  value="projected deaths"*/}
+              {/*  control={<Radio />}*/}
+              {/*  label="Projected Deaths"*/}
+              {/*/>*/}
             </>
           ) : (
             <FormControlLabel
