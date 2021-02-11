@@ -4,7 +4,10 @@ import { Chart } from "react-google-charts";
 
 import { ChartContainer } from "../styled-components/ChartContainer";
 import ChartTypeButtons from "../ChartTypeButtons";
-import { options } from "../../constants/GoogleChartOptions";
+import {
+  caseCountOptions,
+  deathCountOptions,
+} from "../../constants/GoogleChartOptions";
 import {
   getEbolaDataForCharts,
   getCovidDataForCharts,
@@ -21,11 +24,14 @@ const ChartComponent = ({
   const covidData =
     filters.chartType === "deaths" ? covidDeathCountsData : covidCaseCountsData;
 
-  // // Get the chartData based on the outbreak selected in the filters
+  // Get the chartData based on the outbreak selected in the filters
   const chartData =
     filters.outbreak === "Ebola Outbreak"
       ? getEbolaDataForCharts(ebolaData, ebolaDataCombined, filters)
       : getCovidDataForCharts(covidData, filters);
+
+  const chartOptions =
+    filters.chartType === "deaths" ? deathCountOptions : caseCountOptions;
 
   const showChartTypeButtons = filters.outbreak === "COVID 19";
 
@@ -38,7 +44,7 @@ const ChartComponent = ({
         chartType="ColumnChart"
         loader={<div>Loading Chart</div>}
         data={chartData}
-        options={options}
+        options={chartOptions}
         legendToggle
       />
     </ChartContainer>

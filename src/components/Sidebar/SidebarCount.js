@@ -20,7 +20,7 @@ const SidebarCount = ({
   const labelText = filters.projection
     ? "Total outbreak projections"
     : "Suspected and confirmed";
-  const iconColor = filters.projection ? "#259994" : "#4D73CE";
+  const iconColor = filters.projection ? "#259994" : "#E23D4A";
   return (
     <BlockPadded className="reported-cases-wrapper">
       <p>
