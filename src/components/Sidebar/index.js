@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import {
   changeCountryFilter,
   changeOutbreakFilter,
+  changeDataType,
 } from "../../actions/filters";
 import Select from "../Select";
 import SidebarCount from "./SidebarCount";
@@ -17,6 +18,7 @@ import {
 import { getFutureProjectionCount } from "../../utils/ebolaDataHelpers";
 import { getDiseaseCount } from "../../utils/sidebarDataHelpers";
 import CountrySelect from "../CountrySelect";
+import DataRadioButtons from "../DataRadioButtons";
 
 const Sidebar = ({
   filters,
@@ -26,11 +28,14 @@ const Sidebar = ({
   covidDeathCountData,
   changeCountryFilter,
   changeOutbreakFilter,
+  changeDataType,
 }) => {
   const changeOutbreak = (selectedValue) => {
     changeOutbreakFilter(selectedValue.target.value);
     // This resets the country filter to 'All' whenever you switch between outbreaks
     changeCountryFilter("All");
+    // Reset the data type to "cases"
+    changeDataType("cases");
   };
 
   // This is the disease count for the SidebarCount child component
@@ -68,6 +73,7 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
+      <DataRadioButtons />
       {showSidebarCount && (
         <SidebarCount
           filters={filters}
@@ -77,7 +83,7 @@ const Sidebar = ({
       )}
       {showEbolaSummary && (
         <Summary
-          projection={filters.projection}
+          dataType={filters.dataType}
           dateRange={filters.dateRange}
           country={filters.country}
           diseaseCaseCount={diseaseCount.toLocaleString()}
@@ -101,6 +107,7 @@ const mapDispatchToProps = (dispatch) =>
     {
       changeCountryFilter,
       changeOutbreakFilter,
+      changeDataType,
     },
     dispatch
   );

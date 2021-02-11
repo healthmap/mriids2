@@ -1,8 +1,7 @@
 import {
   changeCountryFilter,
   changeOutbreakFilter,
-  changeProjectionFilter,
-  changeChartType,
+  changeDataType,
   changeViewFilter,
   changeDateRange,
 } from "../filters";
@@ -26,19 +25,13 @@ describe("Tests for the filter actions", () => {
     };
     expect(changeOutbreakFilter(outbreak)).toEqual(expectedAction);
   });
-  test("changeProjectionFilter should return the expected action", () => {
+  test("changeDataType should return the expected action", () => {
+    const dataType = "deaths";
     const expectedAction = {
-      type: types.CHANGE_PROJECTION,
+      type: types.CHANGE_DATA_TYPE,
+      payload: dataType,
     };
-    expect(changeProjectionFilter()).toEqual(expectedAction);
-  });
-  test("changeChartType should return the expected action", () => {
-    const chartType = "deaths";
-    const expectedAction = {
-      type: types.CHANGE_CHART_TYPE,
-      payload: chartType,
-    };
-    expect(changeChartType(chartType)).toEqual(expectedAction);
+    expect(changeDataType(dataType)).toEqual(expectedAction);
   });
   test("changeViewFilter should return the expected action", () => {
     const view = "Risk";

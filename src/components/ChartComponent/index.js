@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Chart } from "react-google-charts";
 
 import { ChartContainer } from "../styled-components/ChartContainer";
-import ChartTypeButtons from "../ChartTypeButtons";
 import {
   caseCountOptions,
   deathCountOptions,
@@ -22,7 +21,7 @@ const ChartComponent = ({
 }) => {
   // Determines whether we are showing the covid case or death counts in the chart.
   const covidData =
-    filters.chartType === "deaths" ? covidDeathCountsData : covidCaseCountsData;
+    filters.dataType === "deaths" ? covidDeathCountsData : covidCaseCountsData;
 
   // Get the chartData based on the outbreak selected in the filters
   const chartData =
@@ -33,11 +32,8 @@ const ChartComponent = ({
   const chartOptions =
     filters.chartType === "deaths" ? deathCountOptions : caseCountOptions;
 
-  const showChartTypeButtons = filters.outbreak === "COVID 19";
-
   return (
     <ChartContainer>
-      {showChartTypeButtons && <ChartTypeButtons />}
       <Chart
         width="100%"
         height="100%"
