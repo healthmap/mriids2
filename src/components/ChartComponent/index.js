@@ -4,6 +4,7 @@ import { Chart } from "react-google-charts";
 import { ChartContainer } from "../styled-components/ChartContainer";
 import { options } from "../../constants/GoogleChartOptions";
 import {
+  getChartTitle,
   getEbolaDataForCharts,
   getCovidDataForCharts,
 } from "../../utils/chartDataHelpers";
@@ -27,6 +28,9 @@ const ChartComponent = ({
 
   return (
     <ChartContainer>
+      <h2>
+        {getChartTitle(filters.outbreak, filters.dataType, filters.country)}
+      </h2>
       <Chart
         width="100%"
         height="100%"
