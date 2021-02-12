@@ -26,11 +26,15 @@ const ChartComponent = ({
       ? getEbolaDataForCharts(ebolaData, ebolaDataCombined, filters)
       : getCovidDataForCharts(covidData, filters);
 
+  const titleText = getChartTitle(
+    filters.outbreak,
+    filters.dataType,
+    filters.country
+  );
+
   return (
     <ChartContainer>
-      <h2>
-        {getChartTitle(filters.outbreak, filters.dataType, filters.country)}
-      </h2>
+      <h2>{titleText}</h2>
       <Chart
         width="100%"
         height="100%"
