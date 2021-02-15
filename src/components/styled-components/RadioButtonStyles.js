@@ -8,7 +8,7 @@ export const DataRadioButtonsContainer = styled.div`
 `;
 
 export const InputLabel = styled.label`
-  margin: 2.4rem 1.2rem .4rem;
+  margin: 2.4rem 1.2rem 0.4rem;
   font-size: 1.2rem;
   line-height: 2;
   letter-spacing: 0.05rem;
@@ -38,9 +38,9 @@ export const StyledRadio = styled(Radio)`
   &.MuiRadio-root {
     color: ${(props) => props.theme.secondaryColorTintDark};
   }
-.PrivateSwitchBase-root-6 {
+  && {
     padding: 6px;
-}
+  }
 `;
 
 export const StyledFormControlLabel = styled(FormControlLabel)`
@@ -48,6 +48,6 @@ export const StyledFormControlLabel = styled(FormControlLabel)`
     font-size: 1.4rem;
     line-height: 2;
     font-weight: 600;
-	  margin-left: .2rem;
+    margin-left: 0.2rem;
   }
 `;

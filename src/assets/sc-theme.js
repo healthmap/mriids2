@@ -9,7 +9,7 @@ const styledComponentsTheme = {
   secondaryColorTintDark: "#A6B9E6",
   textColor: "#000",
   textLightColor: "#666",
-  lightestGray: "#efefef",
+  lightestGray: "#FAFCFE",
   borderColor: "#b1b1b1",
 };
 export default styledComponentsTheme;
