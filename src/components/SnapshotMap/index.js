@@ -10,7 +10,7 @@ import { SnapshotMapContainer } from "../styled-components/MapContainers";
 import ViewToggle from "../ViewToggle";
 import SnapshotMapLegend from "../SnapshotMapLegend";
 import MapZoomButtons from "../MapZoomButtons";
-import ReactTooltip from "react-tooltip";
+import { StyledTooltip } from "../styled-components/MapTooltip";
 import SnapshotMapCountryPopup from "../SnapshotMapCountryPopup";
 import {
   getEbolaFillColorsDictionary,
@@ -64,7 +64,7 @@ const SnapshotMap = ({
   return (
     <SnapshotMapContainer>
       {filters.outbreak === "Ebola Outbreak" && <ViewToggle />}
-      <ReactTooltip>{toolTipContent}</ReactTooltip>
+      <StyledTooltip>{toolTipContent}</StyledTooltip>
       <ComposableMap
         projection="geoMercator"
         style={{ backgroundColor: "#D6E4EE" }}
