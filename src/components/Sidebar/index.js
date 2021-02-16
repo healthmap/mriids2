@@ -18,6 +18,7 @@ import {
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
 import { Button } from "../styled-components/Button";
+import { InputLabel } from "../styled-components/InputLabel";
 import { getFutureProjectionCount } from "../../utils/ebolaDataHelpers";
 import { getDiseaseCount } from "../../utils/sidebarDataHelpers";
 import CountrySelect from "../CountrySelect";
@@ -77,6 +78,7 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
+	  <InputLabel>Timespan</InputLabel>
       <Button onClick={() => openDateRangeModal()}>
         {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
         {dayjs(filters.dateRange.to).format("MMM D, YYYY")}

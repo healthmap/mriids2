@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import TextField from "@material-ui/core/TextField";
+import { InputLabel } from "../styled-components/InputLabel";
 import {
   ebolaOutbreakCountries,
   allCountries,
@@ -24,7 +25,7 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
 
   return (
     <>
-      <Styled.InputLabel>Location</Styled.InputLabel>
+      <InputLabel>Location</InputLabel>
       <Styled.StyledAutocomplete
         id="country-select"
         renderInput={(params) => <TextField {...params} variant="outlined" />}
