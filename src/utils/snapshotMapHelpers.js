@@ -166,15 +166,6 @@ export const getCountryFillColor = (
   }
 };
 
-export const getCountryToolTipContent = (diseaseCaseCounts, countryName) => {
-  const countryCaseCount = diseaseCaseCounts[countryName];
-  // If the country has a case count, return the country name and case count.
-  // Else, just return the country name.
-  return countryCaseCount
-    ? `${countryName} - ${countryCaseCount.toLocaleString()}`
-    : countryName;
-};
-
 export const getCountryDiseaseCountDictionary = (
   ebolaData,
   covidCaseCountData,
