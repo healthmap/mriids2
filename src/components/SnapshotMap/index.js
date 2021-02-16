@@ -11,8 +11,8 @@ import ViewToggle from "../ViewToggle";
 import SnapshotMapLegend from "../SnapshotMapLegend";
 import MapZoomButtons from "../MapZoomButtons";
 import ReactTooltip from "react-tooltip";
+import SnapshotMapCountryPopup from "../SnapshotMapCountryPopup";
 import {
-  getCountryToolTipContent,
   getEbolaFillColorsDictionary,
   getCovidFillColorsDictionary,
   getCountryFillColor,
@@ -28,7 +28,7 @@ const SnapshotMap = ({
   const [zoomLevel, setZoomLevel] = useState(9);
   const [fillColorDictionary, setFillColorDictionary] = useState({});
   const [countryDiseaseCounts, updateCountryDiseaseCounts] = useState({});
-  const [toolTipContent, setToolTipContent] = useState("");
+  const [toolTipContent, setToolTipContent] = useState(null);
 
   // Getting the country disease counts for the selected outbreak when the filters are updated.
   useEffect(() => {
@@ -88,10 +88,10 @@ const SnapshotMap = ({
                     geography={geo}
                     onMouseEnter={() => {
                       setToolTipContent(
-                        getCountryToolTipContent(
-                          countryDiseaseCounts,
-                          geo.properties.NAME
-                        )
+                        <SnapshotMapCountryPopup
+                          countryName={geo.properties.NAME}
+                          diseaseCaseCountsDictionary={countryDiseaseCounts}
+                        />
                       );
                     }}
                     onMouseLeave={() => setToolTipContent("")}
