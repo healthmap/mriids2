@@ -2,13 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDataType } from "../../actions/filters";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import {
   DataRadioButtonsContainer,
-  StyledFormLabel,
+  InputLabel,
+  StyledRadioGroup,
+  StyledRadio,
+  StyledFormControlLabel,
 } from "../styled-components/RadioButtonStyles";
 
 const DataRadioButtons = ({ dataType, changeDataType, outbreakSelected }) => {
@@ -18,19 +18,23 @@ const DataRadioButtons = ({ dataType, changeDataType, outbreakSelected }) => {
   return (
     <DataRadioButtonsContainer>
       <FormControl component="fieldset">
-        <StyledFormLabel component="legend">Data</StyledFormLabel>
-        <RadioGroup
+        <InputLabel>Data</InputLabel>
+        <StyledRadioGroup
           aria-label="data"
           name="data"
           value={dataType}
           onChange={handleChange}
         >
-          <FormControlLabel value="cases" control={<Radio />} label="Cases" />
+          <StyledFormControlLabel
+            value="cases"
+            control={<StyledRadio />}
+            label="Cases"
+          />
           {outbreakSelected === "COVID 19" ? (
             <>
-              <FormControlLabel
+              <StyledFormControlLabel
                 value="deaths"
-                control={<Radio />}
+                control={<StyledRadio />}
                 label="Deaths"
               />
               {/*<FormControlLabel*/}
@@ -40,13 +44,13 @@ const DataRadioButtons = ({ dataType, changeDataType, outbreakSelected }) => {
               {/*/>*/}
             </>
           ) : (
-            <FormControlLabel
+            <StyledFormControlLabel
               value="projected cases"
-              control={<Radio />}
+              control={<StyledRadio />}
               label="Projected Cases"
             />
           )}
-        </RadioGroup>
+        </StyledRadioGroup>
       </FormControl>
     </DataRadioButtonsContainer>
   );
