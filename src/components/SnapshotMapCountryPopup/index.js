@@ -13,7 +13,8 @@ const SnapshotMapCountryPopup = ({
       <h2>{countryName}</h2>
       {countryTotalDiseaseCount ? (
         <p>
-          TOTAL {dataType.toUpperCase()} {countryTotalDiseaseCount}
+          TOTAL {dataType.toUpperCase()}{" "}
+          {countryTotalDiseaseCount.toLocaleString()}
         </p>
       ) : (
         <p>
