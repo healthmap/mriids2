@@ -515,7 +515,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
         className="c15"
         style={
           Object {
-            "backgroundColor": "#4D73CE",
+            "backgroundColor": "#E23D4A",
           }
         }
       />
