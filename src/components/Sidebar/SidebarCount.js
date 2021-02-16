@@ -23,7 +23,7 @@ const SidebarCount = ({
     : "Suspected and confirmed";
   const iconColor = filters.dataType.includes("projected")
     ? "#259994"
-    : "#4D73CE";
+    : "#E23D4A";
   return (
     <BlockPadded className="reported-cases-wrapper">
       <p>

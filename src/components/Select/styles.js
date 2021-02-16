@@ -12,6 +12,13 @@ export const StyledMuiSelect = styled(MuiSelect)`
     display: block;
     border-radius: 3px;
     border: 1px solid ${(props) => props.theme.borderColor};
+    &&:hover {
+      border: 1px solid #fff;
+      box-shadow: 0 0 0 4px ${(props) => props.theme.secondaryColorTint};
+    }
+    &&.Mui-focused {
+      border: 1px solid ${(props) => props.theme.secondaryColor};
+    }
     &&:hover:before,
     &:before {
       border: 0px;
