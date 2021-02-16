@@ -60,7 +60,7 @@ class SidebarDateRange extends Component {
           inputRanges={[]}
           direction="vertical"
           color="#4D73CE"
-          rangeColors="#4D73CE"
+          rangeColors={["#4D73CE"]}
         />
       </div>
     );

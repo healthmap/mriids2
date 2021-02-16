@@ -21,7 +21,6 @@ import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
 import SidebarDateRange from "./components/SidebarDateRange";
 import DateRange from "./components/DateRange";
-import Modal from "@material-ui/core/Modal";
 import Popover from "@material-ui/core/Popover";
 import DialogContent from "@material-ui/core/DialogContent";
 import { StyledAppContainer } from "./styles";
