@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the connected SnapshotMapCountryPopup should render with given state from Redux store 1`] = `
+.c0 {
+  width: 25rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <h2>
+      Guinea
+    </h2>
+  </div>
+  <div
+    className="c2"
+  >
+    <p>
+      TOTAL 
+      CASES
+       
+    </p>
+    <p>
+      2,452
+    </p>
+  </div>
+  <p>
+    Total 
+    cases
+     from 
+    Wed Oct 01 2014
+     to
+     
+    Sat Feb 20 2016
+  </p>
+</div>
+`;
