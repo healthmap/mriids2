@@ -1,5 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import {
+  MapPopupContainer,
+  MapPopupTitleContainer,
+  MapPopupCountSection,
+} from "./styles";
 
 const SnapshotMapCountryPopup = ({
   countryName,
@@ -9,13 +14,15 @@ const SnapshotMapCountryPopup = ({
 }) => {
   const countryTotalDiseaseCount = diseaseCaseCountsDictionary[countryName];
   return (
-    <div>
-      <h2>{countryName}</h2>
+    <MapPopupContainer>
+      <MapPopupTitleContainer>
+        <h2>{countryName}</h2>
+      </MapPopupTitleContainer>
       {countryTotalDiseaseCount ? (
-        <p>
-          TOTAL {dataType.toUpperCase()}{" "}
-          {countryTotalDiseaseCount.toLocaleString()}
-        </p>
+        <MapPopupCountSection>
+          <p>TOTAL {dataType.toUpperCase()} </p>
+          <p>{countryTotalDiseaseCount.toLocaleString()}</p>
+        </MapPopupCountSection>
       ) : (
         <p>
           We currently do not have total{" "}
@@ -27,7 +34,7 @@ const SnapshotMapCountryPopup = ({
         Total {dataType} from {dateRange.from.toDateString()} to{" "}
         {dateRange.to.toDateString()}
       </p>
-    </div>
+    </MapPopupContainer>
   );
 };
 
