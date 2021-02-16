@@ -22,6 +22,7 @@ import ChartComponent from "./components/ChartComponent";
 import SidebarDateRange from "./components/SidebarDateRange";
 import DateRange from "./components/DateRange";
 import Modal from "@material-ui/core/Modal";
+import Popover from "@material-ui/core/Popover";
 import DialogContent from "@material-ui/core/DialogContent";
 import { StyledAppContainer } from "./styles";
 
@@ -56,38 +57,42 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-      <StyledComponentsProvider theme={styledComponentsTheme}>
-        <Router>
-          <StyledAppContainer>
-            <Header />
-            <Switch>
-              <Route exact path="/">
-                <Sidebar />
-                <div>
-                  <Modal
-                    aria-labelledby="date-range-picker-modal"
-                    aria-describedby="date-range-picker-modal"
-                    open={this.props.isDateRangeModalOpen}
-                    onClose={() => this.props.closeDateRangeModal()}
-                    children={
-                      <DialogContent>
-                        <SidebarDateRange />
-                      </DialogContent>
-                    }
-                  />
-                </div>
-                {this.renderHomePageComponents()}
-              </Route>
-              <Route exact path="/about">
-                <About />
-              </Route>
-              <Route exact path="/team">
-                <Team />
-              </Route>
-            </Switch>
-          </StyledAppContainer>
-        </Router>
-      </StyledComponentsProvider>
+        <StyledComponentsProvider theme={styledComponentsTheme}>
+          <Router>
+            <StyledAppContainer>
+              <Header />
+              <Switch>
+                <Route exact path="/">
+                  <Sidebar />
+                  <div>
+                    <Popover
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left",
+                      }}
+                      aria-labelledby="date-range-picker-modal"
+                      aria-describedby="date-range-picker-modal"
+                      open={this.props.isDateRangeModalOpen}
+                      onClose={() => this.props.closeDateRangeModal()}
+                      children={
+                        <DialogContent>
+                          <SidebarDateRange />
+                        </DialogContent>
+                      }
+                    />
+                  </div>
+                  {this.renderHomePageComponents()}
+                </Route>
+                <Route exact path="/about">
+                  <About />
+                </Route>
+                <Route exact path="/team">
+                  <Team />
+                </Route>
+              </Switch>
+            </StyledAppContainer>
+          </Router>
+        </StyledComponentsProvider>
       </ThemeProvider>
     );
   }

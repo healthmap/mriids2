@@ -13,9 +13,9 @@ import {
   getNumberOfWeeksBetweenDates,
   getOutbreakInitialDateRange,
 } from "../../utils/dateHelpers";
-import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import { StyledDateRangePicker } from "./styles.js";
 
 class SidebarDateRange extends Component {
   updateDateRangeAndSlider = (startDate, endDate) => {
@@ -37,7 +37,7 @@ class SidebarDateRange extends Component {
         : covidDateRangeOptions;
     return (
       <div>
-        <DateRangePicker
+        <StyledDateRangePicker
           onChange={(item) =>
             this.updateDateRangeAndSlider(
               item.selection.startDate,
@@ -46,7 +46,7 @@ class SidebarDateRange extends Component {
           }
           showSelectionPreview={true}
           moveRangeOnFirstSelection={true}
-          months={2}
+          months={1}
           minDate={getMinimumDateRangeDate(this.props.outbreakSelected)}
           maxDate={getMaximumDateRangeDate(this.props.outbreakSelected)}
           ranges={[
@@ -58,7 +58,9 @@ class SidebarDateRange extends Component {
           ]}
           staticRanges={dateRangeOptions}
           inputRanges={[]}
-          direction="horizontal"
+          direction="vertical"
+          color="#4D73CE"
+          rangeColors="#4D73CE"
         />
       </div>
     );
