@@ -34,7 +34,7 @@ describe("Tests for getCountriesEbolaCaseCounts", () => {
   test("when projections are enabled, get the case count from projections.fourWeeks", () => {
     const projectionsEnabledState = {
       ...reduxInitialState,
-      filters: { ...reduxInitialState.filters, projection: true },
+      filters: { ...reduxInitialState.filters, dataType: "projected cases" },
     };
     expect(
       getCountriesEbolaCaseCounts(

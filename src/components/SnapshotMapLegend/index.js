@@ -16,11 +16,13 @@ import { BlockDropshadow } from "../styled-components/Block";
 const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
   // Determines whether the ebola outbreak is selected.
   const ebolaOutbreakSelected = filters.outbreak === "Ebola Outbreak";
-  // If the covid outbreak is selected and the chart type is "deaths", display "Death" in legend header.
+  // If the covid outbreak is selected and the dataType includes "deaths", display "Death" in legend header.
   // Otherwise, show "Case" in legend header.
   const dataType =
-    !ebolaOutbreakSelected && filters.chartType === "deaths" ? "Death" : "Case";
-  const legendHeader = filters.projection
+    !ebolaOutbreakSelected && filters.dataType.includes("deaths")
+      ? "Death"
+      : "Case";
+  const legendHeader = filters.dataType.includes("projected")
     ? "Total outbreak projections"
     : `${dataType} counts`;
 
@@ -35,7 +37,7 @@ const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
       let value = i / numberOfLevels;
       // If the projections are enabled, we want to use the projections colors.
       // Else, use the regular snapshot colors.
-      const color = filters.projection
+      const color = filters.dataType.includes("projected")
         ? getSnapshotProjectionsColor(value)
         : getSnapshotColor(value);
       levels.push(
@@ -51,7 +53,7 @@ const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
   };
 
   return (
-    <MapLegendWrapperSnapshot>
+    <MapLegendWrapperSnapshot data-test-id="snapshot-map-legend">
       <BlockDropshadow>
         <h3>{legendHeader}</h3>
         <MapLegendItemsWrapper>{renderLegendLevels()}</MapLegendItemsWrapper>

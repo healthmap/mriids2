@@ -22,7 +22,7 @@ export const getCountriesEbolaCaseCounts = (ebolaData, filters) => {
         if (isDateWithinFiltersDateRange(weekDateKey, filters.dateRange)) {
           const weeklyEbolaData = countryEbolaData[weekDateKey];
           // if projections are enabled, the count we want is the 'fourWeeks' projections count.
-          if (filters.projection) {
+          if (filters.dataType === "projected cases") {
             countryCaseCount[country] += parseInt(
               weeklyEbolaData.projections.fourWeeks
             );

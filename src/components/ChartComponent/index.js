@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Chart } from "react-google-charts";
-
 import { ChartContainer } from "../styled-components/ChartContainer";
-import ChartTypeButtons from "../ChartTypeButtons";
 import { options } from "../../constants/GoogleChartOptions";
 import {
+  getChartTitle,
   getEbolaDataForCharts,
   getCovidDataForCharts,
 } from "../../utils/chartDataHelpers";
@@ -19,7 +18,7 @@ const ChartComponent = ({
 }) => {
   // Determines whether we are showing the covid case or death counts in the chart.
   const covidData =
-    filters.chartType === "deaths" ? covidDeathCountsData : covidCaseCountsData;
+    filters.dataType === "deaths" ? covidDeathCountsData : covidCaseCountsData;
 
   // // Get the chartData based on the outbreak selected in the filters
   const chartData =
@@ -27,11 +26,15 @@ const ChartComponent = ({
       ? getEbolaDataForCharts(ebolaData, ebolaDataCombined, filters)
       : getCovidDataForCharts(covidData, filters);
 
-  const showChartTypeButtons = filters.outbreak === "COVID 19";
+  const titleText = getChartTitle(
+    filters.outbreak,
+    filters.dataType,
+    filters.country
+  );
 
   return (
     <ChartContainer>
-      {showChartTypeButtons && <ChartTypeButtons />}
+      <h2>{titleText}</h2>
       <Chart
         width="100%"
         height="100%"

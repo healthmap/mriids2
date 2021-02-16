@@ -55,6 +55,7 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
 
 <div
   className="c0"
+  data-test-id="snapshot-map-legend"
 >
   <div
     className="c1"

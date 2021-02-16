@@ -4,7 +4,6 @@ import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
 import { changeDateSliderRange } from "../../actions/ui";
 import { Slider } from "@material-ui/core";
-import ProjectionsToggle from "../ProjectionsToggle";
 import {
   DateRangeComponentContainer,
   DateRangeSliderContainer,
@@ -71,7 +70,6 @@ const DateRange = ({
           max={72}
           onChange={handleRangeChange}
         />
-        <ProjectionsToggle />
       </DateRangeSliderContainer>
     </DateRangeComponentContainer>
   );

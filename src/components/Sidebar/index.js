@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import {
   changeCountryFilter,
   changeOutbreakFilter,
+  changeDataType,
 } from "../../actions/filters";
 import { openDateRangeModal } from "../../actions/ui";
 import Select from "../Select";
@@ -20,6 +21,7 @@ import { Button } from "../styled-components/Button";
 import { getFutureProjectionCount } from "../../utils/ebolaDataHelpers";
 import { getDiseaseCount } from "../../utils/sidebarDataHelpers";
 import CountrySelect from "../CountrySelect";
+import DataRadioButtons from "../DataRadioButtons";
 
 const Sidebar = ({
   filters,
@@ -30,11 +32,14 @@ const Sidebar = ({
   changeCountryFilter,
   changeOutbreakFilter,
   openDateRangeModal,
+  changeDataType,
 }) => {
   const changeOutbreak = (selectedValue) => {
     changeOutbreakFilter(selectedValue.target.value);
     // This resets the country filter to 'All' whenever you switch between outbreaks
     changeCountryFilter("All");
+    // Reset the data type to "cases"
+    changeDataType("cases");
   };
 
   // This is the disease count for the SidebarCount child component
@@ -76,6 +81,7 @@ const Sidebar = ({
         {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
         {dayjs(filters.dateRange.to).format("MMM D, YYYY")}
       </Button>
+      <DataRadioButtons />
       {showSidebarCount && (
         <SidebarCount
           filters={filters}
@@ -85,7 +91,7 @@ const Sidebar = ({
       )}
       {showEbolaSummary && (
         <Summary
-          projection={filters.projection}
+          dataType={filters.dataType}
           dateRange={filters.dateRange}
           country={filters.country}
           diseaseCaseCount={diseaseCount.toLocaleString()}
@@ -110,6 +116,7 @@ const mapDispatchToProps = (dispatch) =>
       changeCountryFilter,
       changeOutbreakFilter,
       openDateRangeModal,
+      changeDataType,
     },
     dispatch
   );
