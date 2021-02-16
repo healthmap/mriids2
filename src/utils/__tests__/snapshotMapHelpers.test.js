@@ -6,7 +6,6 @@ import {
   getEbolaFillColorsDictionary,
   getCovidFillColorsDictionary,
   getCountryFillColor,
-  getCountryToolTipContent,
   getCountryDiseaseCountDictionary,
 } from "../snapshotMapHelpers";
 import { reduxInitialState } from "../../constants/CommonTestData";
@@ -165,37 +164,6 @@ describe("Tests for getCountryFillColor", () => {
         ebolaFillColorDictionary
       )
     ).toEqual("#FCF1DD");
-  });
-});
-
-describe("Tests for getCountryToolTipContent", () => {
-  test("should return only country name for ebola outbreak", () => {
-    const toolTipContent = getCountryToolTipContent(
-      ebolaCaseCountsDictionary,
-      "Honduras"
-    );
-    expect(toolTipContent).toEqual("Honduras");
-  });
-  test("should return country name and case count for ebola outbreak", () => {
-    const toolTipContent = getCountryToolTipContent(
-      ebolaCaseCountsDictionary,
-      "Guinea"
-    );
-    expect(toolTipContent).toEqual("Guinea - 2,452");
-  });
-  test("should return only country name for covid outbreak", () => {
-    const toolTipContent = getCountryToolTipContent(
-      covidCaseCountsDictionary,
-      "United States of America"
-    );
-    expect(toolTipContent).toEqual("United States of America");
-  });
-  test("should return country name with case count for covid outbreak", () => {
-    const toolTipContent = getCountryToolTipContent(
-      covidCaseCountsDictionary,
-      "Afghanistan"
-    );
-    expect(toolTipContent).toEqual("Afghanistan - 38");
   });
 });
 

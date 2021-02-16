@@ -10,9 +10,9 @@ import { SnapshotMapContainer } from "../styled-components/MapContainers";
 import ViewToggle from "../ViewToggle";
 import SnapshotMapLegend from "../SnapshotMapLegend";
 import MapZoomButtons from "../MapZoomButtons";
-import ReactTooltip from "react-tooltip";
+import { StyledTooltip } from "../styled-components/MapTooltip";
+import SnapshotMapCountryPopup from "../SnapshotMapCountryPopup";
 import {
-  getCountryToolTipContent,
   getEbolaFillColorsDictionary,
   getCovidFillColorsDictionary,
   getCountryFillColor,
@@ -28,7 +28,7 @@ const SnapshotMap = ({
   const [zoomLevel, setZoomLevel] = useState(9);
   const [fillColorDictionary, setFillColorDictionary] = useState({});
   const [countryDiseaseCounts, updateCountryDiseaseCounts] = useState({});
-  const [toolTipContent, setToolTipContent] = useState("");
+  const [toolTipContent, setToolTipContent] = useState(null);
 
   // Getting the country disease counts for the selected outbreak when the filters are updated.
   useEffect(() => {
@@ -64,7 +64,7 @@ const SnapshotMap = ({
   return (
     <SnapshotMapContainer>
       {filters.outbreak === "Ebola Outbreak" && <ViewToggle />}
-      <ReactTooltip>{toolTipContent}</ReactTooltip>
+      <StyledTooltip>{toolTipContent}</StyledTooltip>
       <ComposableMap
         projection="geoMercator"
         style={{ backgroundColor: "#D6E4EE" }}
@@ -88,10 +88,10 @@ const SnapshotMap = ({
                     geography={geo}
                     onMouseEnter={() => {
                       setToolTipContent(
-                        getCountryToolTipContent(
-                          countryDiseaseCounts,
-                          geo.properties.NAME
-                        )
+                        <SnapshotMapCountryPopup
+                          countryName={geo.properties.NAME}
+                          diseaseCaseCountsDictionary={countryDiseaseCounts}
+                        />
                       );
                     }}
                     onMouseLeave={() => setToolTipContent("")}
