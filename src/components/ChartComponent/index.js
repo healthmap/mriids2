@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Chart } from "react-google-charts";
-
 import { ChartContainer } from "../styled-components/ChartContainer";
 import {
   caseCountOptions,
   deathCountOptions,
 } from "../../constants/GoogleChartOptions";
 import {
+  getChartTitle,
   getEbolaDataForCharts,
   getCovidDataForCharts,
 } from "../../utils/chartDataHelpers";
@@ -32,8 +32,15 @@ const ChartComponent = ({
   const chartOptions =
     filters.dataType === "deaths" ? deathCountOptions : caseCountOptions;
 
+  const titleText = getChartTitle(
+    filters.outbreak,
+    filters.dataType,
+    filters.country
+  );
+
   return (
     <ChartContainer>
+      <h2>{titleText}</h2>
       <Chart
         width="100%"
         height="100%"

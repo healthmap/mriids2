@@ -3,6 +3,17 @@ import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { findCountryDataObject } from "./covidDataHelpers";
 import { capitalizeString } from "./commonHelpers";
 
+export const getChartTitle = (outbreakSelected, dataType, countrySelected) => {
+  const timeText = outbreakSelected === "COVID 19" ? "Daily" : "Weekly";
+  const dataTypeText =
+    dataType === "projected cases"
+      ? "Projected Cases"
+      : capitalizeString(dataType);
+  const locationText =
+    countrySelected === "All" ? "all Locations" : countrySelected;
+  return `${timeText} ${dataTypeText} in ${locationText}`;
+};
+
 export const getDataColumnLabel = (outbreakName, dataType) => {
   // If the dataType is either "cases" or "deaths", return the outbreak name with either "Cases" or "Deaths".
   if (dataType === "cases" || dataType === "deaths") {

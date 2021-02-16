@@ -20,10 +20,39 @@ Array [
   >
     Location
   </label>,
-  <div
+  .c0 .MuiInputBase-root {
+  background-color: #fff;
+  font-size: 1.4rem;
+  padding: 1.2rem !important;
+}
+
+.c0 .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #fff;
+  box-shadow: 0 0 0 4px;
+}
+
+.c0 .Mui-focused .MuiOutlinedInput-notchedOutline {
+  border: 1px solid !important;
+  box-shadow: 0 0 0 0;
+}
+
+.c0 .MuiAutocomplete-input {
+  padding: 0px !important;
+  height: 2.4rem;
+}
+
+.c0 .MuiSvgIcon-root {
+  font-size: 2rem;
+}
+
+.c0 .MuiAutocomplete-endAdornment {
+  top: calc(50% - 12px);
+}
+
+<div
     aria-expanded={false}
     aria-owns={null}
-    className="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon"
+    className="MuiAutocomplete-root c0 MuiAutocomplete-hasPopupIcon"
     onClick={[Function]}
     onKeyDown={[Function]}
     onMouseDown={[Function]}
@@ -33,7 +62,7 @@ Array [
       className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
     >
       <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot CountrySelect-inputRoot-1 MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+        className="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
         onClick={[Function]}
       >
         <input
@@ -98,7 +127,7 @@ Array [
         </div>
         <fieldset
           aria-hidden={true}
-          className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+          className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
           style={
             Object {
               "paddingLeft": 8,
@@ -106,7 +135,7 @@ Array [
           }
         >
           <legend
-            className="PrivateNotchedOutline-legend-3"
+            className="PrivateNotchedOutline-legend-2"
             style={
               Object {
                 "width": 0.01,
