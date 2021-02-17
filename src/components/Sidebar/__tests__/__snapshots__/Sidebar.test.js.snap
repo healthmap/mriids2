@@ -363,15 +363,17 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   >
     Timespan
   </label>
-  <button
-    className="c6"
-    onClick={[Function]}
-  >
-    Oct 1, 2014
-     -
-     
-    Feb 20, 2016
-  </button>
+  <div>
+    <button
+      className="c6"
+      onClick={[Function]}
+    >
+      Oct 1, 2014
+       -
+       
+      Feb 20, 2016
+    </button>
+  </div>
   <div
     className="c7"
   >
@@ -924,15 +926,17 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   >
     Timespan
   </label>
-  <button
-    className="c6"
-    onClick={[Function]}
-  >
-    Oct 1, 2014
-     -
-     
-    Feb 20, 2016
-  </button>
+  <div>
+    <button
+      className="c6"
+      onClick={[Function]}
+    >
+      Oct 1, 2014
+       -
+       
+      Feb 20, 2016
+    </button>
+  </div>
   <div
     className="c7"
   >
