@@ -4,6 +4,7 @@ import {
   MapPopupContainer,
   MapPopupTitleContainer,
   MapPopupCountSection,
+  Label,
 } from "./styles";
 
 const SnapshotMapCountryPopup = ({
@@ -16,11 +17,11 @@ const SnapshotMapCountryPopup = ({
   return (
     <MapPopupContainer>
       <MapPopupTitleContainer>
-        <h2>{countryName}</h2>
+        {countryName}
       </MapPopupTitleContainer>
       {countryTotalDiseaseCount ? (
         <MapPopupCountSection>
-          <p>TOTAL {dataType.toUpperCase()} </p>
+          <Label>Total {dataType}</Label>
           <p>{countryTotalDiseaseCount.toLocaleString()}</p>
         </MapPopupCountSection>
       ) : (
