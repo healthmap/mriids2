@@ -106,6 +106,7 @@ exports[`Tests for the connected DateRange should render with given state from R
 }
 
 .c0 {
+  padding-bottom: 4.8rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

@@ -15,6 +15,10 @@ exports[`Tests for the connected SnapshotMapCountryPopup should render with give
   -ms-flex-pack: center;
   justify-content: center;
   text-align: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-top: 0.8rem;
+  line-height: 1.4285714;
 }
 
 .c2 {
@@ -28,23 +32,39 @@ exports[`Tests for the connected SnapshotMapCountryPopup should render with give
   justify-content: space-between;
 }
 
+.c2 p {
+  margin: 1.6rem 0;
+  font-size: 1.4rem;
+  line-height: 1.4285714;
+}
+
+.c3 {
+  text-transform: uppercase;
+  font-weight: 700;
+  -webkit-letter-spacing: 0.05rem;
+  -moz-letter-spacing: 0.05rem;
+  -ms-letter-spacing: 0.05rem;
+  letter-spacing: 0.05rem;
+  font-size: 0.75rem;
+  line-height: 1.6666666666;
+}
+
 <div
   className="c0"
 >
   <div
     className="c1"
   >
-    <h2>
-      Guinea
-    </h2>
+    Guinea
   </div>
   <div
     className="c2"
   >
-    <p>
-      TOTAL 
-      CASES
-       
+    <p
+      className="c3"
+    >
+      Total 
+      cases
     </p>
     <p>
       2,452
