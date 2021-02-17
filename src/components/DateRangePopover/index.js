@@ -1,12 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { closeDateRangeModal } from "../../actions/ui";
+import { closeDateRangePopover } from "../../actions/ui";
 import Popover from "@material-ui/core/Popover";
 import DialogContent from "@material-ui/core/DialogContent";
 import SidebarDateRange from "../SidebarDateRange";
 
-const DateRangePopover = ({ isDateRangeModalOpen, closeDateRangeModal }) => {
+const DateRangePopover = ({
+  isDateRangePopoverOpen,
+  closeDateRangePopover,
+}) => {
   return (
     <Popover
       anchorOrigin={{
@@ -15,8 +18,8 @@ const DateRangePopover = ({ isDateRangeModalOpen, closeDateRangeModal }) => {
       }}
       aria-labelledby="date-range-picker-modal"
       aria-describedby="date-range-picker-modal"
-      open={isDateRangeModalOpen}
-      onClose={() => closeDateRangeModal()}
+      open={isDateRangePopoverOpen}
+      onClose={() => closeDateRangePopover()}
       children={
         <DialogContent>
           <SidebarDateRange />
@@ -27,10 +30,10 @@ const DateRangePopover = ({ isDateRangeModalOpen, closeDateRangeModal }) => {
 };
 
 const mapStateToProps = (state) => ({
-  isDateRangeModalOpen: state.ui.isDateRangeModalOpen,
+  isDateRangePopoverOpen: state.ui.isDateRangePopoverOpen,
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ closeDateRangeModal }, dispatch);
+  bindActionCreators({ closeDateRangePopover }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(DateRangePopover);

@@ -20,25 +20,25 @@ describe("Tests for ui reducer", () => {
       })
     ).toEqual(changedUiState);
   });
-  test("should handle opening the date range modal", () => {
+  test("should handle opening the date range popover", () => {
     const changedUiState = {
       ...initialUiState,
-      isDateRangeModalOpen: true,
+      isDateRangePopoverOpen: true,
     };
     expect(
       ui(initialUiState, {
-        type: types.OPEN_DATE_RANGE_MODAL,
+        type: types.OPEN_DATE_RANGE_POPOVER,
       })
     ).toEqual(changedUiState);
   });
-  test("should handle closing the date range modal", () => {
+  test("should handle closing the date range popover", () => {
     const changedUiState = {
       ...initialUiState,
-      isDateRangeModalOpen: false,
+      isDateRangePopoverOpen: false,
     };
     expect(
       ui(initialUiState, {
-        type: types.CLOSE_DATE_RANGE_MODAL,
+        type: types.CLOSE_DATE_RANGE_POPOVER,
       })
     ).toEqual(changedUiState);
   });

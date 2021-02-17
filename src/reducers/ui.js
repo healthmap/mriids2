@@ -2,7 +2,7 @@ import * as types from "../constants/ActionTypes";
 
 const initialState = {
   dateSliderRange: [0, 72],
-  isDateRangeModalOpen: false,
+  isDateRangePopoverOpen: false,
 };
 
 const UiState = function (state = initialState, action) {
@@ -12,15 +12,15 @@ const UiState = function (state = initialState, action) {
         ...state,
         dateSliderRange: action.payload,
       };
-    case types.OPEN_DATE_RANGE_MODAL:
+    case types.OPEN_DATE_RANGE_POPOVER:
       return {
         ...state,
-        isDateRangeModalOpen: true,
+        isDateRangePopoverOpen: true,
       };
-    case types.CLOSE_DATE_RANGE_MODAL:
+    case types.CLOSE_DATE_RANGE_POPOVER:
       return {
         ...state,
-        isDateRangeModalOpen: false,
+        isDateRangePopoverOpen: false,
       };
     default:
       return state;

@@ -7,7 +7,7 @@ import {
   changeOutbreakFilter,
   changeDataType,
 } from "../../actions/filters";
-import { openDateRangeModal } from "../../actions/ui";
+import { openDateRangePopover } from "../../actions/ui";
 import Select from "../Select";
 import SidebarCount from "./SidebarCount";
 import Summary from "./Summary";
@@ -32,7 +32,7 @@ const Sidebar = ({
   covidDeathCountData,
   changeCountryFilter,
   changeOutbreakFilter,
-  openDateRangeModal,
+  openDateRangePopover,
   changeDataType,
 }) => {
   const changeOutbreak = (selectedValue) => {
@@ -78,8 +78,8 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
-	  <InputLabel>Timespan</InputLabel>
-      <Button onClick={() => openDateRangeModal()}>
+      <InputLabel>Timespan</InputLabel>
+      <Button onClick={() => openDateRangePopover()}>
         {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
         {dayjs(filters.dateRange.to).format("MMM D, YYYY")}
       </Button>
@@ -117,7 +117,7 @@ const mapDispatchToProps = (dispatch) =>
     {
       changeCountryFilter,
       changeOutbreakFilter,
-      openDateRangeModal,
+      openDateRangePopover,
       changeDataType,
     },
     dispatch
