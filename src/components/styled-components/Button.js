@@ -1,27 +1,28 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  position: relative;
-  padding: 0.2em 1.5em;
-  color: #000;
-  text-decoration: none;
+  font-size: 1.4rem;
+  line-height: 2;
+  padding: 0.9rem 1.2rem;
+  width: 100%;
+  text-align: left;
   background-color: #fff;
-  border: 1px solid #000;
-  border-radius: 2px;
+  border-radius: 3px;
+  border: 1px solid ${(props) => props.theme.borderColor};
   cursor: pointer;
   user-select: none;
   outline: none;
-  &:focus,
-  &.focus {
-    text-decoration: none;
-    outline: 0;
+  &:focus {
+    background: #fff;
+    border: 1px solid ${(props) => props.theme.secondaryColor};
   }
-  &:active,
-  &.is-active {
-    color: #fff;
-    background-color: #000;
-    background-image: none;
-    outline: 0;
+  &:hover {
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 4px ${(props) => props.theme.secondaryColorTint};
+  }
+
+  &:active {
+    background-color: #fff;
     user-select: none;
   }
   &:disabled {

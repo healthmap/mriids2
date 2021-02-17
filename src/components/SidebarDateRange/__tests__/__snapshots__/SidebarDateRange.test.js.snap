@@ -1,0 +1,1527 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the connected SidebarDateRange component with reduxInitialState should render with given state from Redux store 1`] = `
+<div>
+  <div
+    className="rdrDateRangePickerWrapper "
+  >
+    <div
+      className="rdrDefinedRangesWrapper"
+    >
+      <div
+        className="rdrStaticRanges"
+      >
+        <button
+          className="rdrStaticRange rdrStaticRangeSelected"
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "color": "#4D73CE",
+            }
+          }
+          type="button"
+        >
+          <span
+            className="rdrStaticRangeLabel"
+            tabIndex={-1}
+          >
+            1 month
+          </span>
+        </button>
+        <button
+          className="rdrStaticRange rdrStaticRangeSelected"
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "color": "#4D73CE",
+            }
+          }
+          type="button"
+        >
+          <span
+            className="rdrStaticRangeLabel"
+            tabIndex={-1}
+          >
+            3 months
+          </span>
+        </button>
+        <button
+          className="rdrStaticRange rdrStaticRangeSelected"
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "color": "#4D73CE",
+            }
+          }
+          type="button"
+        >
+          <span
+            className="rdrStaticRangeLabel"
+            tabIndex={-1}
+          >
+            6 months
+          </span>
+        </button>
+        <button
+          className="rdrStaticRange rdrStaticRangeSelected"
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "color": "#4D73CE",
+            }
+          }
+          type="button"
+        >
+          <span
+            className="rdrStaticRangeLabel"
+            tabIndex={-1}
+          >
+            1 year
+          </span>
+        </button>
+        <button
+          className="rdrStaticRange rdrStaticRangeSelected"
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "color": "#4D73CE",
+            }
+          }
+          type="button"
+        >
+          <span
+            className="rdrStaticRangeLabel"
+            tabIndex={-1}
+          >
+            Max
+          </span>
+        </button>
+        <button
+          className="rdrStaticRange rdrStaticRangeSelected"
+          onClick={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          style={
+            Object {
+              "color": "#4D73CE",
+            }
+          }
+          type="button"
+        >
+          <span
+            className="rdrStaticRangeLabel"
+            tabIndex={-1}
+          >
+            Reset
+          </span>
+        </button>
+      </div>
+      <div
+        className="rdrInputRanges"
+      />
+    </div>
+    <div
+      className="rdrCalendarWrapper rdrDateRangeWrapper"
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+    >
+      <div
+        className="rdrDateDisplayWrapper"
+      >
+        <div
+          className="rdrDateDisplay"
+          style={
+            Object {
+              "color": "#4D73CE",
+            }
+          }
+        >
+          <span
+            className="rdrDateInput rdrDateDisplayItem rdrDateDisplayItemActive"
+          >
+            <input
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Early"
+              readOnly={true}
+              value="Oct 1, 2014"
+            />
+          </span>
+          <span
+            className="rdrDateInput rdrDateDisplayItem"
+          >
+            <input
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Continuous"
+              readOnly={true}
+              value="Feb 20, 2016"
+            />
+          </span>
+        </div>
+      </div>
+      <div
+        className="rdrMonthAndYearWrapper"
+        onMouseUp={[Function]}
+      >
+        <button
+          className="rdrNextPrevButton rdrPprevButton"
+          onClick={[Function]}
+          type="button"
+        >
+          <i />
+        </button>
+        <span
+          className="rdrMonthAndYearPickers"
+        >
+          <span
+            className="rdrMonthPicker"
+          >
+            <select
+              onChange={[Function]}
+              value={9}
+            >
+              <option
+                value={0}
+              >
+                January
+              </option>
+              <option
+                value={1}
+              >
+                February
+              </option>
+              <option
+                value={2}
+              >
+                March
+              </option>
+              <option
+                value={3}
+              >
+                April
+              </option>
+              <option
+                value={4}
+              >
+                May
+              </option>
+              <option
+                value={5}
+              >
+                June
+              </option>
+              <option
+                value={6}
+              >
+                July
+              </option>
+              <option
+                value={7}
+              >
+                August
+              </option>
+              <option
+                value={8}
+              >
+                September
+              </option>
+              <option
+                value={9}
+              >
+                October
+              </option>
+              <option
+                value={10}
+              >
+                November
+              </option>
+              <option
+                value={11}
+              >
+                December
+              </option>
+            </select>
+          </span>
+          <span />
+          <span
+            className="rdrYearPicker"
+          >
+            <select
+              onChange={[Function]}
+              value={2014}
+            >
+              <option
+                value={2016}
+              >
+                2016
+              </option>
+              <option
+                value={2015}
+              >
+                2015
+              </option>
+              <option
+                value={2014}
+              >
+                2014
+              </option>
+            </select>
+          </span>
+        </span>
+        <button
+          className="rdrNextPrevButton rdrNextButton"
+          onClick={[Function]}
+          type="button"
+        >
+          <i />
+        </button>
+      </div>
+      <div
+        className="rdrMonths rdrMonthsVertical"
+      >
+        <div
+          className="rdrMonth"
+        >
+          <div
+            className="rdrWeekDays"
+          >
+            <span
+              className="rdrWeekDay"
+            >
+              Sun
+            </span>
+            <span
+              className="rdrWeekDay"
+            >
+              Mon
+            </span>
+            <span
+              className="rdrWeekDay"
+            >
+              Tue
+            </span>
+            <span
+              className="rdrWeekDay"
+            >
+              Wed
+            </span>
+            <span
+              className="rdrWeekDay"
+            >
+              Thu
+            </span>
+            <span
+              className="rdrWeekDay"
+            >
+              Fri
+            </span>
+            <span
+              className="rdrWeekDay"
+            >
+              Sat
+            </span>
+          </div>
+          <div
+            className="rdrDays"
+            onMouseLeave={[Function]}
+          >
+            <button
+              className="rdrDay rdrDayPassive rdrDayDisabled rdrDayWeekend rdrDayStartOfWeek"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              tabIndex={-1}
+              type="button"
+            >
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  28
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayPassive rdrDayDisabled"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              tabIndex={-1}
+              type="button"
+            >
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  29
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayPassive rdrDayDisabled"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              tabIndex={-1}
+              type="button"
+            >
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  30
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayStartOfMonth"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrStartEdge"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  1
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  2
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  3
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  4
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  5
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  6
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  7
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  8
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  9
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  10
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  11
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  12
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  13
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  14
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  15
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  16
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  17
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  18
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  19
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  20
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  21
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  22
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  23
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  24
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayWeekend rdrDayEndOfWeek"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  25
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayWeekend rdrDayStartOfWeek"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  26
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  27
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  28
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  29
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  30
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayEndOfMonth"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  31
+                </span>
+              </span>
+            </button>
+            <button
+              className="rdrDay rdrDayPassive rdrDayWeekend rdrDayEndOfWeek"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onPauseCapture={[Function]}
+              style={
+                Object {
+                  "color": "#4D73CE",
+                }
+              }
+              tabIndex={-1}
+              type="button"
+            >
+              <span
+                className="rdrInRange"
+                style={
+                  Object {
+                    "color": "#4D73CE",
+                  }
+                }
+              />
+              <span
+                className="rdrDayNumber"
+              >
+                <span>
+                  1
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

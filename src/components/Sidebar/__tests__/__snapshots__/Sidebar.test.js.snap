@@ -1,35 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tests for the connected Sidebar component with reduxInitialState should render with given state from Redux store 1`] = `
-.c6.c6 {
-  background-color: #fff;
-  font-size: 1.4rem;
-  line-height: 2;
-  padding: 0 1.2rem;
-  display: block;
-  border-radius: 3px;
-  border: 1px solid;
-}
-
-.c6.c6.c6.c6:hover {
-  border: 1px solid #fff;
-  box-shadow: 0 0 0 4px;
-}
-
-.c6.c6.c6.c6.Mui-focused {
-  border: 1px solid;
-}
-
-.c6.c6.c6.c6:hover:before,
-.c6.c6:before {
-  border: 0px;
-}
-
-.c6.c6 .MuiSelect-select:focus {
-  background-color: transparent;
-}
-
-.c5 {
+.c2 {
   margin: 2.4rem 1.2rem 0.4rem;
   font-size: 1.2rem;
   line-height: 2;
@@ -42,23 +14,51 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   font-weight: 700;
 }
 
-.c12 {
+.c5.c5 {
+  background-color: #fff;
+  font-size: 1.4rem;
+  line-height: 2;
+  padding: 0 1.2rem;
+  display: block;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+.c5.c5.c5.c5:hover {
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 4px;
+}
+
+.c5.c5.c5.c5.Mui-focused {
+  border: 1px solid;
+}
+
+.c5.c5.c5.c5:hover:before,
+.c5.c5:before {
+  border: 0px;
+}
+
+.c5.c5 .MuiSelect-select:focus {
+  background-color: transparent;
+}
+
+.c11 {
   padding: 1.3rem;
 }
 
-.c12.reported-cases-wrapper {
+.c11.reported-cases-wrapper {
   border-bottom: 1px solid #ccc;
 }
 
-.c13 {
+.c12 {
   margin: 0.6rem 0;
 }
 
-.c14 {
+.c13 {
   margin-bottom: 0.3rem;
 }
 
-.c15 {
+.c14 {
   display: inline-block;
   width: 2rem;
   height: 2rem;
@@ -66,7 +66,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   margin-right: 0.8em;
 }
 
-.c16 {
+.c15 {
   display: inline-block;
   font-size: 1.8em;
 }
@@ -76,7 +76,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   left: 0;
   bottom: 0;
   width: calc( - 3.2rem);
-  padding: 2.4rem 1.6rem;
+  padding: .8rem 1.6rem 2.4rem;
   overflow: auto;
   z-index: 2;
 }
@@ -101,17 +101,44 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   background-color: #000;
 }
 
-.c2 {
-  margin: 0rem 1.2rem 0.4rem;
-  font-size: 1.2rem;
+.c6 {
+  font-size: 1.4rem;
   line-height: 2;
-  -webkit-letter-spacing: 0.05rem;
-  -moz-letter-spacing: 0.05rem;
-  -ms-letter-spacing: 0.05rem;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 700;
+  padding: 0.9rem 1.2rem;
+  width: 100%;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+.c6:focus {
+  background: #fff;
+  border: 1px solid;
+}
+
+.c6:hover {
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 4px;
+}
+
+.c6:active {
+  background-color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c6:disabled {
+  cursor: auto;
+  opacity: 0.65;
 }
 
 .c3 .MuiInputBase-root {
@@ -148,32 +175,19 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 }
 
 .c8 {
-  margin: 2.4rem 1.2rem 0.4rem;
-  font-size: 1.2rem;
-  line-height: 2;
-  -webkit-letter-spacing: 0.05rem;
-  -moz-letter-spacing: 0.05rem;
-  -ms-letter-spacing: 0.05rem;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 700;
-}
-
-.c9 {
   margin-left: 1.2rem;
 }
 
-.c11 .MuiSvgIcon-root {
+.c10 .MuiSvgIcon-root {
   width: 2rem;
   height: 2rem;
 }
 
-.c11.c11 {
+.c10.c10 {
   padding: 6px;
 }
 
-.c10 .MuiTypography-body1 {
+.c9 .MuiTypography-body1 {
   font-size: 1.4rem;
   line-height: 2;
   font-weight: 600;
@@ -301,12 +315,12 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     className="c4"
   >
     <label
-      className="c5"
+      className="c2"
     >
       outbreak
     </label>
     <div
-      className="MuiInputBase-root MuiInput-root MuiInput-underline c6"
+      className="MuiInputBase-root MuiInput-root MuiInput-underline c5"
       onClick={[Function]}
     >
       <div
@@ -344,6 +358,22 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       </svg>
     </div>
   </div>
+  <label
+    className="c2"
+  >
+    Timespan
+  </label>
+  <div>
+    <button
+      className="c6"
+      onClick={[Function]}
+    >
+      Oct 1, 2014
+       -
+       
+      Feb 20, 2016
+    </button>
+  </div>
   <div
     className="c7"
   >
@@ -351,21 +381,21 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       className="MuiFormControl-root"
     >
       <label
-        className="c8"
+        className="c2"
       >
         Data
       </label>
       <div
         aria-label="data"
-        className="MuiFormGroup-root c9"
+        className="MuiFormGroup-root c8"
         role="radiogroup"
       >
         <label
-          className="MuiFormControlLabel-root c10"
+          className="MuiFormControlLabel-root c9"
         >
           <span
             aria-disabled={false}
-            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c11 PrivateSwitchBase-checked-6 Mui-checked MuiIconButton-colorSecondary"
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 PrivateSwitchBase-checked-6 Mui-checked MuiIconButton-colorSecondary"
             onBlur={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}
@@ -424,11 +454,11 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
           </span>
         </label>
         <label
-          className="MuiFormControlLabel-root c10"
+          className="MuiFormControlLabel-root c9"
         >
           <span
             aria-disabled={false}
-            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c11 MuiIconButton-colorSecondary"
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 MuiIconButton-colorSecondary"
             onBlur={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}
@@ -490,7 +520,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     </fieldset>
   </div>
   <div
-    className="c12 reported-cases-wrapper"
+    className="c11 reported-cases-wrapper"
   >
     <p>
       <strong>
@@ -504,15 +534,15 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       </strong>
     </p>
     <div
-      className="c13"
+      className="c12"
     >
       <div
-        className="c14"
+        className="c13"
       >
         Suspected and confirmed
       </div>
       <div
-        className="c15"
+        className="c14"
         style={
           Object {
             "backgroundColor": "#E23D4A",
@@ -520,14 +550,14 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
         }
       />
       <div
-        className="c16"
+        className="c15"
       >
         0
       </div>
     </div>
   </div>
   <div
-    className="c12"
+    className="c11"
   >
     <h4>
       SUMMARY
@@ -552,35 +582,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 `;
 
 exports[`Tests for the connected Sidebar component with riskViewState should render with given state from Redux store 1`] = `
-.c6.c6 {
-  background-color: #fff;
-  font-size: 1.4rem;
-  line-height: 2;
-  padding: 0 1.2rem;
-  display: block;
-  border-radius: 3px;
-  border: 1px solid;
-}
-
-.c6.c6.c6.c6:hover {
-  border: 1px solid #fff;
-  box-shadow: 0 0 0 4px;
-}
-
-.c6.c6.c6.c6.Mui-focused {
-  border: 1px solid;
-}
-
-.c6.c6.c6.c6:hover:before,
-.c6.c6:before {
-  border: 0px;
-}
-
-.c6.c6 .MuiSelect-select:focus {
-  background-color: transparent;
-}
-
-.c5 {
+.c2 {
   margin: 2.4rem 1.2rem 0.4rem;
   font-size: 1.2rem;
   line-height: 2;
@@ -593,11 +595,39 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   font-weight: 700;
 }
 
-.c12 {
+.c5.c5 {
+  background-color: #fff;
+  font-size: 1.4rem;
+  line-height: 2;
+  padding: 0 1.2rem;
+  display: block;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+.c5.c5.c5.c5:hover {
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 4px;
+}
+
+.c5.c5.c5.c5.Mui-focused {
+  border: 1px solid;
+}
+
+.c5.c5.c5.c5:hover:before,
+.c5.c5:before {
+  border: 0px;
+}
+
+.c5.c5 .MuiSelect-select:focus {
+  background-color: transparent;
+}
+
+.c11 {
   padding: 1.3rem;
 }
 
-.c12.reported-cases-wrapper {
+.c11.reported-cases-wrapper {
   border-bottom: 1px solid #ccc;
 }
 
@@ -606,7 +636,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   left: 0;
   bottom: 0;
   width: calc( - 3.2rem);
-  padding: 2.4rem 1.6rem;
+  padding: .8rem 1.6rem 2.4rem;
   overflow: auto;
   z-index: 2;
 }
@@ -631,17 +661,44 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   background-color: #000;
 }
 
-.c2 {
-  margin: 0rem 1.2rem 0.4rem;
-  font-size: 1.2rem;
+.c6 {
+  font-size: 1.4rem;
   line-height: 2;
-  -webkit-letter-spacing: 0.05rem;
-  -moz-letter-spacing: 0.05rem;
-  -ms-letter-spacing: 0.05rem;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 700;
+  padding: 0.9rem 1.2rem;
+  width: 100%;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+.c6:focus {
+  background: #fff;
+  border: 1px solid;
+}
+
+.c6:hover {
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 4px;
+}
+
+.c6:active {
+  background-color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c6:disabled {
+  cursor: auto;
+  opacity: 0.65;
 }
 
 .c3 .MuiInputBase-root {
@@ -678,32 +735,19 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
 }
 
 .c8 {
-  margin: 2.4rem 1.2rem 0.4rem;
-  font-size: 1.2rem;
-  line-height: 2;
-  -webkit-letter-spacing: 0.05rem;
-  -moz-letter-spacing: 0.05rem;
-  -ms-letter-spacing: 0.05rem;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 700;
-}
-
-.c9 {
   margin-left: 1.2rem;
 }
 
-.c11 .MuiSvgIcon-root {
+.c10 .MuiSvgIcon-root {
   width: 2rem;
   height: 2rem;
 }
 
-.c11.c11 {
+.c10.c10 {
   padding: 6px;
 }
 
-.c10 .MuiTypography-body1 {
+.c9 .MuiTypography-body1 {
   font-size: 1.4rem;
   line-height: 2;
   font-weight: 600;
@@ -834,12 +878,12 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
     className="c4"
   >
     <label
-      className="c5"
+      className="c2"
     >
       outbreak
     </label>
     <div
-      className="MuiInputBase-root MuiInput-root MuiInput-underline c6"
+      className="MuiInputBase-root MuiInput-root MuiInput-underline c5"
       onClick={[Function]}
     >
       <div
@@ -877,6 +921,22 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
       </svg>
     </div>
   </div>
+  <label
+    className="c2"
+  >
+    Timespan
+  </label>
+  <div>
+    <button
+      className="c6"
+      onClick={[Function]}
+    >
+      Oct 1, 2014
+       -
+       
+      Feb 20, 2016
+    </button>
+  </div>
   <div
     className="c7"
   >
@@ -884,21 +944,21 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
       className="MuiFormControl-root"
     >
       <label
-        className="c8"
+        className="c2"
       >
         Data
       </label>
       <div
         aria-label="data"
-        className="MuiFormGroup-root c9"
+        className="MuiFormGroup-root c8"
         role="radiogroup"
       >
         <label
-          className="MuiFormControlLabel-root c10"
+          className="MuiFormControlLabel-root c9"
         >
           <span
             aria-disabled={false}
-            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c11 PrivateSwitchBase-checked-6 Mui-checked MuiIconButton-colorSecondary"
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 PrivateSwitchBase-checked-6 Mui-checked MuiIconButton-colorSecondary"
             onBlur={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}
@@ -960,11 +1020,11 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
           </span>
         </label>
         <label
-          className="MuiFormControlLabel-root c10"
+          className="MuiFormControlLabel-root c9"
         >
           <span
             aria-disabled={false}
-            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c11 MuiIconButton-colorSecondary"
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 MuiIconButton-colorSecondary"
             onBlur={[Function]}
             onDragLeave={[Function]}
             onFocus={[Function]}
@@ -1029,7 +1089,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
     </fieldset>
   </div>
   <div
-    className="c12"
+    className="c11"
   >
     <h4>
       SUMMARY
@@ -1051,7 +1111,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
     </p>
   </div>
   <div
-    className="c12"
+    className="c11"
   >
     <strong>
       <p>

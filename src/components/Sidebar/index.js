@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import dayjs from "dayjs";
 import {
   changeCountryFilter,
   changeOutbreakFilter,
   changeDataType,
 } from "../../actions/filters";
+import {
+  openDateRangePopover,
+  setPopoverAnchorElement,
+} from "../../actions/ui";
 import Select from "../Select";
 import SidebarCount from "./SidebarCount";
 import Summary from "./Summary";
@@ -15,6 +20,8 @@ import {
   SelectCountryWrapper,
   SelectOutbreakWrapper,
 } from "../styled-components/SelectWrappers";
+import { Button } from "../styled-components/Button";
+import { InputLabel } from "../styled-components/InputLabel";
 import { getFutureProjectionCount } from "../../utils/ebolaDataHelpers";
 import { getDiseaseCount } from "../../utils/sidebarDataHelpers";
 import CountrySelect from "../CountrySelect";
@@ -28,14 +35,27 @@ const Sidebar = ({
   covidDeathCountData,
   changeCountryFilter,
   changeOutbreakFilter,
+  openDateRangePopover,
+  setPopoverAnchorElement,
   changeDataType,
 }) => {
+  // This is used to set a ref for the parent div that houses the button to open the date range popover.
+  // We need this ref to tell the DateRangePopover to use this element as it's anchor.
+  const popoverButtonDivRef = useRef();
+
   const changeOutbreak = (selectedValue) => {
     changeOutbreakFilter(selectedValue.target.value);
     // This resets the country filter to 'All' whenever you switch between outbreaks
     changeCountryFilter("All");
     // Reset the data type to "cases"
     changeDataType("cases");
+  };
+
+  const handleDateRangePopoverOpen = () => {
+    // Set the anchor element for the date range popover.
+    setPopoverAnchorElement(popoverButtonDivRef.current);
+    // Open the date range popover.
+    openDateRangePopover();
   };
 
   // This is the disease count for the SidebarCount child component
@@ -73,6 +93,13 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </SelectOutbreakWrapper>
+      <InputLabel>Timespan</InputLabel>
+      <div ref={popoverButtonDivRef}>
+        <Button onClick={() => handleDateRangePopoverOpen()}>
+          {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
+          {dayjs(filters.dateRange.to).format("MMM D, YYYY")}
+        </Button>
+      </div>
       <DataRadioButtons />
       {showSidebarCount && (
         <SidebarCount
@@ -107,6 +134,8 @@ const mapDispatchToProps = (dispatch) =>
     {
       changeCountryFilter,
       changeOutbreakFilter,
+      openDateRangePopover,
+      setPopoverAnchorElement,
       changeDataType,
     },
     dispatch

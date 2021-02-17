@@ -7,7 +7,7 @@ const styledComponentsTheme = {
   secondaryColor: "#4D73CE",
   secondaryColorTint: "#DBE3F5",
   secondaryColorTintDark: "#A6B9E6",
-  textColor: "#000",
+  textColor: "#212320",
   textLightColor: "#666",
   lightestGray: "#FAFCFE",
   borderColor: "#b1b1b1",

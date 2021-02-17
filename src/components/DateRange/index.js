@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDateRange } from "../../actions/filters";
+import { changeDateSliderRange } from "../../actions/ui";
 import { Slider } from "@material-ui/core";
-import Timespan from "../Timespan";
 import {
   DateRangeComponentContainer,
   DateRangeSliderContainer,
@@ -13,8 +13,12 @@ import {
   getOutbreakInitialDateRange,
 } from "../../utils/dateHelpers";
 
-const DateRange = ({ filters, changeDateRange }) => {
-  const [sliderRange, setSliderRange] = useState([0, 72]);
+const DateRange = ({
+  filters,
+  sliderRange,
+  changeDateRange,
+  changeDateSliderRange,
+}) => {
   const initialDateRange = getOutbreakInitialDateRange(filters.outbreak);
 
   // This useEffect updates the dateRange and sliderRange when the filters.outbreak prop changes.
@@ -22,13 +26,14 @@ const DateRange = ({ filters, changeDateRange }) => {
     // Resets the dateRange filter.
     changeDateRange([initialDateRange.from, initialDateRange.to]);
     // Resets the values for the sliderRange.
-    setSliderRange([
+    changeDateSliderRange([
       0,
       getNumberOfWeeksBetweenDates(initialDateRange.from, initialDateRange.to),
     ]);
   }, [
     filters.outbreak,
     changeDateRange,
+    changeDateSliderRange,
     initialDateRange.from,
     initialDateRange.to,
   ]);
@@ -52,7 +57,7 @@ const DateRange = ({ filters, changeDateRange }) => {
       // Changes the dateRange filter in the Redux state.
       changeDateRange([newFromDate, newToDate]);
       // Sets the new sliderRange.
-      setSliderRange(newRangeArray);
+      changeDateSliderRange(newRangeArray);
     }
   };
 
@@ -66,19 +71,20 @@ const DateRange = ({ filters, changeDateRange }) => {
           onChange={handleRangeChange}
         />
       </DateRangeSliderContainer>
-      <Timespan updateSliderRange={setSliderRange} />
     </DateRangeComponentContainer>
   );
 };
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
+  sliderRange: state.ui.dateSliderRange,
 });
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       changeDateRange,
+      changeDateSliderRange,
     },
     dispatch
   );
