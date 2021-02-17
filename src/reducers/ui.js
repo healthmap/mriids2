@@ -3,6 +3,7 @@ import * as types from "../constants/ActionTypes";
 const initialState = {
   dateSliderRange: [0, 72],
   isDateRangePopoverOpen: false,
+  popoverAnchorElement: null,
 };
 
 const UiState = function (state = initialState, action) {
@@ -21,6 +22,16 @@ const UiState = function (state = initialState, action) {
       return {
         ...state,
         isDateRangePopoverOpen: false,
+      };
+    case types.SET_POPOVER_ANCHOR_ELEMENT:
+      return {
+        ...state,
+        popoverAnchorElement: action.payload,
+      };
+    case types.CLEAR_POPOVER_ANCHOR_ELEMENT:
+      return {
+        ...state,
+        popoverAnchorElement: null,
       };
     default:
       return state;

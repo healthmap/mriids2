@@ -12,3 +12,12 @@ export const openDateRangePopover = () => ({
 export const closeDateRangePopover = () => ({
   type: types.CLOSE_DATE_RANGE_POPOVER,
 });
+
+export const setPopoverAnchorElement = (anchorElement) => ({
+  type: types.SET_POPOVER_ANCHOR_ELEMENT,
+  payload: anchorElement,
+});
+
+export const clearPopoverAnchorElement = () => ({
+  type: types.CLEAR_POPOVER_ANCHOR_ELEMENT,
+});

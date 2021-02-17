@@ -43,6 +43,7 @@ export const reduxInitialState = {
   ui: {
     dateSliderRange: [0, 72],
     isDateRangePopoverOpen: false,
+    popoverAnchorElement: null,
   },
 };
 

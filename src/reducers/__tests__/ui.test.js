@@ -42,4 +42,28 @@ describe("Tests for ui reducer", () => {
       })
     ).toEqual(changedUiState);
   });
+  test("should setting the popover anchor element", () => {
+    const anchorElement = "some element";
+    const changedUiState = {
+      ...initialUiState,
+      popoverAnchorElement: anchorElement,
+    };
+    expect(
+      ui(initialUiState, {
+        type: types.SET_POPOVER_ANCHOR_ELEMENT,
+        payload: anchorElement,
+      })
+    ).toEqual(changedUiState);
+  });
+  test("should clearing the popover anchor element", () => {
+    const changedUiState = {
+      ...initialUiState,
+      popoverAnchorElement: null,
+    };
+    expect(
+      ui(initialUiState, {
+        type: types.CLEAR_POPOVER_ANCHOR_ELEMENT,
+      })
+    ).toEqual(changedUiState);
+  });
 });
