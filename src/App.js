@@ -31,26 +31,11 @@ class App extends Component {
     this.props.fetchCovidProjectionsData();
   }
 
-  renderHomePageComponents = () => {
-    // When we are displaying the EbolaRiskMap, we want this to display on the entire page.
-    if (
-      this.props.filters.view === "risk" &&
-      this.props.filters.outbreak === "Ebola Outbreak"
-    ) {
-      return <EbolaRiskMap />;
-    } else {
-      // If we are not displaying the EbolaRiskMap, we want to display the SnapshotMap, ChartComponent, and DateRange.
-      return (
-        <>
-          <SnapshotMap />
-          <ChartComponent />
-          <DateRange />
-        </>
-      );
-    }
-  };
-
   render() {
+    const isEbolaRiskViewSelected =
+      this.props.filters.view === "risk" &&
+      this.props.filters.outbreak === "Ebola Outbreak";
+
     return (
       <ThemeProvider theme={theme}>
         <StyledComponentsProvider theme={styledComponentsTheme}>
@@ -63,7 +48,15 @@ class App extends Component {
                   <div>
                     <DateRangePopover />
                   </div>
-                  {this.renderHomePageComponents()}
+                  {isEbolaRiskViewSelected ? (
+                    <EbolaRiskMap />
+                  ) : (
+                    <>
+                      <SnapshotMap />
+                      <ChartComponent />
+                      <DateRange />
+                    </>
+                  )}
                 </Route>
                 <Route exact path="/about">
                   <About />
