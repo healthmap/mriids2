@@ -2,19 +2,10 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
-
-const sanitizeStateFunction = (state) =>
-  state.ui.popoverAnchorElement
-    ? {
-        ...state,
-        ui: { ...state.ui, popoverAnchorElement: "<<ANCHOR_ELEMENT>>" },
-      }
-    : state;
-
-const sanitizeActionFunction = (action) =>
-  action.type === "SET_POPOVER_ANCHOR_ELEMENT" && action.payload
-    ? { ...action, payload: "<<ANCHOR_ELEMENT>>" }
-    : action;
+import {
+  sanitizeActionFunction,
+  sanitizeStateFunction,
+} from "./utils/storeHelpers";
 
 const composeEnhancers = composeWithDevTools({
   actionSanitizer: sanitizeActionFunction,
