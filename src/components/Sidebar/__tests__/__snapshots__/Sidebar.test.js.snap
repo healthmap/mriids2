@@ -557,28 +557,6 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       </div>
     </div>
   </div>
-  <div
-    className="c11"
-  >
-    <h4>
-      SUMMARY
-    </h4>
-    <p>
-      From 
-      Wed Oct 01 2014
-       to 
-      Sat Feb 20 2016
-      , the Ebola outbreak in 
-      West Africa
-       
-      has affected
-       
-      0
-       people
-       (suspected and confirmed cases)
-      .
-    </p>
-  </div>
 </div>
 `;
 
@@ -1089,28 +1067,6 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
         </label>
       </div>
     </fieldset>
-  </div>
-  <div
-    className="c11"
-  >
-    <h4>
-      SUMMARY
-    </h4>
-    <p>
-      From 
-      Wed Oct 01 2014
-       to 
-      Sat Feb 20 2016
-      , the Ebola outbreak in 
-      West Africa
-       
-      has affected
-       
-      0
-       people
-       (suspected and confirmed cases)
-      .
-    </p>
   </div>
   <div
     className="c11"

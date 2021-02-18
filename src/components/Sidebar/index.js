@@ -13,7 +13,6 @@ import {
 } from "../../actions/ui";
 import Select from "../Select";
 import SidebarCount from "./SidebarCount";
-import Summary from "./Summary";
 import EbolaRiskList from "./EbolaRiskList";
 import * as Styled from "./styles";
 import {
@@ -74,7 +73,6 @@ const Sidebar = ({
   );
 
   const showSidebarCount = filters.view === "snapshot";
-  const showEbolaSummary = filters.outbreak === "Ebola Outbreak";
   const showEbolaRiskList =
     filters.view === "risk" && filters.outbreak === "Ebola Outbreak";
 
@@ -106,14 +104,6 @@ const Sidebar = ({
           filters={filters}
           diseaseCount={diseaseCount.toLocaleString()}
           projectedDiseaseCount={projectedDiseaseCount.toLocaleString()}
-        />
-      )}
-      {showEbolaSummary && (
-        <Summary
-          dataType={filters.dataType}
-          dateRange={filters.dateRange}
-          country={filters.country}
-          diseaseCaseCount={diseaseCount.toLocaleString()}
         />
       )}
       {showEbolaRiskList && <EbolaRiskList />}
