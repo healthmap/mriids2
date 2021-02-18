@@ -18,6 +18,7 @@ import About from "./components/About";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
+import DateRangePopover from "./components/DateRangePopover";
 import DateRange from "./components/DateRange";
 import { StyledAppContainer } from "./styles";
 
@@ -30,47 +31,43 @@ class App extends Component {
     this.props.fetchCovidProjectionsData();
   }
 
-  renderHomePageComponents = () => {
-    // When we are displaying the EbolaRiskMap, we want this to display on the entire page.
-    if (
-      this.props.filters.view === "risk" &&
-      this.props.filters.outbreak === "Ebola Outbreak"
-    ) {
-      return <EbolaRiskMap />;
-    } else {
-      // If we are not displaying the EbolaRiskMap, we want to display the SnapshotMap, ChartComponent, and DateRange.
-      return (
-        <>
-          <SnapshotMap />
-          <ChartComponent />
-          <DateRange />
-        </>
-      );
-    }
-  };
-
   render() {
+    const isEbolaRiskViewSelected =
+      this.props.filters.view === "risk" &&
+      this.props.filters.outbreak === "Ebola Outbreak";
+
     return (
       <ThemeProvider theme={theme}>
-      <StyledComponentsProvider theme={styledComponentsTheme}>
-        <Router>
-          <StyledAppContainer>
-            <Header />
-            <Switch>
-              <Route exact path="/">
-                <Sidebar />
-                {this.renderHomePageComponents()}
-              </Route>
-              <Route exact path="/about">
-                <About />
-              </Route>
-              <Route exact path="/team">
-                <Team />
-              </Route>
-            </Switch>
-          </StyledAppContainer>
-        </Router>
-      </StyledComponentsProvider>
+        <StyledComponentsProvider theme={styledComponentsTheme}>
+          <Router>
+            <StyledAppContainer>
+              <Header />
+              <Switch>
+                <Route exact path="/">
+                  <Sidebar />
+                  <div>
+                    <DateRangePopover />
+                  </div>
+                  {isEbolaRiskViewSelected ? (
+                    <EbolaRiskMap />
+                  ) : (
+                    <>
+                      <SnapshotMap />
+                      <ChartComponent />
+                      <DateRange />
+                    </>
+                  )}
+                </Route>
+                <Route exact path="/about">
+                  <About />
+                </Route>
+                <Route exact path="/team">
+                  <Team />
+                </Route>
+              </Switch>
+            </StyledAppContainer>
+          </Router>
+        </StyledComponentsProvider>
       </ThemeProvider>
     );
   }

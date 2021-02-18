@@ -48,17 +48,6 @@ describe("Tests for the filters reducer", () => {
       })
     ).toEqual(changedViewState);
   });
-  test("should handle projection change", () => {
-    const changedProjectionState = {
-      ...initialFiltersState,
-      projection: true,
-    };
-    expect(
-      filters(initialFiltersState, {
-        type: types.CHANGE_PROJECTION,
-      })
-    ).toEqual(changedProjectionState);
-  });
   test("should date range change", () => {
     const newDateRange = [covidInitialDateRange.from, covidInitialDateRange.to];
     const changedDateRangeState = {
@@ -75,17 +64,17 @@ describe("Tests for the filters reducer", () => {
       })
     ).toEqual(changedDateRangeState);
   });
-  test("should handle chart type change", () => {
-    const newChartType = "cases and deaths";
-    const changedChartTypeState = {
+  test("should handle data type change", () => {
+    const newDataType = "cases and deaths";
+    const changedDataTypeState = {
       ...initialFiltersState,
-      chartType: newChartType,
+      dataType: newDataType,
     };
     expect(
       filters(initialFiltersState, {
-        type: types.CHANGE_CHART_TYPE,
-        payload: newChartType,
+        type: types.CHANGE_DATA_TYPE,
+        payload: newDataType,
       })
-    ).toEqual(changedChartTypeState);
+    ).toEqual(changedDataTypeState);
   });
 });

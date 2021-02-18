@@ -1,26 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tests for the connected Sidebar component with reduxInitialState should render with given state from Redux store 1`] = `
-.c5.c5 {
-  background-color: #fff;
-  font-size: 1.4rem;
-  line-height: 2;
-  padding: 0 1.2rem;
-  display: block;
-  border-radius: 3px;
-  border: 1px solid;
-}
-
-.c5.c5.c5.c5:hover:before,
-.c5.c5:before {
-  border: 0px;
-}
-
-.c5.c5 .MuiSelect-select:focus {
-  background-color: transparent;
-}
-
-.c4 {
+.c2 {
   margin: 2.4rem 1.2rem 0.4rem;
   font-size: 1.2rem;
   line-height: 2;
@@ -33,23 +14,51 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   font-weight: 700;
 }
 
-.c6 {
+.c5.c5 {
+  background-color: #fff;
+  font-size: 1.4rem;
+  line-height: 2;
+  padding: 0 1.2rem;
+  display: block;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+.c5.c5.c5.c5:hover {
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 4px;
+}
+
+.c5.c5.c5.c5.Mui-focused {
+  border: 1px solid;
+}
+
+.c5.c5.c5.c5:hover:before,
+.c5.c5:before {
+  border: 0px;
+}
+
+.c5.c5 .MuiSelect-select:focus {
+  background-color: transparent;
+}
+
+.c11 {
   padding: 1.3rem;
 }
 
-.c6.reported-cases-wrapper {
+.c11.reported-cases-wrapper {
   border-bottom: 1px solid #ccc;
 }
 
-.c7 {
+.c12 {
   margin: 0.6rem 0;
 }
 
-.c8 {
+.c13 {
   margin-bottom: 0.3rem;
 }
 
-.c9 {
+.c14 {
   display: inline-block;
   width: 2rem;
   height: 2rem;
@@ -57,27 +66,28 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   margin-right: 0.8em;
 }
 
-.c10 {
+.c15 {
   display: inline-block;
   font-size: 1.8em;
 }
 
 .c0 {
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
+  border-right: 1px solid;
   width: calc( - 3.2rem);
-  padding: 2.4rem 1.6rem;
+  padding: .8rem 1.6rem 2.4rem;
   overflow: auto;
   z-index: 2;
 }
 
-.c3 select {
+.c4 select {
   color: #fff;
   background-color: #e43b46;
 }
 
-.c3 option {
+.c4 option {
   color: #fff;
   background-color: #e43b46;
 }
@@ -92,17 +102,97 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   background-color: #000;
 }
 
-.c2 {
-  margin: 0rem 1.2rem 0.4rem;
-  font-size: 1.2rem;
+.c6 {
+  font-size: 1.4rem;
   line-height: 2;
-  -webkit-letter-spacing: 0.05rem;
-  -moz-letter-spacing: 0.05rem;
-  -ms-letter-spacing: 0.05rem;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
+  padding: 0.9rem 1.2rem;
+  width: 100%;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+.c6:focus {
+  background: #fff;
+  border: 1px solid;
+}
+
+.c6:hover {
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 4px;
+}
+
+.c6:active {
+  background-color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c6:disabled {
+  cursor: auto;
+  opacity: 0.65;
+}
+
+.c3 .MuiInputBase-root {
+  background-color: #fff;
+  font-size: 1.4rem;
+  padding: 1.2rem !important;
+}
+
+.c3 .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #fff;
+  box-shadow: 0 0 0 4px;
+}
+
+.c3 .Mui-focused .MuiOutlinedInput-notchedOutline {
+  border: 1px solid !important;
+  box-shadow: 0 0 0 0;
+}
+
+.c3 .MuiAutocomplete-input {
+  padding: 0px !important;
+  height: 2.4rem;
+}
+
+.c3 .MuiSvgIcon-root {
+  font-size: 2rem;
+}
+
+.c3 .MuiAutocomplete-endAdornment {
+  top: calc(50% - 12px);
+}
+
+.c7 {
   display: block;
-  font-weight: 700;
+}
+
+.c8 {
+  margin-left: 1.2rem;
+}
+
+.c10 .MuiSvgIcon-root {
+  width: 2rem;
+  height: 2rem;
+}
+
+.c10.c10 {
+  padding: 6px;
+}
+
+.c9 .MuiTypography-body1 {
+  font-size: 1.4rem;
+  line-height: 2;
+  font-weight: 600;
+  margin-left: 0.2rem;
 }
 
 <div
@@ -120,7 +210,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     <div
       aria-expanded={false}
       aria-owns={null}
-      className="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon"
+      className="MuiAutocomplete-root c3 MuiAutocomplete-hasPopupIcon"
       onClick={[Function]}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
@@ -130,7 +220,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
         className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <div
-          className="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot CountrySelect-inputRoot-1 MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+          className="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
           onClick={[Function]}
         >
           <input
@@ -195,7 +285,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
           </div>
           <fieldset
             aria-hidden={true}
-            className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+            className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
             style={
               Object {
                 "paddingLeft": 8,
@@ -203,7 +293,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
             }
           >
             <legend
-              className="PrivateNotchedOutline-legend-3"
+              className="PrivateNotchedOutline-legend-2"
               style={
                 Object {
                   "width": 0.01,
@@ -224,10 +314,10 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     </div>
   </div>
   <div
-    className="c3"
+    className="c4"
   >
     <label
-      className="c4"
+      className="c2"
     >
       outbreak
     </label>
@@ -270,8 +360,169 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       </svg>
     </div>
   </div>
+  <label
+    className="c2"
+  >
+    Timespan
+  </label>
+  <div>
+    <button
+      className="c6"
+      onClick={[Function]}
+    >
+      Oct 1, 2014
+       -
+       
+      Feb 20, 2016
+    </button>
+  </div>
   <div
-    className="c6 reported-cases-wrapper"
+    className="c7"
+  >
+    <fieldset
+      className="MuiFormControl-root"
+    >
+      <label
+        className="c2"
+      >
+        Data
+      </label>
+      <div
+        aria-label="data"
+        className="MuiFormGroup-root c8"
+        role="radiogroup"
+      >
+        <label
+          className="MuiFormControlLabel-root c9"
+        >
+          <span
+            aria-disabled={false}
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 PrivateSwitchBase-checked-6 Mui-checked MuiIconButton-colorSecondary"
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <input
+                checked={true}
+                className="PrivateSwitchBase-input-8"
+                disabled={false}
+                name="data"
+                onChange={[Function]}
+                type="radio"
+                value="cases"
+              />
+              <div
+                className="PrivateRadioButtonIcon-root-9 PrivateRadioButtonIcon-checked-11"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-10"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                  />
+                </svg>
+              </div>
+            </span>
+          </span>
+          <span
+            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Cases
+          </span>
+        </label>
+        <label
+          className="MuiFormControlLabel-root c9"
+        >
+          <span
+            aria-disabled={false}
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 MuiIconButton-colorSecondary"
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <input
+                checked={false}
+                className="PrivateSwitchBase-input-8"
+                disabled={false}
+                name="data"
+                onChange={[Function]}
+                type="radio"
+                value="projected cases"
+              />
+              <div
+                className="PrivateRadioButtonIcon-root-9"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-10"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                  />
+                </svg>
+              </div>
+            </span>
+          </span>
+          <span
+            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Projected Cases
+          </span>
+        </label>
+      </div>
+    </fieldset>
+  </div>
+  <div
+    className="c11 reported-cases-wrapper"
   >
     <p>
       <strong>
@@ -285,30 +536,30 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       </strong>
     </p>
     <div
-      className="c7"
+      className="c12"
     >
       <div
-        className="c8"
+        className="c13"
       >
         Suspected and confirmed
       </div>
       <div
-        className="c9"
+        className="c14"
         style={
           Object {
-            "backgroundColor": "#4D73CE",
+            "backgroundColor": "#E23D4A",
           }
         }
       />
       <div
-        className="c10"
+        className="c15"
       >
         0
       </div>
     </div>
   </div>
   <div
-    className="c6"
+    className="c11"
   >
     <h4>
       SUMMARY
@@ -333,26 +584,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 `;
 
 exports[`Tests for the connected Sidebar component with riskViewState should render with given state from Redux store 1`] = `
-.c5.c5 {
-  background-color: #fff;
-  font-size: 1.4rem;
-  line-height: 2;
-  padding: 0 1.2rem;
-  display: block;
-  border-radius: 3px;
-  border: 1px solid;
-}
-
-.c5.c5.c5.c5:hover:before,
-.c5.c5:before {
-  border: 0px;
-}
-
-.c5.c5 .MuiSelect-select:focus {
-  background-color: transparent;
-}
-
-.c4 {
+.c2 {
   margin: 2.4rem 1.2rem 0.4rem;
   font-size: 1.2rem;
   line-height: 2;
@@ -365,30 +597,59 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   font-weight: 700;
 }
 
-.c6 {
+.c5.c5 {
+  background-color: #fff;
+  font-size: 1.4rem;
+  line-height: 2;
+  padding: 0 1.2rem;
+  display: block;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+.c5.c5.c5.c5:hover {
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 4px;
+}
+
+.c5.c5.c5.c5.Mui-focused {
+  border: 1px solid;
+}
+
+.c5.c5.c5.c5:hover:before,
+.c5.c5:before {
+  border: 0px;
+}
+
+.c5.c5 .MuiSelect-select:focus {
+  background-color: transparent;
+}
+
+.c11 {
   padding: 1.3rem;
 }
 
-.c6.reported-cases-wrapper {
+.c11.reported-cases-wrapper {
   border-bottom: 1px solid #ccc;
 }
 
 .c0 {
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
+  border-right: 1px solid;
   width: calc( - 3.2rem);
-  padding: 2.4rem 1.6rem;
+  padding: .8rem 1.6rem 2.4rem;
   overflow: auto;
   z-index: 2;
 }
 
-.c3 select {
+.c4 select {
   color: #fff;
   background-color: #e43b46;
 }
 
-.c3 option {
+.c4 option {
   color: #fff;
   background-color: #e43b46;
 }
@@ -403,17 +664,97 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   background-color: #000;
 }
 
-.c2 {
-  margin: 0rem 1.2rem 0.4rem;
-  font-size: 1.2rem;
+.c6 {
+  font-size: 1.4rem;
   line-height: 2;
-  -webkit-letter-spacing: 0.05rem;
-  -moz-letter-spacing: 0.05rem;
-  -ms-letter-spacing: 0.05rem;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
+  padding: 0.9rem 1.2rem;
+  width: 100%;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+.c6:focus {
+  background: #fff;
+  border: 1px solid;
+}
+
+.c6:hover {
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 4px;
+}
+
+.c6:active {
+  background-color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c6:disabled {
+  cursor: auto;
+  opacity: 0.65;
+}
+
+.c3 .MuiInputBase-root {
+  background-color: #fff;
+  font-size: 1.4rem;
+  padding: 1.2rem !important;
+}
+
+.c3 .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #fff;
+  box-shadow: 0 0 0 4px;
+}
+
+.c3 .Mui-focused .MuiOutlinedInput-notchedOutline {
+  border: 1px solid !important;
+  box-shadow: 0 0 0 0;
+}
+
+.c3 .MuiAutocomplete-input {
+  padding: 0px !important;
+  height: 2.4rem;
+}
+
+.c3 .MuiSvgIcon-root {
+  font-size: 2rem;
+}
+
+.c3 .MuiAutocomplete-endAdornment {
+  top: calc(50% - 12px);
+}
+
+.c7 {
   display: block;
-  font-weight: 700;
+}
+
+.c8 {
+  margin-left: 1.2rem;
+}
+
+.c10 .MuiSvgIcon-root {
+  width: 2rem;
+  height: 2rem;
+}
+
+.c10.c10 {
+  padding: 6px;
+}
+
+.c9 .MuiTypography-body1 {
+  font-size: 1.4rem;
+  line-height: 2;
+  font-weight: 600;
+  margin-left: 0.2rem;
 }
 
 <div
@@ -431,7 +772,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
     <div
       aria-expanded={false}
       aria-owns={null}
-      className="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon"
+      className="MuiAutocomplete-root c3 MuiAutocomplete-hasPopupIcon"
       onClick={[Function]}
       onKeyDown={[Function]}
       onMouseDown={[Function]}
@@ -441,7 +782,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
         className="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
       >
         <div
-          className="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot CountrySelect-inputRoot-1 MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
+          className="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
           onClick={[Function]}
         >
           <input
@@ -509,7 +850,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
           </div>
           <fieldset
             aria-hidden={true}
-            className="PrivateNotchedOutline-root-2 MuiOutlinedInput-notchedOutline"
+            className="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
             style={
               Object {
                 "paddingLeft": 8,
@@ -517,7 +858,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
             }
           >
             <legend
-              className="PrivateNotchedOutline-legend-3"
+              className="PrivateNotchedOutline-legend-2"
               style={
                 Object {
                   "width": 0.01,
@@ -538,10 +879,10 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
     </div>
   </div>
   <div
-    className="c3"
+    className="c4"
   >
     <label
-      className="c4"
+      className="c2"
     >
       outbreak
     </label>
@@ -584,8 +925,175 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
       </svg>
     </div>
   </div>
+  <label
+    className="c2"
+  >
+    Timespan
+  </label>
+  <div>
+    <button
+      className="c6"
+      onClick={[Function]}
+    >
+      Oct 1, 2014
+       -
+       
+      Feb 20, 2016
+    </button>
+  </div>
   <div
-    className="c6"
+    className="c7"
+  >
+    <fieldset
+      className="MuiFormControl-root"
+    >
+      <label
+        className="c2"
+      >
+        Data
+      </label>
+      <div
+        aria-label="data"
+        className="MuiFormGroup-root c8"
+        role="radiogroup"
+      >
+        <label
+          className="MuiFormControlLabel-root c9"
+        >
+          <span
+            aria-disabled={false}
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 PrivateSwitchBase-checked-6 Mui-checked MuiIconButton-colorSecondary"
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <input
+                checked={true}
+                className="PrivateSwitchBase-input-8"
+                disabled={false}
+                name="data"
+                onChange={[Function]}
+                type="radio"
+                value="cases"
+              />
+              <div
+                className="PrivateRadioButtonIcon-root-9 PrivateRadioButtonIcon-checked-11"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-10"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                  />
+                </svg>
+              </div>
+            </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
+          </span>
+          <span
+            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Cases
+          </span>
+        </label>
+        <label
+          className="MuiFormControlLabel-root c9"
+        >
+          <span
+            aria-disabled={false}
+            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 MuiIconButton-colorSecondary"
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={null}
+          >
+            <span
+              className="MuiIconButton-label"
+            >
+              <input
+                checked={false}
+                className="PrivateSwitchBase-input-8"
+                disabled={false}
+                name="data"
+                onChange={[Function]}
+                type="radio"
+                value="projected cases"
+              />
+              <div
+                className="PrivateRadioButtonIcon-root-9"
+              >
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                  />
+                </svg>
+                <svg
+                  aria-hidden={true}
+                  className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-10"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                  />
+                </svg>
+              </div>
+            </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
+          </span>
+          <span
+            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+          >
+            Projected Cases
+          </span>
+        </label>
+      </div>
+    </fieldset>
+  </div>
+  <div
+    className="c11"
   >
     <h4>
       SUMMARY
@@ -607,7 +1115,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
     </p>
   </div>
   <div
-    className="c6"
+    className="c11"
   >
     <strong>
       <p>

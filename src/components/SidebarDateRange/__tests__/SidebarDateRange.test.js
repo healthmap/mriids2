@@ -2,14 +2,14 @@ import React from "react";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
+import SidebarDateRange from "../index";
 import renderer from "react-test-renderer";
 import "jest-styled-components";
-import ChartTypeButtons from "../index";
 import { reduxInitialState } from "../../../constants/CommonTestData";
 
 const mockStore = configureStore([thunk]);
 
-describe("Tests for the connected ChartTypeButtons", () => {
+describe("Tests for the connected SidebarDateRange component with reduxInitialState", () => {
   let store;
   let component;
 
@@ -18,7 +18,7 @@ describe("Tests for the connected ChartTypeButtons", () => {
 
     component = renderer.create(
       <Provider store={store}>
-        <ChartTypeButtons />
+        <SidebarDateRange />
       </Provider>
     );
   });

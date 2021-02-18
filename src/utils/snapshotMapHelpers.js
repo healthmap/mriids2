@@ -111,7 +111,7 @@ export const getSnapshotProjectionsColor = (caseCountValue = 0) => {
 // This gets a dictionary with key/value pairs of country/fillColor for each Ebola country.
 export const getEbolaFillColorsDictionary = (
   ebolaCountriesCaseCounts,
-  projectionsEnabled
+  dataType
 ) => {
   let colorsDictionary = {};
   // Get the scale using the ebolaCountriesCaseCounts object.
@@ -120,9 +120,10 @@ export const getEbolaFillColorsDictionary = (
     const percentage = ebolaCountriesCaseCounts[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
     // Otherwise get the fillColor value using the getSnapshotColor function.
-    colorsDictionary[country] = projectionsEnabled
-      ? getSnapshotProjectionsColor(percentage)
-      : getSnapshotColor(percentage);
+    colorsDictionary[country] =
+      dataType === "projected cases"
+        ? getSnapshotProjectionsColor(percentage)
+        : getSnapshotColor(percentage);
   });
   return colorsDictionary;
 };
@@ -130,7 +131,7 @@ export const getEbolaFillColorsDictionary = (
 // This gets a dictionary with key/value pairs of country/fillColor for each country.
 export const getCovidFillColorsDictionary = (
   covidCountriesCaseCounts,
-  projectionsEnabled
+  dataType
 ) => {
   let colorsDictionary = {};
   // Get the scale using the covidCountriesCaseCounts object.
@@ -139,9 +140,10 @@ export const getCovidFillColorsDictionary = (
     const percentage = covidCountriesCaseCounts[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
     // Otherwise get the fillColor value using the getSnapshotColor function.
-    colorsDictionary[country] = projectionsEnabled
-      ? getSnapshotProjectionsColor(percentage)
-      : getSnapshotColor(percentage);
+    colorsDictionary[country] =
+      dataType === "projected deaths"
+        ? getSnapshotProjectionsColor(percentage)
+        : getSnapshotColor(percentage);
   });
   return colorsDictionary;
 };
@@ -164,15 +166,6 @@ export const getCountryFillColor = (
   }
 };
 
-export const getCountryToolTipContent = (diseaseCaseCounts, countryName) => {
-  const countryCaseCount = diseaseCaseCounts[countryName];
-  // If the country has a case count, return the country name and case count.
-  // Else, just return the country name.
-  return countryCaseCount
-    ? `${countryName} - ${countryCaseCount.toLocaleString()}`
-    : countryName;
-};
-
 export const getCountryDiseaseCountDictionary = (
   ebolaData,
   covidCaseCountData,
@@ -182,14 +175,11 @@ export const getCountryDiseaseCountDictionary = (
   // If the ebola outbreak is selected, return a dictionary of all ebola outbreak countries with the ebola case counts.
   if (filters.outbreak === "Ebola Outbreak") {
     return getCountriesEbolaCaseCounts(ebolaData, filters);
-    // If the covid outbreak is selected and the chart type is "cases", return a dictionary of all countries with the covid case counts.
-  } else if (filters.outbreak === "COVID 19" && filters.chartType === "cases") {
+    // If the covid outbreak is selected and the data type is "cases", return a dictionary of all countries with the covid case counts.
+  } else if (filters.outbreak === "COVID 19" && filters.dataType === "cases") {
     return getCountriesCovidCounts(covidCaseCountData, filters);
-    // If the covid outbreak is selected and the chart type is "deaths", return a dictionary of all countries with the covid death counts.
-  } else if (
-    filters.outbreak === "COVID 19" &&
-    filters.chartType === "deaths"
-  ) {
+    // If the covid outbreak is selected and the data type is "deaths", return a dictionary of all countries with the covid death counts.
+  } else if (filters.outbreak === "COVID 19" && filters.dataType === "deaths") {
     return getCountriesCovidCounts(covidDeathCountData, filters);
     //  If none of the above conditions are true, return an empty object for now.
     //  This is a placeholder while we decide how to display the covid "cases and deaths".

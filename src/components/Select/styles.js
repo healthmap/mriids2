@@ -12,6 +12,13 @@ export const StyledMuiSelect = styled(MuiSelect)`
     display: block;
     border-radius: 3px;
     border: 1px solid ${(props) => props.theme.borderColor};
+    &&:hover {
+      border: 1px solid #fff;
+      box-shadow: 0 0 0 4px ${(props) => props.theme.secondaryColorTint};
+    }
+    &&.Mui-focused {
+      border: 1px solid ${(props) => props.theme.secondaryColor};
+    }
     &&:hover:before,
     &:before {
       border: 0px;
@@ -42,12 +49,3 @@ export const StyledMenuItem = styled(MenuItem)`
   }
 `;
 
-export const InputLabel = styled.label`
-  margin: 2.4rem 1.2rem 0.4rem;
-  font-size: 1.2rem;
-  line-height: 2;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 700;
-`;

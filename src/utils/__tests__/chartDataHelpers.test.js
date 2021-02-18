@@ -1,4 +1,7 @@
 import {
+  getChartTitle,
+  getDataColumnLabel,
+  getProjectionsColumnLabel,
   getChartColumns,
   getWeekProjectionData,
   addProjectionsData,
@@ -26,9 +29,74 @@ import {
 import { reduxInitialState } from "../../constants/CommonTestData";
 import dayjs from "dayjs";
 
+describe("Tests for getChartTitle", () => {
+  test("should return 'Daily Cases in all Locations'", () => {
+    expect(getChartTitle("COVID 19", "cases", "All")).toEqual(
+      "Daily Cases in all Locations"
+    );
+  });
+  test("should return 'Daily Deaths in all Locations'", () => {
+    expect(getChartTitle("COVID 19", "deaths", "All")).toEqual(
+      "Daily Deaths in all Locations"
+    );
+  });
+  test("should return 'Daily Cases in Afghanistan'", () => {
+    expect(getChartTitle("COVID 19", "cases", "Afghanistan")).toEqual(
+      "Daily Cases in Afghanistan"
+    );
+  });
+  test("should return 'Weekly Cases in all Locations'", () => {
+    expect(getChartTitle("Ebola Outbreak", "cases", "All")).toEqual(
+      "Weekly Cases in all Locations"
+    );
+  });
+  test("should return 'Weekly Cases in Guinea'", () => {
+    expect(getChartTitle("Ebola Outbreak", "cases", "Guinea")).toEqual(
+      "Weekly Cases in Guinea"
+    );
+  });
+  test("should return 'Weekly Projected Cases in all Locations'", () => {
+    expect(getChartTitle("Ebola Outbreak", "projected cases", "All")).toEqual(
+      "Weekly Projected Cases in all Locations"
+    );
+  });
+});
+
+describe("Tests for getDataColumnLabel", () => {
+  test("should return 'Ebola Cases'", () => {
+    expect(getDataColumnLabel("Ebola", "cases")).toEqual("Ebola Cases");
+  });
+  test("should return 'Covid Deaths'", () => {
+    expect(getDataColumnLabel("Covid", "deaths")).toEqual("Covid Deaths");
+  });
+  test("should return 'Covid Cases'", () => {
+    expect(getDataColumnLabel("Covid", "projected cases")).toEqual(
+      "Covid Cases"
+    );
+  });
+  test("should also return 'Covid Deaths'", () => {
+    expect(getDataColumnLabel("Covid", "projected deaths")).toEqual(
+      "Covid Deaths"
+    );
+  });
+});
+
+describe("Tests for getProjectionsColumnLabel", () => {
+  test("should return 'Projected Cases'", () => {
+    expect(getProjectionsColumnLabel("projected cases")).toEqual(
+      "Projected Cases"
+    );
+  });
+  test("should return 'Projected Deaths'", () => {
+    expect(getProjectionsColumnLabel("projected deaths")).toEqual(
+      "Projected Deaths"
+    );
+  });
+});
+
 describe("Tests for getChartColumns", () => {
   test("should just return 'Date' and 'Ebola Cases' column headers", () => {
-    expect(getChartColumns("Ebola", false, "cases")).toEqual([
+    expect(getChartColumns("Ebola", "cases")).toEqual([
       {
         type: "date",
         label: "Date",
@@ -40,7 +108,7 @@ describe("Tests for getChartColumns", () => {
     ]);
   });
   test("should return projections column header", () => {
-    expect(getChartColumns("Ebola", true, "cases")).toEqual([
+    expect(getChartColumns("Ebola", "projected cases")).toEqual([
       {
         type: "date",
         label: "Date",
@@ -51,7 +119,7 @@ describe("Tests for getChartColumns", () => {
       },
       {
         type: "number",
-        label: "Projected future cases",
+        label: "Projected Cases",
       },
     ]);
   });

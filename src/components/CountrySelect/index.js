@@ -2,15 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import { InputLabel } from "../styled-components/InputLabel";
 import {
   ebolaOutbreakCountries,
   allCountries,
 } from "../../constants/Countries";
 import { changeCountryFilter } from "../../actions/filters";
-import { withStyles } from "@material-ui/core/styles";
-import { styles } from "./styles";
-import * as Styled from "./sc-styles";
+import * as Styled from "./styles";
 
 const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
   const countryOptions =
@@ -27,8 +25,8 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
 
   return (
     <>
-      <Styled.InputLabel>Location</Styled.InputLabel>
-      <Autocomplete
+      <InputLabel>Location</InputLabel>
+      <Styled.StyledAutocomplete
         id="country-select"
         renderInput={(params) => <TextField {...params} variant="outlined" />}
         onChange={(event, value) => onSelectCountry(value)}
@@ -58,4 +56,4 @@ const mapDispatchToProps = (dispatch) =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(styles)(CountrySelect));
+)(CountrySelect);

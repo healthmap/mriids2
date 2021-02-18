@@ -11,14 +11,11 @@ export const getDiseaseCount = (
   // If the Ebola outbreak is selected, return the ebola case count.
   if (filters.outbreak === "Ebola Outbreak") {
     return getEbolaCaseCount(ebolaData, filters);
-    // If the Covid outbreak is selected and the chartType is "cases", return the covid case count.
-  } else if (filters.outbreak === "COVID 19" && filters.chartType === "cases") {
+    // If the Covid outbreak is selected and the dataType is "cases", return the covid case count.
+  } else if (filters.outbreak === "COVID 19" && filters.dataType === "cases") {
     return getCovidCount(covidCaseCountData, filters);
-    // If the Covid outbreak is selected and the chartType is "deaths", return the covid death count.
-  } else if (
-    filters.outbreak === "COVID 19" &&
-    filters.chartType === "deaths"
-  ) {
+    // If the Covid outbreak is selected and the dataType is "deaths", return the covid death count.
+  } else if (filters.outbreak === "COVID 19" && filters.dataType === "deaths") {
     return getCovidCount(covidDeathCountData, filters);
     //  If none of the conditions above are true, just return 0.
   } else {

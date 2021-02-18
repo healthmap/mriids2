@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the connected SnapshotMapCountryPopup should render with given state from Redux store 1`] = `
+.c0 {
+  width: 25rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-top: 0.8rem;
+  line-height: 1.4285714;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c2 p {
+  margin: 1.6rem 0;
+  font-size: 1.4rem;
+  line-height: 1.4285714;
+}
+
+.c3 {
+  text-transform: uppercase;
+  font-weight: 700;
+  -webkit-letter-spacing: 0.05rem;
+  -moz-letter-spacing: 0.05rem;
+  -ms-letter-spacing: 0.05rem;
+  letter-spacing: 0.05rem;
+  font-size: 0.75rem;
+  line-height: 1.6666666666;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    Guinea
+  </div>
+  <div
+    className="c2"
+  >
+    <p
+      className="c3"
+    >
+      Total 
+      cases
+    </p>
+    <p>
+      2,452
+    </p>
+  </div>
+  <p>
+    Total 
+    cases
+     from 
+    Wed Oct 01 2014
+     to
+     
+    Sat Feb 20 2016
+  </p>
+</div>
+`;

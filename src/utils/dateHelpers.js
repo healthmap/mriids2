@@ -34,3 +34,13 @@ export const getOutbreakInitialDateRange = (outbreakSelected) =>
   outbreakSelected === "Ebola Outbreak"
     ? ebolaInitialDateRange
     : covidInitialDateRange;
+
+export const getMinimumDateRangeDate = (outbreakSelected) =>
+  outbreakSelected === "Ebola Outbreak"
+    ? ebolaInitialDateRange.from
+    : covidInitialDateRange.from;
+
+export const getMaximumDateRangeDate = (outbreakSelected) =>
+  outbreakSelected === "Ebola Outbreak"
+    ? ebolaInitialDateRange.to
+    : covidInitialDateRange.to;
