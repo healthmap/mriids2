@@ -67,8 +67,8 @@ const SnapshotMap = ({
       <StyledTooltip>{toolTipContent}</StyledTooltip>
       <ComposableMap
         projection="geoMercator"
-        style={{ backgroundColor: "#D6E4EE" }}
-        stroke="#000000"
+        style={{ backgroundColor: "#F1F5FB" }}
+        stroke="#131D34"
         strokeWidth={0.02}
         data-tip=""
       >

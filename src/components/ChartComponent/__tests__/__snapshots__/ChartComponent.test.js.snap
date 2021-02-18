@@ -14,13 +14,21 @@ exports[`Tests for the connected ChartComponent should render with given state f
   -ms-flex-align: center;
   align-items: center;
   height: 28rem;
-  overflow: hidden;
+}
+
+.c1 {
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-top: 3.2rem;
 }
 
 <div
   className="c0"
 >
-  <h2>
+  <h2
+    className="c1"
+  >
     Weekly Cases in all Locations
   </h2>
   <div>

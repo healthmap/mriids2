@@ -6,5 +6,11 @@ export const ChartContainer = styled.div`
   align-items: center;
   padding-left: ${(props) => props.theme.sidebarWidth};
   height: 28rem; /* $risk-height */
-  overflow: hidden;
+`;
+
+export const ChartTitle = styled.h2`
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-top: 3.2rem;
 `;
