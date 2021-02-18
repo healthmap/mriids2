@@ -77,7 +77,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   bottom: 0;
   border-right: 1px solid;
   width: calc( - 3.2rem);
-  padding: .8rem 1.6rem 2.4rem;
+  padding: 0.8rem 1.6rem 2.4rem;
   overflow: auto;
   z-index: 2;
 }
@@ -638,7 +638,7 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   bottom: 0;
   border-right: 1px solid;
   width: calc( - 3.2rem);
-  padding: .8rem 1.6rem 2.4rem;
+  padding: 0.8rem 1.6rem 2.4rem;
   overflow: auto;
   z-index: 2;
 }
