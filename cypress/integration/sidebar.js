@@ -25,4 +25,23 @@ describe("Tests for the Sidebar component", () => {
     //  3. Check to see if the correct date is displayed.
     cy.get('[data-test-id="open-date-range-button"]').contains("Jan 1, 2020");
   });
+  it("data buttons should have 'Cases' and 'Projected Cases' options by default", () => {
+    cy.react("DataRadioButtons").contains("Cases");
+    cy.react("DataRadioButtons").contains("Projected Cases");
+  });
+  it("data buttons should have 'Cases' and 'Death' options when the COVID-19 outbreak is selected", () => {
+    // 1. Within the Sidebar component, click on the outbreak select component.
+    cy.react("Sidebar").within(() => {
+      cy.react("Select", { props: { name: "outbreak" } })
+        .eq(1)
+        .click();
+    });
+    // 2. Click on the first option from the Outbreaks ul (COVID-19).
+    cy.get(".MuiList-root").within(() => {
+      cy.get("li").eq(1).click();
+    });
+    // .3 Check to see if the correct actions are displayed.
+    cy.react("DataRadioButtons").contains("Cases");
+    cy.react("DataRadioButtons").contains("Deaths");
+  });
 });
