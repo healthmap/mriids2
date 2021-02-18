@@ -197,7 +197,6 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 
 <div
   className="c0"
-  data-test-id="sidebar"
 >
   <div
     className="c1"
@@ -365,7 +364,9 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   >
     Timespan
   </label>
-  <div>
+  <div
+    data-test-id="open-date-range-button"
+  >
     <button
       className="c6"
       onClick={[Function]}
@@ -759,7 +760,6 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
 
 <div
   className="c0"
-  data-test-id="sidebar"
 >
   <div
     className="c1"
@@ -930,7 +930,9 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   >
     Timespan
   </label>
-  <div>
+  <div
+    data-test-id="open-date-range-button"
+  >
     <button
       className="c6"
       onClick={[Function]}

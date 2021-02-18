@@ -79,7 +79,7 @@ const Sidebar = ({
     filters.view === "risk" && filters.outbreak === "Ebola Outbreak";
 
   return (
-    <Styled.SidebarWrapper data-test-id="sidebar">
+    <Styled.SidebarWrapper>
       <SelectCountryWrapper>
         <CountrySelect />
       </SelectCountryWrapper>
