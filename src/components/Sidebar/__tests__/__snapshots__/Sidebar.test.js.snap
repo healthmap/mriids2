@@ -60,14 +60,6 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 
 .c14 {
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  margin-bottom: -0.3rem;
-  margin-right: 0.8em;
-}
-
-.c15 {
-  display: inline-block;
   font-size: 1.8em;
 }
 
@@ -544,14 +536,6 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       </div>
       <div
         className="c14"
-        style={
-          Object {
-            "backgroundColor": "#E23D4A",
-          }
-        }
-      />
-      <div
-        className="c15"
       >
         0
       </div>

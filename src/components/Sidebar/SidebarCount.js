@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { BlockPadded } from "../styled-components/Block";
 import {
   SidebarCountParent,
-  SidebarCountColor,
   SidebarCountLabel,
   SidebarCountValue,
 } from "../styled-components/SidebarCountStyles";
@@ -38,9 +37,7 @@ const SidebarCount = ({
   const labelText = filters.dataType.includes("projected")
     ? "Total outbreak projections"
     : "Suspected and confirmed";
-  const iconColor = filters.dataType.includes("projected")
-    ? "#259994"
-    : "#E23D4A";
+
   return (
     <BlockPadded className="reported-cases-wrapper">
       <p>
@@ -53,13 +50,11 @@ const SidebarCount = ({
       </p>
       <SidebarCountParent>
         <SidebarCountLabel>{labelText}</SidebarCountLabel>
-        <SidebarCountColor style={{ backgroundColor: iconColor }} />
         <SidebarCountValue>{diseaseCount.toLocaleString()}</SidebarCountValue>
       </SidebarCountParent>
       {filters.dataType.includes("projected") && (
         <SidebarCountParent>
           <SidebarCountLabel>Projected future cases</SidebarCountLabel>
-          <SidebarCountColor style={{ backgroundColor: "#F2AD33" }} />
           <SidebarCountValue>
             {projectedDiseaseCount.toLocaleString()}
           </SidebarCountValue>
