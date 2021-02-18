@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the connected SidebarCount component with reduxInitialState should render with given state from Redux store 1`] = `
+.c0 {
+  padding: 1.3rem;
+}
+
+.c0.reported-cases-wrapper {
+  border-bottom: 1px solid #ccc;
+}
+
+.c1 {
+  margin: 0.6rem 0;
+}
+
+.c2 {
+  margin-bottom: 0.3rem;
+}
+
+.c3 {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: -0.3rem;
+  margin-right: 0.8em;
+}
+
+.c4 {
+  display: inline-block;
+  font-size: 1.8em;
+}
+
+<div
+  className="c0 reported-cases-wrapper"
+>
+  <p>
+    <strong>
+      Reported cases
+       from:
+      <br />
+      Wed Oct 01 2014
+       to
+       
+      Sat Feb 20 2016
+    </strong>
+  </p>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      Suspected and confirmed
+    </div>
+    <div
+      className="c3"
+      style={
+        Object {
+          "backgroundColor": "#E23D4A",
+        }
+      }
+    />
+    <div
+      className="c4"
+    >
+      0
+    </div>
+  </div>
+</div>
+`;
