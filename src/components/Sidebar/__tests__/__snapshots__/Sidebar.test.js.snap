@@ -43,7 +43,21 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 }
 
 .c11 {
+  margin-top: 2rem;
   padding: 1.3rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
 }
 
 .c12 {
@@ -52,11 +66,14 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 
 .c13 {
   margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .c14 {
   display: inline-block;
   font-size: 1.8em;
+  font-weight: 600;
 }
 
 .c0 {
@@ -514,13 +531,13 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     className="c11"
   >
     <p>
+      Reported cases in all locations
+       from:
+      <br />
       <strong>
-        Reported cases
-         from:
-        <br />
         Wed Oct 01 2014
-         to
          
+         - 
         Sat Feb 20 2016
       </strong>
     </p>
@@ -585,7 +602,21 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
 }
 
 .c11 {
+  margin-top: 2rem;
   padding: 1.3rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
 }
 
 .c0 {

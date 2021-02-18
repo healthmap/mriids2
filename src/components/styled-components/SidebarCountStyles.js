@@ -6,9 +6,12 @@ export const SidebarCountParent = styled.div`
 
 export const SidebarCountLabel = styled.div`
   margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  font-weight: 600;
 `;
 
 export const SidebarCountValue = styled.div`
   display: inline-block;
   font-size: 1.8em;
+  font-weight: 600;
 `;

@@ -31,9 +31,12 @@ const SidebarCount = ({
   // If the Covid outbreak is selected, display either "cases" or "deaths" depending which data type is selected.
   // If the Ebola outbreak is selected, just display "cases".
   const dataType = filters.outbreak === "COVID 19" ? filters.dataType : "cases";
+
+  const locationText =
+    filters.country === "All" ? "all locations" : filters.country;
   const titleText = filters.dataType.includes("projected")
     ? "Projection"
-    : `Reported ${dataType}`;
+    : `Reported ${dataType} in ${locationText}`;
   const labelText = filters.dataType.includes("projected")
     ? "Total outbreak projections"
     : "Suspected and confirmed";
@@ -41,10 +44,10 @@ const SidebarCount = ({
   return (
     <BlockPadded>
       <p>
+        {titleText} from:
+        <br />
         <strong>
-          {titleText} from:
-          <br />
-          {filters.dateRange.from.toDateString()} to{" "}
+          {filters.dateRange.from.toDateString()} {" - "}
           {filters.dateRange.to.toDateString()}
         </strong>
       </p>
