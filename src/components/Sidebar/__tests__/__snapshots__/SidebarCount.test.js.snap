@@ -5,10 +5,6 @@ exports[`Tests for the connected SidebarCount component with reduxInitialState s
   padding: 1.3rem;
 }
 
-.c0.reported-cases-wrapper {
-  border-bottom: 1px solid #ccc;
-}
-
 .c1 {
   margin: 0.6rem 0;
 }
@@ -23,7 +19,7 @@ exports[`Tests for the connected SidebarCount component with reduxInitialState s
 }
 
 <div
-  className="c0 reported-cases-wrapper"
+  className="c0"
 >
   <p>
     <strong>

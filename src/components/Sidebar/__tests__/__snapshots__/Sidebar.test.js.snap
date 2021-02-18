@@ -46,10 +46,6 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   padding: 1.3rem;
 }
 
-.c11.reported-cases-wrapper {
-  border-bottom: 1px solid #ccc;
-}
-
 .c12 {
   margin: 0.6rem 0;
 }
@@ -165,6 +161,8 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 
 .c7 {
   display: block;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ccc;
 }
 
 .c8 {
@@ -513,7 +511,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     </fieldset>
   </div>
   <div
-    className="c11 reported-cases-wrapper"
+    className="c11"
   >
     <p>
       <strong>
@@ -588,10 +586,6 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
 
 .c11 {
   padding: 1.3rem;
-}
-
-.c11.reported-cases-wrapper {
-  border-bottom: 1px solid #ccc;
 }
 
 .c0 {
@@ -696,6 +690,8 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
 
 .c7 {
   display: block;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ccc;
 }
 
 .c8 {

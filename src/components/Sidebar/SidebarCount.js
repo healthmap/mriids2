@@ -39,7 +39,7 @@ const SidebarCount = ({
     : "Suspected and confirmed";
 
   return (
-    <BlockPadded className="reported-cases-wrapper">
+    <BlockPadded>
       <p>
         <strong>
           {titleText} from:
