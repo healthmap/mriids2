@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDataType } from "../../actions/filters";
+import { InputLabel } from "../styled-components/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import {
   DataRadioButtonsContainer,
-  InputLabel,
   StyledRadioGroup,
   StyledRadio,
   StyledFormControlLabel,

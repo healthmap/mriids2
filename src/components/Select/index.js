@@ -1,5 +1,5 @@
 import React from "react";
-
+import { InputLabel } from "../styled-components/InputLabel";
 import * as Styled from "./styles";
 
 const Select = ({
@@ -18,7 +18,7 @@ const Select = ({
 
   return (
     <>
-      <Styled.InputLabel>{name}</Styled.InputLabel>
+      <InputLabel>{name}</InputLabel>
       <Styled.StyledMuiSelect
         name={name}
         value={value}
