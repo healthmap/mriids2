@@ -94,7 +94,7 @@ const Sidebar = ({
         />
       </SelectOutbreakWrapper>
       <InputLabel>Timespan</InputLabel>
-      <div ref={popoverButtonDivRef}>
+      <div data-test-id="open-date-range-button" ref={popoverButtonDivRef}>
         <Button onClick={() => handleDateRangePopoverOpen()}>
           {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
           {dayjs(filters.dateRange.to).format("MMM D, YYYY")}
