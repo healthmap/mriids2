@@ -6,10 +6,12 @@ export const ContentWrapper = styled.div`
   padding: 0 3.2rem;
 `;
 
-export const FirstPageContainer = styled.div``;
+export const FirstPageContainer = styled.div`
+  margin-top: ${(props) => props.theme.headerHeight};
+`;
 
 export const SecondPageContainer = styled.div`
-  background: #fafbfb;
+  background: ${(props) => props.theme.background3};
 `;
 
 export const TeamMemberWrapper = styled.div`

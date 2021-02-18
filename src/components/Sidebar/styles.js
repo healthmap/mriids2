@@ -5,11 +5,10 @@ export const SidebarWrapper = styled.div`
   top: ${(props) => props.theme.headerHeight};
   left: 0;
   bottom: 0;
-border-right: 1px solid ${(props) => props.theme.lightGray3};
+  border-right: 1px solid ${(props) => props.theme.borderLightColor};
   width: calc(${(props) => props.theme.sidebarWidth} - 3.2rem);
-  padding: .8rem 1.6rem 2.4rem;
-  background-color: ${(props) => props.theme.lightestGray};
+  padding: 0.8rem 1.6rem 2.4rem;
+  background-color: ${(props) => props.theme.background2};
   overflow: auto;
   z-index: 2; /* $z-index--sidebar make variable */
 `;
-
