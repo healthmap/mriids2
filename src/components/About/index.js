@@ -4,7 +4,7 @@ import LogoGroup from "../../components/LogoGroup";
 
 const About = () => {
   return (
-    <>
+    <Styled.PageWrapper>
       <Styled.ContentWrapper>
         <Styled.Title>About</Styled.Title>
         <Styled.BodyLarge>
@@ -119,7 +119,7 @@ const About = () => {
         </Styled.Body>
       </Styled.ContentWrapper>
       <LogoGroup />
-    </>
+    </Styled.PageWrapper>
   );
 };
 

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { media } from "../../assets/style-utils";
 
+export const PageWrapper = styled.div`
+  margin-top: ${(props) => props.theme.headerHeight};
+`;
+
 export const ContentWrapper = styled.div`
   max-width: 1400px;
   margin: 6.4rem auto;
@@ -8,7 +12,8 @@ export const ContentWrapper = styled.div`
 `;
 
 export const SectionWrapperLight = styled.div`
-  background: ${(props) => props.theme.background2};
+  background: ${(props) => props.theme.background3};
+  overflow: auto;
 `;
 
 export const Title = styled.h2`

@@ -23,7 +23,7 @@ export const HeaderNavWrapper = styled.ul`
       text-transform: uppercase;
       text-decoration: none;
       &.is-active {
-        background-color: ${(props) => props.theme.lightGray3};
+        background-color: ${(props) => props.theme.borderLightColor};
         color: ${(props) => props.theme.textColor};
       }
     }
@@ -35,9 +35,9 @@ export const HeaderWrapper = styled.div`
   display: flex;
   flex: none;
   width: 100%;
-  background: ${(props) => props.theme.background2};
-  height: ${(props) => props.theme.headerHeight};
-  box-shadow: 0 10px 12px -8px rgba(0, 0, 0, 0.1); /* $box-shadow--bottom */
+  background: ${(props) => props.theme.background1};
+  height: calc(${(props) => props.theme.headerHeight} - 1px);
+  border-bottom: 1px solid ${(props) => props.theme.borderLightColor};
   z-index: 3; /* $z-index--header */
   > div {
     display: flex;
