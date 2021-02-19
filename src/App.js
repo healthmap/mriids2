@@ -18,6 +18,7 @@ import About from "./components/About";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
+import ProjectionsPopup from "./components/ProjectionsPopup";
 import DateRangePopover from "./components/DateRangePopover";
 import DateRange from "./components/DateRange";
 import { StyledAppContainer } from "./styles";
@@ -45,9 +46,8 @@ class App extends Component {
               <Switch>
                 <Route exact path="/">
                   <Sidebar />
-                  <div>
-                    <DateRangePopover />
-                  </div>
+                  <ProjectionsPopup />
+                  <DateRangePopover />
                   {isEbolaRiskViewSelected ? (
                     <EbolaRiskMap />
                   ) : (
