@@ -531,7 +531,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     className="c11"
   >
     <p>
-      Reported cases in all locations
+      Total reported cases in all locations
        from:
       <br />
       <strong>
@@ -547,7 +547,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       <div
         className="c13"
       >
-        REPORTED CASES
+        Reported cases
       </div>
       <div
         className="c14"

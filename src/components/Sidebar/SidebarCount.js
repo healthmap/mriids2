@@ -41,7 +41,10 @@ const SidebarCount = ({
     filters.country === "All" ? "all locations" : filters.country;
   const titleText = filters.dataType.includes("projected")
     ? `Projection in ${locationText}`
-    : `Reported ${dataType} in ${locationText}`;
+    : `Total reported ${dataType} in ${locationText}`;
+  const reportedCasesSectionTitle = filters.dataType.includes("projected")
+    ? "Total outbreak projections"
+    : "Reported cases";
 
   return (
     <BlockPadded>
@@ -54,14 +57,14 @@ const SidebarCount = ({
         </strong>
       </p>
       <SidebarCountParent>
-        <SidebarCountLabel>REPORTED CASES</SidebarCountLabel>
+        <SidebarCountLabel>{reportedCasesSectionTitle}</SidebarCountLabel>
         <SidebarCountValue>
           {reportedCaseCount.toLocaleString()}
         </SidebarCountValue>
       </SidebarCountParent>
       {filters.outbreak === "COVID 19" && (
         <SidebarCountParent>
-          <SidebarCountLabel>REPORTED DEATHS</SidebarCountLabel>
+          <SidebarCountLabel>Reported Deaths</SidebarCountLabel>
           <SidebarCountValue>
             {reportedDeathCount.toLocaleString()}
           </SidebarCountValue>
