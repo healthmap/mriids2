@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import dayjs from "dayjs";
 import { changeDateRange } from "../../actions/filters";
 import { changeDateSliderRange } from "../../actions/ui";
 import { Slider } from "@material-ui/core";
@@ -63,6 +64,7 @@ const DateRange = ({
 
   return (
     <DateRangeComponentContainer>
+      {dayjs(filters.dateRange.from).format("MMM YYYY")}
       <DateRangeSliderContainer>
         <Slider
           value={sliderRange}
@@ -71,6 +73,7 @@ const DateRange = ({
           onChange={handleRangeChange}
         />
       </DateRangeSliderContainer>
+      {dayjs(filters.dateRange.to).format("MMM YYYY")}
     </DateRangeComponentContainer>
   );
 };
