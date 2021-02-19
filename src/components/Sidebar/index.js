@@ -13,7 +13,6 @@ import {
 } from "../../actions/ui";
 import Select from "../Select";
 import SidebarCount from "./SidebarCount";
-import Summary from "./Summary";
 import EbolaRiskList from "./EbolaRiskList";
 import * as Styled from "./styles";
 import {
@@ -22,17 +21,11 @@ import {
 } from "../styled-components/SelectWrappers";
 import { Button } from "../styled-components/Button";
 import { InputLabel } from "../styled-components/InputLabel";
-import { getFutureProjectionCount } from "../../utils/ebolaDataHelpers";
-import { getDiseaseCount } from "../../utils/sidebarDataHelpers";
 import CountrySelect from "../CountrySelect";
 import DataRadioButtons from "../DataRadioButtons";
 
 const Sidebar = ({
   filters,
-  ebolaData,
-  ebolaDataCombined,
-  covidCaseCountData,
-  covidDeathCountData,
   changeCountryFilter,
   changeOutbreakFilter,
   openDateRangePopover,
@@ -58,23 +51,7 @@ const Sidebar = ({
     openDateRangePopover();
   };
 
-  // This is the disease count for the SidebarCount child component
-  const diseaseCount = getDiseaseCount(
-    ebolaData,
-    covidCaseCountData,
-    covidDeathCountData,
-    filters
-  );
-
-  // This is the projected disease count for the SidebarCount child component
-  const projectedDiseaseCount = getFutureProjectionCount(
-    ebolaData,
-    ebolaDataCombined,
-    filters
-  );
-
   const showSidebarCount = filters.view === "snapshot";
-  const showEbolaSummary = filters.outbreak === "Ebola Outbreak";
   const showEbolaRiskList =
     filters.view === "risk" && filters.outbreak === "Ebola Outbreak";
 
@@ -101,21 +78,7 @@ const Sidebar = ({
         </Button>
       </div>
       <DataRadioButtons />
-      {showSidebarCount && (
-        <SidebarCount
-          filters={filters}
-          diseaseCount={diseaseCount.toLocaleString()}
-          projectedDiseaseCount={projectedDiseaseCount.toLocaleString()}
-        />
-      )}
-      {showEbolaSummary && (
-        <Summary
-          dataType={filters.dataType}
-          dateRange={filters.dateRange}
-          country={filters.country}
-          diseaseCaseCount={diseaseCount.toLocaleString()}
-        />
-      )}
+      {showSidebarCount && <SidebarCount />}
       {showEbolaRiskList && <EbolaRiskList />}
     </Styled.SidebarWrapper>
   );
@@ -123,10 +86,6 @@ const Sidebar = ({
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
-  ebolaData: state.ebola.ebolaData.data,
-  ebolaDataCombined: state.ebola.ebolaDataCombined.data,
-  covidCaseCountData: state.covid.caseCounts.data,
-  covidDeathCountData: state.covid.deathCounts.data,
 });
 
 const mapDispatchToProps = (dispatch) =>

@@ -5,6 +5,8 @@ import Radio from "@material-ui/core/Radio";
 
 export const DataRadioButtonsContainer = styled.div`
   display: block;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ccc;
 `;
 
 export const StyledRadioGroup = styled(RadioGroup)`

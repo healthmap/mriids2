@@ -2,7 +2,6 @@ import React from "react";
 import { shallow } from "enzyme";
 import {
   SidebarCountParent,
-  SidebarCountColor,
   SidebarCountValue,
   SidebarCountLabel,
 } from "../SidebarCountStyles";
@@ -10,9 +9,6 @@ import {
 describe("tests for LayoutHelpers", () => {
   test("render SidebarCountParent", () => {
     shallow(<SidebarCountParent />);
-  });
-  test("render SidebarCountColor", () => {
-    shallow(<SidebarCountColor />);
   });
   test("render SidebarCountValue", () => {
     shallow(<SidebarCountValue />);
