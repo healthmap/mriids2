@@ -547,7 +547,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       <div
         className="c13"
       >
-        Suspected and confirmed
+        REPORTED CASES
       </div>
       <div
         className="c14"

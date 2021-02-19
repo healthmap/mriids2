@@ -6,8 +6,11 @@ import {
   SidebarCountLabel,
   SidebarCountValue,
 } from "../styled-components/SidebarCountStyles";
-import { getDiseaseCount } from "../../utils/sidebarDataHelpers";
-import { getFutureProjectionCount } from "../../utils/ebolaDataHelpers";
+import {
+  getEbolaCaseCount,
+  getFutureProjectionCount,
+} from "../../utils/ebolaDataHelpers";
+import { getCovidCount } from "../../utils/covidDataHelpers";
 
 const SidebarCount = ({
   filters,
@@ -16,30 +19,29 @@ const SidebarCount = ({
   covidCaseCountData,
   covidDeathCountData,
 }) => {
-  const diseaseCount = getDiseaseCount(
-    ebolaData,
-    covidCaseCountData,
-    covidDeathCountData,
-    filters
-  );
+  // Gets the reported case count for either the Ebola or COVID 19 outbreak.
+  const reportedCaseCount =
+    filters.outbreak === "COVID 19"
+      ? getCovidCount(covidCaseCountData, filters)
+      : getEbolaCaseCount(ebolaData, filters);
 
+  // Gets the reported death count for the COVID 19 outbreak.
+  const reportedDeathCount = getCovidCount(covidDeathCountData, filters);
+
+  // Gets the projected case count for the ebola outbreak.
   const projectedDiseaseCount = getFutureProjectionCount(
     ebolaData,
     ebolaDataCombined,
     filters
   );
-  // If the Covid outbreak is selected, display either "cases" or "deaths" depending which data type is selected.
-  // If the Ebola outbreak is selected, just display "cases".
-  const dataType = filters.outbreak === "COVID 19" ? filters.dataType : "cases";
 
+  const dataType =
+    filters.outbreak === "COVID 19" ? "cases and deaths" : "cases";
   const locationText =
     filters.country === "All" ? "all locations" : filters.country;
   const titleText = filters.dataType.includes("projected")
-    ? "Projection"
+    ? `Projection in ${locationText}`
     : `Reported ${dataType} in ${locationText}`;
-  const labelText = filters.dataType.includes("projected")
-    ? "Total outbreak projections"
-    : "Suspected and confirmed";
 
   return (
     <BlockPadded>
@@ -52,9 +54,19 @@ const SidebarCount = ({
         </strong>
       </p>
       <SidebarCountParent>
-        <SidebarCountLabel>{labelText}</SidebarCountLabel>
-        <SidebarCountValue>{diseaseCount.toLocaleString()}</SidebarCountValue>
+        <SidebarCountLabel>REPORTED CASES</SidebarCountLabel>
+        <SidebarCountValue>
+          {reportedCaseCount.toLocaleString()}
+        </SidebarCountValue>
       </SidebarCountParent>
+      {filters.outbreak === "COVID 19" && (
+        <SidebarCountParent>
+          <SidebarCountLabel>REPORTED DEATHS</SidebarCountLabel>
+          <SidebarCountValue>
+            {reportedDeathCount.toLocaleString()}
+          </SidebarCountValue>
+        </SidebarCountParent>
+      )}
       {filters.dataType.includes("projected") && (
         <SidebarCountParent>
           <SidebarCountLabel>Projected future cases</SidebarCountLabel>

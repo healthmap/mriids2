@@ -55,7 +55,7 @@ exports[`Tests for the connected SidebarCount component with reduxInitialState s
     <div
       className="c2"
     >
-      Suspected and confirmed
+      REPORTED CASES
     </div>
     <div
       className="c3"
