@@ -8,6 +8,7 @@ import { Slider } from "@material-ui/core";
 import {
   DateRangeComponentContainer,
   DateRangeSliderContainer,
+  SliderDate,
 } from "../styled-components/DateRangeComponentContainer";
 import {
   getNumberOfWeeksBetweenDates,
@@ -64,7 +65,9 @@ const DateRange = ({
 
   return (
     <DateRangeComponentContainer>
-      {dayjs(filters.dateRange.from).format("MMM YYYY")}
+      <SliderDate>
+        {dayjs(filters.dateRange.from).format("MMM YYYY")}
+      </SliderDate>
       <DateRangeSliderContainer>
         <Slider
           value={sliderRange}
@@ -73,7 +76,7 @@ const DateRange = ({
           onChange={handleRangeChange}
         />
       </DateRangeSliderContainer>
-      {dayjs(filters.dateRange.to).format("MMM YYYY")}
+      <SliderDate>{dayjs(filters.dateRange.to).format("MMM YYYY")}</SliderDate>
     </DateRangeComponentContainer>
   );
 };
