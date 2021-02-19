@@ -43,11 +43,21 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 }
 
 .c11 {
+  margin-top: 2rem;
   padding: 1.3rem;
-}
-
-.c11.reported-cases-wrapper {
-  border-bottom: 1px solid #ccc;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
 }
 
 .c12 {
@@ -56,19 +66,14 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 
 .c13 {
   margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .c14 {
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  margin-bottom: -0.3rem;
-  margin-right: 0.8em;
-}
-
-.c15 {
-  display: inline-block;
   font-size: 1.8em;
+  font-weight: 600;
 }
 
 .c0 {
@@ -173,6 +178,8 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 
 .c7 {
   display: block;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ccc;
 }
 
 .c8 {
@@ -523,16 +530,16 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     </fieldset>
   </div>
   <div
-    className="c11 reported-cases-wrapper"
+    className="c11"
   >
     <p>
+      Total reported cases in all locations
+       from:
+      <br />
       <strong>
-        Reported cases
-         from:
-        <br />
         Wed Oct 01 2014
-         to
          
+         - 
         Sat Feb 20 2016
       </strong>
     </p>
@@ -542,44 +549,14 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       <div
         className="c13"
       >
-        Suspected and confirmed
+        Reported cases
       </div>
       <div
         className="c14"
-        style={
-          Object {
-            "backgroundColor": "#E23D4A",
-          }
-        }
-      />
-      <div
-        className="c15"
       >
         0
       </div>
     </div>
-  </div>
-  <div
-    className="c11"
-  >
-    <h4>
-      SUMMARY
-    </h4>
-    <p>
-      From 
-      Wed Oct 01 2014
-       to 
-      Sat Feb 20 2016
-      , the Ebola outbreak in 
-      West Africa
-       
-      has affected
-       
-      0
-       people
-       (suspected and confirmed cases)
-      .
-    </p>
   </div>
 </div>
 `;
@@ -627,11 +604,21 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
 }
 
 .c11 {
+  margin-top: 2rem;
   padding: 1.3rem;
-}
-
-.c11.reported-cases-wrapper {
-  border-bottom: 1px solid #ccc;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
 }
 
 .c0 {
@@ -736,6 +723,8 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
 
 .c7 {
   display: block;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ccc;
 }
 
 .c8 {
@@ -1093,28 +1082,6 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
         </label>
       </div>
     </fieldset>
-  </div>
-  <div
-    className="c11"
-  >
-    <h4>
-      SUMMARY
-    </h4>
-    <p>
-      From 
-      Wed Oct 01 2014
-       to 
-      Sat Feb 20 2016
-      , the Ebola outbreak in 
-      West Africa
-       
-      has affected
-       
-      0
-       people
-       (suspected and confirmed cases)
-      .
-    </p>
   </div>
   <div
     className="c11"

@@ -1,53 +1,93 @@
 import React from "react";
+import { connect } from "react-redux";
 import { BlockPadded } from "../styled-components/Block";
 import {
   SidebarCountParent,
-  SidebarCountColor,
   SidebarCountLabel,
   SidebarCountValue,
 } from "../styled-components/SidebarCountStyles";
+import {
+  getEbolaCaseCount,
+  getFutureProjectionCount,
+} from "../../utils/ebolaDataHelpers";
+import { getCovidCount } from "../../utils/covidDataHelpers";
 
 const SidebarCount = ({
   filters,
-  diseaseCount = 0,
-  projectedDiseaseCount = 0,
+  ebolaData,
+  ebolaDataCombined,
+  covidCaseCountData,
+  covidDeathCountData,
 }) => {
-  // If the Covid outbreak is selected, display either "cases" or "deaths" depending which data type is selected.
-  // If the Ebola outbreak is selected, just display "cases".
-  const dataType = filters.outbreak === "COVID 19" ? filters.dataType : "cases";
+  // Gets the reported case count for either the Ebola or COVID 19 outbreak.
+  const reportedCaseCount =
+    filters.outbreak === "COVID 19"
+      ? getCovidCount(covidCaseCountData, filters)
+      : getEbolaCaseCount(ebolaData, filters);
+
+  // Gets the reported death count for the COVID 19 outbreak.
+  const reportedDeathCount = getCovidCount(covidDeathCountData, filters);
+
+  // Gets the projected case count for the ebola outbreak.
+  const projectedDiseaseCount = getFutureProjectionCount(
+    ebolaData,
+    ebolaDataCombined,
+    filters
+  );
+
+  const dataType =
+    filters.outbreak === "COVID 19" ? "cases and deaths" : "cases";
+  const locationText =
+    filters.country === "All" ? "all locations" : filters.country;
   const titleText = filters.dataType.includes("projected")
-    ? "Projection"
-    : `Reported ${dataType}`;
-  const labelText = filters.dataType.includes("projected")
+    ? `Projection in ${locationText}`
+    : `Total reported ${dataType} in ${locationText}`;
+  const reportedCasesSectionTitle = filters.dataType.includes("projected")
     ? "Total outbreak projections"
-    : "Suspected and confirmed";
-  const iconColor = filters.dataType.includes("projected")
-    ? "#259994"
-    : "#E23D4A";
+    : "Reported cases";
+
   return (
-    <BlockPadded className="reported-cases-wrapper">
+    <BlockPadded>
       <p>
+        {titleText} from:
+        <br />
         <strong>
-          {titleText} from:
-          <br />
-          {filters.dateRange.from.toDateString()} to{" "}
+          {filters.dateRange.from.toDateString()} {" - "}
           {filters.dateRange.to.toDateString()}
         </strong>
       </p>
       <SidebarCountParent>
-        <SidebarCountLabel>{labelText}</SidebarCountLabel>
-        <SidebarCountColor style={{ backgroundColor: iconColor }} />
-        <SidebarCountValue>{diseaseCount}</SidebarCountValue>
+        <SidebarCountLabel>{reportedCasesSectionTitle}</SidebarCountLabel>
+        <SidebarCountValue>
+          {reportedCaseCount.toLocaleString()}
+        </SidebarCountValue>
       </SidebarCountParent>
+      {filters.outbreak === "COVID 19" && (
+        <SidebarCountParent>
+          <SidebarCountLabel>Reported Deaths</SidebarCountLabel>
+          <SidebarCountValue>
+            {reportedDeathCount.toLocaleString()}
+          </SidebarCountValue>
+        </SidebarCountParent>
+      )}
       {filters.dataType.includes("projected") && (
         <SidebarCountParent>
           <SidebarCountLabel>Projected future cases</SidebarCountLabel>
-          <SidebarCountColor style={{ backgroundColor: "#F2AD33" }} />
-          <SidebarCountValue>{projectedDiseaseCount}</SidebarCountValue>
+          <SidebarCountValue>
+            {projectedDiseaseCount.toLocaleString()}
+          </SidebarCountValue>
         </SidebarCountParent>
       )}
     </BlockPadded>
   );
 };
 
-export default SidebarCount;
+const mapStateToProps = (state) => ({
+  filters: state.filters,
+  ebolaData: state.ebola.ebolaData.data,
+  ebolaDataCombined: state.ebola.ebolaDataCombined.data,
+  covidCaseCountData: state.covid.caseCounts.data,
+  covidDeathCountData: state.covid.deathCounts.data,
+});
+
+export default connect(mapStateToProps)(SidebarCount);
