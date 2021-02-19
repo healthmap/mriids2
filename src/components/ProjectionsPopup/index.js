@@ -5,6 +5,8 @@ import { closeProjectionsPopup } from "../../actions/ui";
 import { changeDataType } from "../../actions/filters";
 import {
   PopupContainer,
+  PopupTitle,
+  PopupTextSection,
   PopupButtonsContainer,
 } from "../DataRadioButtons/styles";
 import Button from "@material-ui/core/Button";
@@ -25,15 +27,15 @@ const ProjectionsPopup = ({
   return (
     <Modal open={isProjectionsPopupOpen}>
       <PopupContainer>
-        <h2>Show Additional Data</h2>
-        <p>
+        <PopupTitle>Show Additional Data</PopupTitle>
+        <PopupTextSection>
           Some of our data, including risk and projection data, is for research
           only.
-        </p>
-        <p>
+        </PopupTextSection>
+        <PopupTextSection>
           Please click confirm to accept our terms and conditions before viewing
           this data.
-        </p>
+        </PopupTextSection>
         <PopupButtonsContainer>
           <Button variant="contained" onClick={() => closeProjectionsPopup()}>
             Cancel
