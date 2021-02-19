@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import dayjs from "dayjs";
 import { changeDateRange } from "../../actions/filters";
 import { changeDateSliderRange } from "../../actions/ui";
 import { Slider } from "@material-ui/core";
 import {
   DateRangeComponentContainer,
   DateRangeSliderContainer,
+  SliderDate,
 } from "../styled-components/DateRangeComponentContainer";
 import {
   getNumberOfWeeksBetweenDates,
@@ -63,6 +65,9 @@ const DateRange = ({
 
   return (
     <DateRangeComponentContainer>
+      <SliderDate>
+        {dayjs(filters.dateRange.from).format("MMM YYYY")}
+      </SliderDate>
       <DateRangeSliderContainer>
         <Slider
           value={sliderRange}
@@ -71,6 +76,7 @@ const DateRange = ({
           onChange={handleRangeChange}
         />
       </DateRangeSliderContainer>
+      <SliderDate>{dayjs(filters.dateRange.to).format("MMM YYYY")}</SliderDate>
     </DateRangeComponentContainer>
   );
 };
