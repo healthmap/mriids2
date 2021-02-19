@@ -21,3 +21,11 @@ export const setPopoverAnchorElement = (anchorElement) => ({
 export const clearPopoverAnchorElement = () => ({
   type: types.CLEAR_POPOVER_ANCHOR_ELEMENT,
 });
+
+export const openProjectionsPopup = () => ({
+  type: types.OPEN_PROJECTIONS_POPUP,
+});
+
+export const closeProjectionsPopup = () => ({
+  type: types.CLOSE_PROJECTIONS_POPUP,
+});

@@ -44,6 +44,7 @@ export const reduxInitialState = {
     dateSliderRange: [0, 72],
     isDateRangePopoverOpen: false,
     popoverAnchorElement: null,
+    isProjectionsPopupOpen: false,
   },
 };
 
