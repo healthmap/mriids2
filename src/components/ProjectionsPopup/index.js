@@ -4,13 +4,13 @@ import { bindActionCreators } from "redux";
 import { closeProjectionsPopup } from "../../actions/ui";
 import { changeDataType } from "../../actions/filters";
 import {
+  StyledModal,
   PopupContainer,
   PopupTitle,
   PopupTextSection,
   PopupButtonsContainer,
-} from "../DataRadioButtons/styles";
+} from "./styles";
 import Button from "@material-ui/core/Button";
-import Modal from "@material-ui/core/Modal";
 
 const ProjectionsPopup = ({
   isProjectionsPopupOpen,
@@ -25,7 +25,7 @@ const ProjectionsPopup = ({
     closeProjectionsPopup();
   };
   return (
-    <Modal open={isProjectionsPopupOpen}>
+    <StyledModal open={isProjectionsPopupOpen}>
       <PopupContainer>
         <PopupTitle>Show Additional Data</PopupTitle>
         <PopupTextSection>
@@ -49,7 +49,7 @@ const ProjectionsPopup = ({
           </Button>
         </PopupButtonsContainer>
       </PopupContainer>
-    </Modal>
+    </StyledModal>
   );
 };
 
