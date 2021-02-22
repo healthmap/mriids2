@@ -31,16 +31,21 @@ const ProjectionsPopup = ({
         <PopupTextSection>
           Some of our data, including risk and projection data, is for research
           only.
-        </PopupTextSection>
-        <PopupTextSection>
+          <br />
+          <br />
           Please click confirm to accept our terms and conditions before viewing
           this data.
         </PopupTextSection>
         <PopupButtonsContainer>
-          <Button variant="contained" onClick={() => closeProjectionsPopup()}>
+          <Button
+            size="large"
+            variant="contained"
+            onClick={() => closeProjectionsPopup()}
+          >
             Cancel
           </Button>
           <Button
+            size="large"
             variant="contained"
             color="primary"
             onClick={() => handleConfirmButtonClick()}
