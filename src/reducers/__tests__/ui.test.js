@@ -88,4 +88,15 @@ describe("Tests for ui reducer", () => {
       })
     ).toEqual(changedUiState);
   });
+  test("should handle confirming the projections popup", () => {
+    const changedUiState = {
+      ...initialUiState,
+      hasConfirmedProjectionsPopup: true,
+    };
+    expect(
+      ui(initialUiState, {
+        type: types.CONFIRM_PROJECTIONS_POPUP,
+      })
+    ).toEqual(changedUiState);
+  });
 });

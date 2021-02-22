@@ -29,3 +29,7 @@ export const openProjectionsPopup = () => ({
 export const closeProjectionsPopup = () => ({
   type: types.CLOSE_PROJECTIONS_POPUP,
 });
+
+export const confirmProjectionsPopup = () => ({
+  type: types.CONFIRM_PROJECTIONS_POPUP,
+});

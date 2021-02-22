@@ -45,6 +45,7 @@ export const reduxInitialState = {
     isDateRangePopoverOpen: false,
     popoverAnchorElement: null,
     isProjectionsPopupOpen: false,
+    hasConfirmedProjectionsPopup: false,
   },
 };
 

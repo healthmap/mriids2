@@ -5,6 +5,7 @@ const initialState = {
   isDateRangePopoverOpen: false,
   popoverAnchorElement: null,
   isProjectionsPopupOpen: false,
+  hasConfirmedProjectionsPopup: false,
 };
 
 const UiState = function (state = initialState, action) {
@@ -43,6 +44,11 @@ const UiState = function (state = initialState, action) {
       return {
         ...state,
         isProjectionsPopupOpen: false,
+      };
+    case types.CONFIRM_PROJECTIONS_POPUP:
+      return {
+        ...state,
+        hasConfirmedProjectionsPopup: true,
       };
     default:
       return state;

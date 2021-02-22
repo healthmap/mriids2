@@ -6,6 +6,7 @@ import {
   clearPopoverAnchorElement,
   openProjectionsPopup,
   closeProjectionsPopup,
+  confirmProjectionsPopup,
 } from "../ui";
 import * as types from "../../constants/ActionTypes";
 
@@ -48,6 +49,11 @@ describe("Tests for ui actions", () => {
   test("closeProjectionsPopup should return the expected action", () => {
     expect(closeProjectionsPopup()).toEqual({
       type: types.CLOSE_PROJECTIONS_POPUP,
+    });
+  });
+  test("confirmProjectionsPopup should return the expected action", () => {
+    expect(confirmProjectionsPopup()).toEqual({
+      type: types.CONFIRM_PROJECTIONS_POPUP,
     });
   });
 });
