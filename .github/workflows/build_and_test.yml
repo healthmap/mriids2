@@ -1,10 +1,10 @@
-name: Build and Test with Node.js
+name: Build and run Jest tests
 
 on:
   push:
-    branches: [master, development, covid-outbreak-additions]
+    branches: [master, development]
   pull_request:
-    branches: [master, development, covid-outbreak-additions]
+    branches: [master, development]
 
 jobs:
   build:
