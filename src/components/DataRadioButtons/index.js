@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDataType } from "../../actions/filters";
+import { openProjectionsPopup } from "../../actions/ui";
 import { InputLabel } from "../styled-components/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import {
@@ -11,9 +12,26 @@ import {
   StyledFormControlLabel,
 } from "../styled-components/RadioButtonStyles";
 
-const DataRadioButtons = ({ dataType, changeDataType, outbreakSelected }) => {
+const DataRadioButtons = ({
+  dataType,
+  changeDataType,
+  openProjectionsPopup,
+  hasConfirmedProjectionsPopup,
+  outbreakSelected,
+}) => {
   const handleChange = (event) => {
-    changeDataType(event.target.value);
+    const dataTypeSelected = event.target.value;
+    // If the user tries to view to projections data and has not clicked on 'Confirm' on the ProjectionsPopup,
+    // open the ProjectionsPopup.
+    if (
+      dataTypeSelected.includes("projected") &&
+      !hasConfirmedProjectionsPopup
+    ) {
+      openProjectionsPopup();
+    } else {
+      // Otherwise, change to the selected data type.
+      changeDataType(dataTypeSelected);
+    }
   };
   return (
     <DataRadioButtonsContainer>
@@ -59,9 +77,10 @@ const DataRadioButtons = ({ dataType, changeDataType, outbreakSelected }) => {
 const mapStateToProps = (state) => ({
   dataType: state.filters.dataType,
   outbreakSelected: state.filters.outbreak,
+  hasConfirmedProjectionsPopup: state.ui.hasConfirmedProjectionsPopup,
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ changeDataType }, dispatch);
+  bindActionCreators({ changeDataType, openProjectionsPopup }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(DataRadioButtons);
