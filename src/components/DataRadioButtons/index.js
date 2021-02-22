@@ -16,13 +16,17 @@ const DataRadioButtons = ({
   dataType,
   changeDataType,
   openProjectionsPopup,
+  hasConfirmedProjectionsPopup,
   outbreakSelected,
 }) => {
   const handleChange = (event) => {
     const dataTypeSelected = event.target.value;
-    // If the user tries to change to projections data, open the ProjectionsPopup.
-    // User will need to click on "Confirm" before viewing projections data.
-    if (dataTypeSelected.includes("projected")) {
+    // If the user tries to view to projections data and has not clicked on 'Confirm' on the ProjectionsPopup,
+    // open the ProjectionsPopup.
+    if (
+      dataTypeSelected.includes("projected") &&
+      !hasConfirmedProjectionsPopup
+    ) {
       openProjectionsPopup();
     } else {
       // Otherwise, change to the selected data type.
@@ -73,6 +77,7 @@ const DataRadioButtons = ({
 const mapStateToProps = (state) => ({
   dataType: state.filters.dataType,
   outbreakSelected: state.filters.outbreak,
+  hasConfirmedProjectionsPopup: state.ui.hasConfirmedProjectionsPopup,
 });
 
 const mapDispatchToProps = (dispatch) =>

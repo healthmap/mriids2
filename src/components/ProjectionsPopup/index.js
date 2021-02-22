@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { closeProjectionsPopup } from "../../actions/ui";
+import {
+  closeProjectionsPopup,
+  confirmProjectionsPopup,
+} from "../../actions/ui";
 import { changeDataType } from "../../actions/filters";
 import {
   StyledModal,
@@ -16,13 +19,18 @@ const ProjectionsPopup = ({
   isProjectionsPopupOpen,
   outbreakSelected,
   closeProjectionsPopup,
+  confirmProjectionsPopup,
   changeDataType,
 }) => {
   const handleConfirmButtonClick = () => {
+    // Change the data type.
     changeDataType(
       outbreakSelected === "COVID 19" ? "projected deaths" : "projected cases"
     );
+    // Close the popup.
     closeProjectionsPopup();
+    // Mark the projections popup as 'confirmed'.
+    confirmProjectionsPopup();
   };
   return (
     <StyledModal open={isProjectionsPopupOpen}>
@@ -64,6 +72,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ closeProjectionsPopup, changeDataType }, dispatch);
+  bindActionCreators(
+    { closeProjectionsPopup, confirmProjectionsPopup, changeDataType },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectionsPopup);
