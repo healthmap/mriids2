@@ -66,4 +66,37 @@ describe("Tests for ui reducer", () => {
       })
     ).toEqual(changedUiState);
   });
+  test("should handle opening the projections popup", () => {
+    const changedUiState = {
+      ...initialUiState,
+      isProjectionsPopupOpen: true,
+    };
+    expect(
+      ui(initialUiState, {
+        type: types.OPEN_PROJECTIONS_POPUP,
+      })
+    ).toEqual(changedUiState);
+  });
+  test("should handle closing the projections popup", () => {
+    const changedUiState = {
+      ...initialUiState,
+      isProjectionsPopupOpen: false,
+    };
+    expect(
+      ui(initialUiState, {
+        type: types.CLOSE_PROJECTIONS_POPUP,
+      })
+    ).toEqual(changedUiState);
+  });
+  test("should handle confirming the projections popup", () => {
+    const changedUiState = {
+      ...initialUiState,
+      hasConfirmedProjectionsPopup: true,
+    };
+    expect(
+      ui(initialUiState, {
+        type: types.CONFIRM_PROJECTIONS_POPUP,
+      })
+    ).toEqual(changedUiState);
+  });
 });

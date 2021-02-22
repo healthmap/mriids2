@@ -4,6 +4,9 @@ import {
   closeDateRangePopover,
   setPopoverAnchorElement,
   clearPopoverAnchorElement,
+  openProjectionsPopup,
+  closeProjectionsPopup,
+  confirmProjectionsPopup,
 } from "../ui";
 import * as types from "../../constants/ActionTypes";
 
@@ -36,6 +39,21 @@ describe("Tests for ui actions", () => {
   test("clearPopoverAnchorElement should return the expected action", () => {
     expect(clearPopoverAnchorElement()).toEqual({
       type: types.CLEAR_POPOVER_ANCHOR_ELEMENT,
+    });
+  });
+  test("openProjectionsPopup should return the expected action", () => {
+    expect(openProjectionsPopup()).toEqual({
+      type: types.OPEN_PROJECTIONS_POPUP,
+    });
+  });
+  test("closeProjectionsPopup should return the expected action", () => {
+    expect(closeProjectionsPopup()).toEqual({
+      type: types.CLOSE_PROJECTIONS_POPUP,
+    });
+  });
+  test("confirmProjectionsPopup should return the expected action", () => {
+    expect(confirmProjectionsPopup()).toEqual({
+      type: types.CONFIRM_PROJECTIONS_POPUP,
     });
   });
 });
