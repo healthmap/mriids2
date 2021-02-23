@@ -22,10 +22,16 @@ exports[`Tests for the connected DateRange should render with given state from R
 
 .c2 {
   width: 80%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c1 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
 }
 
 <div
