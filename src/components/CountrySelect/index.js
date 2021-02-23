@@ -53,7 +53,4 @@ const mapDispatchToProps = (dispatch) =>
   );
 
 // The withStyles higher-order component takes in the 'styles' and makes them accessible via the 'classes' prop.
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CountrySelect);
+export default connect(mapStateToProps, mapDispatchToProps)(CountrySelect);

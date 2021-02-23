@@ -12,8 +12,8 @@ import {
   PopupTitle,
   PopupTextSection,
   PopupButtonsContainer,
+  StyledButton,
 } from "./styles";
-import Button from "@material-ui/core/Button";
 
 const ProjectionsPopup = ({
   isProjectionsPopupOpen,
@@ -39,27 +39,27 @@ const ProjectionsPopup = ({
         <PopupTextSection>
           Some of our data, including risk and projection data, is for research
           only.
-          <br />
-          <br />
+        </PopupTextSection>
+        <PopupTextSection>
           Please click confirm to accept our terms and conditions before viewing
           this data.
         </PopupTextSection>
         <PopupButtonsContainer>
-          <Button
-            size="large"
+          <StyledButton
             variant="contained"
             onClick={() => closeProjectionsPopup()}
+            disableRipple
           >
             Cancel
-          </Button>
-          <Button
-            size="large"
+          </StyledButton>
+          <StyledButton
             variant="contained"
             color="primary"
             onClick={() => handleConfirmButtonClick()}
+            disableRipple
           >
             Confirm
-          </Button>
+          </StyledButton>
         </PopupButtonsContainer>
       </PopupContainer>
     </StyledModal>
