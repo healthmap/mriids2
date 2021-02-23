@@ -4,6 +4,8 @@ const initialState = {
   dateSliderRange: [0, 72],
   isDateRangePopoverOpen: false,
   popoverAnchorElement: null,
+  isProjectionsPopupOpen: false,
+  hasConfirmedProjectionsPopup: false,
 };
 
 const UiState = function (state = initialState, action) {
@@ -32,6 +34,21 @@ const UiState = function (state = initialState, action) {
       return {
         ...state,
         popoverAnchorElement: null,
+      };
+    case types.OPEN_PROJECTIONS_POPUP:
+      return {
+        ...state,
+        isProjectionsPopupOpen: true,
+      };
+    case types.CLOSE_PROJECTIONS_POPUP:
+      return {
+        ...state,
+        isProjectionsPopupOpen: false,
+      };
+    case types.CONFIRM_PROJECTIONS_POPUP:
+      return {
+        ...state,
+        hasConfirmedProjectionsPopup: true,
       };
     default:
       return state;
