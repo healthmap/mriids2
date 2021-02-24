@@ -542,7 +542,11 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     className="c11"
   >
     <p>
-      Total reported cases in All Locations
+      Total reported cases in
+       
+      <strong>
+        All Locations
+      </strong>
        from 
       <strong>
         Wed Oct 01 2014

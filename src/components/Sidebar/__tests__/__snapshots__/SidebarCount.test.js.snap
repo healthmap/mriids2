@@ -48,7 +48,11 @@ exports[`Tests for the connected SidebarCount component with reduxInitialState s
   className="c0"
 >
   <p>
-    Total reported cases in All Locations
+    Total reported cases in
+     
+    <strong>
+      All Locations
+    </strong>
      from 
     <strong>
       Wed Oct 01 2014
