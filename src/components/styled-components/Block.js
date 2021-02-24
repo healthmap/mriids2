@@ -18,8 +18,7 @@ export const BlockPadded = styled.div`
 
 export const BlockDropshadow = styled.div`
   display: inline-block;
-  padding: 1rem;
-  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
+  padding: 1.2rem;
+  border-radius: 3px;
   background-color: #fff;
 `;

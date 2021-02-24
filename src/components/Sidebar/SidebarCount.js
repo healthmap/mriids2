@@ -40,8 +40,8 @@ const SidebarCount = ({
   const locationText =
     filters.country === "All" ? "All Locations" : filters.country;
   const titleText = filters.dataType.includes("projected")
-    ? `Projection in ${locationText}`
-    : `Total reported ${dataType} in ${locationText}`;
+    ? `Projection in`
+    : `Total reported ${dataType} in`;
   const reportedCasesSectionTitle = filters.dataType.includes("projected")
     ? "Total outbreak projections"
     : "Reported cases";
@@ -49,7 +49,7 @@ const SidebarCount = ({
   return (
     <BlockPadded>
       <p>
-        {titleText} from <strong>
+        {titleText} <strong>{locationText}</strong> from <strong>
           {filters.dateRange.from.toDateString()}{"–"}
           {filters.dateRange.to.toDateString()}
         </strong>

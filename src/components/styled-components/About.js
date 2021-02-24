@@ -36,7 +36,7 @@ export const SectionTitle = styled.h2`
     display: block;
     width: 10rem;
     padding-top: 0.4rem;
-    border-bottom: 0.4rem solid ${(props) => props.theme.primaryColor};
+    border-bottom: 0.4rem solid ${(props) => props.theme.secondaryColor};
   }
 `;
 
