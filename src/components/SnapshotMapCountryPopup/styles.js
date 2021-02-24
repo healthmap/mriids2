@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MapPopupContainer = styled.div`
-  width: 25rem;
+  width: 20rem;
 `;
 
 export const MapPopupTitleContainer = styled.div`
@@ -25,11 +25,18 @@ export const MapPopupCountSection = styled.div`
   }
 `;
 
+export const MapPopupSummary = styled.p`
+  margin: 0 0 0.8rem;
+  font-size: 1.2rem;
+  line-height: 1.66666666;
+  color: ${(props) => props.theme.textLightColor};
+`;
+
 export const Label = styled.p`
   text-transform: uppercase;
   color: ${(props) => props.theme.textLightColor};
   font-weight: 700;
   letter-spacing: 0.05rem;
-  font-size: 0.75rem;
-  line-height: 1.6666666666;
+  font-size: 1.2rem !important;
+  line-height: 2;
 `;
