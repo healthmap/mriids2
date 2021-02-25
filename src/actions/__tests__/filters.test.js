@@ -2,7 +2,6 @@ import {
   changeCountryFilter,
   changeOutbreakFilter,
   changeDataType,
-  changeViewFilter,
   changeDateRange,
 } from "../filters";
 import * as types from "../../constants/ActionTypes";
@@ -32,14 +31,6 @@ describe("Tests for the filter actions", () => {
       payload: dataType,
     };
     expect(changeDataType(dataType)).toEqual(expectedAction);
-  });
-  test("changeViewFilter should return the expected action", () => {
-    const view = "Risk";
-    const expectedAction = {
-      type: types.CHANGE_VIEW,
-      payload: view,
-    };
-    expect(changeViewFilter(view)).toEqual(expectedAction);
   });
   test("changeDateRange should return the expected action", () => {
     const dateRange = [covidInitialDateRange.from, covidInitialDateRange.to];

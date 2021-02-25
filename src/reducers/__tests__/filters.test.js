@@ -35,19 +35,6 @@ describe("Tests for the filters reducer", () => {
       })
     ).toEqual(changedOutbreakState);
   });
-  test("should handle view change", () => {
-    const newView = "Risk";
-    const changedViewState = {
-      ...initialFiltersState,
-      view: newView,
-    };
-    expect(
-      filters(initialFiltersState, {
-        type: types.CHANGE_VIEW,
-        payload: newView,
-      })
-    ).toEqual(changedViewState);
-  });
   test("should date range change", () => {
     const newDateRange = [covidInitialDateRange.from, covidInitialDateRange.to];
     const changedDateRangeState = {

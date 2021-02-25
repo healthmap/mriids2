@@ -5,12 +5,17 @@ import thunk from "redux-thunk";
 import Sidebar from "../index";
 import renderer from "react-test-renderer";
 import "jest-styled-components";
-import {
-  reduxInitialState,
-  riskViewState,
-} from "../../../constants/CommonTestData";
+import { reduxInitialState } from "../../../constants/CommonTestData";
 
 const mockStore = configureStore([thunk]);
+
+const riskDataFiltersState = {
+  ...reduxInitialState,
+  filters: {
+    ...reduxInitialState.filters,
+    dataType: "risk",
+  },
+};
 
 describe("Tests for the connected Sidebar component with reduxInitialState", () => {
   let store;
@@ -30,12 +35,12 @@ describe("Tests for the connected Sidebar component with reduxInitialState", () 
   });
 });
 
-describe("Tests for the connected Sidebar component with riskViewState", () => {
+describe("Tests for the connected Sidebar component with riskDataFiltersState", () => {
   let store;
   let component;
 
   beforeEach(() => {
-    store = mockStore(riskViewState);
+    store = mockStore(riskDataFiltersState);
 
     component = renderer.create(
       <Provider store={store}>
