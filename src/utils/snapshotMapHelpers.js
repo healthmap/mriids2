@@ -81,7 +81,7 @@ export const getSnapshotColor = (caseCountValue = 0) => {
 };
 
 export const getSnapshotDeathsColor = (caseCountValue = 0) => {
-  //  Gets the color values for the snapshot map and case count legend.
+  //  Gets the color values for the snapshot map and death count legend.
   //  This is for non-projection data.
   let color;
   if (caseCountValue === 0) {
