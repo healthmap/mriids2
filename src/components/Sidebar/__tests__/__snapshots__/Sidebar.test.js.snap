@@ -80,7 +80,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 
 .c13 {
   display: inline-block;
-  font-size: 2.4em;
+  font-size: 2.4rem;
   font-weight: 700;
   line-height: 1;
 }

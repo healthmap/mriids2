@@ -111,6 +111,18 @@ describe("Tests for getSnapshotColor", () => {
   });
 });
 
+describe("Tests for getSnapshotDeathsColor", () => {
+  test("should return the brightest purple color", () => {
+    expect(getSnapshotColor(0.9)).toEqual("#613DE3");
+  });
+  test("should return the middle red color", () => {
+    expect(getSnapshotColor(0.45)).toEqual("#B48CE1");
+  });
+  test("should return the lightest color", () => {
+    expect(getSnapshotColor(0)).toEqual("#FDF1DD");
+  });
+});
+
 describe("Tests for getSnapshotProjectionsColor", () => {
   test("returns the greenest color", () => {
     expect(getSnapshotProjectionsColor(0.9)).toEqual("#259994");
