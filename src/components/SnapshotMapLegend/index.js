@@ -36,7 +36,7 @@ const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
     const numberOfLevels = 9;
     const levels = [];
     for (let i = 0; i <= numberOfLevels; i++) {
-      let value = i / numberOfLevels;
+      let value = i / 10;
       // If the projections are enabled, we want to use the projections colors.
       // Else, use the regular snapshot colors.
       let color;
