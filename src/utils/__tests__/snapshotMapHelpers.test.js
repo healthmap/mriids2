@@ -2,6 +2,7 @@ import {
   getEbolaScale,
   getCovidScale,
   getSnapshotColor,
+  getSnapshotDeathsColor,
   getSnapshotProjectionsColor,
   getEbolaFillColorsDictionary,
   getCovidFillColorsDictionary,
