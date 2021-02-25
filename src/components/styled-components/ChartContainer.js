@@ -5,7 +5,8 @@ export const ChartContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding-left: ${(props) => props.theme.sidebarWidth};
-  height: 28rem; /* $risk-height */
+  height: calc((100vh / 2) - 7.6rem);
+  min-height: 32rem;
 `;
 
 export const ChartTitle = styled.h2`

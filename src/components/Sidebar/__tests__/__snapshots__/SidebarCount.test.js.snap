@@ -2,10 +2,11 @@
 
 exports[`Tests for the connected SidebarCount component with reduxInitialState should render with given state from Redux store 1`] = `
 .c0 {
-  margin-top: 2rem;
-  padding: 1.3rem;
-  font-size: 1.2rem;
-  border: 1px solid #ccc;
+  padding: 1.2rem 1.2rem 3.2rem;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  border-radius: 3px;
+  border: 1px solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -17,48 +18,58 @@ exports[`Tests for the connected SidebarCount component with reduxInitialState s
   -webkit-justify-content: space-around;
   -ms-flex-pack: space-around;
   justify-content: space-around;
+  margin-top: 3.2rem;
+}
+
+.c0 p {
+  margin: 0;
 }
 
 .c1 {
-  margin: 0.6rem 0;
+  margin: 1.6rem 0 0.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 2;
+  -webkit-letter-spacing: 0.05rem;
+  -moz-letter-spacing: 0.05rem;
+  -ms-letter-spacing: 0.05rem;
+  letter-spacing: 0.05rem;
+  font-size: 1.2rem;
 }
 
 .c2 {
-  margin-bottom: 0.3rem;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.c3 {
   display: inline-block;
-  font-size: 1.8em;
-  font-weight: 600;
+  font-size: 2.4em;
+  font-weight: 700;
+  line-height: 1;
 }
 
 <div
   className="c0"
 >
   <p>
-    Total reported cases in all locations
-     from:
-    <br />
+    Total reported cases in
+     
+    <strong>
+      All Locations
+    </strong>
+     from 
     <strong>
       Wed Oct 01 2014
-       
-       - 
+      –
       Sat Feb 20 2016
     </strong>
   </p>
   <div
-    className="c1"
+    className=""
   >
     <div
-      className="c2"
+      className="c1"
     >
       Reported cases
     </div>
     <div
-      className="c3"
+      className="c2"
     >
       0
     </div>

@@ -10,6 +10,7 @@ import {
 import {
   MapLegendWrapperSnapshot,
   MapLegendItemsWrapper,
+  MapLegendTitle,
 } from "../styled-components/MapLegendWrappers";
 import { BlockDropshadow } from "../styled-components/Block";
 
@@ -55,7 +56,7 @@ const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
   return (
     <MapLegendWrapperSnapshot data-test-id="snapshot-map-legend">
       <BlockDropshadow>
-        <h3>{legendHeader}</h3>
+        <MapLegendTitle>{legendHeader}</MapLegendTitle>
         <MapLegendItemsWrapper>{renderLegendLevels()}</MapLegendItemsWrapper>
       </BlockDropshadow>
     </MapLegendWrapperSnapshot>

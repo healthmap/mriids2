@@ -3,12 +3,14 @@ import styled from "styled-components";
 export const MapLegendWrapperRisk = styled.div`
   position: absolute;
   padding-left: ${(props) => props.theme.sidebarWidth};
-  width: 9rem;
   left: 2rem;
   bottom: 3.2rem;
-  > div {
-    width: 100%;
-  }
+`;
+
+export const MapLegendTitle = styled.h3`
+  text-transform: capitalize;
+  margin: 0 0 0.8rem;
+  font-size: 1.2rem;
 `;
 
 export const MapLegendWrapperSnapshot = styled.div`
@@ -16,10 +18,6 @@ export const MapLegendWrapperSnapshot = styled.div`
   padding-left: ${(props) => props.theme.sidebarWidth};
   left: 2rem;
   bottom: 3.2rem;
-  width: 9rem;
-  > div {
-    width: 100%;
-  }
 `;
 
 export const MapLegendItemsWrapper = styled.div`
