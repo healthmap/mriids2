@@ -1,12 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Logo from "../Logo";
 import ProjectionBanner from "../ProjectionsBanner";
 import { HeaderContainer, HeaderNavWrapper, HeaderWrapper } from "./styles";
 
-const Header = () => (
+const Header = ({ dataType }) => (
   <HeaderContainer>
-    <ProjectionBanner />
+    {dataType.includes("projected") && <ProjectionBanner />}
     <HeaderWrapper>
       <Logo />
       <HeaderNavWrapper>
@@ -30,4 +31,8 @@ const Header = () => (
   </HeaderContainer>
 );
 
-export default Header;
+const mapStateToProps = (state) => ({
+  dataType: state.filters.dataType,
+});
+
+export default connect(mapStateToProps)(Header);

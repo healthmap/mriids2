@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the connected Header should render with given state from Redux store 1`] = `
+<div
+  className="sc-dlfnbm glwmOL"
+>
+  <div
+    className="sc-eCssSg kJxNQR"
+  >
+    <span
+      className="sc-bdfBwQ hyrcoW"
+    >
+      <a
+        aria-current="page"
+        className="active"
+        href="/"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        <img
+          alt="mriids"
+          src="/mriids.svg"
+        />
+      </a>
+    </span>
+    <ul
+      className="sc-hKgILt hzqjmU"
+    >
+      <li>
+        <a
+          aria-current="page"
+          className="is-active"
+          href="/"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          Outbreak
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          href="/about"
+          onClick={[Function]}
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current={null}
+          href="/team"
+          onClick={[Function]}
+        >
+          Team
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
