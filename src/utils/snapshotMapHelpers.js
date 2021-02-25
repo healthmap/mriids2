@@ -167,7 +167,8 @@ export const getCovidFillColorsDictionary = (
   allCountries.forEach((country) => {
     const percentage = covidCountriesCaseCounts[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
-    // Otherwise get the fillColor value using the getSnapshotColor function.
+    // If viewing death counts, get the fillColor using the getSnapshotDeathsColor function.
+    // If viewing case counts, get the fillColor using the getSnapshotColor function.
     if (dataType === "projected deaths") {
       colorsDictionary[country] = getSnapshotProjectionsColor(percentage);
     } else if (dataType === "cases") {

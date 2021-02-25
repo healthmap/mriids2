@@ -15,7 +15,7 @@ export const SidebarCountLabel = styled.div`
 
 export const SidebarCountValue = styled.div`
   display: inline-block;
-  font-size: 2.4em;
+  font-size: 2.4rem;
   font-weight: 700;
   line-height: 1;
 `;
