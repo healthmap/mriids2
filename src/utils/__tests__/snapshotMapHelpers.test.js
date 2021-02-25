@@ -116,7 +116,7 @@ describe("Tests for getSnapshotDeathsColor", () => {
   test("should return the brightest purple color", () => {
     expect(getSnapshotDeathsColor(0.9)).toEqual("#613DE3");
   });
-  test("should return the middle red color", () => {
+  test("should return the middle purple color", () => {
     expect(getSnapshotDeathsColor(0.45)).toEqual("#B48CE1");
   });
   test("should return the lightest color", () => {
