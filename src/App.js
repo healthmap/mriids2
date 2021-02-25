@@ -34,7 +34,7 @@ class App extends Component {
 
   render() {
     const isEbolaRiskViewSelected =
-      this.props.filters.view === "risk" &&
+      this.props.filters.dataType === "risk" &&
       this.props.filters.outbreak === "Ebola Outbreak";
 
     return (

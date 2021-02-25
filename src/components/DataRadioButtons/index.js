@@ -55,18 +55,25 @@ const DataRadioButtons = ({
                 control={<StyledRadio />}
                 label="Deaths"
               />
-              {/*<FormControlLabel*/}
+              {/*<StyledFormControlLabel*/}
               {/*  value="projected deaths"*/}
-              {/*  control={<Radio />}*/}
+              {/*  control={<StyledRadio />}*/}
               {/*  label="Projected Deaths"*/}
               {/*/>*/}
             </>
           ) : (
-            <StyledFormControlLabel
-              value="projected cases"
-              control={<StyledRadio />}
-              label="Projected Cases"
-            />
+            <>
+              <StyledFormControlLabel
+                value="projected cases"
+                control={<StyledRadio />}
+                label="Projected Cases"
+              />
+              <StyledFormControlLabel
+                value="risk"
+                control={<StyledRadio />}
+                label="Risk"
+              />
+            </>
           )}
         </StyledRadioGroup>
       </FormControl>
