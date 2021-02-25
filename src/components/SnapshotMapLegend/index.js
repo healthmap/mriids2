@@ -5,6 +5,7 @@ import {
   getEbolaScale,
   getCovidScale,
   getSnapshotColor,
+  getSnapshotDeathsColor,
   getSnapshotProjectionsColor,
 } from "../../utils/snapshotMapHelpers";
 import {
@@ -35,12 +36,18 @@ const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
     const numberOfLevels = 9;
     const levels = [];
     for (let i = 0; i <= numberOfLevels; i++) {
-      let value = i / numberOfLevels;
+      let value = i / 10;
       // If the projections are enabled, we want to use the projections colors.
       // Else, use the regular snapshot colors.
-      const color = filters.dataType.includes("projected")
-        ? getSnapshotProjectionsColor(value)
-        : getSnapshotColor(value);
+      let color;
+      if (filters.dataType.includes("projected")) {
+        color = getSnapshotProjectionsColor(value);
+      } else if (filters.dataType === "cases") {
+        color = getSnapshotColor(value);
+      } else if (filters.dataType === "deaths") {
+        color = getSnapshotDeathsColor(value);
+      }
+
       levels.push(
         <MapLegendLevel
           key={`legend-level-${i}`}

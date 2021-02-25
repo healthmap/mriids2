@@ -2,6 +2,7 @@ import {
   getEbolaScale,
   getCovidScale,
   getSnapshotColor,
+  getSnapshotDeathsColor,
   getSnapshotProjectionsColor,
   getEbolaFillColorsDictionary,
   getCovidFillColorsDictionary,
@@ -108,6 +109,18 @@ describe("Tests for getSnapshotColor", () => {
   });
   test("should return the lightest color", () => {
     expect(getSnapshotColor(0)).toEqual("#FDF1DD");
+  });
+});
+
+describe("Tests for getSnapshotDeathsColor", () => {
+  test("should return the brightest purple color", () => {
+    expect(getSnapshotDeathsColor(0.9)).toEqual("#613DE3");
+  });
+  test("should return the middle purple color", () => {
+    expect(getSnapshotDeathsColor(0.45)).toEqual("#B48CE1");
+  });
+  test("should return the lightest color", () => {
+    expect(getSnapshotDeathsColor(0)).toEqual("#FDF1DD");
   });
 });
 
