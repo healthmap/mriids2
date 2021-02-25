@@ -18,6 +18,7 @@ export const MapLegendWrapperSnapshot = styled.div`
   padding-left: ${(props) => props.theme.sidebarWidth};
   left: 2rem;
   bottom: 3.2rem;
+  max-width: 12rem;
 `;
 
 export const MapLegendItemsWrapper = styled.div`

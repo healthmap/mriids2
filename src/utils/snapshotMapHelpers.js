@@ -80,6 +80,34 @@ export const getSnapshotColor = (caseCountValue = 0) => {
   return color;
 };
 
+export const getSnapshotDeathsColor = (caseCountValue = 0) => {
+  //  Gets the color values for the snapshot map and case count legend.
+  //  This is for non-projection data.
+  let color;
+  if (caseCountValue === 0) {
+    color = "#FDF1DD";
+  } else if (caseCountValue > 0 && caseCountValue <= 0.1) {
+    color = "#EFDCDF";
+  } else if (caseCountValue > 0.1 && caseCountValue <= 0.2) {
+    color = "#E1C7E0";
+  } else if (caseCountValue > 0.2 && caseCountValue <= 0.3) {
+    color = "#D4B4E1";
+  } else if (caseCountValue > 0.3 && caseCountValue <= 0.4) {
+    color = "#C49FE3";
+  } else if (caseCountValue > 0.4 && caseCountValue <= 0.5) {
+    color = "#B48CE1";
+  } else if (caseCountValue > 0.5 && caseCountValue <= 0.6) {
+    color = "#A178E3";
+  } else if (caseCountValue > 0.6 && caseCountValue <= 0.7) {
+    color = "#8E65E3";
+  } else if (caseCountValue > 0.7 && caseCountValue <= 0.8) {
+    color = "#7951E2";
+  } else if (caseCountValue > 0.8) {
+    color = "#613DE3";
+  }
+  return color;
+};
+
 export const getSnapshotProjectionsColor = (caseCountValue = 0) => {
   //  Gets the color values for the snapshot map and case count legend.
   //  This is for projection data.
@@ -140,10 +168,13 @@ export const getCovidFillColorsDictionary = (
     const percentage = covidCountriesCaseCounts[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
     // Otherwise get the fillColor value using the getSnapshotColor function.
-    colorsDictionary[country] =
-      dataType === "projected deaths"
-        ? getSnapshotProjectionsColor(percentage)
-        : getSnapshotColor(percentage);
+    if (dataType === "projected deaths") {
+      colorsDictionary[country] = getSnapshotProjectionsColor(percentage);
+    } else if (dataType === "cases") {
+      colorsDictionary[country] = getSnapshotColor(percentage);
+    } else if (dataType === "deaths") {
+      colorsDictionary[country] = getSnapshotDeathsColor(percentage);
+    }
   });
   return colorsDictionary;
 };
