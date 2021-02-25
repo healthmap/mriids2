@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const HeaderContainer = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 3; /* $z-index--header */
+`;
+
 export const HeaderNavWrapper = styled.ul`
   list-style: none;
   display: flex;
@@ -31,14 +37,13 @@ export const HeaderNavWrapper = styled.ul`
 `;
 
 export const HeaderWrapper = styled.div`
-  position: fixed;
+  position: relative;
   display: flex;
   flex: none;
   width: 100%;
   background: ${(props) => props.theme.background1};
   height: calc(${(props) => props.theme.headerHeight} - 1px);
   border-bottom: 1px solid ${(props) => props.theme.borderLightColor};
-  z-index: 3; /* $z-index--header */
   > div {
     display: flex;
   }

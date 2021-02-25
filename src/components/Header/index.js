@@ -1,13 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import * as Styled from "./styles";
 import Logo from "../Logo";
+import ProjectionBanner from "../ProjectionsBanner";
+import { HeaderContainer, HeaderNavWrapper, HeaderWrapper } from "./styles";
 
-const Header = () => {
-  return (
-    <Styled.HeaderWrapper>
-        <Logo />
-      <Styled.HeaderNavWrapper>
+const Header = () => (
+  <HeaderContainer>
+    <ProjectionBanner />
+    <HeaderWrapper>
+      <Logo />
+      <HeaderNavWrapper>
         <li>
           <NavLink activeClassName="is-active" exact to="/">
             Outbreak
@@ -23,9 +25,9 @@ const Header = () => {
             Team
           </NavLink>
         </li>
-      </Styled.HeaderNavWrapper>
-    </Styled.HeaderWrapper>
-  );
-};
+      </HeaderNavWrapper>
+    </HeaderWrapper>
+  </HeaderContainer>
+);
 
 export default Header;
