@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   render() {
-    const isEbolaRiskViewSelected =
+    const isEbolaRiskDataSelected =
       this.props.filters.dataType === "risk" &&
       this.props.filters.outbreak === "Ebola Outbreak";
 
@@ -48,7 +48,7 @@ class App extends Component {
                   <Sidebar />
                   <ProjectionsPopup />
                   <DateRangePopover />
-                  {isEbolaRiskViewSelected ? (
+                  {isEbolaRiskDataSelected ? (
                     <EbolaRiskMap />
                   ) : (
                     <>
