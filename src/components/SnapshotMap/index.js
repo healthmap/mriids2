@@ -7,7 +7,6 @@ import {
   ZoomableGroup,
 } from "react-simple-maps";
 import { SnapshotMapContainer } from "../styled-components/MapContainers";
-import ViewToggle from "../ViewToggle";
 import SnapshotMapLegend from "../SnapshotMapLegend";
 import MapZoomButtons from "../MapZoomButtons";
 import { StyledTooltip } from "../styled-components/MapTooltip";
@@ -63,7 +62,6 @@ const SnapshotMap = ({
 
   return (
     <SnapshotMapContainer>
-      {filters.outbreak === "Ebola Outbreak" && <ViewToggle />}
       <StyledTooltip>{toolTipContent}</StyledTooltip>
       <ComposableMap
         projection="geoMercator"

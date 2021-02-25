@@ -29,9 +29,10 @@ describe("Tests for the Sidebar component", () => {
     cy.get('[data-test-id="open-date-range-button"]').contains("Jan 1, 2020");
   });
 
-  it("data buttons should have 'Cases' and 'Projected Cases' options by default", () => {
+  it("data buttons should have 'Cases', 'Projected Cases', and 'Risk' options by default", () => {
     cy.react("DataRadioButtons").contains("Cases");
     cy.react("DataRadioButtons").contains("Projected Cases");
+    cy.react("DataRadioButtons").contains("Risk");
   });
 
   it("data buttons should have 'Cases' and 'Death' options when the COVID-19 outbreak is selected", () => {
@@ -48,5 +49,6 @@ describe("Tests for the Sidebar component", () => {
     // .3 Check to see if the correct actions are displayed.
     cy.react("DataRadioButtons").contains("Cases");
     cy.react("DataRadioButtons").contains("Deaths");
+    // cy.react("DataRadioButtons").contains("Projected Deaths");
   });
 });

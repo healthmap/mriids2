@@ -22,7 +22,7 @@ describe("Tests for the connected SnapshotMap component with reduxInitialState",
       </Provider>
     );
   });
-  test("SnapshotMap component should have 5 child components", () => {
-    expect(component.toJSON().children).toHaveLength(5);
+  test("SnapshotMap component should have 4 child components", () => {
+    expect(component.toJSON().children).toHaveLength(4);
   });
 });

@@ -51,9 +51,9 @@ const Sidebar = ({
     openDateRangePopover();
   };
 
-  const showSidebarCount = filters.view === "snapshot";
+  const showSidebarCount = filters.dataType !== "risk";
   const showEbolaRiskList =
-    filters.view === "risk" && filters.outbreak === "Ebola Outbreak";
+    filters.dataType === "risk" && filters.outbreak === "Ebola Outbreak";
 
   return (
     <Styled.SidebarWrapper>
