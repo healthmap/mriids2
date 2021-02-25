@@ -701,6 +701,25 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   margin: 0;
 }
 
+.c12 {
+  margin: 1.6rem 0 0.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 2;
+  -webkit-letter-spacing: 0.05rem;
+  -moz-letter-spacing: 0.05rem;
+  -ms-letter-spacing: 0.05rem;
+  letter-spacing: 0.05rem;
+  font-size: 1.2rem;
+}
+
+.c13 {
+  display: inline-block;
+  font-size: 2.4em;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .c0 {
   position: fixed;
   left: 0;
@@ -1232,43 +1251,33 @@ exports[`Tests for the connected Sidebar component with riskViewState should ren
   <div
     className="c11"
   >
-    <strong>
-      <p>
-        The top 10 countries with the highest relative risk of Ebola spread are:
-      </p>
-    </strong>
-    <ol>
-      <li>
-        Guinea
-      </li>
-      <li>
-        Nigeria
-      </li>
-      <li>
-        Ivory Coast
-      </li>
-      <li>
-        Sierra Leone
-      </li>
-      <li>
-        Mali
-      </li>
-      <li>
-        Liberia
-      </li>
-      <li>
-        Senegal
-      </li>
-      <li>
-        Ghana
-      </li>
-      <li>
-        Burkina Faso
-      </li>
-      <li>
-        Democratic Republic of the Congo
-      </li>
-    </ol>
+    <p>
+      Total reported cases in
+       
+      <strong>
+        All Locations
+      </strong>
+       from 
+      <strong>
+        Wed Oct 01 2014
+        –
+        Sat Feb 20 2016
+      </strong>
+    </p>
+    <div
+      className=""
+    >
+      <div
+        className="c12"
+      >
+        Reported cases
+      </div>
+      <div
+        className="c13"
+      >
+        0
+      </div>
+    </div>
   </div>
 </div>
 `;
