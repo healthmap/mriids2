@@ -27,8 +27,7 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
     <>
       <InputLabel>Location</InputLabel>
       <Styled.StyledAutocomplete
-       debug 
-	  id="country-select"
+        id="country-select"
         renderInput={(params) => <TextField {...params} variant="outlined" />}
         onChange={(event, value) => onSelectCountry(value)}
         options={countryOptions}
