@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { media } from "../../assets/style-utils";
 
 export const PageWrapper = styled.div`
-  margin-top: ${(props) => props.theme.headerHeight};
+  margin-top: ${(props) => props.theme.headerHeights.default};
 `;
 
 export const ContentWrapper = styled.div`

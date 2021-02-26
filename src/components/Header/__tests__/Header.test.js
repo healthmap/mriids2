@@ -3,6 +3,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Header from "../index";
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
+import { ThemeProvider as StyledComponentsProvider } from "styled-components";
+import styledComponentsTheme from "../../../assets/sc-theme";
+import "jest-styled-components";
 import { reduxInitialState } from "../../../constants/CommonTestData";
 import renderer from "react-test-renderer";
 import { Provider } from "react-redux";
@@ -17,11 +20,13 @@ describe("Tests for the connected Header", () => {
     store = mockStore(reduxInitialState);
 
     component = renderer.create(
-      <Router>
-        <Provider store={store}>
-          <Header />
-        </Provider>
-      </Router>
+      <StyledComponentsProvider theme={styledComponentsTheme}>
+        <Router>
+          <Provider store={store}>
+            <Header />
+          </Provider>
+        </Router>
+      </StyledComponentsProvider>
     );
   });
   test("should render with given state from Redux store", () => {

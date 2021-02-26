@@ -42,7 +42,7 @@ export const HeaderWrapper = styled.div`
   flex: none;
   width: 100%;
   background: ${(props) => props.theme.background1};
-  height: calc(${(props) => props.theme.headerHeight} - 1px);
+  height: calc(${(props) => props.theme.headerHeights.default} - 1px);
   border-bottom: 1px solid ${(props) => props.theme.borderLightColor};
   > div {
     display: flex;

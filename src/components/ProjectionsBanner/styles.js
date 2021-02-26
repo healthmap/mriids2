@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ProjectionsBannerContainer = styled.div`
   display: flex;
-  height: 40px;
+  height: 3.4rem;
   justify-content: center;
   align-items: center;
   background-color: #202320;

@@ -5,6 +5,8 @@ import thunk from "redux-thunk";
 import Sidebar from "../index";
 import renderer from "react-test-renderer";
 import "jest-styled-components";
+import { ThemeProvider as StyledComponentsProvider } from "styled-components";
+import styledComponentsTheme from "../../../assets/sc-theme";
 import { reduxInitialState } from "../../../constants/CommonTestData";
 
 const mockStore = configureStore([thunk]);
@@ -25,9 +27,11 @@ describe("Tests for the connected Sidebar component with reduxInitialState", () 
     store = mockStore(reduxInitialState);
 
     component = renderer.create(
-      <Provider store={store}>
-        <Sidebar />
-      </Provider>
+      <StyledComponentsProvider theme={styledComponentsTheme}>
+        <Provider store={store}>
+          <Sidebar />
+        </Provider>
+      </StyledComponentsProvider>
     );
   });
   test("should render with given state from Redux store", () => {
@@ -43,9 +47,11 @@ describe("Tests for the connected Sidebar component with riskDataFiltersState", 
     store = mockStore(riskDataFiltersState);
 
     component = renderer.create(
-      <Provider store={store}>
-        <Sidebar />
-      </Provider>
+      <StyledComponentsProvider theme={styledComponentsTheme}>
+        <Provider store={store}>
+          <Sidebar />
+        </Provider>
+      </StyledComponentsProvider>
     );
   });
   test("should render with given state from Redux store", () => {

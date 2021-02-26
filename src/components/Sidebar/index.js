@@ -54,9 +54,10 @@ const Sidebar = ({
   const showSidebarCount = filters.dataType !== "risk";
   const showEbolaRiskList =
     filters.dataType === "risk" && filters.outbreak === "Ebola Outbreak";
+  const projectionsEnabled = filters.dataType.includes("projected");
 
   return (
-    <Styled.SidebarWrapper>
+    <Styled.SidebarWrapper projectionsBanner={projectionsEnabled}>
       <SelectCountryWrapper>
         <CountrySelect />
       </SelectCountryWrapper>

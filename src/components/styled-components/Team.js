@@ -7,7 +7,7 @@ export const ContentWrapper = styled.div`
 `;
 
 export const FirstPageContainer = styled.div`
-  margin-top: ${(props) => props.theme.headerHeight};
+  margin-top: ${(props) => props.theme.headerHeights.default};
 `;
 
 export const SecondPageContainer = styled.div`
