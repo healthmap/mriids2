@@ -5,7 +5,8 @@ export const ChartContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: ${({ projectionsBanner }) => (projectionsBanner ? "3.6rem" : 0)};
+  top: ${({ projectionsBanner, theme: { bannerHeight } }) =>
+    projectionsBanner ? bannerHeight : 0};
   padding-left: ${(props) => props.theme.sidebarWidth};
   height: calc((100vh / 2) - 7.6rem);
   min-height: 32rem;

@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const DateRangeComponentContainer = styled.div`
   position: relative;
   padding-left: ${(props) => props.theme.sidebarWidth};
-  top: ${({ projectionsBanner }) => (projectionsBanner ? "3.6rem" : 0)};
+  top: ${({ projectionsBanner, theme: { bannerHeight } }) =>
+    projectionsBanner ? bannerHeight : 0};
   padding-bottom: 4.8rem;
   display: flex;
   flex-direction: row;
