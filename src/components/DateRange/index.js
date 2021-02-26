@@ -63,8 +63,10 @@ const DateRange = ({
     }
   };
 
+  const projectionsEnabled = filters.dataType.includes("projected");
+
   return (
-    <DateRangeComponentContainer>
+    <DateRangeComponentContainer projectionsBanner={projectionsEnabled}>
       <SliderDate>
         {dayjs(filters.dateRange.from).format("MMM YYYY")}
       </SliderDate>

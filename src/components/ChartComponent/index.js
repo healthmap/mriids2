@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Chart } from "react-google-charts";
-import { ChartContainer, ChartTitle } from "../styled-components/ChartContainer";
+import {
+  ChartContainer,
+  ChartTitle,
+} from "../styled-components/ChartContainer";
 import {
   caseCountOptions,
   deathCountOptions,
@@ -38,8 +41,10 @@ const ChartComponent = ({
     filters.country
   );
 
+  const projectionsEnabled = filters.dataType.includes("projected");
+
   return (
-    <ChartContainer>
+    <ChartContainer projectionsBanner={projectionsEnabled}>
       <ChartTitle>{titleText}</ChartTitle>
       <Chart
         width="100%"

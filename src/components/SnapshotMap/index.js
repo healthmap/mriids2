@@ -60,8 +60,10 @@ const SnapshotMap = ({
     return validNewZoomLevel ? setZoomLevel(newZoomLevel) : null;
   };
 
+  const projectionsEnabled = filters.dataType.includes("projected");
+
   return (
-    <SnapshotMapContainer>
+    <SnapshotMapContainer projectionsBanner={projectionsEnabled}>
       <StyledTooltip>{toolTipContent}</StyledTooltip>
       <ComposableMap
         projection="geoMercator"

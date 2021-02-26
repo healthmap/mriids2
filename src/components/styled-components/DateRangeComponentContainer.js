@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const DateRangeComponentContainer = styled.div`
+  position: relative;
   padding-left: ${(props) => props.theme.sidebarWidth};
+  top: ${({ projectionsBanner }) => (projectionsBanner ? "3.6rem" : 0)};
   padding-bottom: 4.8rem;
   display: flex;
   flex-direction: row;
@@ -12,6 +14,7 @@ export const DateRangeComponentContainer = styled.div`
 `;
 
 export const DateRangeSliderContainer = styled.div`
+  position: relative;
   width: 80%;
   height: 2.8rem;
   flex-grow: 1;
