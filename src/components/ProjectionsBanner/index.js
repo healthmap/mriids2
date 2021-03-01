@@ -3,7 +3,7 @@ import { ProjectionsBannerContainer } from "./styles";
 
 const ProjectionBanner = () => (
   <ProjectionsBannerContainer>
-    You are viewing data that is for research only.
+    Some of the data on this site is for research only.
   </ProjectionsBannerContainer>
 );
 

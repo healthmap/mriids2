@@ -5,9 +5,9 @@ import Logo from "../Logo";
 import ProjectionBanner from "../ProjectionsBanner";
 import { HeaderContainer, HeaderNavWrapper, HeaderWrapper } from "./styles";
 
-const Header = ({ dataType }) => (
+const Header = ({ hasConfirmedProjectionsPopup }) => (
   <HeaderContainer>
-    {dataType.includes("projected") && <ProjectionBanner />}
+    {hasConfirmedProjectionsPopup && <ProjectionBanner />}
     <HeaderWrapper>
       <Logo />
       <HeaderNavWrapper>
@@ -32,7 +32,7 @@ const Header = ({ dataType }) => (
 );
 
 const mapStateToProps = (state) => ({
-  dataType: state.filters.dataType,
+  hasConfirmedProjectionsPopup: state.ui.hasConfirmedProjectionsPopup,
 });
 
 export default connect(mapStateToProps)(Header);
