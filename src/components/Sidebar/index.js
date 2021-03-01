@@ -30,6 +30,7 @@ const Sidebar = ({
   changeOutbreakFilter,
   openDateRangePopover,
   setPopoverAnchorElement,
+  hasConfirmedProjectionsPopup,
   changeDataType,
 }) => {
   // This is used to set a ref for the parent div that houses the button to open the date range popover.
@@ -54,10 +55,11 @@ const Sidebar = ({
   const showSidebarCount = filters.dataType !== "risk";
   const showEbolaRiskList =
     filters.dataType === "risk" && filters.outbreak === "Ebola Outbreak";
-  const projectionsEnabled = filters.dataType.includes("projected");
 
   return (
-    <Styled.SidebarWrapper projectionsBanner={projectionsEnabled}>
+    <Styled.SidebarWrapper
+      isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}
+    >
       <SelectCountryWrapper>
         <CountrySelect />
       </SelectCountryWrapper>
@@ -87,6 +89,7 @@ const Sidebar = ({
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
+  hasConfirmedProjectionsPopup: state.ui.hasConfirmedProjectionsPopup,
 });
 
 const mapDispatchToProps = (dispatch) =>
