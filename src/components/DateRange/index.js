@@ -18,6 +18,7 @@ import {
 const DateRange = ({
   filters,
   sliderRange,
+  hasConfirmedProjectionsPopup,
   changeDateRange,
   changeDateSliderRange,
 }) => {
@@ -64,7 +65,9 @@ const DateRange = ({
   };
 
   return (
-    <DateRangeComponentContainer>
+    <DateRangeComponentContainer
+      isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}
+    >
       <SliderDate>
         {dayjs(filters.dateRange.from).format("MMM YYYY")}
       </SliderDate>
@@ -84,6 +87,7 @@ const DateRange = ({
 const mapStateToProps = (state) => ({
   filters: state.filters,
   sliderRange: state.ui.dateSliderRange,
+  hasConfirmedProjectionsPopup: state.ui.hasConfirmedProjectionsPopup,
 });
 
 const mapDispatchToProps = (dispatch) =>

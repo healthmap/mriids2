@@ -3,7 +3,6 @@ import * as types from "../constants/ActionTypes";
 const initialState = {
   country: "All",
   outbreak: "Ebola Outbreak",
-  view: "snapshot",
   dataType: "cases",
   dateRange: { from: new Date(2014, 9, 1), to: new Date(2016, 1, 20) },
 };
@@ -27,11 +26,6 @@ const Filters = function (state = initialState, action) {
           from: action.payload[0],
           to: action.payload[1],
         },
-      };
-    case types.CHANGE_VIEW:
-      return {
-        ...state,
-        view: action.payload,
       };
     case types.CHANGE_DATA_TYPE:
       return {

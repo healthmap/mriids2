@@ -11,7 +11,7 @@ const Select = ({
 }) => {
   const renderOptions = (optionsArray = []) =>
     optionsArray.map((value, index) => (
-      <Styled.StyledMenuItem key={`select-option-${index}`} value={value}>
+      <Styled.StyledMenuItem disableRipple key={`select-option-${index}`} value={value}>
         {value}
       </Styled.StyledMenuItem>
     ));

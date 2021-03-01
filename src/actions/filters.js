@@ -21,13 +21,6 @@ export const changeDateRange = (dateRangeArray) => {
   };
 };
 
-export const changeViewFilter = (newViewValue) => {
-  return {
-    type: types.CHANGE_VIEW,
-    payload: newViewValue,
-  };
-};
-
 export const changeDataType = (dataType) => {
   return {
     type: types.CHANGE_DATA_TYPE,

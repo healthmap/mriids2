@@ -2,7 +2,7 @@
 
 exports[`Tests for the connected SnapshotMapCountryPopup should render with given state from Redux store 1`] = `
 .c0 {
-  width: 25rem;
+  width: 20rem;
 }
 
 .c1 {
@@ -38,6 +38,12 @@ exports[`Tests for the connected SnapshotMapCountryPopup should render with give
   line-height: 1.4285714;
 }
 
+.c4 {
+  margin: 0 0 0.8rem;
+  font-size: 1.2rem;
+  line-height: 1.66666666;
+}
+
 .c3 {
   text-transform: uppercase;
   font-weight: 700;
@@ -45,8 +51,8 @@ exports[`Tests for the connected SnapshotMapCountryPopup should render with give
   -moz-letter-spacing: 0.05rem;
   -ms-letter-spacing: 0.05rem;
   letter-spacing: 0.05rem;
-  font-size: 0.75rem;
-  line-height: 1.6666666666;
+  font-size: 1.2rem !important;
+  line-height: 2;
 }
 
 <div
@@ -70,7 +76,9 @@ exports[`Tests for the connected SnapshotMapCountryPopup should render with give
       2,452
     </p>
   </div>
-  <p>
+  <p
+    className="c4"
+  >
     Total 
     cases
      from 

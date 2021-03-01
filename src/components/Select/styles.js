@@ -30,22 +30,35 @@ export const StyledMuiSelect = styled(MuiSelect)`
 `;
 export const StyledListSubheader = styled(ListSubheader)`
   && {
+    margin: 1.6rem 0 0;
     font-size: 1.2rem;
     line-height: 2;
     letter-spacing: 0.05rem;
     text-transform: uppercase;
     font-weight: 700;
     color: ${(props) => props.theme.textLightColor};
+    &:first-child {
+      margin: 0.8rem 0 0;
+    }
   }
 `;
 
 export const StyledMenuItem = styled(MenuItem)`
   && {
     font-size: 1.4rem;
-    line-height: 2.28571;
+    line-height: 2;
+    padding: 0.2rem 1.6rem;
+    color: ${(props) => props.theme.textColor};
+    &:hover {
+      background: ${(props) => props.theme.background3};
+    }
     &.Mui-selected {
       background: #fff;
+      color: ${(props) => props.theme.secondaryColor};
+      font-weight: 600;
+      &:hover {
+        background: ${(props) => props.theme.background3};
+      }
     }
   }
 `;
-

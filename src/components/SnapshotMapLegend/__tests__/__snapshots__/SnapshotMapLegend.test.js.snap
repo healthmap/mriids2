@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tests for the connected SnapshotMapLegend component with reduxInitialState should render with given state from Redux store 1`] = `
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -10,46 +10,47 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 2px;
-}
-
-.c4 {
-  -webkit-flex: none;
-  -ms-flex: none;
-  flex: none;
-  width: 2em;
-  height: 2em;
-  margin-right: 0.5em;
 }
 
 .c5 {
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5em;
+}
+
+.c6 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  color: #666;
+  line-height: 1;
+  font-size: 1rem;
+}
+
+.c2 {
+  text-transform: capitalize;
+  margin: 0 0 0.8rem;
+  font-size: 1.2rem;
 }
 
 .c0 {
   position: absolute;
   left: 2rem;
   bottom: 3.2rem;
-  width: 9rem;
+  max-width: 12rem;
 }
 
-.c0 > div {
-  width: 100%;
-}
-
-.c2 {
+.c3 {
   height: calc(100% - 7rem);
   overflow: auto;
 }
 
 .c1 {
   display: inline-block;
-  padding: 1rem;
-  box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.1);
-  border-radius: 0.5rem;
+  padding: 1.2rem;
+  border-radius: 3px;
   background-color: #fff;
 }
 
@@ -60,17 +61,19 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
   <div
     className="c1"
   >
-    <h3>
+    <h3
+      className="c2"
+    >
       Case counts
     </h3>
     <div
-      className="c2"
+      className="c3"
     >
       <div
-        className="c3"
+        className="c4"
       >
         <div
-          className="c4"
+          className="c5"
           style={
             Object {
               "backgroundColor": "#E23D4A",
@@ -78,33 +81,16 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
           }
         />
         <div
-          className="c5"
+          className="c6"
         >
-          12,000
+          10,800
         </div>
       </div>
       <div
-        className="c3"
+        className="c4"
       >
-        <div
-          className="c4"
-          style={
-            Object {
-              "backgroundColor": "#E23D4A",
-            }
-          }
-        />
         <div
           className="c5"
-        >
-          10,667
-        </div>
-      </div>
-      <div
-        className="c3"
-      >
-        <div
-          className="c4"
           style={
             Object {
               "backgroundColor": "#E55259",
@@ -112,16 +98,16 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
           }
         />
         <div
-          className="c5"
+          className="c6"
         >
-          9,333
+          9,600
         </div>
       </div>
       <div
-        className="c3"
+        className="c4"
       >
         <div
-          className="c4"
+          className="c5"
           style={
             Object {
               "backgroundColor": "#E86769",
@@ -129,16 +115,16 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
           }
         />
         <div
-          className="c5"
+          className="c6"
         >
-          8,000
+          8,400
         </div>
       </div>
       <div
-        className="c3"
+        className="c4"
       >
         <div
-          className="c4"
+          className="c5"
           style={
             Object {
               "backgroundColor": "#EB7C77",
@@ -146,16 +132,16 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
           }
         />
         <div
-          className="c5"
+          className="c6"
         >
-          6,667
+          7,200
         </div>
       </div>
       <div
-        className="c3"
+        className="c4"
       >
         <div
-          className="c4"
+          className="c5"
           style={
             Object {
               "backgroundColor": "#EE9187",
@@ -163,16 +149,16 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
           }
         />
         <div
-          className="c5"
+          className="c6"
         >
-          5,333
+          6,000
         </div>
       </div>
       <div
-        className="c3"
+        className="c4"
       >
         <div
-          className="c4"
+          className="c5"
           style={
             Object {
               "backgroundColor": "#F1A697",
@@ -180,16 +166,16 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
           }
         />
         <div
-          className="c5"
+          className="c6"
         >
-          4,000
+          4,800
         </div>
       </div>
       <div
-        className="c3"
+        className="c4"
       >
         <div
-          className="c4"
+          className="c5"
           style={
             Object {
               "backgroundColor": "#F5BCA7",
@@ -197,16 +183,16 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
           }
         />
         <div
-          className="c5"
+          className="c6"
         >
-          2,667
+          3,600
         </div>
       </div>
       <div
-        className="c3"
+        className="c4"
       >
         <div
-          className="c4"
+          className="c5"
           style={
             Object {
               "backgroundColor": "#F8D1B6",
@@ -214,16 +200,33 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
           }
         />
         <div
-          className="c5"
+          className="c6"
         >
-          1,333
+          2,400
         </div>
       </div>
       <div
-        className="c3"
+        className="c4"
       >
         <div
-          className="c4"
+          className="c5"
+          style={
+            Object {
+              "backgroundColor": "#FBE7C6",
+            }
+          }
+        />
+        <div
+          className="c6"
+        >
+          1,200
+        </div>
+      </div>
+      <div
+        className="c4"
+      >
+        <div
+          className="c5"
           style={
             Object {
               "backgroundColor": "#FDF1DD",
@@ -231,7 +234,7 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
           }
         />
         <div
-          className="c5"
+          className="c6"
         >
           0
         </div>

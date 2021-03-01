@@ -29,6 +29,18 @@ const theme = createMuiTheme({
       },
       option: {
         padding: ".2rem 1.2rem !important",
+        color: "#222325",
+        "&:hover": {
+          background: "#F4F7FC",
+        },
+        "&[aria-selected='true']": {
+          color: "#4D73CE",
+          backgroundColor: "#fff",
+          fontWeight: "600",
+        },
+        "&[data-focus='true']": {
+          background: "#F4F7FC",
+        },
       },
     },
     MuiInput: {

@@ -1,17 +1,21 @@
 import styled from "styled-components";
 
 export const SidebarCountParent = styled.div`
-  margin: 0.6rem 0;
 `;
 
 export const SidebarCountLabel = styled.div`
-  margin-bottom: 0.3rem;
+  margin: 1.6rem 0 0.25rem;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 2;
+  letter-spacing: 0.05rem;
+  font-size: 1.2rem;
+  color: ${(props) => props.theme.textLightColor};
 `;
 
 export const SidebarCountValue = styled.div`
   display: inline-block;
-  font-size: 1.8em;
-  font-weight: 600;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1;
 `;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { media } from "../../assets/style-utils";
 
 export const PageWrapper = styled.div`
-  margin-top: ${(props) => props.theme.headerHeight};
+  margin-top: ${(props) => props.theme.headerHeights.default};
 `;
 
 export const ContentWrapper = styled.div`
@@ -36,7 +36,7 @@ export const SectionTitle = styled.h2`
     display: block;
     width: 10rem;
     padding-top: 0.4rem;
-    border-bottom: 0.4rem solid ${(props) => props.theme.primaryColor};
+    border-bottom: 0.4rem solid ${(props) => props.theme.secondaryColor};
   }
 `;
 

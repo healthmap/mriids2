@@ -4,6 +4,7 @@ import {
   MapPopupContainer,
   MapPopupTitleContainer,
   MapPopupCountSection,
+  MapPopupSummary,
   Label,
 } from "./styles";
 
@@ -16,25 +17,24 @@ const SnapshotMapCountryPopup = ({
   const countryTotalDiseaseCount = diseaseCaseCountsDictionary[countryName];
   return (
     <MapPopupContainer>
-      <MapPopupTitleContainer>
-        {countryName}
-      </MapPopupTitleContainer>
+      <MapPopupTitleContainer>{countryName}</MapPopupTitleContainer>
       {countryTotalDiseaseCount ? (
-        <MapPopupCountSection>
-          <Label>Total {dataType}</Label>
-          <p>{countryTotalDiseaseCount.toLocaleString()}</p>
-        </MapPopupCountSection>
+        <>
+          <MapPopupCountSection>
+            <Label>Total {dataType}</Label>
+            <p>{countryTotalDiseaseCount.toLocaleString()}</p>
+          </MapPopupCountSection>
+          <MapPopupSummary>
+            Total {dataType} from {dateRange.from.toDateString()} to{" "}
+            {dateRange.to.toDateString()}
+          </MapPopupSummary>
+        </>
       ) : (
-        <p>
-          We currently do not have total{" "}
-          {dataType === "deaths" ? "death" : "case"} count data for this
-          country.
-        </p>
+        <MapPopupSummary>
+          {dataType === "deaths" ? "Death" : "Case"} count data for this country
+          is not available.
+        </MapPopupSummary>
       )}
-      <p>
-        Total {dataType} from {dateRange.from.toDateString()} to{" "}
-        {dateRange.to.toDateString()}
-      </p>
     </MapPopupContainer>
   );
 };
