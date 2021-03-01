@@ -68,12 +68,18 @@ const SnapshotMap = ({
       <StyledTooltip>{toolTipContent}</StyledTooltip>
       <ComposableMap
         projection="geoMercator"
-        style={{ backgroundColor: "#F1F5FB" }}
+        width={800}
+        height={400}
+        style={{ backgroundColor: "#F1F5FB", width: "100%", height: "100%" }}
         stroke="#131D34"
         strokeWidth={0.02}
         data-tip=""
       >
-        <ZoomableGroup zoom={zoomLevel} center={[-10, 2]} maxZoom={9}>
+        <ZoomableGroup
+          zoom={zoomLevel}
+          center={[-11.779889, 8.460555]}
+          maxZoom={9}
+        >
           <Geographies geography="mapData/world_50m.json">
             {({ geographies }) =>
               geographies.map((geo) => {
