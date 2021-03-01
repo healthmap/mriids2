@@ -25,7 +25,7 @@ const SnapshotMap = ({
   covidCaseCountData,
   covidDeathCountData,
 }) => {
-  const [zoomLevel, setZoomLevel] = useState(9);
+  const [zoomLevel, setZoomLevel] = useState(10);
   const [fillColorDictionary, setFillColorDictionary] = useState({});
   const [countryDiseaseCounts, updateCountryDiseaseCounts] = useState({});
   const [toolTipContent, setToolTipContent] = useState(null);
@@ -52,12 +52,12 @@ const SnapshotMap = ({
 
   // Update the zoomLevel when switching between outbreaks
   useEffect(() => {
-    filters.outbreak === "Ebola Outbreak" ? setZoomLevel(9) : setZoomLevel(1);
+    filters.outbreak === "Ebola Outbreak" ? setZoomLevel(10) : setZoomLevel(1);
   }, [filters.outbreak]);
 
   const changeZoomLevel = (newZoomLevel) => {
-    // This prevents zooming in to a level higher than 9 and lower than 1.
-    const validNewZoomLevel = newZoomLevel <= 9 && newZoomLevel >= 1;
+    // This prevents zooming in to a level higher than 10 and lower than 1.
+    const validNewZoomLevel = newZoomLevel <= 10 && newZoomLevel >= 1;
     return validNewZoomLevel ? setZoomLevel(newZoomLevel) : null;
   };
 
@@ -78,7 +78,7 @@ const SnapshotMap = ({
         <ZoomableGroup
           zoom={zoomLevel}
           center={[-11.779889, 8.460555]}
-          maxZoom={9}
+          maxZoom={10}
         >
           <Geographies geography="mapData/world_50m.json">
             {({ geographies }) =>
@@ -130,7 +130,7 @@ const SnapshotMap = ({
       <MapZoomButtons
         zoomLevel={zoomLevel}
         changeZoomFunction={changeZoomLevel}
-        maxZoom={9}
+        maxZoom={10}
         minZoom={1}
       />
     </SnapshotMapContainer>
