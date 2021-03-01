@@ -16,11 +16,12 @@ import {
 } from "../../utils/chartDataHelpers";
 
 const ChartComponent = ({
+  filters,
+  hasConfirmedProjectionsPopup,
   ebolaData,
   ebolaDataCombined,
   covidCaseCountsData,
   covidDeathCountsData,
-  filters,
 }) => {
   // Determines whether we are showing the covid case or death counts in the chart.
   const covidData =
@@ -41,10 +42,8 @@ const ChartComponent = ({
     filters.country
   );
 
-  const projectionsEnabled = filters.dataType.includes("projected");
-
   return (
-    <ChartContainer projectionsBanner={projectionsEnabled}>
+    <ChartContainer isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}>
       <ChartTitle>{titleText}</ChartTitle>
       <Chart
         width="100%"
@@ -61,6 +60,7 @@ const ChartComponent = ({
 
 const mapStateToProps = (state) => ({
   filters: state.filters,
+  hasConfirmedProjectionsPopup: state.ui.hasConfirmedProjectionsPopup,
   ebolaData: state.ebola.ebolaData.data,
   ebolaDataCombined: state.ebola.ebolaDataCombined.data,
   covidCaseCountsData: state.covid.caseCounts.data,
