@@ -1,24 +1,35 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { BrowserRouter as Router } from "react-router-dom";
 import Header from "../index";
-import Logo from "../../Logo";
-import * as Styled from "../styles";
+import configureStore from "redux-mock-store";
+import thunk from "redux-thunk";
+import { ThemeProvider as StyledComponentsProvider } from "styled-components";
+import styledComponentsTheme from "../../../assets/sc-theme";
+import "jest-styled-components";
+import { reduxInitialState } from "../../../constants/CommonTestData";
+import renderer from "react-test-renderer";
+import { Provider } from "react-redux";
 
-test("renders component without crashing", () => {
-  shallow(<Header />);
-});
+const mockStore = configureStore([thunk]);
 
-test("renders Logo child component", () => {
-  const wrapper = shallow(<Header />);
-  expect(wrapper.containsMatchingElement(<Logo />)).toBe(true);
-});
+describe("Tests for the connected Header", () => {
+  let store;
+  let component;
 
-test("renders HeaderNavWrapper child component", () => {
-  const wrapper = shallow(<Header />);
-  expect(wrapper.containsMatchingElement(Styled.HeaderNavWrapper)).toBe(true);
-});
+  beforeEach(() => {
+    store = mockStore(reduxInitialState);
 
-test("renders 2 nav buttons", () => {
-  const wrapper = shallow(<Header />);
-  expect(wrapper.find(Styled.HeaderNavWrapper).children()).toHaveLength(3);
+    component = renderer.create(
+      <StyledComponentsProvider theme={styledComponentsTheme}>
+        <Router>
+          <Provider store={store}>
+            <Header />
+          </Provider>
+        </Router>
+      </StyledComponentsProvider>
+    );
+  });
+  test("should render with given state from Redux store", () => {
+    expect(component.toJSON()).toMatchSnapshot();
+  });
 });

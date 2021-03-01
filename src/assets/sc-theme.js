@@ -1,5 +1,9 @@
 const styledComponentsTheme = {
-  headerHeight: "5.6rem",
+  headerHeights: {
+    default: "5.6rem",
+    withBanner: "9rem",
+  },
+  bannerHeight: "3.6rem",
   sidebarWidth: "28rem",
   riskHeight: "33.6rem",
   background1: "#fff",

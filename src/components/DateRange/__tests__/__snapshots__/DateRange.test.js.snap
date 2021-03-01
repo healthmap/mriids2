@@ -2,6 +2,8 @@
 
 exports[`Tests for the connected DateRange should render with given state from Redux store 1`] = `
 .c0 {
+  position: relative;
+  top: 0;
   padding-bottom: 4.8rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -17,6 +19,7 @@ exports[`Tests for the connected DateRange should render with given state from R
 }
 
 .c2 {
+  position: relative;
   width: 80%;
   height: 2.8rem;
   -webkit-box-flex: 1;
