@@ -19,10 +19,11 @@ import {
 import { getCountryDiseaseCountDictionary } from "../../utils/snapshotMapHelpers";
 
 const SnapshotMap = ({
+  filters,
+  hasConfirmedProjectionsPopup,
   ebolaData,
   covidCaseCountData,
   covidDeathCountData,
-  filters,
 }) => {
   const [zoomLevel, setZoomLevel] = useState(9);
   const [fillColorDictionary, setFillColorDictionary] = useState({});
@@ -60,10 +61,10 @@ const SnapshotMap = ({
     return validNewZoomLevel ? setZoomLevel(newZoomLevel) : null;
   };
 
-  const projectionsEnabled = filters.dataType.includes("projected");
-
   return (
-    <SnapshotMapContainer projectionsBanner={projectionsEnabled}>
+    <SnapshotMapContainer
+      isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}
+    >
       <StyledTooltip>{toolTipContent}</StyledTooltip>
       <ComposableMap
         projection="geoMercator"
@@ -131,10 +132,11 @@ const SnapshotMap = ({
 };
 
 const mapStateToProps = (state) => ({
+  filters: state.filters,
+  hasConfirmedProjectionsPopup: state.ui.hasConfirmedProjectionsPopup,
   ebolaData: state.ebola.ebolaData.data,
   covidCaseCountData: state.covid.caseCounts.data,
   covidDeathCountData: state.covid.deathCounts.data,
-  filters: state.filters,
 });
 
 // Wrapped SnapshotMap component in memo() as recommended here: https://www.react-simple-maps.io/examples/map-chart-with-tooltip/
