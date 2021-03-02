@@ -17,6 +17,7 @@ import {
   getCountryFillColor,
 } from "../../utils/snapshotMapHelpers";
 import { getCountryDiseaseCountDictionary } from "../../utils/snapshotMapHelpers";
+import { countryCentroids } from "../../constants/CountryCentroids";
 
 const SnapshotMap = ({
   filters,
@@ -25,6 +26,7 @@ const SnapshotMap = ({
   covidCaseCountData,
   covidDeathCountData,
 }) => {
+  const [mapCenter, setMapCenter] = useState([-11.779889, 8.460555]);
   const [zoomLevel, setZoomLevel] = useState(10);
   const [fillColorDictionary, setFillColorDictionary] = useState({});
   const [countryDiseaseCounts, updateCountryDiseaseCounts] = useState({});
@@ -49,6 +51,20 @@ const SnapshotMap = ({
         : getCovidFillColorsDictionary(countryDiseaseCounts, filters.dataType);
     setFillColorDictionary(colorDictionary);
   }, [countryDiseaseCounts, filters.outbreak, filters.dataType]);
+
+  // Set the mapCenter and zoomLevel when a country is selected.
+  useEffect(() => {
+    if (filters.country === "All") {
+      setMapCenter([-11.779889, 8.460555]);
+      filters.outbreak === "Ebola Outbreak"
+        ? setZoomLevel(10)
+        : setZoomLevel(1);
+    } else {
+      const countryCoordinates = countryCentroids[filters.country];
+      setMapCenter([countryCoordinates.longitude, countryCoordinates.latitude]);
+      setZoomLevel(countryCoordinates.zoomLevel);
+    }
+  }, [filters.country, filters.outbreak]);
 
   // Update the zoomLevel when switching between outbreaks
   useEffect(() => {
@@ -75,11 +91,7 @@ const SnapshotMap = ({
         strokeWidth={0.02}
         data-tip=""
       >
-        <ZoomableGroup
-          zoom={zoomLevel}
-          center={[-11.779889, 8.460555]}
-          maxZoom={10}
-        >
+        <ZoomableGroup zoom={zoomLevel} center={mapCenter} maxZoom={10}>
           <Geographies geography="mapData/world_50m.json">
             {({ geographies }) =>
               geographies.map((geo) => {
