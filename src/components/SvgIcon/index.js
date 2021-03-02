@@ -9,6 +9,7 @@ const SvgIcon = ({ size, title, icon }) => (
     role="img"
     alt={title}
     aria-hidden="true"
+    className="svg-icon"
     style={{ width: size + "px", height: size + "px" }}
   >
     <g>

@@ -2,11 +2,41 @@ import styled from "styled-components";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
+import Tooltip from "@material-ui/core/Tooltip";
 
 export const DataRadioButtonsContainer = styled.div`
   display: block;
   padding-bottom: 2rem;
   border-bottom: 1px solid #ccc;
+`;
+
+export const FormLabelIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  label {
+    margin-right: 0.8rem;
+  }
+  .svg-icon path {
+    fill: ${(props) => props.theme.textLightColor};
+  }
+`;
+
+export const StyledTooltip = styled((props) => (
+  <Tooltip
+    classes={{ popper: props.className, tooltip: "tooltip" }}
+    {...props}
+  />
+))`
+  & .tooltip {
+    color: ${(props) => props.theme.textColor};
+    background-color: ${(props) => props.theme.background1};
+    font-size: 1.2rem;
+    line-height: 1.66666666;
+    padding: 1.6rem;
+    margin: 0.8rem 0;
+    border-radius: 3px;
+    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.1);
+  }
 `;
 
 export const StyledRadioGroup = styled(RadioGroup)`

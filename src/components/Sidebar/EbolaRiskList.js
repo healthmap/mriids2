@@ -3,11 +3,9 @@ import { BlockPadded } from "../styled-components/Block";
 
 const EbolaRiskList = () => (
   <BlockPadded>
-    <strong>
-      <p>
-        The top 10 countries with the highest relative risk of Ebola spread are:
-      </p>
-    </strong>
+    <p>
+      Countries with the highest relative risk of Ebola spread
+    </p>
 
     <ol>
       <li>Guinea</li>

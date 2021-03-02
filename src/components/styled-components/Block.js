@@ -14,6 +14,16 @@ export const BlockPadded = styled.div`
   p {
     margin: 0;
   }
+  ol {
+    font-size: 1.4rem;
+    line-height: 1.42857142;
+    margin: 1.6rem 0 0 0;
+    padding: 0;
+    list-style-position: inside;
+    li {
+      margin: 0 0 0.4rem 0;
+    }
+  }
 `;
 
 export const BlockDropshadow = styled.div`
