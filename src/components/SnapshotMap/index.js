@@ -61,11 +61,18 @@ const SnapshotMap = ({
         : setZoomLevel(1);
     } else {
       const selectedCountryCoordinates = countriesCoordinates[filters.country];
-      setMapCenter([
-        selectedCountryCoordinates.longitude,
-        selectedCountryCoordinates.latitude,
-      ]);
-      setZoomLevel(selectedCountryCoordinates.zoomLevel);
+      if (selectedCountryCoordinates) {
+        setMapCenter([
+          selectedCountryCoordinates.longitude,
+          selectedCountryCoordinates.latitude,
+        ]);
+        setZoomLevel(selectedCountryCoordinates.zoomLevel);
+      } else {
+        setMapCenter([-11.779889, 8.460555]);
+        filters.outbreak === "Ebola Outbreak"
+          ? setZoomLevel(10)
+          : setZoomLevel(1);
+      }
     }
   }, [filters.country, filters.outbreak]);
 
