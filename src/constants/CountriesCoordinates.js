@@ -1,4 +1,4 @@
-export const countryCentroids = {
+export const countriesCoordinates = {
   Andorra: { latitude: 42.546245, longitude: 1.601554, zoomLevel: 10 },
   "United Arab Emirates": {
     latitude: 23.424076,

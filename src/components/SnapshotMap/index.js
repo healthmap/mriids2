@@ -17,7 +17,7 @@ import {
   getCountryFillColor,
 } from "../../utils/snapshotMapHelpers";
 import { getCountryDiseaseCountDictionary } from "../../utils/snapshotMapHelpers";
-import { countryCentroids } from "../../constants/CountryCentroids";
+import { countriesCoordinates } from "../../constants/CountriesCoordinates";
 
 const SnapshotMap = ({
   filters,
@@ -60,9 +60,12 @@ const SnapshotMap = ({
         ? setZoomLevel(10)
         : setZoomLevel(1);
     } else {
-      const countryCoordinates = countryCentroids[filters.country];
-      setMapCenter([countryCoordinates.longitude, countryCoordinates.latitude]);
-      setZoomLevel(countryCoordinates.zoomLevel);
+      const selectedCountryCoordinates = countriesCoordinates[filters.country];
+      setMapCenter([
+        selectedCountryCoordinates.longitude,
+        selectedCountryCoordinates.latitude,
+      ]);
+      setZoomLevel(selectedCountryCoordinates.zoomLevel);
     }
   }, [filters.country, filters.outbreak]);
 
