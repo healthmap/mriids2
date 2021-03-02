@@ -4,12 +4,15 @@ import { bindActionCreators } from "redux";
 import { changeDataType } from "../../actions/filters";
 import { openProjectionsPopup } from "../../actions/ui";
 import { InputLabel } from "../styled-components/InputLabel";
+import SvgIcon from "../SvgIcon";
 import FormControl from "@material-ui/core/FormControl";
 import {
   DataRadioButtonsContainer,
   StyledRadioGroup,
   StyledRadio,
+  FormLabelIconWrapper,
   StyledFormControlLabel,
+  StyledTooltip,
 } from "../styled-components/RadioButtonStyles";
 
 const DataRadioButtons = ({
@@ -63,11 +66,21 @@ const DataRadioButtons = ({
             </>
           ) : (
             <>
-              <StyledFormControlLabel
-                value="projected cases"
-                control={<StyledRadio />}
-                label="Projected Cases"
-              />
+              <FormLabelIconWrapper>
+                <StyledFormControlLabel
+                  value="projected cases"
+                  control={<StyledRadio />}
+                  label="Projected Cases"
+                />
+                <StyledTooltip
+                  title="There is some uncertainty associated with the projection values. Projections are reported as an interval that contains 95% of the projected values from several simulations. The width of this interval is a measure of the uncertainty associated with the projections."
+                  aria-label="info"
+                >
+		  <div>
+                  <SvgIcon title="info-icon" size="14" icon="Info" />
+		  </div>
+                </StyledTooltip>
+              </FormLabelIconWrapper>
               <StyledFormControlLabel
                 value="risk"
                 control={<StyledRadio />}

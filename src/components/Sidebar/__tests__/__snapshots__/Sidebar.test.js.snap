@@ -42,7 +42,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   background-color: transparent;
 }
 
-.c11 {
+.c13 {
   padding: 1.2rem 1.2rem 3.2rem;
   font-size: 1.6rem;
   line-height: 1.5;
@@ -63,11 +63,23 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   margin-top: 3.2rem;
 }
 
-.c11 p {
+.c13 p {
   margin: 0;
 }
 
-.c12 {
+.c13 ol {
+  font-size: 1.4rem;
+  line-height: 1.42857142;
+  margin: 1.6rem 0 0 0;
+  padding: 0;
+  list-style-position: inside;
+}
+
+.c13 ol li {
+  margin: 0 0 0.4rem 0;
+}
+
+.c14 {
   margin: 1.6rem 0 0.25rem;
   text-transform: uppercase;
   font-weight: 700;
@@ -80,7 +92,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   color: #63656A;
 }
 
-.c13 {
+.c15 {
   display: inline-block;
   font-size: 2.4rem;
   font-weight: 700;
@@ -195,6 +207,36 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   border-bottom: 1px solid #ccc;
 }
 
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c11 label {
+  margin-right: 0.8rem;
+}
+
+.c11 .svg-icon path {
+  fill: #63656A;
+}
+
+.c12 .tooltip {
+  color: #222325;
+  background-color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.66666666;
+  padding: 1.6rem;
+  margin: 0.8rem 0;
+  border-radius: 3px;
+  box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.1);
+}
+
 .c8 {
   margin-left: 1.2rem;
 }
@@ -275,7 +317,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
             required={false}
             spellCheck="false"
             type="text"
-            value=""
+            value="All"
           />
           <div
             className="MuiAutocomplete-endAdornment"
@@ -314,6 +356,9 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
                   />
                 </svg>
               </span>
+              <span
+                className="MuiTouchRipple-root"
+              />
             </button>
           </div>
           <fieldset
@@ -483,6 +528,9 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
                 </svg>
               </div>
             </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
           </span>
           <span
             className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
@@ -490,69 +538,114 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
             Cases
           </span>
         </label>
-        <label
-          className="MuiFormControlLabel-root c9"
+        <div
+          className="c11"
         >
-          <span
-            aria-disabled={false}
-            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 MuiIconButton-colorSecondary"
-            onBlur={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={null}
+          <label
+            className="MuiFormControlLabel-root c9"
           >
             <span
-              className="MuiIconButton-label"
+              aria-disabled={false}
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 MuiIconButton-colorSecondary"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={null}
             >
-              <input
-                checked={false}
-                className="PrivateSwitchBase-input-8"
-                disabled={false}
-                name="data"
-                onChange={[Function]}
-                type="radio"
-                value="projected cases"
-              />
-              <div
-                className="PrivateRadioButtonIcon-root-9"
+              <span
+                className="MuiIconButton-label"
               >
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
+                <input
+                  checked={false}
+                  className="PrivateSwitchBase-input-8"
+                  disabled={false}
+                  name="data"
+                  onChange={[Function]}
+                  type="radio"
+                  value="projected cases"
+                />
+                <div
+                  className="PrivateRadioButtonIcon-root-9"
                 >
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                  />
-                </svg>
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-10"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
-                  />
-                </svg>
-              </div>
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-10"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                    />
+                  </svg>
+                </div>
+              </span>
+              <span
+                className="MuiTouchRipple-root"
+              />
             </span>
-          </span>
-          <span
-            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+            <span
+              className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+            >
+              Projected Cases
+            </span>
+          </label>
+          <div
+            aria-describedby={null}
+            aria-label="info"
+            className="c12"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            title="There is some uncertainty associated with the projection values. Projections are reported as an interval that contains 95% of the projected values from several simulations. The width of this interval is a measure of the uncertainty associated with the projections."
           >
-            Projected Cases
-          </span>
-        </label>
+            <svg
+              alt="info-icon"
+              aria-hidden="true"
+              className="svg-icon"
+              height="14px"
+              role="img"
+              style={
+                Object {
+                  "height": "14px",
+                  "width": "14px",
+                }
+              }
+              viewBox="0 0 100 100"
+              width="14px"
+            >
+              <g>
+                <title>
+                  info-icon
+                </title>
+                <path
+                  d="M50,0 C22.3877016,0 0,22.3957661 0,50 C0,77.6203629 22.3877016,100 50,100 C77.6122984,100 100,77.6203629 100,50 C100,22.3957661 77.6122984,0 50,0 Z M50,22.1774194 C54.6766129,22.1774194 58.4677419,25.9685484 58.4677419,30.6451613 C58.4677419,35.3217742 54.6766129,39.1129032 50,39.1129032 C45.3233871,39.1129032 41.5322581,35.3217742 41.5322581,30.6451613 C41.5322581,25.9685484 45.3233871,22.1774194 50,22.1774194 Z M61.2903226,73.3870968 C61.2903226,74.7231855 60.2070565,75.8064516 58.8709677,75.8064516 L41.1290323,75.8064516 C39.7929435,75.8064516 38.7096774,74.7231855 38.7096774,73.3870968 L38.7096774,68.5483871 C38.7096774,67.2122984 39.7929435,66.1290323 41.1290323,66.1290323 L43.5483871,66.1290323 L43.5483871,53.2258065 L41.1290323,53.2258065 C39.7929435,53.2258065 38.7096774,52.1425403 38.7096774,50.8064516 L38.7096774,45.9677419 C38.7096774,44.6316532 39.7929435,43.5483871 41.1290323,43.5483871 L54.0322581,43.5483871 C55.3683468,43.5483871 56.4516129,44.6316532 56.4516129,45.9677419 L56.4516129,66.1290323 L58.8709677,66.1290323 C60.2070565,66.1290323 61.2903226,67.2122984 61.2903226,68.5483871 L61.2903226,73.3870968 Z"
+                  fill="#000000"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
         <label
           className="MuiFormControlLabel-root c9"
         >
@@ -609,6 +702,9 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
                 </svg>
               </div>
             </span>
+            <span
+              className="MuiTouchRipple-root"
+            />
           </span>
           <span
             className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
@@ -620,7 +716,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     </fieldset>
   </div>
   <div
-    className="c11"
+    className="c13"
   >
     <p>
       Total reported cases in
@@ -639,12 +735,12 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       className=""
     >
       <div
-        className="c12"
+        className="c14"
       >
         Reported cases
       </div>
       <div
-        className="c13"
+        className="c15"
       >
         0
       </div>
@@ -695,7 +791,7 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
   background-color: transparent;
 }
 
-.c11 {
+.c13 {
   padding: 1.2rem 1.2rem 3.2rem;
   font-size: 1.6rem;
   line-height: 1.5;
@@ -716,8 +812,20 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
   margin-top: 3.2rem;
 }
 
-.c11 p {
+.c13 p {
   margin: 0;
+}
+
+.c13 ol {
+  font-size: 1.4rem;
+  line-height: 1.42857142;
+  margin: 1.6rem 0 0 0;
+  padding: 0;
+  list-style-position: inside;
+}
+
+.c13 ol li {
+  margin: 0 0 0.4rem 0;
 }
 
 .c0 {
@@ -826,6 +934,36 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
   display: block;
   padding-bottom: 2rem;
   border-bottom: 1px solid #ccc;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c11 label {
+  margin-right: 0.8rem;
+}
+
+.c11 .svg-icon path {
+  fill: #63656A;
+}
+
+.c12 .tooltip {
+  color: #222325;
+  background-color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.66666666;
+  padding: 1.6rem;
+  margin: 0.8rem 0;
+  border-radius: 3px;
+  box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.1);
 }
 
 .c8 {
@@ -1129,72 +1267,114 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
             Cases
           </span>
         </label>
-        <label
-          className="MuiFormControlLabel-root c9"
+        <div
+          className="c11"
         >
-          <span
-            aria-disabled={false}
-            className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 MuiIconButton-colorSecondary"
-            onBlur={[Function]}
-            onDragLeave={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseLeave={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchMove={[Function]}
-            onTouchStart={[Function]}
-            tabIndex={null}
+          <label
+            className="MuiFormControlLabel-root c9"
           >
             <span
-              className="MuiIconButton-label"
+              aria-disabled={false}
+              className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-5 MuiRadio-root MuiRadio-colorSecondary c10 MuiIconButton-colorSecondary"
+              onBlur={[Function]}
+              onDragLeave={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              onMouseDown={[Function]}
+              onMouseLeave={[Function]}
+              onMouseUp={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              tabIndex={null}
             >
-              <input
-                checked={false}
-                className="PrivateSwitchBase-input-8"
-                disabled={false}
-                name="data"
-                onChange={[Function]}
-                type="radio"
-                value="projected cases"
-              />
-              <div
-                className="PrivateRadioButtonIcon-root-9"
+              <span
+                className="MuiIconButton-label"
               >
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root"
-                  focusable="false"
-                  viewBox="0 0 24 24"
+                <input
+                  checked={false}
+                  className="PrivateSwitchBase-input-8"
+                  disabled={false}
+                  name="data"
+                  onChange={[Function]}
+                  type="radio"
+                  value="projected cases"
+                />
+                <div
+                  className="PrivateRadioButtonIcon-root-9"
                 >
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                  />
-                </svg>
-                <svg
-                  aria-hidden={true}
-                  className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-10"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
-                  />
-                </svg>
-              </div>
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-10"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                    />
+                  </svg>
+                </div>
+              </span>
+              <span
+                className="MuiTouchRipple-root"
+              />
             </span>
             <span
-              className="MuiTouchRipple-root"
-            />
-          </span>
-          <span
-            className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+              className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+            >
+              Projected Cases
+            </span>
+          </label>
+          <div
+            aria-describedby={null}
+            aria-label="info"
+            className="c12"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+            title="There is some uncertainty associated with the projection values. Projections are reported as an interval that contains 95% of the projected values from several simulations. The width of this interval is a measure of the uncertainty associated with the projections."
           >
-            Projected Cases
-          </span>
-        </label>
+            <svg
+              alt="info-icon"
+              aria-hidden="true"
+              className="svg-icon"
+              height="14px"
+              role="img"
+              style={
+                Object {
+                  "height": "14px",
+                  "width": "14px",
+                }
+              }
+              viewBox="0 0 100 100"
+              width="14px"
+            >
+              <g>
+                <title>
+                  info-icon
+                </title>
+                <path
+                  d="M50,0 C22.3877016,0 0,22.3957661 0,50 C0,77.6203629 22.3877016,100 50,100 C77.6122984,100 100,77.6203629 100,50 C100,22.3957661 77.6122984,0 50,0 Z M50,22.1774194 C54.6766129,22.1774194 58.4677419,25.9685484 58.4677419,30.6451613 C58.4677419,35.3217742 54.6766129,39.1129032 50,39.1129032 C45.3233871,39.1129032 41.5322581,35.3217742 41.5322581,30.6451613 C41.5322581,25.9685484 45.3233871,22.1774194 50,22.1774194 Z M61.2903226,73.3870968 C61.2903226,74.7231855 60.2070565,75.8064516 58.8709677,75.8064516 L41.1290323,75.8064516 C39.7929435,75.8064516 38.7096774,74.7231855 38.7096774,73.3870968 L38.7096774,68.5483871 C38.7096774,67.2122984 39.7929435,66.1290323 41.1290323,66.1290323 L43.5483871,66.1290323 L43.5483871,53.2258065 L41.1290323,53.2258065 C39.7929435,53.2258065 38.7096774,52.1425403 38.7096774,50.8064516 L38.7096774,45.9677419 C38.7096774,44.6316532 39.7929435,43.5483871 41.1290323,43.5483871 L54.0322581,43.5483871 C55.3683468,43.5483871 56.4516129,44.6316532 56.4516129,45.9677419 L56.4516129,66.1290323 L58.8709677,66.1290323 C60.2070565,66.1290323 61.2903226,67.2122984 61.2903226,68.5483871 L61.2903226,73.3870968 Z"
+                  fill="#000000"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
         <label
           className="MuiFormControlLabel-root c9"
         >
@@ -1265,13 +1445,11 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
     </fieldset>
   </div>
   <div
-    className="c11"
+    className="c13"
   >
-    <strong>
-      <p>
-        The top 10 countries with the highest relative risk of Ebola spread are:
-      </p>
-    </strong>
+    <p>
+      Countries with the highest relative risk of Ebola spread
+    </p>
     <ol>
       <li>
         Guinea
