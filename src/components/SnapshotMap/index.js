@@ -75,8 +75,8 @@ const SnapshotMap = ({
   }, [filters.outbreak]);
 
   const changeZoomLevel = (newZoomLevel) => {
-    // This prevents zooming in to a level higher than 10 and lower than 1.
-    const validNewZoomLevel = newZoomLevel <= 10 && newZoomLevel >= 1;
+    // This prevents zooming in to a level higher than 35 and lower than 1.
+    const validNewZoomLevel = newZoomLevel <= 35 && newZoomLevel >= 1;
     return validNewZoomLevel ? setZoomLevel(newZoomLevel) : null;
   };
 
@@ -94,7 +94,7 @@ const SnapshotMap = ({
         strokeWidth={0.02}
         data-tip=""
       >
-        <ZoomableGroup zoom={zoomLevel} center={mapCenter} maxZoom={10}>
+        <ZoomableGroup zoom={zoomLevel} center={mapCenter} maxZoom={35}>
           <Geographies geography="mapData/world_50m.json">
             {({ geographies }) =>
               geographies.map((geo) => {
@@ -145,7 +145,7 @@ const SnapshotMap = ({
       <MapZoomButtons
         zoomLevel={zoomLevel}
         changeZoomFunction={changeZoomLevel}
-        maxZoom={10}
+        maxZoom={35}
         minZoom={1}
       />
     </SnapshotMapContainer>
