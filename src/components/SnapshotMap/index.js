@@ -17,6 +17,7 @@ import {
   getCountryFillColor,
 } from "../../utils/snapshotMapHelpers";
 import { getCountryDiseaseCountDictionary } from "../../utils/snapshotMapHelpers";
+import { countriesCoordinates } from "../../constants/CountriesCoordinates";
 
 const SnapshotMap = ({
   filters,
@@ -25,11 +26,17 @@ const SnapshotMap = ({
   covidCaseCountData,
   covidDeathCountData,
 }) => {
-  const [zoomLevel, setZoomLevel] = useState(9);
+  const [mapCenter, setMapCenter] = useState([-11.779889, 8.460555]);
+  const [zoomLevel, setZoomLevel] = useState(10);
   const [fillColorDictionary, setFillColorDictionary] = useState({});
   const [countryDiseaseCounts, updateCountryDiseaseCounts] = useState({});
   const [toolTipContent, setToolTipContent] = useState(null);
 
+  // Resets the mapCenter and zoomLevel to the default values.
+  const resetMapCenterAndZoom = (outbreakSelected) => {
+    setMapCenter([-11.779889, 8.460555]);
+    outbreakSelected === "Ebola Outbreak" ? setZoomLevel(10) : setZoomLevel(1);
+  };
   // Getting the country disease counts for the selected outbreak when the filters are updated.
   useEffect(() => {
     const diseaseCountsDictionary = getCountryDiseaseCountDictionary(
@@ -50,14 +57,28 @@ const SnapshotMap = ({
     setFillColorDictionary(colorDictionary);
   }, [countryDiseaseCounts, filters.outbreak, filters.dataType]);
 
-  // Update the zoomLevel when switching between outbreaks
+  // Set the mapCenter and zoomLevel when a country is selected.
+  // Also resets the zoomLevel when switching between outbreaks.
   useEffect(() => {
-    filters.outbreak === "Ebola Outbreak" ? setZoomLevel(9) : setZoomLevel(1);
-  }, [filters.outbreak]);
+    if (filters.country === "All") {
+      resetMapCenterAndZoom(filters.outbreak);
+    } else {
+      const selectedCountryCoordinates = countriesCoordinates[filters.country];
+      if (selectedCountryCoordinates) {
+        setMapCenter([
+          selectedCountryCoordinates.longitude,
+          selectedCountryCoordinates.latitude,
+        ]);
+        setZoomLevel(selectedCountryCoordinates.zoomLevel);
+      } else {
+        resetMapCenterAndZoom(filters.outbreak);
+      }
+    }
+  }, [filters.country, filters.outbreak]);
 
   const changeZoomLevel = (newZoomLevel) => {
-    // This prevents zooming in to a level higher than 9 and lower than 1.
-    const validNewZoomLevel = newZoomLevel <= 9 && newZoomLevel >= 1;
+    // This prevents zooming in to a level higher than 35 and lower than 1.
+    const validNewZoomLevel = newZoomLevel <= 35 && newZoomLevel >= 1;
     return validNewZoomLevel ? setZoomLevel(newZoomLevel) : null;
   };
 
@@ -68,12 +89,14 @@ const SnapshotMap = ({
       <StyledTooltip>{toolTipContent}</StyledTooltip>
       <ComposableMap
         projection="geoMercator"
-        style={{ backgroundColor: "#F1F5FB" }}
+        width={800}
+        height={400}
+        style={{ backgroundColor: "#F1F5FB", width: "100%", height: "100%" }}
         stroke="#131D34"
         strokeWidth={0.02}
         data-tip=""
       >
-        <ZoomableGroup zoom={zoomLevel} center={[-10, 2]} maxZoom={9}>
+        <ZoomableGroup zoom={zoomLevel} center={mapCenter} maxZoom={35}>
           <Geographies geography="mapData/world_50m.json">
             {({ geographies }) =>
               geographies.map((geo) => {
@@ -124,7 +147,7 @@ const SnapshotMap = ({
       <MapZoomButtons
         zoomLevel={zoomLevel}
         changeZoomFunction={changeZoomLevel}
-        maxZoom={9}
+        maxZoom={35}
         minZoom={1}
       />
     </SnapshotMapContainer>
