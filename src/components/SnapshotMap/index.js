@@ -32,6 +32,11 @@ const SnapshotMap = ({
   const [countryDiseaseCounts, updateCountryDiseaseCounts] = useState({});
   const [toolTipContent, setToolTipContent] = useState(null);
 
+  // Resets the mapCenter and zoomLevel to the default values.
+  const resetMapCenterAndZoom = (outbreakSelected) => {
+    setMapCenter([-11.779889, 8.460555]);
+    outbreakSelected === "Ebola Outbreak" ? setZoomLevel(10) : setZoomLevel(1);
+  };
   // Getting the country disease counts for the selected outbreak when the filters are updated.
   useEffect(() => {
     const diseaseCountsDictionary = getCountryDiseaseCountDictionary(
@@ -53,12 +58,10 @@ const SnapshotMap = ({
   }, [countryDiseaseCounts, filters.outbreak, filters.dataType]);
 
   // Set the mapCenter and zoomLevel when a country is selected.
+  // Also resets the zoomLevel when switching between outbreaks.
   useEffect(() => {
     if (filters.country === "All") {
-      setMapCenter([-11.779889, 8.460555]);
-      filters.outbreak === "Ebola Outbreak"
-        ? setZoomLevel(10)
-        : setZoomLevel(1);
+      resetMapCenterAndZoom(filters.outbreak);
     } else {
       const selectedCountryCoordinates = countriesCoordinates[filters.country];
       if (selectedCountryCoordinates) {
@@ -68,18 +71,10 @@ const SnapshotMap = ({
         ]);
         setZoomLevel(selectedCountryCoordinates.zoomLevel);
       } else {
-        setMapCenter([-11.779889, 8.460555]);
-        filters.outbreak === "Ebola Outbreak"
-          ? setZoomLevel(10)
-          : setZoomLevel(1);
+        resetMapCenterAndZoom(filters.outbreak);
       }
     }
   }, [filters.country, filters.outbreak]);
-
-  // Update the zoomLevel when switching between outbreaks
-  useEffect(() => {
-    filters.outbreak === "Ebola Outbreak" ? setZoomLevel(10) : setZoomLevel(1);
-  }, [filters.outbreak]);
 
   const changeZoomLevel = (newZoomLevel) => {
     // This prevents zooming in to a level higher than 35 and lower than 1.
