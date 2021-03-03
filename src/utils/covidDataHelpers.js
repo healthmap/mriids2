@@ -1,12 +1,16 @@
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { allCountries } from "../constants/Countries";
 
-export const getCountInDateRange = (covidData, dateRange) => {
+export const getCountInDateRange = (
+  covidData,
+  dateRange,
+  typeOfCount = "totalCount"
+) => {
   let count = 0;
   if (covidData) {
     Object.keys(covidData).forEach((weekKey) => {
       if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
-        count += covidData[weekKey];
+        count += covidData[weekKey][typeOfCount];
       }
     });
   }
@@ -18,11 +22,12 @@ export const getAllCountriesCount = (covidData = [], dateRange) => {
   covidData.forEach((countryObject) => {
     const countryCount = getCountInDateRange(
       countryObject.countryData,
-      dateRange
+      dateRange,
+      "totalCount"
     );
     // This check prevents NaN from being added to the count.
     if (Number.isInteger(countryCount)) {
-      count += getCountInDateRange(countryObject.countryData, dateRange);
+      count += countryCount;
     }
   });
   return count;
@@ -43,7 +48,8 @@ export const getCovidCount = (covidData = [], filters) => {
     if (selectedCountryDataObject) {
       count = getCountInDateRange(
         selectedCountryDataObject.countryData,
-        filters.dateRange
+        filters.dateRange,
+        "totalCount"
       );
     }
   }
@@ -67,7 +73,8 @@ export const getCountriesCovidCounts = (covidData = [], filters) => {
     if (countryDataObject) {
       countryCount = getCountInDateRange(
         countryDataObject.countryData,
-        filters.dateRange
+        filters.dateRange,
+        "per100kCount"
       );
     } else {
       countryCount = 0;

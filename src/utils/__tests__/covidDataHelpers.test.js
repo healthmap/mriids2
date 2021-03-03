@@ -17,7 +17,8 @@ describe("Tests for getCountInDateRange", () => {
     expect(
       getCountInDateRange(
         testCountryCovidCaseCounts.countryData,
-        covidAfghanistanFilters.dateRange
+        covidAfghanistanFilters.dateRange,
+        "totalCount"
       )
     ).toBe(4449);
   });
