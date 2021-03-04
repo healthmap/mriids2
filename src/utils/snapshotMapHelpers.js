@@ -22,32 +22,49 @@ export const getEbolaScale = (countryCaseCount) => {
   return scaleValue;
 };
 
-export const getCovidScale = (countryCaseCount) => {
-  // Gets the scaleValue to be used by the snapshotMap and map legend.
-  const maxCaseCountValue = Math.max(...Object.values(countryCaseCount));
-  let scaleValue;
-  if (maxCaseCountValue < 1000) {
-    scaleValue = Math.ceil(maxCaseCountValue / 100) * 100;
-  } else if (maxCaseCountValue < 5000) {
-    scaleValue = Math.ceil(maxCaseCountValue / 500) * 500;
-  } else if (maxCaseCountValue < 10000) {
-    scaleValue = Math.ceil(maxCaseCountValue / 1000) * 1000;
-  } else if (maxCaseCountValue < 20000) {
-    scaleValue = Math.ceil(maxCaseCountValue / 2000) * 2000;
-  } else if (maxCaseCountValue < 50000) {
-    scaleValue = Math.ceil(maxCaseCountValue / 5000) * 5000;
-  } else if (maxCaseCountValue < 100000) {
-    scaleValue = Math.ceil(maxCaseCountValue / 10000) * 10000;
-  } else if (maxCaseCountValue < 500000) {
-    scaleValue = Math.ceil(maxCaseCountValue / 50000) * 50000;
-  } else if (maxCaseCountValue < 1000000) {
-    scaleValue = Math.ceil(maxCaseCountValue / 100000) * 100000;
-  } else if (maxCaseCountValue < 5000000) {
-    scaleValue = Math.ceil(maxCaseCountValue / 500000) * 500000;
-  } else if (maxCaseCountValue < 10000000) {
-    scaleValue = Math.ceil(maxCaseCountValue / 1000000) * 1000000;
+const getHighestPer100kCountValue = (countriesDiseaseCountDictionary) => {
+  const per100kCounts = [];
+  const dataObjectKeys = Object.keys(countriesDiseaseCountDictionary);
+  if (dataObjectKeys.length) {
+    dataObjectKeys.forEach((countryKey) => {
+      per100kCounts.push(
+        countriesDiseaseCountDictionary[countryKey].per100kCount
+      );
+    });
+    return Math.max(...per100kCounts);
   } else {
-    scaleValue = Math.ceil(maxCaseCountValue / 2000000) * 2000000;
+    return 0;
+  }
+};
+
+export const getCovidScale = (countriesDiseaseCountDictionary) => {
+  // Gets the scaleValue to be used by the snapshotMap and map legend.
+  const maxPer100kCountValue = getHighestPer100kCountValue(
+    countriesDiseaseCountDictionary
+  );
+  let scaleValue;
+  if (maxPer100kCountValue < 1000) {
+    scaleValue = Math.ceil(maxPer100kCountValue / 100) * 100;
+  } else if (maxPer100kCountValue < 5000) {
+    scaleValue = Math.ceil(maxPer100kCountValue / 500) * 500;
+  } else if (maxPer100kCountValue < 10000) {
+    scaleValue = Math.ceil(maxPer100kCountValue / 1000) * 1000;
+  } else if (maxPer100kCountValue < 20000) {
+    scaleValue = Math.ceil(maxPer100kCountValue / 2000) * 2000;
+  } else if (maxPer100kCountValue < 50000) {
+    scaleValue = Math.ceil(maxPer100kCountValue / 5000) * 5000;
+  } else if (maxPer100kCountValue < 100000) {
+    scaleValue = Math.ceil(maxPer100kCountValue / 10000) * 10000;
+  } else if (maxPer100kCountValue < 500000) {
+    scaleValue = Math.ceil(maxPer100kCountValue / 50000) * 50000;
+  } else if (maxPer100kCountValue < 1000000) {
+    scaleValue = Math.ceil(maxPer100kCountValue / 100000) * 100000;
+  } else if (maxPer100kCountValue < 5000000) {
+    scaleValue = Math.ceil(maxPer100kCountValue / 500000) * 500000;
+  } else if (maxPer100kCountValue < 10000000) {
+    scaleValue = Math.ceil(maxPer100kCountValue / 1000000) * 1000000;
+  } else {
+    scaleValue = Math.ceil(maxPer100kCountValue / 2000000) * 2000000;
   }
   return scaleValue;
 };
@@ -158,23 +175,27 @@ export const getEbolaFillColorsDictionary = (
 
 // This gets a dictionary with key/value pairs of country/fillColor for each country.
 export const getCovidFillColorsDictionary = (
-  covidCountriesCaseCounts,
+  covidCountriesDiseaseCounts,
   dataType
 ) => {
   let colorsDictionary = {};
   // Get the scale using the covidCountriesCaseCounts object.
-  const scale = getCovidScale(covidCountriesCaseCounts);
+  const scale = getCovidScale(covidCountriesDiseaseCounts);
   allCountries.forEach((country) => {
-    const percentage = covidCountriesCaseCounts[country] / scale;
-    // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
-    // If viewing death counts, get the fillColor using the getSnapshotDeathsColor function.
-    // If viewing case counts, get the fillColor using the getSnapshotColor function.
-    if (dataType === "projected deaths") {
-      colorsDictionary[country] = getSnapshotProjectionsColor(percentage);
-    } else if (dataType === "cases") {
-      colorsDictionary[country] = getSnapshotColor(percentage);
-    } else if (dataType === "deaths") {
-      colorsDictionary[country] = getSnapshotDeathsColor(percentage);
+    const countryCountsData = covidCountriesDiseaseCounts[country];
+    // If data is found for this country, execute this block.
+    if (countryCountsData) {
+      const percentage = countryCountsData.per100kCount / scale;
+      // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
+      // If viewing death counts, get the fillColor using the getSnapshotDeathsColor function.
+      // If viewing case counts, get the fillColor using the getSnapshotColor function.
+      if (dataType === "projected deaths") {
+        colorsDictionary[country] = getSnapshotProjectionsColor(percentage);
+      } else if (dataType === "cases") {
+        colorsDictionary[country] = getSnapshotColor(percentage);
+      } else if (dataType === "deaths") {
+        colorsDictionary[country] = getSnapshotDeathsColor(percentage);
+      }
     }
   });
   return colorsDictionary;

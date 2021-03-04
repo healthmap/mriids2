@@ -184,193 +184,760 @@ export const expectedOneCountryChartData = [
 ];
 
 export const covidCaseCountsDictionary = {
-  Afghanistan: 38,
-  Albania: 38,
-  Algeria: 38,
-  Andorra: 38,
-  Angola: 38,
-  "Antigua and Barbuda": 38,
-  Argentina: 38,
-  Armenia: 38,
-  Australia: 38,
-  Austria: 38,
-  Azerbaijan: 38,
-  Bahamas: 38,
-  Bahrain: 38,
-  Bangladesh: 38,
-  Barbados: 38,
-  Belarus: 38,
-  Belgium: 38,
-  Belize: 38,
-  Benin: 38,
-  Bhutan: 38,
-  Bolivia: 38,
-  "Bosnia and Herzegovina": 38,
-  Botswana: 38,
-  Brazil: 38,
-  Brunei: 38,
-  Bulgaria: 38,
-  "Burkina Faso": 38,
-  Burundi: 38,
-  "Cabo Verde": 38,
-  Cambodia: 38,
-  Cameroon: 38,
-  Canada: 38,
-  "Central African Republic": 38,
-  Chad: 38,
-  Chile: 38,
-  China: 38,
-  Colombia: 38,
-  Comoros: 38,
-  Congo: 38,
-  "Costa Rica": 38,
-  Croatia: 38,
-  Cuba: 38,
-  Cyprus: 38,
-  Czechia: 38,
-  "Cote dIvoire": 38,
-  Denmark: 38,
-  Djibouti: 38,
-  Dominica: 38,
-  "Dominican Republic": 38,
-  "Democratic Republic of the Congo": 38,
-  Ecuador: 38,
-  Egypt: 38,
-  "El Salvador": 38,
-  "Equatorial Guinea": 38,
-  Eritrea: 38,
-  Estonia: 38,
-  Eswatini: 38,
-  Ethiopia: 38,
-  Fiji: 38,
-  Finland: 38,
-  France: 38,
-  Gabon: 38,
-  Gambia: 38,
-  Georgia: 38,
-  Germany: 38,
-  Ghana: 38,
-  Greece: 38,
-  Greenland: 38,
-  Grenada: 38,
-  Guatemala: 38,
-  Guinea: 38,
-  "Guinea-Bissau": 38,
-  Guyana: 38,
-  Haiti: 38,
-  "Holy See": 38,
-  Honduras: 38,
-  Hungary: 38,
-  Iceland: 38,
-  India: 38,
-  Indonesia: 38,
-  Iran: 38,
-  Iraq: 38,
-  Ireland: 38,
-  Israel: 38,
-  Italy: 38,
-  Jamaica: 38,
-  Japan: 38,
-  Jordan: 38,
-  Kazakhstan: 38,
-  Kenya: 38,
-  Kosovo: 38,
-  "South Korea": 38,
-  Kuwait: 38,
-  Kyrgyzstan: 38,
-  Laos: 38,
-  Latvia: 38,
-  Lebanon: 38,
-  Lesotho: 38,
-  Liberia: 38,
-  Libya: 38,
-  Liechtenstein: 38,
-  Lithuania: 38,
-  Luxembourg: 38,
-  Macedonia: 38,
-  Madagascar: 38,
-  Malawi: 38,
-  Malaysia: 38,
-  Maldives: 38,
-  Mali: 38,
-  Malta: 38,
-  "Marshall Islands": 38,
-  Mauritania: 38,
-  Mauritius: 38,
-  Mexico: 38,
-  Moldova: 38,
-  Monaco: 38,
-  Mongolia: 38,
-  Montenegro: 38,
-  Morocco: 38,
-  Mozambique: 38,
-  Myanmar: 38,
-  Namibia: 38,
-  Nepal: 38,
-  Netherlands: 38,
-  "New Zealand": 38,
-  Nicaragua: 38,
-  Niger: 38,
-  Nigeria: 38,
-  Norway: 38,
-  Oman: 38,
-  Pakistan: 38,
-  Panama: 38,
-  "Papua New Guinea": 38,
-  Paraguay: 38,
-  Peru: 38,
-  Philippines: 38,
-  Poland: 38,
-  Portugal: 38,
-  Qatar: 38,
-  Romania: 38,
-  Russia: 38,
-  Rwanda: 38,
-  "Saint Kitts and Nevis": 38,
-  "Saint Lucia": 38,
-  "Saint Vincent and the Grenadines": 38,
-  Samoa: 38,
-  "San Marino": 38,
-  "Sao Tome and Principe": 38,
-  "Saudi Arabia": 38,
-  Senegal: 38,
-  Serbia: 38,
-  Seychelles: 38,
-  "Sierra Leone": 38,
-  Singapore: 38,
-  Slovakia: 38,
-  Slovenia: 38,
-  "Solomon Islands": 38,
-  Somalia: 38,
-  "South Africa": 38,
-  "South Sudan": 38,
-  Spain: 38,
-  "Sri Lanka": 38,
-  Sudan: 38,
-  Suriname: 38,
-  Sweden: 38,
-  Switzerland: 38,
-  Syria: 38,
-  Taiwan: 38,
-  Tajikistan: 38,
-  Tanzania: 38,
-  Thailand: 38,
-  "Timor-Leste": 38,
-  Togo: 38,
-  "Trinidad and Tobago": 38,
-  Tunisia: 38,
-  Turkey: 38,
-  Uganda: 38,
-  Ukraine: 38,
-  "United Arab Emirates": 38,
-  "United Kingdom": 38,
-  "United States of America": 0,
-  Uruguay: 38,
-  Uzbekistan: 38,
-  Vanuatu: 38,
-  Venezuela: 38,
-  Vietnam: 38,
-  Yemen: 38,
-  Zambia: 38,
-  Zimbabwe: 38,
+  Afghanistan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Albania: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Algeria: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Andorra: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Angola: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Antigua and Barbuda": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Argentina: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Armenia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Australia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Austria: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Azerbaijan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Bahamas: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Bahrain: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Bangladesh: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Barbados: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Belarus: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Belgium: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Belize: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Benin: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Bhutan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Bolivia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Bosnia and Herzegovina": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Botswana: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Brazil: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Brunei: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Bulgaria: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Burkina Faso": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Burundi: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Cabo Verde": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Cambodia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Cameroon: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Canada: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Central African Republic": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Chad: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Chile: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  China: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Colombia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Comoros: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Congo: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Costa Rica": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Croatia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Cuba: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Cyprus: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Czechia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Cote dIvoire": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Denmark: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Djibouti: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Dominica: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Dominican Republic": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Democratic Republic of the Congo": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Ecuador: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Egypt: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "El Salvador": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Equatorial Guinea": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Eritrea: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Estonia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Eswatini: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Ethiopia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Fiji: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Finland: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  France: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Gabon: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Gambia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Georgia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Germany: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Ghana: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Greece: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Greenland: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Grenada: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Guatemala: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Guinea: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Guinea-Bissau": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Guyana: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Haiti: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Holy See": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Honduras: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Hungary: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Iceland: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  India: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Indonesia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Iran: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Iraq: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Ireland: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Israel: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Italy: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Jamaica: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Japan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Jordan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Kazakhstan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Kenya: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Kosovo: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "South Korea": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Kuwait: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Kyrgyzstan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Laos: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Latvia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Lebanon: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Lesotho: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Liberia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Libya: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Liechtenstein: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Lithuania: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Luxembourg: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Macedonia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Madagascar: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Malawi: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Malaysia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Maldives: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Mali: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Malta: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Marshall Islands": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Mauritania: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Mauritius: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Mexico: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Moldova: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Monaco: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Mongolia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Montenegro: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Morocco: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Mozambique: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Myanmar: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Namibia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Nepal: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Netherlands: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "New Zealand": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Nicaragua: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Niger: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Nigeria: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Norway: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Oman: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Pakistan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Panama: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Papua New Guinea": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Paraguay: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Peru: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Philippines: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Poland: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Portugal: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Qatar: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Romania: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Russia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Rwanda: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Saint Kitts and Nevis": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Saint Lucia": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Saint Vincent and the Grenadines": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Samoa: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "San Marino": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Sao Tome and Principe": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Saudi Arabia": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Senegal: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Serbia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Seychelles: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Sierra Leone": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Singapore: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Slovakia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Slovenia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Solomon Islands": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Somalia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "South Africa": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "South Sudan": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Spain: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Sri Lanka": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Sudan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Suriname: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Sweden: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Switzerland: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Syria: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Taiwan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Tajikistan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Tanzania: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Thailand: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Timor-Leste": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Togo: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "Trinidad and Tobago": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Tunisia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Turkey: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Uganda: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Ukraine: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "United Arab Emirates": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "United Kingdom": {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  "United States of America": {
+    per100kCount: 0,
+    totalCount: 0,
+  },
+  Uruguay: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Uzbekistan: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Vanuatu: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Venezuela: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Vietnam: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Yemen: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Zambia: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
+  Zimbabwe: {
+    per100kCount: 38,
+    totalCount: 0,
+  },
 };

@@ -56,48 +56,147 @@ describe("Tests for getEbolaScale helper function", () => {
 
 describe("Tests for getCovidScale", () => {
   test("should return 900", () => {
-    const countryCaseCounts = { Afghanistan: 900, Zimbabwe: 0 };
-    expect(getCovidScale(countryCaseCounts)).toBe(900);
+    const countryCovidCounts = {
+      Afghanistan: {
+        per100kCount: 900,
+        totalCount: 0,
+      },
+      Zimbabwe: {
+        per100kCount: 0,
+        totalCount: 0,
+      },
+    };
+    expect(getCovidScale(countryCovidCounts)).toBe(900);
   });
   test("should return 5000", () => {
-    const countryCaseCounts = { Afghanistan: 4900, Zimbabwe: 0 };
-    expect(getCovidScale(countryCaseCounts)).toBe(5000);
+    const countryCovidCounts = {
+      Afghanistan: {
+        per100kCount: 4900,
+        totalCount: 0,
+      },
+      Zimbabwe: {
+        per100kCount: 0,
+        totalCount: 0,
+      },
+    };
+    expect(getCovidScale(countryCovidCounts)).toBe(5000);
   });
   test("should return 10000", () => {
-    const countryCaseCounts = { Afghanistan: 9900, Zimbabwe: 0 };
-    expect(getCovidScale(countryCaseCounts)).toBe(10000);
+    const countryCovidCounts = {
+      Afghanistan: {
+        per100kCount: 9900,
+        totalCount: 0,
+      },
+      Zimbabwe: {
+        per100kCount: 0,
+        totalCount: 0,
+      },
+    };
+    expect(getCovidScale(countryCovidCounts)).toBe(10000);
   });
   test("should return 20000", () => {
-    const countryCaseCounts = { Afghanistan: 19900, Zimbabwe: 0 };
-    expect(getCovidScale(countryCaseCounts)).toBe(20000);
+    const countryCovidCounts = {
+      Afghanistan: {
+        per100kCount: 19900,
+        totalCount: 0,
+      },
+      Zimbabwe: {
+        per100kCount: 0,
+        totalCount: 0,
+      },
+    };
+    expect(getCovidScale(countryCovidCounts)).toBe(20000);
   });
   test("should return 50000", () => {
-    const countryCaseCounts = { Afghanistan: 46000, Zimbabwe: 0 };
-    expect(getCovidScale(countryCaseCounts)).toBe(50000);
+    const countryCovidCounts = {
+      Afghanistan: {
+        per100kCount: 46000,
+        totalCount: 0,
+      },
+      Zimbabwe: {
+        per100kCount: 0,
+        totalCount: 0,
+      },
+    };
+    expect(getCovidScale(countryCovidCounts)).toBe(50000);
   });
   test("should return 100000", () => {
-    const countryCaseCounts = { Afghanistan: 99000, Zimbabwe: 0 };
-    expect(getCovidScale(countryCaseCounts)).toBe(100000);
+    const countryCovidCounts = {
+      Afghanistan: {
+        per100kCount: 99000,
+        totalCount: 0,
+      },
+      Zimbabwe: {
+        per100kCount: 0,
+        totalCount: 0,
+      },
+    };
+    expect(getCovidScale(countryCovidCounts)).toBe(100000);
   });
   test("should return 500000", () => {
-    const countryCaseCounts = { Afghanistan: 499000, Zimbabwe: 0 };
-    expect(getCovidScale(countryCaseCounts)).toBe(500000);
+    const countryCovidCounts = {
+      Afghanistan: {
+        per100kCount: 499000,
+        totalCount: 0,
+      },
+      Zimbabwe: {
+        per100kCount: 0,
+        totalCount: 0,
+      },
+    };
+    expect(getCovidScale(countryCovidCounts)).toBe(500000);
   });
   test("should return 1000000", () => {
-    const countryCaseCounts = { Afghanistan: 999000, Zimbabwe: 0 };
-    expect(getCovidScale(countryCaseCounts)).toBe(1000000);
+    const countryCovidCounts = {
+      Afghanistan: {
+        per100kCount: 999000,
+        totalCount: 0,
+      },
+      Zimbabwe: {
+        per100kCount: 0,
+        totalCount: 0,
+      },
+    };
+    expect(getCovidScale(countryCovidCounts)).toBe(1000000);
   });
   test("should return 5000000", () => {
-    const countryCaseCounts = { Afghanistan: 4990000, Zimbabwe: 0 };
-    expect(getCovidScale(countryCaseCounts)).toBe(5000000);
+    const countryCovidCounts = {
+      Afghanistan: {
+        per100kCount: 4999000,
+        totalCount: 0,
+      },
+      Zimbabwe: {
+        per100kCount: 0,
+        totalCount: 0,
+      },
+    };
+    expect(getCovidScale(countryCovidCounts)).toBe(5000000);
   });
   test("should return 10000000", () => {
-    const countryCaseCounts = { Afghanistan: 9990000, Zimbabwe: 0 };
-    expect(getCovidScale(countryCaseCounts)).toBe(10000000);
+    const countryCovidCounts = {
+      Afghanistan: {
+        per100kCount: 9990000,
+        totalCount: 0,
+      },
+      Zimbabwe: {
+        per100kCount: 0,
+        totalCount: 0,
+      },
+    };
+    expect(getCovidScale(countryCovidCounts)).toBe(10000000);
   });
   test("should return 20000000", () => {
-    const countryCaseCounts = { Afghanistan: 20000000, Zimbabwe: 0 };
-    expect(getCovidScale(countryCaseCounts)).toBe(20000000);
+    const countryCovidCounts = {
+      Afghanistan: {
+        per100kCount: 20000000,
+        totalCount: 0,
+      },
+      Zimbabwe: {
+        per100kCount: 0,
+        totalCount: 0,
+      },
+    };
+    expect(getCovidScale(countryCovidCounts)).toBe(20000000);
   });
 });
 
@@ -207,7 +306,10 @@ describe("Tests for the getCountryDiseaseCountDictionary helper function", () =>
     const objectKeysArray = Object.keys(countriesCovidCaseCountDictionary);
     expect(objectKeysArray).toContain("Afghanistan");
     // 2. Check if the "Afghanistan" key has a value of 38.
-    expect(countriesCovidCaseCountDictionary["Afghanistan"]).toEqual(38);
+    expect(countriesCovidCaseCountDictionary["Afghanistan"]).toEqual({
+      per100kCount: 38,
+      totalCount: 38,
+    });
   });
   test("should return a dictionary with the Afghanistan death counts", () => {
     const covidDeathsFilters = {
@@ -224,7 +326,10 @@ describe("Tests for the getCountryDiseaseCountDictionary helper function", () =>
     const objectKeysArray = Object.keys(countriesCovidCaseCountDictionary);
     expect(objectKeysArray).toContain("Afghanistan");
     // 2. Check if the "Afghanistan" key has a value of 16.
-    expect(countriesCovidCaseCountDictionary["Afghanistan"]).toEqual(16);
+    expect(countriesCovidCaseCountDictionary["Afghanistan"]).toEqual({
+      per100kCount: 16,
+      totalCount: 16,
+    });
   });
   test("should return empty dictionary", () => {
     const covidCasesAndDeathsFilters = {
