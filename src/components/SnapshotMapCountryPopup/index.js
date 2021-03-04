@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { getCountryDiseaseCountForPopup } from "../../utils/snapshotMapHelpers";
 import {
   MapPopupContainer,
   MapPopupTitleContainer,
@@ -10,19 +11,23 @@ import {
 
 const SnapshotMapCountryPopup = ({
   countryName,
-  diseaseCaseCountsDictionary,
+  countriesDiseaseCountsDictionary,
   dateRange,
   dataType = "cases",
   outbreakSelected,
 }) => {
-  const countryTotalDiseaseCount =
-    outbreakSelected === "Ebola Outbreak"
-      ? diseaseCaseCountsDictionary[countryName]
-      : diseaseCaseCountsDictionary[countryName].totalCount;
-  const countryPer100kDiseaseCount =
-    outbreakSelected === "COVID 19"
-      ? diseaseCaseCountsDictionary[countryName].per100kCount
-      : 0;
+  const countryTotalDiseaseCount = getCountryDiseaseCountForPopup(
+    outbreakSelected,
+    countryName,
+    countriesDiseaseCountsDictionary,
+    "totalCount"
+  );
+  const countryPer100kDiseaseCount = getCountryDiseaseCountForPopup(
+    outbreakSelected,
+    countryName,
+    countriesDiseaseCountsDictionary,
+    "per100kCount"
+  );
 
   return (
     <MapPopupContainer>

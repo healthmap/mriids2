@@ -486,7 +486,7 @@ export const covidCaseCountsDictionary = {
   },
   Honduras: {
     per100kCount: 38,
-    totalCount: 0,
+    totalCount: 100,
   },
   Hungary: {
     per100kCount: 38,

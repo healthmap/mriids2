@@ -22,7 +22,9 @@ export const getEbolaScale = (countryCaseCount) => {
   return scaleValue;
 };
 
-const getHighestPer100kCountValue = (countriesDiseaseCountDictionary) => {
+export const getHighestPer100kCountValue = (
+  countriesDiseaseCountDictionary
+) => {
   const per100kCounts = [];
   const dataObjectKeys = Object.keys(countriesDiseaseCountDictionary);
   if (dataObjectKeys.length) {
@@ -253,5 +255,21 @@ export const getLegendTitle = (outbreakSelected, dataType) => {
       ? "Deaths"
       : "Cases";
     return `${covidOutbreakDataType} per 100k`;
+  }
+};
+
+export const getCountryDiseaseCountForPopup = (
+  outbreakSelected,
+  countryName,
+  countriesDiseaseCountDictionary,
+  typeOfCount = "totalCount"
+) => {
+  if (outbreakSelected === "Ebola Outbreak") {
+    return countriesDiseaseCountDictionary[countryName];
+  } else {
+    // If the we have data for the country, return the country's requested type of count. Otherwise return 0.
+    return countriesDiseaseCountDictionary[countryName]
+      ? countriesDiseaseCountDictionary[countryName][typeOfCount]
+      : 0;
   }
 };

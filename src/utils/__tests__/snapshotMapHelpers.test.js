@@ -1,5 +1,6 @@
 import {
   getEbolaScale,
+  getHighestPer100kCountValue,
   getCovidScale,
   getSnapshotColor,
   getSnapshotDeathsColor,
@@ -9,6 +10,7 @@ import {
   getCountryFillColor,
   getCountryDiseaseCountDictionary,
   getLegendTitle,
+  getCountryDiseaseCountForPopup,
 } from "../snapshotMapHelpers";
 import { reduxInitialState } from "../../constants/CommonTestData";
 import {
@@ -51,6 +53,12 @@ describe("Tests for getEbolaScale helper function", () => {
       "Sierra Leone": 0,
     };
     expect(getEbolaScale(countryCaseCounts)).toEqual(450);
+  });
+});
+
+describe("Tests for getHighestPer100kCountValue", () => {
+  test("should return 38", () => {
+    expect(getHighestPer100kCountValue(covidCaseCountsDictionary)).toEqual(38);
   });
 });
 
@@ -361,5 +369,58 @@ describe("Tests for getLegendTitle helper function", () => {
   });
   test("should return 'Deaths per 100k'", () => {
     expect(getLegendTitle("COVID 19", "deaths")).toEqual("Deaths per 100k");
+  });
+});
+
+describe("Tests for getCountryDiseaseCountForPopup helper function", () => {
+  test("should return 2452", () => {
+    expect(
+      getCountryDiseaseCountForPopup(
+        "Ebola Outbreak",
+        "Guinea",
+        ebolaCaseCountsDictionary,
+        "totalCount"
+      )
+    ).toEqual(2452);
+  });
+  test("should return 100", () => {
+    expect(
+      getCountryDiseaseCountForPopup(
+        "COVID 19",
+        "Honduras",
+        covidCaseCountsDictionary,
+        "totalCount"
+      )
+    ).toEqual(100);
+  });
+  test("should return 38", () => {
+    expect(
+      getCountryDiseaseCountForPopup(
+        "COVID 19",
+        "Honduras",
+        covidCaseCountsDictionary,
+        "per100kCount"
+      )
+    ).toEqual(38);
+  });
+  test("should return 0", () => {
+    expect(
+      getCountryDiseaseCountForPopup(
+        "COVID 19",
+        "Fake country",
+        covidCaseCountsDictionary,
+        "totalCount"
+      )
+    ).toEqual(0);
+  });
+  test("should also return 0", () => {
+    expect(
+      getCountryDiseaseCountForPopup(
+        "COVID 19",
+        "Fake country",
+        covidCaseCountsDictionary,
+        "per100kCount"
+      )
+    ).toEqual(0);
   });
 });
