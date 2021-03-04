@@ -7,6 +7,7 @@ import {
   getSnapshotColor,
   getSnapshotDeathsColor,
   getSnapshotProjectionsColor,
+  getLegendTitle,
 } from "../../utils/snapshotMapHelpers";
 import {
   MapLegendWrapperSnapshot,
@@ -18,15 +19,6 @@ import { BlockDropshadow } from "../styled-components/Block";
 const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
   // Determines whether the ebola outbreak is selected.
   const ebolaOutbreakSelected = filters.outbreak === "Ebola Outbreak";
-  // If the covid outbreak is selected and the dataType includes "deaths", display "Death" in legend header.
-  // Otherwise, show "Case" in legend header.
-  const dataType =
-    !ebolaOutbreakSelected && filters.dataType.includes("deaths")
-      ? "Death"
-      : "Case";
-  const legendHeader = filters.dataType.includes("projected")
-    ? "Total outbreak projections"
-    : `${dataType} counts`;
 
   const renderLegendLevels = () => {
     const scale = ebolaOutbreakSelected
@@ -63,7 +55,9 @@ const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
   return (
     <MapLegendWrapperSnapshot data-test-id="snapshot-map-legend">
       <BlockDropshadow>
-        <MapLegendTitle>{legendHeader}</MapLegendTitle>
+        <MapLegendTitle>
+          {getLegendTitle(filters.outbreak, filters.dataType)}
+        </MapLegendTitle>
         <MapLegendItemsWrapper>{renderLegendLevels()}</MapLegendItemsWrapper>
       </BlockDropshadow>
     </MapLegendWrapperSnapshot>

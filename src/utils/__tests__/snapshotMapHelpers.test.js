@@ -8,6 +8,7 @@ import {
   getCovidFillColorsDictionary,
   getCountryFillColor,
   getCountryDiseaseCountDictionary,
+  getLegendTitle,
 } from "../snapshotMapHelpers";
 import { reduxInitialState } from "../../constants/CommonTestData";
 import {
@@ -238,5 +239,22 @@ describe("Tests for the getCountryDiseaseCountDictionary helper function", () =>
         covidCasesAndDeathsFilters
       )
     ).toEqual({});
+  });
+});
+
+describe("Tests for getLegendTitle helper function", () => {
+  test("should return 'Total outbreak projections'", () => {
+    expect(getLegendTitle("Ebola Outbreak", "projected cases")).toEqual(
+      "Total outbreak projections"
+    );
+  });
+  test("should return 'Case counts'", () => {
+    expect(getLegendTitle("Ebola Outbreak", "cases")).toEqual("Case counts");
+  });
+  test("should return 'Cases per 100k'", () => {
+    expect(getLegendTitle("COVID 19", "cases")).toEqual("Cases per 100k");
+  });
+  test("should return 'Deaths per 100k'", () => {
+    expect(getLegendTitle("COVID 19", "deaths")).toEqual("Deaths per 100k");
   });
 });

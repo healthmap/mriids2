@@ -8,7 +8,6 @@ export const MapLegendWrapperRisk = styled.div`
 `;
 
 export const MapLegendTitle = styled.h3`
-  text-transform: capitalize;
   margin: 0 0 0.8rem;
   font-size: 1.2rem;
 `;

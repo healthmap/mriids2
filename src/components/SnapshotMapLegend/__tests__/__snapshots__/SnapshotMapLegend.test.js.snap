@@ -30,7 +30,6 @@ exports[`Tests for the connected SnapshotMapLegend component with reduxInitialSt
 }
 
 .c2 {
-  text-transform: capitalize;
   margin: 0 0 0.8rem;
   font-size: 1.2rem;
 }
