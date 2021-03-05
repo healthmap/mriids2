@@ -237,11 +237,9 @@ export const getCountryDiseaseCountDictionary = (
 
 export const getLegendTitle = (outbreakSelected, dataType) => {
   if (outbreakSelected === "Ebola Outbreak") {
-    if (dataType.includes("projected")) {
-      return "Total outbreak projections";
-    } else {
-      return "Case counts";
-    }
+    return dataType.includes("projected")
+      ? "Total outbreak projections"
+      : "Case counts";
   } else {
     const covidOutbreakDataType = dataType.includes("deaths")
       ? "Deaths"
