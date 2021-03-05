@@ -159,14 +159,14 @@ export const getSnapshotProjectionsColor = (caseCountValue = 0) => {
 
 // This gets a dictionary with key/value pairs of country/fillColor for each Ebola country.
 export const getEbolaFillColorsDictionary = (
-  ebolaCountriesCaseCounts,
+  countriesCaseCountDictionary,
   dataType
 ) => {
   let colorsDictionary = {};
-  // Get the scale using the ebolaCountriesCaseCounts object.
-  const scale = getEbolaScale(ebolaCountriesCaseCounts);
+  // Get the scale using the countriesCaseCountDictionary object.
+  const scale = getEbolaScale(countriesCaseCountDictionary);
   ebolaOutbreakCountries.forEach((country) => {
-    const percentage = ebolaCountriesCaseCounts[country] / scale;
+    const percentage = countriesCaseCountDictionary[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
     // Otherwise get the fillColor value using the getSnapshotColor function.
     colorsDictionary[country] =
