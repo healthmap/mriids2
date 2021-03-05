@@ -206,11 +206,7 @@ export const getCovidFillColorsDictionary = (
 // Returns the fill color for a country on the SnapshotMap.
 // If the country is in the fillColorDictionary, it returns that color value.
 // Otherwise returns the default "#FCF1DD".
-export const getCountryFillColor = (
-  countryName,
-  filters,
-  fillColorDictionary
-) =>
+export const getCountryFillColor = (countryName, fillColorDictionary) =>
   fillColorDictionary[countryName]
     ? fillColorDictionary[countryName]
     : "#FCF1DD";

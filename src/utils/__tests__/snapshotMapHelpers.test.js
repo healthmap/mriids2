@@ -15,7 +15,6 @@ import {
 import { reduxInitialState } from "../../constants/CommonTestData";
 import {
   ebolaFillColorDictionary,
-  testGuineaFiltersState,
   ebolaCaseCountsDictionary,
   allCountriesEbolaData,
 } from "../testData/ebolaTestData";
@@ -269,21 +268,13 @@ describe("Tests for getCovidFillColorsDictionary", () => {
 
 describe("Tests for getCountryFillColor", () => {
   test("should return #F5BCA7 fill color for Guinea", () => {
-    expect(
-      getCountryFillColor(
-        "Guinea",
-        testGuineaFiltersState,
-        ebolaFillColorDictionary
-      )
-    ).toEqual("#F5BCA7");
+    expect(getCountryFillColor("Guinea", ebolaFillColorDictionary)).toEqual(
+      "#F5BCA7"
+    );
   });
   test("should return default #FCF1DD fill color since country is not in ebolaFillColorDictionary", () => {
     expect(
-      getCountryFillColor(
-        "Fake country",
-        testGuineaFiltersState,
-        ebolaFillColorDictionary
-      )
+      getCountryFillColor("Fake country", ebolaFillColorDictionary)
     ).toEqual("#FCF1DD");
   });
 });

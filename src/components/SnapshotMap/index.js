@@ -103,7 +103,6 @@ const SnapshotMap = ({
                 //  Gets the fillColor for each country (geo).
                 const fillColor = getCountryFillColor(
                   geo.properties.NAME,
-                  filters,
                   fillColorDictionary
                 );
                 return (
