@@ -1,7 +1,7 @@
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { allCountries } from "../constants/Countries";
 
-export const getCountInDateRange = (
+export const getCountryCountInDateRange = (
   covidData,
   dateRange,
   typeOfCount = "totalCount"
@@ -20,7 +20,7 @@ export const getCountInDateRange = (
 export const getAllCountriesCount = (covidData = [], dateRange) => {
   let count = 0;
   covidData.forEach((countryObject) => {
-    const countryCount = getCountInDateRange(
+    const countryCount = getCountryCountInDateRange(
       countryObject.countryData,
       dateRange,
       "totalCount"
@@ -46,7 +46,7 @@ export const getCovidCount = (covidData = [], filters) => {
     );
     // If data for the country is found, get the case/death count for the country and set it to the count variable.
     if (selectedCountryDataObject) {
-      count = getCountInDateRange(
+      count = getCountryCountInDateRange(
         selectedCountryDataObject.countryData,
         filters.dateRange,
         "totalCount"
@@ -74,7 +74,7 @@ export const getCountriesCovidCounts = (covidData = [], filters) => {
     // 2. If a countryDataObject is found, execute this block.
     if (countryDataObject) {
       // Get the country's totalCount within the date range in the filters.
-      const countryTotalCount = getCountInDateRange(
+      const countryTotalCount = getCountryCountInDateRange(
         countryDataObject.countryData,
         filters.dateRange,
         "totalCount"
@@ -82,7 +82,7 @@ export const getCountriesCovidCounts = (covidData = [], filters) => {
       // If the country has a countryTotalCount, assign that to countryCounts.totalCount. Otherwise countryCounts.totalCount is 0.
       countryCounts.totalCount = countryTotalCount ? countryTotalCount : 0;
       // Get the country's per100kCount within the date range in the filters.
-      const countryPer100kCount = getCountInDateRange(
+      const countryPer100kCount = getCountryCountInDateRange(
         countryDataObject.countryData,
         filters.dateRange,
         "per100kCount"

@@ -1,6 +1,6 @@
 import {
   getCovidCount,
-  getCountInDateRange,
+  getCountryCountInDateRange,
   getAllCountriesCount,
   findCountryDataObject,
   getCountriesCovidCounts,
@@ -12,15 +12,24 @@ import {
   covidAfghanistanFilters,
 } from "../testData/covidTestData";
 
-describe("Tests for getCountInDateRange", () => {
+describe("Tests for getCountryCountInDateRange", () => {
   test("should return 4449", () => {
     expect(
-      getCountInDateRange(
+      getCountryCountInDateRange(
         testCountryCovidCaseCounts.countryData,
         covidAfghanistanFilters.dateRange,
         "totalCount"
       )
     ).toBe(4449);
+  });
+  test("should return 445", () => {
+    expect(
+      getCountryCountInDateRange(
+        testCountryCovidCaseCounts.countryData,
+        covidAfghanistanFilters.dateRange,
+        "per100kCount"
+      )
+    ).toBe(445);
   });
 });
 
