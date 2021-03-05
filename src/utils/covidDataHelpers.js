@@ -1,12 +1,16 @@
 import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { allCountries } from "../constants/Countries";
 
-export const getCountInDateRange = (covidData, dateRange) => {
+export const getCountInDateRange = (
+  covidData,
+  dateRange,
+  typeOfCount = "totalCount"
+) => {
   let count = 0;
   if (covidData) {
     Object.keys(covidData).forEach((weekKey) => {
       if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
-        count += covidData[weekKey];
+        count += covidData[weekKey][typeOfCount];
       }
     });
   }
@@ -18,11 +22,12 @@ export const getAllCountriesCount = (covidData = [], dateRange) => {
   covidData.forEach((countryObject) => {
     const countryCount = getCountInDateRange(
       countryObject.countryData,
-      dateRange
+      dateRange,
+      "totalCount"
     );
     // This check prevents NaN from being added to the count.
     if (Number.isInteger(countryCount)) {
-      count += getCountInDateRange(countryObject.countryData, dateRange);
+      count += countryCount;
     }
   });
   return count;
@@ -43,7 +48,8 @@ export const getCovidCount = (covidData = [], filters) => {
     if (selectedCountryDataObject) {
       count = getCountInDateRange(
         selectedCountryDataObject.countryData,
-        filters.dateRange
+        filters.dateRange,
+        "totalCount"
       );
     }
   }
@@ -59,24 +65,35 @@ export const findCountryDataObject = (covidData, countryName) =>
 export const getCountriesCovidCounts = (covidData = [], filters) => {
   let countriesCounts = {};
   allCountries.forEach((country) => {
-    let countryCount;
+    let countryCounts = {
+      totalCount: 0,
+      per100kCount: 0,
+    };
     // 1. Find the data object for the country.
     const countryDataObject = findCountryDataObject(covidData, country);
-    // 2. If a countryDataObject is found, get the case/death count within the dateRange and set it to countryCount.
-    // If no countryDataObject is found, set countryCount to 0
+    // 2. If a countryDataObject is found, execute this block.
     if (countryDataObject) {
-      countryCount = getCountInDateRange(
+      // Get the country's totalCount within the date range in the filters.
+      const countryTotalCount = getCountInDateRange(
         countryDataObject.countryData,
-        filters.dateRange
+        filters.dateRange,
+        "totalCount"
       );
-    } else {
-      countryCount = 0;
+      // If the country has a countryTotalCount, assign that to countryCounts.totalCount. Otherwise countryCounts.totalCount is 0.
+      countryCounts.totalCount = countryTotalCount ? countryTotalCount : 0;
+      // Get the country's per100kCount within the date range in the filters.
+      const countryPer100kCount = getCountInDateRange(
+        countryDataObject.countryData,
+        filters.dateRange,
+        "per100kCount"
+      );
+      // If the country has a countryPer100kCount, assign that to countryCounts.per100kCount. Otherwise countryCounts.per100kCount is 0.
+      countryCounts.per100kCount = countryPer100kCount
+        ? countryPer100kCount
+        : 0;
     }
-    // 3. Add the country count data to the countriesCounts object.
-    // If the case count is an integer, add that. Otherwise add 0.
-    countriesCounts[country] = Number.isInteger(countryCount)
-      ? countryCount
-      : 0;
+    // 3. Add the countryCounts to the countriesCounts object.
+    countriesCounts[country] = countryCounts;
   });
   return countriesCounts;
 };

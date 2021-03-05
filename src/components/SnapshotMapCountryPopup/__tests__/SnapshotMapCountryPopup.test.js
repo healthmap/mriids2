@@ -21,7 +21,7 @@ describe("Tests for the connected SnapshotMapCountryPopup", () => {
       <Provider store={store}>
         <SnapshotMapCountryPopup
           countryName="Guinea"
-          diseaseCaseCountsDictionary={ebolaCaseCountsDictionary}
+          countriesDiseaseCountsDictionary={ebolaCaseCountsDictionary}
         />
       </Provider>
     );

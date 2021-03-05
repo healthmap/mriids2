@@ -189,8 +189,9 @@ export const getAllCountriesCovidChartData = (covidData, filters) => {
     if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
       // Loop through each country data object in the covidData array.
       covidData.forEach((countryDataObject) => {
-        // Get each country's daily case count for the day in the 'dateKey'.
-        const countryDailyCaseCount = countryDataObject.countryData[dateKey];
+        // Get each country's daily totalCount for the day in the 'dateKey'.
+        const countryDailyCaseCount =
+          countryDataObject.countryData[dateKey].totalCount;
         // If the countryDailyCaseCount is an integer, add it to the caseCount counter.
         if (Number.isInteger(countryDailyCaseCount)) {
           caseCount += countryDailyCaseCount;
@@ -217,9 +218,10 @@ export const getSelectedCountryCovidChartData = (covidData, filters) => {
     covidDataDateKeys.forEach((dateKey) => {
       // If the 'dateKey' is within the dates in the filters, push the data row to the chartData array.
       if (isDateWithinFiltersDateRange(dateKey, filters.dateRange)) {
-        // If the country has a case/death count for that day, get that value. Otherwise that value is 0.
+        // If the country has a case/death totalCount for that day, get that value. Otherwise that value is 0.
         const countryDailyCaseCount = countryDataObject.countryData[dateKey]
-          ? countryDataObject.countryData[dateKey]
+          .totalCount
+          ? countryDataObject.countryData[dateKey].totalCount
           : 0;
         const dataRow = [new Date(dateKey), countryDailyCaseCount];
         chartData.push(dataRow);

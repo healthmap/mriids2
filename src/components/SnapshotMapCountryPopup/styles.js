@@ -10,7 +10,7 @@ export const MapPopupTitleContainer = styled.div`
   text-align: center;
   font-weight: 700;
   font-size: 1.4rem;
-  margin-top: 0.8rem;
+  margin: 0.8rem 0;
   line-height: 1.4285714;
 `;
 
@@ -19,14 +19,14 @@ export const MapPopupCountSection = styled.div`
   justify-content: space-between;
 
   p {
-    margin: 1.6rem 0;
+    margin: 0.6rem 0;
     font-size: 1.4rem;
     line-height: 1.4285714;
   }
 `;
 
 export const MapPopupSummary = styled.p`
-  margin: 0 0 0.8rem;
+  margin: 1.6rem 0 0.8rem;
   font-size: 1.2rem;
   line-height: 1.66666666;
   color: ${(props) => props.theme.textLightColor};

@@ -114,7 +114,9 @@ const SnapshotMap = ({
                       setToolTipContent(
                         <SnapshotMapCountryPopup
                           countryName={geo.properties.NAME}
-                          diseaseCaseCountsDictionary={countryDiseaseCounts}
+                          countriesDiseaseCountsDictionary={
+                            countryDiseaseCounts
+                          }
                         />
                       );
                     }}

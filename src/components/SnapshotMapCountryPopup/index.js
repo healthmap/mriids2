@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { getCountryDiseaseCountForPopup } from "../../utils/snapshotMapHelpers";
 import {
   MapPopupContainer,
   MapPopupTitleContainer,
@@ -10,16 +11,35 @@ import {
 
 const SnapshotMapCountryPopup = ({
   countryName,
-  diseaseCaseCountsDictionary,
+  countriesDiseaseCountsDictionary,
   dateRange,
   dataType = "cases",
+  outbreakSelected,
 }) => {
-  const countryTotalDiseaseCount = diseaseCaseCountsDictionary[countryName];
+  const countryTotalDiseaseCount = getCountryDiseaseCountForPopup(
+    outbreakSelected,
+    countryName,
+    countriesDiseaseCountsDictionary,
+    "totalCount"
+  );
+  const countryPer100kDiseaseCount = getCountryDiseaseCountForPopup(
+    outbreakSelected,
+    countryName,
+    countriesDiseaseCountsDictionary,
+    "per100kCount"
+  );
+
   return (
     <MapPopupContainer>
       <MapPopupTitleContainer>{countryName}</MapPopupTitleContainer>
       {countryTotalDiseaseCount ? (
         <>
+          {outbreakSelected === "COVID 19" && (
+            <MapPopupCountSection>
+              <Label>{dataType} per 100k</Label>
+              <p>{countryPer100kDiseaseCount.toLocaleString()}</p>
+            </MapPopupCountSection>
+          )}
           <MapPopupCountSection>
             <Label>Total {dataType}</Label>
             <p>{countryTotalDiseaseCount.toLocaleString()}</p>
@@ -42,6 +62,7 @@ const SnapshotMapCountryPopup = ({
 const mapStateToProps = (state) => ({
   dateRange: state.filters.dateRange,
   dataType: state.filters.dataType,
+  outbreakSelected: state.filters.outbreak,
 });
 
 export default connect(mapStateToProps)(SnapshotMapCountryPopup);
