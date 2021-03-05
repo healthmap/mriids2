@@ -163,7 +163,7 @@ export const getEbolaFillColorsDictionary = (
   dataType
 ) => {
   let colorsDictionary = {};
-  // Get the scale using the countriesCaseCountDictionary object.
+  // Get the scale using the countriesCaseCountDictionary.
   const scale = getEbolaScale(countriesCaseCountDictionary);
   ebolaOutbreakCountries.forEach((country) => {
     const percentage = countriesCaseCountDictionary[country] / scale;
@@ -179,14 +179,14 @@ export const getEbolaFillColorsDictionary = (
 
 // This gets a dictionary with key/value pairs of country/fillColor for each country.
 export const getCovidFillColorsDictionary = (
-  covidCountriesDiseaseCounts,
+  countriesDiseaseCountDictionary,
   dataType
 ) => {
   let colorsDictionary = {};
-  // Get the scale using the covidCountriesCaseCounts object.
-  const scale = getCovidScale(covidCountriesDiseaseCounts);
+  // Get the scale using the countriesDiseaseCountDictionary.
+  const scale = getCovidScale(countriesDiseaseCountDictionary);
   allCountries.forEach((country) => {
-    const countryCountsData = covidCountriesDiseaseCounts[country];
+    const countryCountsData = countriesDiseaseCountDictionary[country];
     // If data is found for this country, execute this block.
     if (countryCountsData) {
       const percentage = countryCountsData.per100kCount / scale;
