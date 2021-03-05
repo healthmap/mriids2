@@ -203,23 +203,17 @@ export const getCovidFillColorsDictionary = (
   return colorsDictionary;
 };
 
+// Returns the fill color for a country on the SnapshotMap.
+// If the country is in the fillColorDictionary, it returns that color value.
+// Otherwise returns the default "#FCF1DD".
 export const getCountryFillColor = (
   countryName,
   filters,
   fillColorDictionary
-) => {
-  // If 'All' countries are selected, return the fillColor for each country that has one. Otherwise, return "#FCF1DD".
-  if (filters.country === "All") {
-    return fillColorDictionary[countryName]
-      ? fillColorDictionary[countryName]
-      : "#FCF1DD";
-  } else {
-    // If a specific country is selected, only return the fillColor for the selected country. For all other countries, return "#FCF1DD".
-    return countryName === filters.country
-      ? fillColorDictionary[countryName]
-      : "#FCF1DD";
-  }
-};
+) =>
+  fillColorDictionary[countryName]
+    ? fillColorDictionary[countryName]
+    : "#FCF1DD";
 
 export const getCountryDiseaseCountDictionary = (
   ebolaData,
