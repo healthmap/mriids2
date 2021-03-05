@@ -2,15 +2,15 @@ import { isDateWithinFiltersDateRange } from "./dateHelpers";
 import { allCountries } from "../constants/Countries";
 
 export const getCountryCountInDateRange = (
-  covidData,
+  countryCovidData,
   dateRange,
   typeOfCount = "totalCount"
 ) => {
   let count = 0;
-  if (covidData) {
-    Object.keys(covidData).forEach((weekKey) => {
+  if (countryCovidData) {
+    Object.keys(countryCovidData).forEach((weekKey) => {
       if (isDateWithinFiltersDateRange(weekKey, dateRange)) {
-        count += covidData[weekKey][typeOfCount];
+        count += countryCovidData[weekKey][typeOfCount];
       }
     });
   }
