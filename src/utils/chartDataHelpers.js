@@ -242,3 +242,63 @@ export const getCovidDataForCharts = (covidData, filters) => {
     return getSelectedCountryCovidChartData(covidData, filters);
   }
 };
+
+export const getCovidDeathProjectionsForChart = (
+  projectionsData,
+  deathData,
+  selectedCountry
+) => {
+  const chartData = [
+    [
+      { type: "date", label: "Date" },
+      { type: "number", label: "Deaths" },
+      { id: "2.5-projection", type: "number", role: "interval" },
+      { id: "50-projection", type: "number", role: "interval" },
+      { id: "97.5-projection", type: "number", role: "interval" },
+    ],
+    [],
+  ];
+  // Find projections and deaths data objects for for the selected country.
+  const countryProjectionsDataObject = findCountryDataObject(
+    projectionsData,
+    selectedCountry
+  );
+  const countryDeathDataObject = findCountryDataObject(
+    deathData,
+    selectedCountry
+  );
+  // If both projections and deaths data objects for for the selected country are found execute this block.
+  if (countryProjectionsDataObject && countryDeathDataObject) {
+    const deathDataObjectKeys = Object.keys(countryDeathDataObject.countryData);
+    const projectionsDataObjectKeys = Object.keys(
+      countryProjectionsDataObject.countryData
+    );
+    const last14DaysKeys = deathDataObjectKeys.slice(
+      deathDataObjectKeys.length - 14,
+      deathDataObjectKeys.length
+    );
+    const last7DaysKeys = projectionsDataObjectKeys.slice(
+      projectionsDataObjectKeys.length - 7,
+      projectionsDataObjectKeys.length
+    );
+    last14DaysKeys.forEach((dayKey) => {
+      const dataRow = [dayKey];
+      // Push the death count to the dataRow
+      const deathCount = countryDeathDataObject.countryData[dayKey].totalCount;
+      dataRow.push(deathCount);
+      //  If the dayKey is in the last7DaysKeys array, add the projections data to the dataRow.
+      if (last7DaysKeys.includes(dayKey)) {
+        dataRow.push(countryProjectionsDataObject.countryData[dayKey]["2.5"]);
+        dataRow.push(countryProjectionsDataObject.countryData[dayKey]["50"]);
+        dataRow.push(countryProjectionsDataObject.countryData[dayKey]["97.5"]);
+      } else {
+        dataRow.push(0);
+        dataRow.push(0);
+        dataRow.push(0);
+      }
+      //  Push the data row to the chartData array.
+      chartData[1].push(dataRow);
+    });
+  }
+  return chartData;
+};
