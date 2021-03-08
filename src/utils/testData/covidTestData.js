@@ -226,6 +226,34 @@ export const twoCountryCovidProjectedDeathCounts = [
   },
 ];
 
+export const expectedProjectionsDataDayKeys = {
+  last14DaysKeys: [
+    "2/25/20",
+    "2/26/20",
+    "2/27/20",
+    "2/28/20",
+    "2/29/20",
+    "3/1/20",
+    "3/2/20",
+    "3/3/20",
+    "3/4/20",
+    "3/5/20",
+    "3/6/20",
+    "3/7/20",
+    "3/8/20",
+    "3/9/20",
+  ],
+  last7DaysKeys: [
+    "3/3/20",
+    "3/4/20",
+    "3/5/20",
+    "3/6/20",
+    "3/7/20",
+    "3/8/20",
+    "3/9/20",
+  ],
+};
+
 export const expectedProjectionsChartData = [
   [
     { type: "date", label: "Date" },

@@ -11,7 +11,8 @@ import {
   getAllCountriesCovidChartData,
   getSelectedCountryCovidChartData,
   getCovidDataForCharts,
-  getCovidDeathProjectionsForChart,
+  getDayKeysForProjectionsChartData,
+  getCovidDeathProjectionsDataForChart,
 } from "../chartDataHelpers";
 import {
   testGuineaData,
@@ -28,6 +29,7 @@ import {
   expectedOneCountryChartData,
   twoCountryCovidProjectedDeathCounts,
   testTwoCountryCovidDeathCounts,
+  expectedProjectionsDataDayKeys,
   expectedProjectionsChartData,
 } from "../testData/covidTestData";
 import { reduxInitialState } from "../../constants/CommonTestData";
@@ -330,10 +332,20 @@ describe("Tests for getCovidDataForCharts", () => {
   });
 });
 
-describe("Tests for getCovidDeathProjectionsForChart helper function", () => {
+describe("Tests for getDayKeysForProjectionsChartData helper function", () => {
+  test("should return the day keys in the expected format", () => {
+    expect(
+      getDayKeysForProjectionsChartData(
+        twoCountryCovidProjectedDeathCounts[0].countryData
+      )
+    ).toEqual(expectedProjectionsDataDayKeys);
+  });
+});
+
+describe("Tests for getCovidDeathProjectionsDataForChart helper function", () => {
   test("should return Afghanistan data in the correct format", () => {
     expect(
-      getCovidDeathProjectionsForChart(
+      getCovidDeathProjectionsDataForChart(
         twoCountryCovidProjectedDeathCounts,
         testTwoCountryCovidDeathCounts,
         "Afghanistan"

@@ -243,7 +243,15 @@ export const getCovidDataForCharts = (covidData, filters) => {
   }
 };
 
-export const getCovidDeathProjectionsForChart = (
+export const getDayKeysForProjectionsChartData = (countryDataObject) => {
+  const objectKeys = Object.keys(countryDataObject);
+  return {
+    last14DaysKeys: objectKeys.slice(objectKeys.length - 14, objectKeys.length),
+    last7DaysKeys: objectKeys.slice(objectKeys.length - 7, objectKeys.length),
+  };
+};
+
+export const getCovidDeathProjectionsDataForChart = (
   projectionsData,
   deathData,
   selectedCountry
@@ -258,7 +266,7 @@ export const getCovidDeathProjectionsForChart = (
     ],
     [],
   ];
-  // Find projections and deaths data objects for for the selected country.
+  // Find projections and deaths data objects for the selected country.
   const countryProjectionsDataObject = findCountryDataObject(
     projectionsData,
     selectedCountry
@@ -267,27 +275,19 @@ export const getCovidDeathProjectionsForChart = (
     deathData,
     selectedCountry
   );
-  // If both projections and deaths data objects for for the selected country are found execute this block.
+  // If both projections and deaths data objects for the selected country are found execute this block.
   if (countryProjectionsDataObject && countryDeathDataObject) {
-    const deathDataObjectKeys = Object.keys(countryDeathDataObject.countryData);
-    const projectionsDataObjectKeys = Object.keys(
+    // Get the day keys from the countryData of the countryProjectionsDataObject.
+    const dayKeys = getDayKeysForProjectionsChartData(
       countryProjectionsDataObject.countryData
     );
-    const last14DaysKeys = deathDataObjectKeys.slice(
-      deathDataObjectKeys.length - 14,
-      deathDataObjectKeys.length
-    );
-    const last7DaysKeys = projectionsDataObjectKeys.slice(
-      projectionsDataObjectKeys.length - 7,
-      projectionsDataObjectKeys.length
-    );
-    last14DaysKeys.forEach((dayKey) => {
+    dayKeys.last14DaysKeys.forEach((dayKey) => {
       const dataRow = [dayKey];
-      // Push the death count to the dataRow
+      // Push the death count to the dataRow.
       const deathCount = countryDeathDataObject.countryData[dayKey].totalCount;
       dataRow.push(deathCount);
       //  If the dayKey is in the last7DaysKeys array, add the projections data to the dataRow.
-      if (last7DaysKeys.includes(dayKey)) {
+      if (dayKeys.last7DaysKeys.includes(dayKey)) {
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["2.5"]);
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["50"]);
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["97.5"]);
