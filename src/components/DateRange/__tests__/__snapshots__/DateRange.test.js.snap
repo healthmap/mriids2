@@ -18,6 +18,15 @@ exports[`Tests for the connected DateRange should render with given state from R
   align-items: center;
 }
 
+.c0 .MuiSlider-thumb.Mui-focusVisible,
+.c0 .MuiSlider-thumb:hover {
+  box-shadow: 0px 0px 0px 6px;
+}
+
+.c0 .MuiSlider-thumb.MuiSlider-active {
+  box-shadow: 0px 0px 0px 8px;
+}
+
 .c2 {
   position: relative;
   width: 80%;
@@ -52,7 +61,7 @@ exports[`Tests for the connected DateRange should render with given state from R
   <p
     className="c1"
   >
-    Oct 2014
+    Oct 01 2014
   </p>
   <div
     className="c2"
@@ -82,7 +91,7 @@ exports[`Tests for the connected DateRange should render with given state from R
         aria-valuemax={72}
         aria-valuemin={0}
         aria-valuenow={0}
-        className="MuiSlider-thumb MuiSlider-thumbColorPrimary"
+        className="MuiSlider-thumb MuiSlider-thumbColorPrimary PrivateValueLabel-thumb-1"
         data-index={0}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -96,13 +105,27 @@ exports[`Tests for the connected DateRange should render with given state from R
           }
         }
         tabIndex={0}
-      />
+      >
+        <span
+          className="PrivateValueLabel-offset-3 MuiSlider-valueLabel"
+        >
+          <span
+            className="PrivateValueLabel-circle-4"
+          >
+            <span
+              className="PrivateValueLabel-label-5"
+            >
+              Oct 01 2014
+            </span>
+          </span>
+        </span>
+      </span>
       <span
         aria-orientation="horizontal"
         aria-valuemax={72}
         aria-valuemin={0}
         aria-valuenow={72}
-        className="MuiSlider-thumb MuiSlider-thumbColorPrimary"
+        className="MuiSlider-thumb MuiSlider-thumbColorPrimary PrivateValueLabel-thumb-1"
         data-index={1}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -116,7 +139,21 @@ exports[`Tests for the connected DateRange should render with given state from R
           }
         }
         tabIndex={0}
-      />
+      >
+        <span
+          className="PrivateValueLabel-offset-3 MuiSlider-valueLabel"
+        >
+          <span
+            className="PrivateValueLabel-circle-4"
+          >
+            <span
+              className="PrivateValueLabel-label-5"
+            >
+              Oct 01 2014
+            </span>
+          </span>
+        </span>
+      </span>
     </span>
   </div>
   <p
