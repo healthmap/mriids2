@@ -15,6 +15,7 @@ const styledComponentsTheme = {
   secondaryColor: "#4D73CE",
   secondaryColorFocus: "#6D92EB",
   secondaryColorTint: "#DBE3F5",
+  secondaryColorTintRgba: "rgba(77,115,206,.2)",
   secondaryColorTintDark: "#A6B9E6",
   textColor: "#222325",
   textLightColor: "#63656A",

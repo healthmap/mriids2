@@ -12,6 +12,13 @@ export const DateRangeComponentContainer = styled.div`
   .MuiSlider-root {
     color: ${(props) => props.theme.secondaryColor};
   }
+  .MuiSlider-thumb.Mui-focusVisible,
+  .MuiSlider-thumb:hover {
+    box-shadow: 0px 0px 0px 6px ${(props) => props.theme.secondaryColorTintRgba};
+  }
+  .MuiSlider-thumb.MuiSlider-active {
+    box-shadow: 0px 0px 0px 8px ${(props) => props.theme.secondaryColorTintRgba};
+  }
 `;
 
 export const DateRangeSliderContainer = styled.div`

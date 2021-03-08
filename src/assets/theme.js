@@ -5,6 +5,24 @@ const theme = createMuiTheme({
     fontFamily: "Open Sans",
   },
   overrides: {
+    MuiSlider: {
+      valueLabel: {
+        backgroundColor: "#DBE3F5",
+        width: "8rem",
+        fontSize: "1.2rem",
+        lineHeight: "1.5",
+        padding: ".2rem",
+        top: "-2.4rem",
+        left: "calc(-50% - 31.5px)",
+        borderRadius: "3px",
+        "& *": {
+          background: "transparent",
+          color: "#222325",
+          width: "auto",
+          height: "auto",
+        },
+      },
+    },
     MuiSelect: {
       select: {
         padding: ".9rem 0",
