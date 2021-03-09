@@ -4,9 +4,10 @@ import { Chart } from "react-google-charts";
 import { getCovidDeathProjectionsDataForChart } from "../../utils/chartDataHelpers";
 import { covidDeathProjectionOptions } from "../../constants/GoogleChartOptions";
 import {
-  ChartContainer,
+  CovidProjectionsContainer,
   ChartTitle,
-} from "../styled-components/ChartContainer";
+  ChartContainer,
+} from "./styles";
 
 const CovidProjectionsChart = ({
   hasConfirmedProjectionsPopup,
@@ -20,24 +21,28 @@ const CovidProjectionsChart = ({
     selectedCountry
   );
   return (
-    <ChartContainer isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}>
+    <CovidProjectionsContainer
+      isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}
+    >
       {selectedCountry === "All" ? (
         <ChartTitle>Select a country to view projections</ChartTitle>
       ) : (
         <>
           <ChartTitle>{`Projected Deaths for ${selectedCountry}`}</ChartTitle>
-          <Chart
-            width="100%"
-            height="100%"
-            chartType="LineChart"
-            loader={<div>Loading Chart</div>}
-            data={chartData}
-            options={covidDeathProjectionOptions}
-            legendToggle
-          />
+          <ChartContainer>
+            <Chart
+              width="100%"
+              height="100%"
+              chartType="LineChart"
+              loader={<div>Loading Chart</div>}
+              data={chartData}
+              options={covidDeathProjectionOptions}
+              legendToggle
+            />
+          </ChartContainer>
         </>
       )}
-    </ChartContainer>
+    </CovidProjectionsContainer>
   );
 };
 
