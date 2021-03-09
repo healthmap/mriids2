@@ -18,6 +18,7 @@ import About from "./components/About";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
+import CovidProjectionsChart from "./components/CovidProjectionsChart";
 import ProjectionsPopup from "./components/ProjectionsPopup";
 import DateRangePopover from "./components/DateRangePopover";
 import DateRange from "./components/DateRange";
@@ -32,11 +33,29 @@ class App extends Component {
     this.props.fetchCovidProjectionsData();
   }
 
-  render() {
-    const isEbolaRiskDataSelected =
+  renderDataComponents = () => {
+    if (
       this.props.filters.dataType === "risk" &&
-      this.props.filters.outbreak === "Ebola Outbreak";
+      this.props.filters.outbreak === "Ebola Outbreak"
+    ) {
+      return <EbolaRiskMap />;
+    } else if (
+      this.props.filters.dataType === "projected deaths" &&
+      this.props.filters.outbreak === "COVID 19"
+    ) {
+      return <CovidProjectionsChart />;
+    } else {
+      return (
+        <>
+          <SnapshotMap />
+          <ChartComponent />
+          <DateRange />
+        </>
+      );
+    }
+  };
 
+  render() {
     return (
       <ThemeProvider theme={theme}>
         <StyledComponentsProvider theme={styledComponentsTheme}>
@@ -48,15 +67,7 @@ class App extends Component {
                   <Sidebar />
                   <ProjectionsPopup />
                   <DateRangePopover />
-                  {isEbolaRiskDataSelected ? (
-                    <EbolaRiskMap />
-                  ) : (
-                    <>
-                      <SnapshotMap />
-                      <ChartComponent />
-                      <DateRange />
-                    </>
-                  )}
+                  {this.renderDataComponents()}
                 </Route>
                 <Route exact path="/about">
                   <About />

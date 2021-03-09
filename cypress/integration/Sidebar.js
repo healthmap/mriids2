@@ -49,6 +49,6 @@ describe("Tests for the Sidebar component", () => {
     // .3 Check to see if the correct actions are displayed.
     cy.react("DataRadioButtons").contains("Cases");
     cy.react("DataRadioButtons").contains("Deaths");
-    // cy.react("DataRadioButtons").contains("Projected Deaths");
+    cy.react("DataRadioButtons").contains("Projected Deaths");
   });
 });
