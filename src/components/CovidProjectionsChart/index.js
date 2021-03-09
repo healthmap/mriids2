@@ -20,6 +20,8 @@ const CovidProjectionsChart = ({
     deathsData,
     selectedCountry
   );
+  // This determines whether the selected country has any projections data.
+  const countryHasProjectionsData = chartData.length > 1;
   return (
     <CovidProjectionsContainer
       isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}
@@ -28,18 +30,24 @@ const CovidProjectionsChart = ({
         <ChartTitle>Select a country to view projections</ChartTitle>
       ) : (
         <>
-          <ChartTitle>{`Projected Deaths for ${selectedCountry}`}</ChartTitle>
-          <ChartContainer>
-            <Chart
-              width="100%"
-              height="100%"
-              chartType="LineChart"
-              loader={<div>Loading Chart</div>}
-              data={chartData}
-              options={covidDeathProjectionOptions}
-              legendToggle
-            />
-          </ChartContainer>
+          <ChartTitle>
+            {countryHasProjectionsData
+              ? `Projected Deaths for ${selectedCountry}`
+              : `We currently don't have death projections data for ${selectedCountry}`}
+          </ChartTitle>
+          {countryHasProjectionsData && (
+            <ChartContainer>
+              <Chart
+                width="100%"
+                height="100%"
+                chartType="LineChart"
+                loader={<div>Loading Chart</div>}
+                data={chartData}
+                options={covidDeathProjectionOptions}
+                legendToggle
+              />
+            </ChartContainer>
+          )}
         </>
       )}
     </CovidProjectionsContainer>
