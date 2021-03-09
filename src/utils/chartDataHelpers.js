@@ -263,7 +263,7 @@ export const getCovidDeathProjectionsDataForChart = (
       { id: "interval-0", type: "number", role: "interval" },
       { id: "interval-1", type: "number", role: "interval" },
       { id: "interval-1", type: "number", role: "interval" },
-      { id: "interval-1", type: "number", role: "interval" },
+      { id: "interval-0", type: "number", role: "interval" },
     ],
   ];
   // Find projections and deaths data objects for the selected country.
@@ -288,8 +288,8 @@ export const getCovidDeathProjectionsDataForChart = (
       dataRow.push(deathCount);
       //  If the dayKey is in the last7DaysKeys array, add the projections data to the dataRow.
       if (dayKeys.last7DaysKeys.includes(dayKey)) {
-        dataRow.push(deathCount);
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["2.5"]);
+        dataRow.push(deathCount);
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["50"]);
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["97.5"]);
       } else {
