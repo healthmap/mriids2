@@ -21,16 +21,22 @@ const CovidProjectionsChart = ({
   );
   return (
     <ChartContainer isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}>
-      <ChartTitle>{`Projected Deaths for ${selectedCountry}`}</ChartTitle>
-      <Chart
-        width="100%"
-        height="100%"
-        chartType="LineChart"
-        loader={<div>Loading Chart</div>}
-        data={chartData}
-        options={covidDeathProjectionOptions}
-        legendToggle
-      />
+      {selectedCountry === "All" ? (
+        <ChartTitle>Select a country to view projections</ChartTitle>
+      ) : (
+        <>
+          <ChartTitle>{`Projected Deaths for ${selectedCountry}`}</ChartTitle>
+          <Chart
+            width="100%"
+            height="100%"
+            chartType="LineChart"
+            loader={<div>Loading Chart</div>}
+            data={chartData}
+            options={covidDeathProjectionOptions}
+            legendToggle
+          />
+        </>
+      )}
     </ChartContainer>
   );
 };
