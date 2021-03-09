@@ -260,11 +260,11 @@ export const getCovidDeathProjectionsDataForChart = (
     [
       { type: "date", label: "Date" },
       { type: "number", label: "Deaths" },
-      { id: "2.5-projection", type: "number", role: "interval" },
-      { id: "50-projection", type: "number", role: "interval" },
-      { id: "97.5-projection", type: "number", role: "interval" },
+      { id: "interval-0", type: "number", role: "interval" },
+      { id: "interval-1", type: "number", role: "interval" },
+      { id: "interval-1", type: "number", role: "interval" },
+      { id: "interval-1", type: "number", role: "interval" },
     ],
-    [],
   ];
   // Find projections and deaths data objects for the selected country.
   const countryProjectionsDataObject = findCountryDataObject(
@@ -282,12 +282,13 @@ export const getCovidDeathProjectionsDataForChart = (
       countryProjectionsDataObject.countryData
     );
     dayKeys.last14DaysKeys.forEach((dayKey) => {
-      const dataRow = [dayKey];
+      const dataRow = [new Date(dayKey)];
       // Push the death count to the dataRow.
       const deathCount = countryDeathDataObject.countryData[dayKey].totalCount;
       dataRow.push(deathCount);
       //  If the dayKey is in the last7DaysKeys array, add the projections data to the dataRow.
       if (dayKeys.last7DaysKeys.includes(dayKey)) {
+        dataRow.push(deathCount);
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["2.5"]);
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["50"]);
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["97.5"]);
@@ -295,9 +296,10 @@ export const getCovidDeathProjectionsDataForChart = (
         dataRow.push(0);
         dataRow.push(0);
         dataRow.push(0);
+        dataRow.push(0);
       }
       //  Push the data row to the chartData array.
-      chartData[1].push(dataRow);
+      chartData.push(dataRow);
     });
   }
   return chartData;
