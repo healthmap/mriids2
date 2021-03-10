@@ -12,7 +12,7 @@ import {
   getSelectedCountryCovidChartData,
   getCovidDataForCharts,
   getStartDateForCountryDeathProjections,
-  getDayKeysForProjectionsChartData,
+  getLast14DaysProjectionDataKeys,
   getCovidDeathProjectionsDataForChart,
 } from "../chartDataHelpers";
 import {
@@ -30,7 +30,7 @@ import {
   expectedOneCountryChartData,
   twoCountryCovidProjectedDeathCounts,
   testTwoCountryCovidDeathCounts,
-  expectedProjectionsDataDayKeys,
+  expectedLast14DaysProjectionsDataKeys,
   expectedProjectionsChartData,
 } from "../testData/covidTestData";
 import { reduxInitialState } from "../../constants/CommonTestData";
@@ -344,13 +344,13 @@ describe("Tests for getStartDateForCountryDeathProjections helper function", () 
   });
 });
 
-describe("Tests for getDayKeysForProjectionsChartData helper function", () => {
-  test("should return the day keys in the expected format", () => {
+describe("Tests for getLast14DaysProjectionDataKeys helper function", () => {
+  test("should return an array of the last 14 days of projections data", () => {
     expect(
-      getDayKeysForProjectionsChartData(
+      getLast14DaysProjectionDataKeys(
         twoCountryCovidProjectedDeathCounts[0].countryData
       )
-    ).toEqual(expectedProjectionsDataDayKeys);
+    ).toEqual(expectedLast14DaysProjectionsDataKeys);
   });
 });
 

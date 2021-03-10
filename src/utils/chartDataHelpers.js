@@ -262,12 +262,9 @@ export const getStartDateForCountryDeathProjections = (
   }
 };
 
-export const getDayKeysForProjectionsChartData = (countryDataObject) => {
+export const getLast14DaysProjectionDataKeys = (countryDataObject) => {
   const objectKeys = Object.keys(countryDataObject);
-  return {
-    last14DaysKeys: objectKeys.slice(objectKeys.length - 14, objectKeys.length),
-    last7DaysKeys: objectKeys.slice(objectKeys.length - 7, objectKeys.length),
-  };
+  return objectKeys.slice(objectKeys.length - 14, objectKeys.length);
 };
 
 export const getCovidDeathProjectionsDataForChart = (
@@ -294,18 +291,18 @@ export const getCovidDeathProjectionsDataForChart = (
   );
   // If both projections and deaths data objects for the selected country are found execute this block.
   if (countryProjectionsDataObject && countryDeathDataObject) {
-    // Get the day keys for the last 14 days and the last 7 days of the country's projections data.
-    const dayKeys = getDayKeysForProjectionsChartData(
+    // Get the day keys for the last 14 days of the country's projections data.
+    const last14DaysProjectionDataKeys = getLast14DaysProjectionDataKeys(
       countryProjectionsDataObject.countryData
     );
-    dayKeys.last14DaysKeys.forEach((dayKey) => {
+    last14DaysProjectionDataKeys.forEach((dayKey, index) => {
       const dataRow = [new Date(dayKey)];
       // Push the death count to the dataRow.
       const deathCount = countryDeathDataObject.countryData[dayKey].totalCount;
       dataRow.push(deathCount);
-      // If the dayKey is in the last7DaysKeys array, add the "50" and "97.5" projections data to the dataRow.
+      // If the index is greater than 6 (the last seven days), add the "50" and "97.5" projections data to the dataRow.
       // Otherwise, add two zeros to the dataRow
-      if (dayKeys.last7DaysKeys.includes(dayKey)) {
+      if (index > 6) {
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["50"]);
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["97.5"]);
       } else {
