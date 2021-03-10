@@ -294,7 +294,7 @@ export const getCovidDeathProjectionsDataForChart = (
   );
   // If both projections and deaths data objects for the selected country are found execute this block.
   if (countryProjectionsDataObject && countryDeathDataObject) {
-    // Get the day keys from the countryData of the countryProjectionsDataObject.
+    // Get the day keys for the last 14 days and the last 7 days of the country's projections data.
     const dayKeys = getDayKeysForProjectionsChartData(
       countryProjectionsDataObject.countryData
     );
