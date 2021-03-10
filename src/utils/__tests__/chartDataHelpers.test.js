@@ -11,6 +11,7 @@ import {
   getAllCountriesCovidChartData,
   getSelectedCountryCovidChartData,
   getCovidDataForCharts,
+  getStartDateForCountryDeathProjections,
   getDayKeysForProjectionsChartData,
   getCovidDeathProjectionsDataForChart,
 } from "../chartDataHelpers";
@@ -329,6 +330,17 @@ describe("Tests for getCovidDataForCharts", () => {
         covidAfghanistanFilters
       )
     ).toEqual(expectedOneCountryChartData);
+  });
+});
+
+describe("Tests for getStartDateForCountryDeathProjections helper function", () => {
+  test("should return 'March 2'", () => {
+    expect(
+      getStartDateForCountryDeathProjections(
+        twoCountryCovidProjectedDeathCounts,
+        "Afghanistan"
+      )
+    ).toEqual("March 2");
   });
 });
 

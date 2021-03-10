@@ -243,6 +243,25 @@ export const getCovidDataForCharts = (covidData, filters) => {
   }
 };
 
+export const getStartDateForCountryDeathProjections = (
+  projectionsDataObject,
+  selectedCountry
+) => {
+  // 1. Find country projections data object
+  const countryProjectionsData = findCountryDataObject(
+    projectionsDataObject,
+    selectedCountry
+  );
+  // 2. If a country data object is found, execute this block.
+  if (countryProjectionsData) {
+    const objectKeys = Object.keys(countryProjectionsData.countryData);
+    // 3. Find the the date key for the start of the last week.
+    const startDateKey = objectKeys[objectKeys.length - 8];
+    // 4. Format the date and return the date string.
+    return dayjs(startDateKey).format("MMMM D");
+  }
+};
+
 export const getDayKeysForProjectionsChartData = (countryDataObject) => {
   const objectKeys = Object.keys(countryDataObject);
   return {
