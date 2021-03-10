@@ -278,7 +278,7 @@ export const getCovidDeathProjectionsDataForChart = (
   const chartData = [
     [
       { type: "date", label: "Date" },
-      { type: "number", label: "Deaths" },
+      { type: "number", label: "Observed Deaths" },
       { id: "interval-0", type: "number", role: "interval" },
       { id: "interval-1", type: "number", role: "interval" },
       { id: "interval-1", type: "number", role: "interval" },
