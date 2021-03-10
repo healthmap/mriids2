@@ -53,7 +53,6 @@ const CovidProjectionsChart = ({
                 loader={<div>Loading Chart</div>}
                 data={chartData}
                 options={covidDeathProjectionOptions}
-                legendToggle
               />
             </ChartContainer>
           )}
