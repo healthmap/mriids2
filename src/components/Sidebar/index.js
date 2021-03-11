@@ -14,14 +14,15 @@ import {
 import Select from "../Select";
 import SidebarCount from "./SidebarCount";
 import EbolaRiskList from "./EbolaRiskList";
-import { SidebarWrapper, Button } from "./styles";
-import {
-  SelectCountryWrapper,
-  SelectOutbreakWrapper,
-} from "../styled-components/SelectWrappers";
 import { InputLabel } from "../styled-components/InputLabel";
 import CountrySelect from "../CountrySelect";
 import DataRadioButtons from "../DataRadioButtons";
+import {
+  SidebarWrapper,
+  Button,
+  SelectCountryWrapper,
+  SelectOutbreakWrapper,
+} from "./styles";
 
 const Sidebar = ({
   filters,
