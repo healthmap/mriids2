@@ -11,6 +11,9 @@ import {
   getAllCountriesCovidChartData,
   getSelectedCountryCovidChartData,
   getCovidDataForCharts,
+  getStartDateForCountryDeathProjections,
+  getLast14DaysProjectionDataKeys,
+  getCovidDeathProjectionsDataForChart,
 } from "../chartDataHelpers";
 import {
   testGuineaData,
@@ -25,6 +28,10 @@ import {
   testTwoCountryCovidCaseCounts,
   expectedAllCountriesChartData,
   expectedOneCountryChartData,
+  twoCountryCovidProjectedDeathCounts,
+  testTwoCountryCovidDeathCounts,
+  expectedLast14DaysProjectionsDataKeys,
+  expectedProjectionsChartData,
 } from "../testData/covidTestData";
 import { reduxInitialState } from "../../constants/CommonTestData";
 import dayjs from "dayjs";
@@ -323,5 +330,38 @@ describe("Tests for getCovidDataForCharts", () => {
         covidAfghanistanFilters
       )
     ).toEqual(expectedOneCountryChartData);
+  });
+});
+
+describe("Tests for getStartDateForCountryDeathProjections helper function", () => {
+  test("should return 'March 2'", () => {
+    expect(
+      getStartDateForCountryDeathProjections(
+        twoCountryCovidProjectedDeathCounts,
+        "Afghanistan"
+      )
+    ).toEqual("March 2");
+  });
+});
+
+describe("Tests for getLast14DaysProjectionDataKeys helper function", () => {
+  test("should return an array of the last 14 days of projections data", () => {
+    expect(
+      getLast14DaysProjectionDataKeys(
+        twoCountryCovidProjectedDeathCounts[0].countryData
+      )
+    ).toEqual(expectedLast14DaysProjectionsDataKeys);
+  });
+});
+
+describe("Tests for getCovidDeathProjectionsDataForChart helper function", () => {
+  test("should return Afghanistan data in the correct format", () => {
+    expect(
+      getCovidDeathProjectionsDataForChart(
+        twoCountryCovidProjectedDeathCounts,
+        testTwoCountryCovidDeathCounts,
+        "Afghanistan"
+      )
+    ).toEqual(expectedProjectionsChartData);
   });
 });

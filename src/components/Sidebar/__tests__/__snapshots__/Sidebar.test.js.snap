@@ -724,7 +724,8 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
       <strong>
         All Locations
       </strong>
-       from 
+       from
+       
       <strong>
         Wed Oct 01 2014
         –

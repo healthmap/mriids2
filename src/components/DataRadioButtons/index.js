@@ -58,11 +58,11 @@ const DataRadioButtons = ({
                 control={<StyledRadio />}
                 label="Deaths"
               />
-              {/*<StyledFormControlLabel*/}
-              {/*  value="projected deaths"*/}
-              {/*  control={<StyledRadio />}*/}
-              {/*  label="Projected Deaths"*/}
-              {/*/>*/}
+              <StyledFormControlLabel
+                value="projected deaths"
+                control={<StyledRadio />}
+                label="Projected Deaths"
+              />
             </>
           ) : (
             <>
@@ -76,9 +76,9 @@ const DataRadioButtons = ({
                   title="There is some uncertainty associated with the projection values. Projections are reported as an interval that contains 95% of the projected values from several simulations. The width of this interval is a measure of the uncertainty associated with the projections."
                   aria-label="info"
                 >
-		  <div>
-                  <SvgIcon title="info-icon" size="14" icon="Info" />
-		  </div>
+                  <div>
+                    <SvgIcon title="info-icon" size="14" icon="Info" />
+                  </div>
                 </StyledTooltip>
               </FormLabelIconWrapper>
               <StyledFormControlLabel
