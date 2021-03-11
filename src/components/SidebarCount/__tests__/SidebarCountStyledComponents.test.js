@@ -4,7 +4,7 @@ import {
   SidebarCountParent,
   SidebarCountValue,
   SidebarCountLabel,
-} from "../SidebarCountStyles";
+} from "../styles";
 
 describe("tests for LayoutHelpers", () => {
   test("render SidebarCountParent", () => {

@@ -12,7 +12,7 @@ import {
   setPopoverAnchorElement,
 } from "../../actions/ui";
 import Select from "../Select";
-import SidebarCount from "./SidebarCount";
+import SidebarCount from "../SidebarCount";
 import EbolaRiskList from "./EbolaRiskList";
 import { InputLabel } from "../styled-components/InputLabel";
 import CountrySelect from "../CountrySelect";

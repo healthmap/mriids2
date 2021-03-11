@@ -5,7 +5,7 @@ import {
   SidebarCountParent,
   SidebarCountLabel,
   SidebarCountValue,
-} from "../styled-components/SidebarCountStyles";
+} from "./styles";
 import {
   getEbolaCaseCount,
   getFutureProjectionCount,
