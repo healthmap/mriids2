@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { Title, Body } from "../About";
+import { Title, Body } from "../styles";
 
 describe("Tests for About components", () => {
   test("render Title", () => {
