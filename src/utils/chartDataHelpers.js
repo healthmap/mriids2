@@ -304,22 +304,18 @@ export const getCovidDeathProjectionsDataForChart = (
       // If the index is 6 (the midpoint of the last14DaysProjectionDataKeys), push the deathCount to the 4 data columns of the dataRow.
       // We need these 4 identical values because this is where the "Observed Deaths" and "Projected Deaths" lines meet.
       if (index === 6) {
-        dataRow.push(deathCount);
-        dataRow.push(deathCount);
-        dataRow.push(deathCount);
-        dataRow.push(deathCount);
+        dataRow.push(deathCount, deathCount, deathCount, deathCount);
       } else if (isProjectionsData) {
         // If isProjectionsData is true, add the "50" projections to the "Projected Deaths" column and the "2.5" and "97.5" projections to the interval columns.
-        dataRow.push(null);
-        dataRow.push(countryProjectionsDataObject.countryData[dayKey]["50"]);
-        dataRow.push(countryProjectionsDataObject.countryData[dayKey]["2.5"]);
-        dataRow.push(countryProjectionsDataObject.countryData[dayKey]["97.5"]);
+        dataRow.push(
+          null,
+          countryProjectionsDataObject.countryData[dayKey]["50"],
+          countryProjectionsDataObject.countryData[dayKey]["2.5"],
+          countryProjectionsDataObject.countryData[dayKey]["97.5"]
+        );
       } else {
         // Otherwise, add the deathCount to the "Observed Deaths" column and null values to the other 3 columns.
-        dataRow.push(deathCount);
-        dataRow.push(null);
-        dataRow.push(null);
-        dataRow.push(null);
+        dataRow.push(deathCount, null, null, null);
       }
       //  Push the dataRow to the chartData array.
       chartData.push(dataRow);
