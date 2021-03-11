@@ -8,7 +8,7 @@ import {
   TeamMemberWrapper,
   Title,
   BodyLarge,
-} from "../Team";
+} from "../styles";
 
 describe("Tests for Team components", () => {
   test("render FirstPageContainer", () => {
