@@ -2,11 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import { ThemeProvider as StyledComponentsProvider } from "styled-components";
 import styledComponentsTheme from "../../../assets/sc-theme";
-import { SnapshotMapContainer, EbolaRiskMapContainer } from "../MapContainers";
-
-test("render SnapshotMapContainer", () => {
-  shallow(<SnapshotMapContainer />);
-});
+import { EbolaRiskMapContainer } from "../MapContainers";
 
 test("render EbolaRiskMapContainer", () => {
   shallow(

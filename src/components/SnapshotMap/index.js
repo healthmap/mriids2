@@ -6,7 +6,6 @@ import {
   Geography,
   ZoomableGroup,
 } from "react-simple-maps";
-import { SnapshotMapContainer } from "../styled-components/MapContainers";
 import SnapshotMapLegend from "../SnapshotMapLegend";
 import MapZoomButtons from "../MapZoomButtons";
 import { StyledTooltip } from "../styled-components/MapTooltip";
@@ -18,6 +17,7 @@ import {
 } from "../../utils/snapshotMapHelpers";
 import { getCountryDiseaseCountDictionary } from "../../utils/snapshotMapHelpers";
 import { countriesCoordinates } from "../../constants/CountriesCoordinates";
+import { SnapshotMapContainer } from "./styles";
 
 const SnapshotMap = ({
   filters,
