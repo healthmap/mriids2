@@ -276,6 +276,7 @@ export const getCovidDeathProjectionsDataForChart = (
     [
       { type: "date", label: "Date" },
       { type: "number", label: "Observed Deaths" },
+      { type: "number", label: "Projected Deaths" },
       { id: "interval-1", type: "number", role: "interval" },
       { id: "interval-0", type: "number", role: "interval" },
     ],
@@ -296,18 +297,29 @@ export const getCovidDeathProjectionsDataForChart = (
       countryProjectionsDataObject.countryData
     );
     last14DaysProjectionDataKeys.forEach((dayKey, index) => {
+      // Determines whether this row is showing projections data.
+      const isProjectionsData = index > 6;
       const dataRow = [new Date(dayKey)];
-      // Push the death count to the dataRow.
       const deathCount = countryDeathDataObject.countryData[dayKey].totalCount;
-      dataRow.push(deathCount);
-      // If the index is greater than 6 (the last seven days), add the "50" and "97.5" projections data to the dataRow.
-      // Otherwise, add two zeros to the dataRow
-      if (index > 6) {
+      // If the index is 6 (the midpoint of the last14DaysProjectionDataKeys), push the deathCount to the 4 data columns of the dataRow.
+      // We need these 4 identical values because this is where the "Observed Deaths" and "Projected Deaths" lines meet.
+      if (index === 6) {
+        dataRow.push(deathCount);
+        dataRow.push(deathCount);
+        dataRow.push(deathCount);
+        dataRow.push(deathCount);
+      } else if (isProjectionsData) {
+        // If isProjectionsData is true, add the "50" projections to the "Projected Deaths" column and the "2.5" and "97.5" projections to the interval columns.
+        dataRow.push(null);
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["50"]);
+        dataRow.push(countryProjectionsDataObject.countryData[dayKey]["2.5"]);
         dataRow.push(countryProjectionsDataObject.countryData[dayKey]["97.5"]);
       } else {
-        dataRow.push(0);
-        dataRow.push(0);
+        // Otherwise, add the deathCount to the "Observed Deaths" column and null values to the other 3 columns.
+        dataRow.push(deathCount);
+        dataRow.push(null);
+        dataRow.push(null);
+        dataRow.push(null);
       }
       //  Push the dataRow to the chartData array.
       chartData.push(dataRow);

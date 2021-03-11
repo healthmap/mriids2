@@ -80,6 +80,6 @@ export const deathCountOptions = {
 
 export const covidDeathProjectionOptions = {
   curveType: "function",
-  series: [{ color: "#643DE2" }],
+  colors: ["#643DE2", "#249995"],
   intervals: { style: "area", color: "#249995" },
 };
