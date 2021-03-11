@@ -9,12 +9,12 @@ import {
   getSnapshotProjectionsColor,
   getLegendTitle,
 } from "../../utils/snapshotMapHelpers";
+import { BlockDropshadow } from "../styled-components/Block";
 import {
   MapLegendWrapperSnapshot,
   MapLegendItemsWrapper,
   MapLegendTitle,
-} from "../styled-components/MapLegendWrappers";
-import { BlockDropshadow } from "../styled-components/Block";
+} from "./styles";
 
 const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
   // Determines whether the ebola outbreak is selected.

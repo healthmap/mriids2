@@ -1,9 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import {
-  MapLegendWrapperSnapshot,
-  MapLegendItemsWrapper,
-} from "../MapLegendWrappers";
+import { MapLegendWrapperSnapshot, MapLegendItemsWrapper } from "../styles";
 
 describe("Tests for the MapLegendWrappers styled components", () => {
   test("renders MapLegendWrapperSnapshot", () => {
