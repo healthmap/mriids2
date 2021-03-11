@@ -35,7 +35,7 @@ export const StyledTooltip = styled((props) => (
     padding: 1.6rem;
     margin: 0.8rem 0;
     border-radius: 3px;
-    box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.1);
   }
 `;
 

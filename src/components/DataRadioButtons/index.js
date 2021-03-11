@@ -13,7 +13,7 @@ import {
   FormLabelIconWrapper,
   StyledFormControlLabel,
   StyledTooltip,
-} from "../styled-components/RadioButtonStyles";
+} from "./styles";
 
 const DataRadioButtons = ({
   dataType,
