@@ -12,7 +12,7 @@ import {
   fetchCovidProjectionsData,
 } from "./actions/covid";
 import SnapshotMap from "./components/SnapshotMap";
-import EbolaRiskMap from "./containers/EbolaRiskMap";
+import EbolaRiskMap from "./components/EbolaRiskMap";
 import Team from "./components/Team";
 import About from "./components/About";
 import Header from "./components/Header";
