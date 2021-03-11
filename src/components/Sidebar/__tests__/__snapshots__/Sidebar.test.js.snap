@@ -112,26 +112,6 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   z-index: 2;
 }
 
-.c4 select {
-  color: #fff;
-  background-color: #e43b46;
-}
-
-.c4 option {
-  color: #fff;
-  background-color: #e43b46;
-}
-
-.c1 select {
-  color: #fff;
-  background-color: #000;
-}
-
-.c1 option {
-  color: #fff;
-  background-color: #000;
-}
-
 .c6 {
   font-size: 1.4rem;
   line-height: 2;
@@ -170,6 +150,26 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 .c6:disabled {
   cursor: auto;
   opacity: 0.65;
+}
+
+.c4 select {
+  color: #fff;
+  background-color: #e43b46;
+}
+
+.c4 option {
+  color: #fff;
+  background-color: #e43b46;
+}
+
+.c1 select {
+  color: #fff;
+  background-color: #000;
+}
+
+.c1 option {
+  color: #fff;
+  background-color: #000;
 }
 
 .c3 .MuiInputBase-root {
@@ -842,26 +842,6 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
   z-index: 2;
 }
 
-.c4 select {
-  color: #fff;
-  background-color: #e43b46;
-}
-
-.c4 option {
-  color: #fff;
-  background-color: #e43b46;
-}
-
-.c1 select {
-  color: #fff;
-  background-color: #000;
-}
-
-.c1 option {
-  color: #fff;
-  background-color: #000;
-}
-
 .c6 {
   font-size: 1.4rem;
   line-height: 2;
@@ -900,6 +880,26 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
 .c6:disabled {
   cursor: auto;
   opacity: 0.65;
+}
+
+.c4 select {
+  color: #fff;
+  background-color: #e43b46;
+}
+
+.c4 option {
+  color: #fff;
+  background-color: #e43b46;
+}
+
+.c1 select {
+  color: #fff;
+  background-color: #000;
+}
+
+.c1 option {
+  color: #fff;
+  background-color: #000;
 }
 
 .c3 .MuiInputBase-root {
