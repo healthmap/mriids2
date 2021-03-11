@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import MapZoomButtons from "../index";
-import { ZoomButtons } from "../../styled-components/ZoomButtons";
+import { ZoomButtons } from "../styles";
 
 describe("Tests for MapZoomButtons component", () => {
   test("component renders", () => {

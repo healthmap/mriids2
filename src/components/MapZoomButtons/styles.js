@@ -8,7 +8,7 @@ export const ZoomButtons = styled.div`
   flex-direction: column;
   align-items: center;
   font-weight: bold;
-  box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 6px 0 rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
   background-color: #fff;
   overflow: hidden;
