@@ -1,9 +1,9 @@
 import React from "react";
-import { ContentWrapper } from "./styles";
+import * as Styled from "./styles";
 
 const LogoGroup = () => {
   return (
-    <ContentWrapper>
+    <Styled.ContentWrapper>
       <img
         src="/images/logos/sussex.svg"
         alt="University of Sussex Logo"
@@ -25,7 +25,7 @@ const LogoGroup = () => {
         alt="HealthMap Logo"
         height="26px"
       />
-    </ContentWrapper>
+    </Styled.ContentWrapper>
   );
 };
 
