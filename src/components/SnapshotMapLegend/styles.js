@@ -5,7 +5,7 @@ export const MapLegendTitle = styled.h3`
   font-size: 1.2rem;
 `;
 
-export const MapLegendWrapperSnapshot = styled.div`
+export const MapLegendWrapper = styled.div`
   position: absolute;
   padding-left: ${(props) => props.theme.sidebarWidth};
   left: 2rem;

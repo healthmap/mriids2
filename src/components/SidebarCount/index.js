@@ -1,16 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { BlockPadded } from "../SharedStyledComponents/Block";
-import {
-  SidebarCountParent,
-  SidebarCountLabel,
-  SidebarCountValue,
-} from "./styles";
 import {
   getEbolaCaseCount,
   getFutureProjectionCount,
 } from "../../utils/ebolaDataHelpers";
 import { getCovidCount } from "../../utils/covidDataHelpers";
+import { StyledBlockPadded } from "../SharedStyledComponents/StyledBlocks";
+import * as Styled from "./styles";
 
 const SidebarCount = ({
   filters,
@@ -49,7 +45,7 @@ const SidebarCount = ({
       : "Reported cases";
 
   return (
-    <BlockPadded>
+    <StyledBlockPadded>
       <p>
         {titleText} <strong>{locationText}</strong> from{" "}
         <strong>
@@ -58,29 +54,33 @@ const SidebarCount = ({
           {filters.dateRange.to.toDateString()}
         </strong>
       </p>
-      <SidebarCountParent>
-        <SidebarCountLabel>{reportedCasesSectionTitle}</SidebarCountLabel>
-        <SidebarCountValue>
+      <Styled.SidebarCountParent>
+        <Styled.SidebarCountLabel>
+          {reportedCasesSectionTitle}
+        </Styled.SidebarCountLabel>
+        <Styled.SidebarCountValue>
           {reportedCaseCount.toLocaleString()}
-        </SidebarCountValue>
-      </SidebarCountParent>
+        </Styled.SidebarCountValue>
+      </Styled.SidebarCountParent>
       {filters.outbreak === "COVID 19" && (
-        <SidebarCountParent>
-          <SidebarCountLabel>Reported Deaths</SidebarCountLabel>
-          <SidebarCountValue>
+        <Styled.SidebarCountParent>
+          <Styled.SidebarCountLabel>Reported Deaths</Styled.SidebarCountLabel>
+          <Styled.SidebarCountValue>
             {reportedDeathCount.toLocaleString()}
-          </SidebarCountValue>
-        </SidebarCountParent>
+          </Styled.SidebarCountValue>
+        </Styled.SidebarCountParent>
       )}
       {filters.dataType === "projected cases" && (
-        <SidebarCountParent>
-          <SidebarCountLabel>Projected future cases</SidebarCountLabel>
-          <SidebarCountValue>
+        <Styled.SidebarCountParent>
+          <Styled.SidebarCountLabel>
+            Projected future cases
+          </Styled.SidebarCountLabel>
+          <Styled.SidebarCountValue>
             {projectedDiseaseCount.toLocaleString()}
-          </SidebarCountValue>
-        </SidebarCountParent>
+          </Styled.SidebarCountValue>
+        </Styled.SidebarCountParent>
       )}
-    </BlockPadded>
+    </StyledBlockPadded>
   );
 };
 

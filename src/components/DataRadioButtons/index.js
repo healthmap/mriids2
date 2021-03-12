@@ -3,17 +3,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDataType } from "../../actions/filters";
 import { openProjectionsPopup } from "../../actions/ui";
-import { InputLabel } from "../SharedStyledComponents/InputLabel";
+import { StyledInputLabel } from "../SharedStyledComponents/StyledInputLabel";
 import SvgIcon from "../SvgIcon";
 import FormControl from "@material-ui/core/FormControl";
-import {
-  DataRadioButtonsContainer,
-  StyledRadioGroup,
-  StyledRadio,
-  FormLabelIconWrapper,
-  StyledFormControlLabel,
-  StyledTooltip,
-} from "./styles";
+import * as Styled from "./styles";
 
 const DataRadioButtons = ({
   dataType,
@@ -37,60 +30,60 @@ const DataRadioButtons = ({
     }
   };
   return (
-    <DataRadioButtonsContainer>
+    <Styled.DataRadioButtonsContainer>
       <FormControl component="fieldset">
-        <InputLabel>Data</InputLabel>
-        <StyledRadioGroup
+        <StyledInputLabel>Data</StyledInputLabel>
+        <Styled.StyledRadioGroup
           aria-label="data"
           name="data"
           value={dataType}
           onChange={handleChange}
         >
-          <StyledFormControlLabel
+          <Styled.StyledFormControlLabel
             value="cases"
-            control={<StyledRadio />}
+            control={<Styled.StyledRadio />}
             label="Cases"
           />
           {outbreakSelected === "COVID 19" ? (
             <>
-              <StyledFormControlLabel
+              <Styled.StyledFormControlLabel
                 value="deaths"
-                control={<StyledRadio />}
+                control={<Styled.StyledRadio />}
                 label="Deaths"
               />
-              <StyledFormControlLabel
+              <Styled.StyledFormControlLabel
                 value="projected deaths"
-                control={<StyledRadio />}
+                control={<Styled.StyledRadio />}
                 label="Projected Deaths"
               />
             </>
           ) : (
             <>
-              <FormLabelIconWrapper>
-                <StyledFormControlLabel
+              <Styled.FormLabelIconWrapper>
+                <Styled.StyledFormControlLabel
                   value="projected cases"
-                  control={<StyledRadio />}
+                  control={<Styled.StyledRadio />}
                   label="Projected Cases"
                 />
-                <StyledTooltip
+                <Styled.StyledTooltip
                   title="There is some uncertainty associated with the projection values. Projections are reported as an interval that contains 95% of the projected values from several simulations. The width of this interval is a measure of the uncertainty associated with the projections."
                   aria-label="info"
                 >
                   <div>
                     <SvgIcon title="info-icon" size="14" icon="Info" />
                   </div>
-                </StyledTooltip>
-              </FormLabelIconWrapper>
-              <StyledFormControlLabel
+                </Styled.StyledTooltip>
+              </Styled.FormLabelIconWrapper>
+              <Styled.StyledFormControlLabel
                 value="risk"
-                control={<StyledRadio />}
+                control={<Styled.StyledRadio />}
                 label="Risk"
               />
             </>
           )}
-        </StyledRadioGroup>
+        </Styled.StyledRadioGroup>
       </FormControl>
-    </DataRadioButtonsContainer>
+    </Styled.DataRadioButtonsContainer>
   );
 };
 

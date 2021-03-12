@@ -6,11 +6,7 @@ import {
   getStartDateForCountryDeathProjections,
 } from "../../utils/chartDataHelpers";
 import { covidDeathProjectionOptions } from "../../constants/GoogleChartOptions";
-import {
-  CovidProjectionsContainer,
-  ChartTitle,
-  ChartContainer,
-} from "./styles";
+import * as Styled from "./styles";
 
 const CovidProjectionsChart = ({
   hasConfirmedProjectionsPopup,
@@ -32,20 +28,22 @@ const CovidProjectionsChart = ({
     selectedCountry
   );
   return (
-    <CovidProjectionsContainer
+    <Styled.CovidProjectionsContainer
       isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}
     >
       {selectedCountry === "All" ? (
-        <ChartTitle>Select a country to view projections</ChartTitle>
+        <Styled.ChartTitle>
+          Select a country to view projections
+        </Styled.ChartTitle>
       ) : (
         <>
-          <ChartTitle>
+          <Styled.ChartTitle>
             {countryHasProjectionsData
               ? `Projected Deaths for ${selectedCountry} for the week starting on ${projectionsStartDate}`
               : `We currently don't have death projections data for ${selectedCountry}`}
-          </ChartTitle>
+          </Styled.ChartTitle>
           {countryHasProjectionsData && (
-            <ChartContainer>
+            <Styled.ChartContainer>
               <Chart
                 width="100%"
                 height="100%"
@@ -54,11 +52,11 @@ const CovidProjectionsChart = ({
                 data={chartData}
                 options={covidDeathProjectionOptions}
               />
-            </ChartContainer>
+            </Styled.ChartContainer>
           )}
         </>
       )}
-    </CovidProjectionsContainer>
+    </Styled.CovidProjectionsContainer>
   );
 };
 

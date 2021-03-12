@@ -2,32 +2,26 @@ import React from "react";
 import { shallow } from "enzyme";
 import { ThemeProvider as StyledComponentsProvider } from "styled-components";
 import styledComponentsTheme from "../../../assets/sc-theme";
-import {
-  FirstPageContainer,
-  SecondPageContainer,
-  TeamMemberWrapper,
-  Title,
-  BodyLarge,
-} from "../styles";
+import * as Styled from "../styles";
 
-describe("Tests for Team components", () => {
+describe("Tests for Team styled components", () => {
   test("render FirstPageContainer", () => {
     shallow(
       <StyledComponentsProvider theme={styledComponentsTheme}>
-        <FirstPageContainer />
+        <Styled.FirstPageContainer />
       </StyledComponentsProvider>
     );
   });
   test("render SecondPageContainer", () => {
-    shallow(<SecondPageContainer />);
+    shallow(<Styled.SecondPageContainer />);
   });
   test("render TeamMemberWrapper", () => {
-    shallow(<TeamMemberWrapper />);
+    shallow(<Styled.TeamMemberWrapper />);
   });
   test("render Title", () => {
-    shallow(<Title />);
+    shallow(<Styled.Title />);
   });
   test("render BodyLarge", () => {
-    shallow(<BodyLarge />);
+    shallow(<Styled.BodyLarge />);
   });
 });

@@ -1,13 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getCountryDiseaseCountForPopup } from "../../utils/snapshotMapHelpers";
-import {
-  MapPopupContainer,
-  MapPopupTitleContainer,
-  MapPopupCountSection,
-  MapPopupSummary,
-  Label,
-} from "./styles";
+import * as Styled from "./styles";
 
 const SnapshotMapCountryPopup = ({
   countryName,
@@ -30,32 +24,34 @@ const SnapshotMapCountryPopup = ({
   );
 
   return (
-    <MapPopupContainer>
-      <MapPopupTitleContainer>{countryName}</MapPopupTitleContainer>
+    <Styled.MapPopupContainer>
+      <Styled.MapPopupTitleContainer>
+        {countryName}
+      </Styled.MapPopupTitleContainer>
       {countryTotalDiseaseCount ? (
         <>
           {outbreakSelected === "COVID 19" && (
-            <MapPopupCountSection>
-              <Label>{dataType} per 100k</Label>
+            <Styled.MapPopupCountSection>
+              <Styled.Label>{dataType} per 100k</Styled.Label>
               <p>{countryPer100kDiseaseCount.toLocaleString()}</p>
-            </MapPopupCountSection>
+            </Styled.MapPopupCountSection>
           )}
-          <MapPopupCountSection>
-            <Label>Total {dataType}</Label>
+          <Styled.MapPopupCountSection>
+            <Styled.Label>Total {dataType}</Styled.Label>
             <p>{countryTotalDiseaseCount.toLocaleString()}</p>
-          </MapPopupCountSection>
-          <MapPopupSummary>
+          </Styled.MapPopupCountSection>
+          <Styled.MapPopupSummary>
             Total {dataType} from {dateRange.from.toDateString()} to{" "}
             {dateRange.to.toDateString()}
-          </MapPopupSummary>
+          </Styled.MapPopupSummary>
         </>
       ) : (
-        <MapPopupSummary>
+        <Styled.MapPopupSummary>
           {dataType === "deaths" ? "Death" : "Case"} count data for this country
           is not available.
-        </MapPopupSummary>
+        </Styled.MapPopupSummary>
       )}
-    </MapPopupContainer>
+    </Styled.MapPopupContainer>
   );
 };
 

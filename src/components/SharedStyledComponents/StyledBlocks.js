@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BlockPadded = styled.div`
+export const StyledBlockPadded = styled.div`
   padding: 1.2rem 1.2rem 3.2rem;
   font-size: 1.6rem;
   line-height: 1.5;
@@ -26,7 +26,7 @@ export const BlockPadded = styled.div`
   }
 `;
 
-export const BlockDropshadow = styled.div`
+export const StyledBlockDropshadow = styled.div`
   display: inline-block;
   padding: 1.2rem;
   border-radius: 3px;

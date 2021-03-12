@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Logo from "../Logo";
 import ProjectionBanner from "../ProjectionsBanner";
-import { HeaderContainer, HeaderNavWrapper, HeaderWrapper } from "./styles";
+import * as Styled from "./styles";
 
 const Header = ({ hasConfirmedProjectionsPopup }) => (
-  <HeaderContainer>
+  <Styled.HeaderContainer>
     {hasConfirmedProjectionsPopup && <ProjectionBanner />}
-    <HeaderWrapper>
+    <Styled.HeaderWrapper>
       <Logo />
-      <HeaderNavWrapper>
+      <Styled.HeaderNavWrapper>
         <li>
           <NavLink activeClassName="is-active" exact to="/">
             Outbreak
@@ -26,9 +26,9 @@ const Header = ({ hasConfirmedProjectionsPopup }) => (
             Team
           </NavLink>
         </li>
-      </HeaderNavWrapper>
-    </HeaderWrapper>
-  </HeaderContainer>
+      </Styled.HeaderNavWrapper>
+    </Styled.HeaderWrapper>
+  </Styled.HeaderContainer>
 );
 
 const mapStateToProps = (state) => ({

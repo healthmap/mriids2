@@ -1,8 +1,8 @@
 import React from "react";
-import { BlockPadded } from "../SharedStyledComponents/Block";
+import { StyledBlockPadded } from "../SharedStyledComponents/StyledBlocks";
 
 const EbolaRiskList = () => (
-  <BlockPadded>
+  <StyledBlockPadded>
     <p>Countries with the highest relative risk of Ebola spread</p>
 
     <ol>
@@ -17,7 +17,7 @@ const EbolaRiskList = () => (
       <li>Burkina Faso</li>
       <li>Democratic Republic of the Congo</li>
     </ol>
-  </BlockPadded>
+  </StyledBlockPadded>
 );
 
 export default EbolaRiskList;
