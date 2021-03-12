@@ -1,33 +1,26 @@
 import React from "react";
-import {
-  FirstPageContainer,
-  ContentWrapper,
-  BodyLarge,
-  Title,
-  SecondPageContainer,
-  TeamMemberWrapper,
-} from "./styles";
 import TeamMember from "../../components/TeamMember";
 import LogoGroup from "../../components/LogoGroup";
+import * as Styled from "./styles";
 
 const Team = () => (
   <>
-    <FirstPageContainer>
-      <ContentWrapper>
-        <Title>Team</Title>
-        <BodyLarge>
+    <Styled.FirstPageContainer>
+      <Styled.ContentWrapper>
+        <Styled.Title>Team</Styled.Title>
+        <Styled.BodyLarge>
           The MRIIDS project is a collaboration between team members from The
           International Society for Infectious Diseases (ISID), ProMED, the
           Medical Research Council (MRC) Centre for Outbreak Analysis and
           Modeling at Imperial College London, the University of Sussex (UK),
           HealthMap at Boston Children’s Hospital/Harvard Medical School, and
           healthsites.io.
-        </BodyLarge>
-      </ContentWrapper>
-    </FirstPageContainer>
-    <SecondPageContainer>
-      <ContentWrapper>
-        <TeamMemberWrapper>
+        </Styled.BodyLarge>
+      </Styled.ContentWrapper>
+    </Styled.FirstPageContainer>
+    <Styled.SecondPageContainer>
+      <Styled.ContentWrapper>
+        <Styled.TeamMemberWrapper>
           <TeamMember content="sangeeta" />
           <TeamMember content="anne" />
           <TeamMember content="pierre" />
@@ -42,9 +35,9 @@ const Team = () => (
           <TeamMember content="lawrence" />
           <TeamMember content="johnr" />
           <TeamMember content="mark" />
-        </TeamMemberWrapper>
-      </ContentWrapper>
-    </SecondPageContainer>
+        </Styled.TeamMemberWrapper>
+      </Styled.ContentWrapper>
+    </Styled.SecondPageContainer>
     <LogoGroup />
   </>
 );
