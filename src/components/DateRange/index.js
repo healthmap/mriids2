@@ -9,7 +9,7 @@ import {
   DateRangeComponentContainer,
   DateRangeSliderContainer,
   SliderDate,
-} from "../styled-components/DateRangeComponentContainer";
+} from "./styles";
 import {
   getNumberOfWeeksBetweenDates,
   getOutbreakInitialDateRange,

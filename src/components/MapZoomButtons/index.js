@@ -1,28 +1,26 @@
 import React from "react";
-import { ZoomButton, ZoomButtons } from "../styled-components/ZoomButtons";
+import { ZoomButton, ZoomButtons } from "./styles";
 
 const MapZoomButtons = ({
   zoomLevel,
   changeZoomFunction,
   maxZoom,
   minZoom,
-}) => {
-  return (
-    <ZoomButtons>
-      <ZoomButton
-        disabled={zoomLevel >= maxZoom}
-        onClick={() => changeZoomFunction(zoomLevel + 1)}
-      >
-        +
-      </ZoomButton>
-      <ZoomButton
-        disabled={zoomLevel <= minZoom}
-        onClick={() => changeZoomFunction(zoomLevel - 1)}
-      >
-        -
-      </ZoomButton>
-    </ZoomButtons>
-  );
-};
+}) => (
+  <ZoomButtons>
+    <ZoomButton
+      disabled={zoomLevel >= maxZoom}
+      onClick={() => changeZoomFunction(zoomLevel + 1)}
+    >
+      +
+    </ZoomButton>
+    <ZoomButton
+      disabled={zoomLevel <= minZoom}
+      onClick={() => changeZoomFunction(zoomLevel - 1)}
+    >
+      -
+    </ZoomButton>
+  </ZoomButtons>
+);
 
 export default MapZoomButtons;

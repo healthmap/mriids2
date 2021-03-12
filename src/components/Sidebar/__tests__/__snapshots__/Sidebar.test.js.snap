@@ -99,79 +99,6 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   line-height: 1;
 }
 
-.c0 {
-  position: fixed;
-  top: 5.6rem;
-  left: 0;
-  bottom: 0;
-  border-right: 1px solid #E6EAF0;
-  width: calc(28rem - 3.2rem);
-  padding: 0.8rem 1.6rem 2.4rem;
-  background-color: #FAFCFE;
-  overflow: auto;
-  z-index: 2;
-}
-
-.c4 select {
-  color: #fff;
-  background-color: #e43b46;
-}
-
-.c4 option {
-  color: #fff;
-  background-color: #e43b46;
-}
-
-.c1 select {
-  color: #fff;
-  background-color: #000;
-}
-
-.c1 option {
-  color: #fff;
-  background-color: #000;
-}
-
-.c6 {
-  font-size: 1.4rem;
-  line-height: 2;
-  padding: 0.9rem 1.2rem;
-  width: 100%;
-  text-align: left;
-  background-color: #fff;
-  border-radius: 3px;
-  border: 1px solid #BABEC4;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  outline: none;
-}
-
-.c6:focus {
-  background: #fff;
-  border: 1px solid #4D73CE;
-}
-
-.c6:hover {
-  border: 1px solid #fff;
-  box-shadow: 0 0 0 4px #DBE3F5;
-}
-
-.c6:active {
-  background-color: #fff;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c6:disabled {
-  cursor: auto;
-  opacity: 0.65;
-}
-
 .c3 .MuiInputBase-root {
   background-color: #fff;
   font-size: 1.4rem;
@@ -234,7 +161,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   padding: 1.6rem;
   margin: 0.8rem 0;
   border-radius: 3px;
-  box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.1);
 }
 
 .c8 {
@@ -269,6 +196,79 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
   line-height: 2;
   font-weight: 600;
   margin-left: 0.2rem;
+}
+
+.c0 {
+  position: fixed;
+  top: 5.6rem;
+  left: 0;
+  bottom: 0;
+  border-right: 1px solid #E6EAF0;
+  width: calc(28rem - 3.2rem);
+  padding: 0.8rem 1.6rem 2.4rem;
+  background-color: #FAFCFE;
+  overflow: auto;
+  z-index: 2;
+}
+
+.c6 {
+  font-size: 1.4rem;
+  line-height: 2;
+  padding: 0.9rem 1.2rem;
+  width: 100%;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #BABEC4;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+.c6:focus {
+  background: #fff;
+  border: 1px solid #4D73CE;
+}
+
+.c6:hover {
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 4px #DBE3F5;
+}
+
+.c6:active {
+  background-color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c6:disabled {
+  cursor: auto;
+  opacity: 0.65;
+}
+
+.c4 select {
+  color: #fff;
+  background-color: #e43b46;
+}
+
+.c4 option {
+  color: #fff;
+  background-color: #e43b46;
+}
+
+.c1 select {
+  color: #fff;
+  background-color: #000;
+}
+
+.c1 option {
+  color: #fff;
+  background-color: #000;
 }
 
 <div
@@ -829,79 +829,6 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
   margin: 0 0 0.4rem 0;
 }
 
-.c0 {
-  position: fixed;
-  top: 5.6rem;
-  left: 0;
-  bottom: 0;
-  border-right: 1px solid #E6EAF0;
-  width: calc(28rem - 3.2rem);
-  padding: 0.8rem 1.6rem 2.4rem;
-  background-color: #FAFCFE;
-  overflow: auto;
-  z-index: 2;
-}
-
-.c4 select {
-  color: #fff;
-  background-color: #e43b46;
-}
-
-.c4 option {
-  color: #fff;
-  background-color: #e43b46;
-}
-
-.c1 select {
-  color: #fff;
-  background-color: #000;
-}
-
-.c1 option {
-  color: #fff;
-  background-color: #000;
-}
-
-.c6 {
-  font-size: 1.4rem;
-  line-height: 2;
-  padding: 0.9rem 1.2rem;
-  width: 100%;
-  text-align: left;
-  background-color: #fff;
-  border-radius: 3px;
-  border: 1px solid #BABEC4;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  outline: none;
-}
-
-.c6:focus {
-  background: #fff;
-  border: 1px solid #4D73CE;
-}
-
-.c6:hover {
-  border: 1px solid #fff;
-  box-shadow: 0 0 0 4px #DBE3F5;
-}
-
-.c6:active {
-  background-color: #fff;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c6:disabled {
-  cursor: auto;
-  opacity: 0.65;
-}
-
 .c3 .MuiInputBase-root {
   background-color: #fff;
   font-size: 1.4rem;
@@ -964,7 +891,7 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
   padding: 1.6rem;
   margin: 0.8rem 0;
   border-radius: 3px;
-  box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 6px 0 rgba(0,0,0,0.1);
 }
 
 .c8 {
@@ -999,6 +926,79 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
   line-height: 2;
   font-weight: 600;
   margin-left: 0.2rem;
+}
+
+.c0 {
+  position: fixed;
+  top: 5.6rem;
+  left: 0;
+  bottom: 0;
+  border-right: 1px solid #E6EAF0;
+  width: calc(28rem - 3.2rem);
+  padding: 0.8rem 1.6rem 2.4rem;
+  background-color: #FAFCFE;
+  overflow: auto;
+  z-index: 2;
+}
+
+.c6 {
+  font-size: 1.4rem;
+  line-height: 2;
+  padding: 0.9rem 1.2rem;
+  width: 100%;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #BABEC4;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+.c6:focus {
+  background: #fff;
+  border: 1px solid #4D73CE;
+}
+
+.c6:hover {
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 4px #DBE3F5;
+}
+
+.c6:active {
+  background-color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c6:disabled {
+  cursor: auto;
+  opacity: 0.65;
+}
+
+.c4 select {
+  color: #fff;
+  background-color: #e43b46;
+}
+
+.c4 option {
+  color: #fff;
+  background-color: #e43b46;
+}
+
+.c1 select {
+  color: #fff;
+  background-color: #000;
+}
+
+.c1 option {
+  color: #fff;
+  background-color: #000;
 }
 
 <div

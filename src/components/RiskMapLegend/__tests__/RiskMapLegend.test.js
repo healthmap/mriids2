@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import RiskMapLegend from "../index";
-import { BlockDropshadow } from "../../styled-components/Block";
+import { BlockDropshadow } from "../../SharedStyledComponents/Block";
 
 describe("Tests for RiskMapLegend component", () => {
   test("renders component", () => {

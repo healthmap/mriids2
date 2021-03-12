@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import TextField from "@material-ui/core/TextField";
-import { InputLabel } from "../styled-components/InputLabel";
+import { InputLabel } from "../SharedStyledComponents/InputLabel";
 import {
   ebolaOutbreakCountries,
   allCountries,

@@ -1,10 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Chart } from "react-google-charts";
-import {
-  ChartContainer,
-  ChartTitle,
-} from "../styled-components/ChartContainer";
+import { ChartContainer, ChartTitle } from "./styles";
 import {
   caseCountOptions,
   deathCountOptions,

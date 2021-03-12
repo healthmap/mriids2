@@ -12,17 +12,17 @@ import {
   setPopoverAnchorElement,
 } from "../../actions/ui";
 import Select from "../Select";
-import SidebarCount from "./SidebarCount";
-import EbolaRiskList from "./EbolaRiskList";
-import * as Styled from "./styles";
-import {
-  SelectCountryWrapper,
-  SelectOutbreakWrapper,
-} from "../styled-components/SelectWrappers";
-import { Button } from "../styled-components/Button";
-import { InputLabel } from "../styled-components/InputLabel";
+import SidebarCount from "../SidebarCount";
+import EbolaRiskList from "../EbolaRiskList";
+import { InputLabel } from "../SharedStyledComponents/InputLabel";
 import CountrySelect from "../CountrySelect";
 import DataRadioButtons from "../DataRadioButtons";
+import {
+  SidebarWrapper,
+  Button,
+  SelectCountryWrapper,
+  SelectOutbreakWrapper,
+} from "./styles";
 
 const Sidebar = ({
   filters,
@@ -57,9 +57,7 @@ const Sidebar = ({
     filters.dataType === "risk" && filters.outbreak === "Ebola Outbreak";
 
   return (
-    <Styled.SidebarWrapper
-      isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}
-    >
+    <SidebarWrapper isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}>
       <SelectCountryWrapper>
         <CountrySelect />
       </SelectCountryWrapper>
@@ -83,7 +81,7 @@ const Sidebar = ({
       <DataRadioButtons />
       {showSidebarCount && <SidebarCount />}
       {showEbolaRiskList && <EbolaRiskList />}
-    </Styled.SidebarWrapper>
+    </SidebarWrapper>
   );
 };
 

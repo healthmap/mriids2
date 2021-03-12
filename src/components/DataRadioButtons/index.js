@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDataType } from "../../actions/filters";
 import { openProjectionsPopup } from "../../actions/ui";
-import { InputLabel } from "../styled-components/InputLabel";
+import { InputLabel } from "../SharedStyledComponents/InputLabel";
 import SvgIcon from "../SvgIcon";
 import FormControl from "@material-ui/core/FormControl";
 import {
@@ -13,7 +13,7 @@ import {
   FormLabelIconWrapper,
   StyledFormControlLabel,
   StyledTooltip,
-} from "../styled-components/RadioButtonStyles";
+} from "./styles";
 
 const DataRadioButtons = ({
   dataType,

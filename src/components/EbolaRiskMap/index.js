@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import ReactMapGL from "react-map-gl";
 
-import { EbolaRiskMapContainer } from "../styled-components/MapContainers";
 import RiskMapLegend from "../RiskMapLegend";
 import MapZoomButtons from "../MapZoomButtons";
+import { EbolaRiskMapContainer } from "./styles";
 
 class EbolaRiskMap extends Component {
   constructor(props) {
