@@ -1,15 +1,15 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { LevelWrapper, LevelColor, LevelValue } from "../styles";
+import * as Styled from "../styles";
 
 describe("Tests for MapLegendLevel styled components", () => {
   test("renders LevelWrapper", () => {
-    shallow(<LevelWrapper />);
+    shallow(<Styled.LevelWrapper />);
   });
   test("renders LevelColor", () => {
-    shallow(<LevelColor />);
+    shallow(<Styled.LevelColor />);
   });
   test("renders LevelValue", () => {
-    shallow(<LevelValue />);
+    shallow(<Styled.LevelValue />);
   });
 });

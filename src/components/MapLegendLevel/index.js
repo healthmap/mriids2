@@ -1,12 +1,12 @@
 import React from "react";
-import { LevelWrapper, LevelValue, LevelColor } from "./styles";
+import * as Styled from "./styles";
 
 const MapLegendLevel = ({ color, value }) => {
   return (
-    <LevelWrapper>
-      <LevelColor style={{ backgroundColor: color }} />
-      <LevelValue>{value}</LevelValue>
-    </LevelWrapper>
+    <Styled.LevelWrapper>
+      <Styled.LevelColor style={{ backgroundColor: color }} />
+      <Styled.LevelValue>{value}</Styled.LevelValue>
+    </Styled.LevelWrapper>
   );
 };
 
