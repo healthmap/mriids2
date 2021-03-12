@@ -5,7 +5,7 @@ import {
   getFutureProjectionCount,
 } from "../../utils/ebolaDataHelpers";
 import { getCovidCount } from "../../utils/covidDataHelpers";
-import { BlockPadded } from "../SharedStyledComponents/Block";
+import { StyledBlockPadded } from "../SharedStyledComponents/StyledBlocks";
 import * as Styled from "./styles";
 
 const SidebarCount = ({
@@ -45,7 +45,7 @@ const SidebarCount = ({
       : "Reported cases";
 
   return (
-    <BlockPadded>
+    <StyledBlockPadded>
       <p>
         {titleText} <strong>{locationText}</strong> from{" "}
         <strong>
@@ -80,7 +80,7 @@ const SidebarCount = ({
           </Styled.SidebarCountValue>
         </Styled.SidebarCountParent>
       )}
-    </BlockPadded>
+    </StyledBlockPadded>
   );
 };
 

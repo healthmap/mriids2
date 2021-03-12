@@ -9,7 +9,7 @@ import {
   getSnapshotProjectionsColor,
   getLegendTitle,
 } from "../../utils/snapshotMapHelpers";
-import { BlockDropshadow } from "../SharedStyledComponents/Block";
+import { StyledBlockDropshadow } from "../SharedStyledComponents/StyledBlocks";
 import * as Styled from "./styles";
 
 const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
@@ -50,14 +50,14 @@ const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
 
   return (
     <Styled.MapLegendWrapper data-test-id="snapshot-map-legend">
-      <BlockDropshadow>
+      <StyledBlockDropshadow>
         <Styled.MapLegendTitle>
           {getLegendTitle(filters.outbreak, filters.dataType)}
         </Styled.MapLegendTitle>
         <Styled.MapLegendItemsWrapper>
           {renderLegendLevels()}
         </Styled.MapLegendItemsWrapper>
-      </BlockDropshadow>
+      </StyledBlockDropshadow>
     </Styled.MapLegendWrapper>
   );
 };
