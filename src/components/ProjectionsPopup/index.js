@@ -6,14 +6,7 @@ import {
   confirmProjectionsPopup,
 } from "../../actions/ui";
 import { changeDataType } from "../../actions/filters";
-import {
-  StyledModal,
-  PopupContainer,
-  PopupTitle,
-  PopupTextSection,
-  PopupButtonsContainer,
-  StyledButton,
-} from "./styles";
+import * as Styled from "./styles";
 
 const ProjectionsPopup = ({
   isProjectionsPopupOpen,
@@ -33,36 +26,36 @@ const ProjectionsPopup = ({
     confirmProjectionsPopup();
   };
   return (
-    <StyledModal open={isProjectionsPopupOpen}>
-      <PopupContainer>
-        <PopupTitle>Show Additional Data</PopupTitle>
-        <PopupTextSection>
+    <Styled.StyledModal open={isProjectionsPopupOpen}>
+      <Styled.PopupContainer>
+        <Styled.PopupTitle>Show Additional Data</Styled.PopupTitle>
+        <Styled.PopupTextSection>
           Some of our data, including risk and projection data, is for research
           only.
-        </PopupTextSection>
-        <PopupTextSection>
+        </Styled.PopupTextSection>
+        <Styled.PopupTextSection>
           Please click confirm to accept our terms and conditions before viewing
           this data.
-        </PopupTextSection>
-        <PopupButtonsContainer>
-          <StyledButton
+        </Styled.PopupTextSection>
+        <Styled.PopupButtonsContainer>
+          <Styled.StyledButton
             variant="contained"
             onClick={() => closeProjectionsPopup()}
             disableRipple
           >
             Cancel
-          </StyledButton>
-          <StyledButton
+          </Styled.StyledButton>
+          <Styled.StyledButton
             variant="contained"
             color="primary"
             onClick={() => handleConfirmButtonClick()}
             disableRipple
           >
             Confirm
-          </StyledButton>
-        </PopupButtonsContainer>
-      </PopupContainer>
-    </StyledModal>
+          </Styled.StyledButton>
+        </Styled.PopupButtonsContainer>
+      </Styled.PopupContainer>
+    </Styled.StyledModal>
   );
 };
 
