@@ -22,7 +22,7 @@ import CovidProjectionsChart from "./components/CovidProjectionsChart";
 import ProjectionsPopup from "./components/ProjectionsPopup";
 import DateRangePopover from "./components/DateRangePopover";
 import DateRange from "./components/DateRange";
-import { StyledAppContainer } from "./styles";
+import * as Styled from "./styles";
 
 class App extends Component {
   componentDidMount() {
@@ -60,7 +60,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <StyledComponentsProvider theme={styledComponentsTheme}>
           <Router>
-            <StyledAppContainer>
+            <Styled.AppContainer>
               <Header />
               <Switch>
                 <Route exact path="/">
@@ -76,7 +76,7 @@ class App extends Component {
                   <Team />
                 </Route>
               </Switch>
-            </StyledAppContainer>
+            </Styled.AppContainer>
           </Router>
         </StyledComponentsProvider>
       </ThemeProvider>
