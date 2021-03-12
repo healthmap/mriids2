@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { changeDataType } from "../../actions/filters";
 import { openProjectionsPopup } from "../../actions/ui";
-import { InputLabel } from "../SharedStyledComponents/InputLabel";
+import { StyledInputLabel } from "../SharedStyledComponents/StyledInputLabel";
 import SvgIcon from "../SvgIcon";
 import FormControl from "@material-ui/core/FormControl";
 import * as Styled from "./styles";
@@ -32,7 +32,7 @@ const DataRadioButtons = ({
   return (
     <Styled.DataRadioButtonsContainer>
       <FormControl component="fieldset">
-        <InputLabel>Data</InputLabel>
+        <StyledInputLabel>Data</StyledInputLabel>
         <Styled.StyledRadioGroup
           aria-label="data"
           name="data"

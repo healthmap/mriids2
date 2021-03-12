@@ -1,5 +1,5 @@
 import React from "react";
-import { InputLabel } from "../SharedStyledComponents/InputLabel";
+import { StyledInputLabel } from "../SharedStyledComponents/StyledInputLabel";
 import * as Styled from "./styles";
 
 const Select = ({
@@ -22,7 +22,7 @@ const Select = ({
 
   return (
     <>
-      <InputLabel>{name}</InputLabel>
+      <StyledInputLabel>{name}</StyledInputLabel>
       <Styled.StyledMuiSelect
         name={name}
         value={value}

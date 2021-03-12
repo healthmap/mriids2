@@ -14,7 +14,7 @@ import {
 import Select from "../Select";
 import SidebarCount from "../SidebarCount";
 import EbolaRiskList from "../EbolaRiskList";
-import { InputLabel } from "../SharedStyledComponents/InputLabel";
+import { StyledInputLabel } from "../SharedStyledComponents/StyledInputLabel";
 import CountrySelect from "../CountrySelect";
 import DataRadioButtons from "../DataRadioButtons";
 import * as Styled from "./styles";
@@ -68,7 +68,7 @@ const Sidebar = ({
           changeFunction={changeOutbreak}
         />
       </Styled.SelectOutbreakWrapper>
-      <InputLabel>Timespan</InputLabel>
+      <StyledInputLabel>Timespan</StyledInputLabel>
       <div data-test-id="open-date-range-button" ref={popoverButtonDivRef}>
         <Styled.Button onClick={() => handleDateRangePopoverOpen()}>
           {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
