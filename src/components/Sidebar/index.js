@@ -13,7 +13,7 @@ import {
 } from "../../actions/ui";
 import Select from "../Select";
 import SidebarCount from "../SidebarCount";
-import EbolaRiskList from "./EbolaRiskList";
+import EbolaRiskList from "../EbolaRiskList";
 import { InputLabel } from "../SharedStyledComponents/InputLabel";
 import CountrySelect from "../CountrySelect";
 import DataRadioButtons from "../DataRadioButtons";

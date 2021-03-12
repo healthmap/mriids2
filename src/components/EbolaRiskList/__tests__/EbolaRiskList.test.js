@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import EbolaRiskList from "../EbolaRiskList";
+import EbolaRiskList from "../index";
 
 test("renders EbolaRiskList component", () => {
   shallow(<EbolaRiskList />);
