@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import ReactMapGL from "react-map-gl";
-
 import RiskMapLegend from "../RiskMapLegend";
 import MapZoomButtons from "../MapZoomButtons";
-import { EbolaRiskMapContainer } from "./styles";
+import * as Styled from "./styles";
 
 class EbolaRiskMap extends Component {
   constructor(props) {
@@ -46,7 +45,7 @@ class EbolaRiskMap extends Component {
 
   render() {
     return (
-      <EbolaRiskMapContainer>
+      <Styled.EbolaRiskMapContainer>
         <ReactMapGL
           {...this.state.viewport}
           onViewportChange={(viewport) => this.onViewportChange(viewport)}
@@ -59,7 +58,7 @@ class EbolaRiskMap extends Component {
           maxZoom={20}
           minZoom={2}
         />
-      </EbolaRiskMapContainer>
+      </Styled.EbolaRiskMapContainer>
     );
   }
 }
