@@ -10,11 +10,7 @@ import {
   getLegendTitle,
 } from "../../utils/snapshotMapHelpers";
 import { BlockDropshadow } from "../SharedStyledComponents/Block";
-import {
-  MapLegendWrapperSnapshot,
-  MapLegendItemsWrapper,
-  MapLegendTitle,
-} from "./styles";
+import * as Styled from "./styles";
 
 const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
   // Determines whether the ebola outbreak is selected.
@@ -53,14 +49,16 @@ const SnapshotMapLegend = ({ countryDiseaseCounts, filters }) => {
   };
 
   return (
-    <MapLegendWrapperSnapshot data-test-id="snapshot-map-legend">
+    <Styled.MapLegendWrapper data-test-id="snapshot-map-legend">
       <BlockDropshadow>
-        <MapLegendTitle>
+        <Styled.MapLegendTitle>
           {getLegendTitle(filters.outbreak, filters.dataType)}
-        </MapLegendTitle>
-        <MapLegendItemsWrapper>{renderLegendLevels()}</MapLegendItemsWrapper>
+        </Styled.MapLegendTitle>
+        <Styled.MapLegendItemsWrapper>
+          {renderLegendLevels()}
+        </Styled.MapLegendItemsWrapper>
       </BlockDropshadow>
-    </MapLegendWrapperSnapshot>
+    </Styled.MapLegendWrapper>
   );
 };
 
