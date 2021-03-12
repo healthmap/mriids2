@@ -1,5 +1,5 @@
 import React from "react";
-import { ZoomButton, ZoomButtons } from "./styles";
+import * as Styled from "./styles";
 
 const MapZoomButtons = ({
   zoomLevel,
@@ -7,20 +7,20 @@ const MapZoomButtons = ({
   maxZoom,
   minZoom,
 }) => (
-  <ZoomButtons>
-    <ZoomButton
+  <Styled.ZoomButtons>
+    <Styled.ZoomButton
       disabled={zoomLevel >= maxZoom}
       onClick={() => changeZoomFunction(zoomLevel + 1)}
     >
       +
-    </ZoomButton>
-    <ZoomButton
+    </Styled.ZoomButton>
+    <Styled.ZoomButton
       disabled={zoomLevel <= minZoom}
       onClick={() => changeZoomFunction(zoomLevel - 1)}
     >
       -
-    </ZoomButton>
-  </ZoomButtons>
+    </Styled.ZoomButton>
+  </Styled.ZoomButtons>
 );
 
 export default MapZoomButtons;
