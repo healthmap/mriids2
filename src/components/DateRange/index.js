@@ -76,9 +76,11 @@ const DateRange = ({
           value={sliderRange}
           min={0}
           max={72}
-	  valueLabelDisplay="auto"
-       valueLabelFormat={value => <>{dayjs(filters.dateRange.from).format("MMM DD YYYY")}</>}
-	  onChange={handleRangeChange}
+          valueLabelDisplay="auto"
+          valueLabelFormat={(value) => (
+            <>{dayjs(filters.dateRange.from).format("MMM DD YYYY")}</>
+          )}
+          onChange={handleRangeChange}
         />
       </DateRangeSliderContainer>
       <SliderDate>{dayjs(initialDateRange.to).format("MMM YYYY")}</SliderDate>
