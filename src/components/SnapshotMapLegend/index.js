@@ -9,7 +9,7 @@ import {
   getSnapshotProjectionsColor,
   getLegendTitle,
 } from "../../utils/snapshotMapHelpers";
-import { BlockDropshadow } from "../styled-components/Block";
+import { BlockDropshadow } from "../SharedStyledComponents/Block";
 import {
   MapLegendWrapperSnapshot,
   MapLegendItemsWrapper,

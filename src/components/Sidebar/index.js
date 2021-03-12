@@ -14,7 +14,7 @@ import {
 import Select from "../Select";
 import SidebarCount from "../SidebarCount";
 import EbolaRiskList from "./EbolaRiskList";
-import { InputLabel } from "../styled-components/InputLabel";
+import { InputLabel } from "../SharedStyledComponents/InputLabel";
 import CountrySelect from "../CountrySelect";
 import DataRadioButtons from "../DataRadioButtons";
 import {

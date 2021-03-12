@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { BlockPadded } from "../styled-components/Block";
+import { BlockPadded } from "../SharedStyledComponents/Block";
 import {
   SidebarCountParent,
   SidebarCountLabel,
