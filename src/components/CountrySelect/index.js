@@ -10,7 +10,13 @@ import {
 import { changeCountryFilter } from "../../actions/filters";
 import * as Styled from "./styles";
 
-const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
+const CountrySelect = ({
+  outbreak,
+  country,
+  changeCountryFilter,
+  dataType,
+  classes,
+}) => {
   const countryOptions =
     outbreak === "Ebola Outbreak"
       ? ["All", ...ebolaOutbreakCountries]
@@ -23,6 +29,9 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
     }
   };
 
+  const borderColor =
+    country === "All" && dataType === "projected deaths" ? "red" : "white";
+
   return (
     <>
       <StyledInputLabel>Location</StyledInputLabel>
@@ -33,6 +42,7 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
         options={countryOptions}
         value={country}
         classes={classes}
+        bordercolor={borderColor}
         disableClearable
       />
     </>
@@ -42,6 +52,7 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
 const mapStateToProps = (state) => ({
   outbreak: state.filters.outbreak,
   country: state.filters.country,
+  dataType: state.filters.dataType,
 });
 
 const mapDispatchToProps = (dispatch) =>

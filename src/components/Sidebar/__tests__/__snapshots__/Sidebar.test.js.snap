@@ -101,6 +101,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 
 .c3 .MuiInputBase-root {
   background-color: #fff;
+  border: 1px solid #fff;
   font-size: 1.4rem;
   padding: 1.2rem !important;
 }
@@ -116,7 +117,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
 }
 
 .c3 .MuiAutocomplete-input {
-  padding: 0px !important;
+  padding: 0 !important;
   height: 2.4rem;
 }
 
@@ -285,6 +286,7 @@ exports[`Tests for the connected Sidebar component with reduxInitialState should
     <div
       aria-expanded={false}
       aria-owns={null}
+      bordercolor="white"
       className="MuiAutocomplete-root c3 MuiAutocomplete-hasPopupIcon"
       onClick={[Function]}
       onKeyDown={[Function]}
@@ -831,6 +833,7 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
 
 .c3 .MuiInputBase-root {
   background-color: #fff;
+  border: 1px solid #fff;
   font-size: 1.4rem;
   padding: 1.2rem !important;
 }
@@ -846,7 +849,7 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
 }
 
 .c3 .MuiAutocomplete-input {
-  padding: 0px !important;
+  padding: 0 !important;
   height: 2.4rem;
 }
 
@@ -1015,6 +1018,7 @@ exports[`Tests for the connected Sidebar component with riskDataFiltersState sho
     <div
       aria-expanded={false}
       aria-owns={null}
+      bordercolor="white"
       className="MuiAutocomplete-root c3 MuiAutocomplete-hasPopupIcon"
       onClick={[Function]}
       onKeyDown={[Function]}
