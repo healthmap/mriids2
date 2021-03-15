@@ -22,6 +22,7 @@ Array [
   </label>,
   .c0 .MuiInputBase-root {
   background-color: #fff;
+  border: 1px solid #fff;
   font-size: 1.4rem;
   padding: 1.2rem !important;
 }
@@ -37,7 +38,7 @@ Array [
 }
 
 .c0 .MuiAutocomplete-input {
-  padding: 0px !important;
+  padding: 0 !important;
   height: 2.4rem;
 }
 
@@ -52,6 +53,7 @@ Array [
 <div
     aria-expanded={false}
     aria-owns={null}
+    bordercolor="white"
     className="MuiAutocomplete-root c0 MuiAutocomplete-hasPopupIcon"
     onClick={[Function]}
     onKeyDown={[Function]}
