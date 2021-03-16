@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import TextField from "@material-ui/core/TextField";
-import { InputLabel } from "../styled-components/InputLabel";
+import { StyledInputLabel } from "../SharedStyledComponents/StyledInputLabel";
 import {
   ebolaOutbreakCountries,
   allCountries,
@@ -10,7 +10,13 @@ import {
 import { changeCountryFilter } from "../../actions/filters";
 import * as Styled from "./styles";
 
-const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
+const CountrySelect = ({
+  outbreak,
+  country,
+  changeCountryFilter,
+  dataType,
+  classes,
+}) => {
   const countryOptions =
     outbreak === "Ebola Outbreak"
       ? ["All", ...ebolaOutbreakCountries]
@@ -23,9 +29,12 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
     }
   };
 
+  const borderColor =
+    country === "All" && dataType === "projected deaths" ? "red" : "white";
+
   return (
     <>
-      <InputLabel>Location</InputLabel>
+      <StyledInputLabel>Location</StyledInputLabel>
       <Styled.StyledAutocomplete
         id="country-select"
         renderInput={(params) => <TextField {...params} variant="outlined" />}
@@ -33,6 +42,7 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
         options={countryOptions}
         value={country}
         classes={classes}
+        bordercolor={borderColor}
         disableClearable
       />
     </>
@@ -42,6 +52,7 @@ const CountrySelect = ({ outbreak, country, changeCountryFilter, classes }) => {
 const mapStateToProps = (state) => ({
   outbreak: state.filters.outbreak,
   country: state.filters.country,
+  dataType: state.filters.dataType,
 });
 
 const mapDispatchToProps = (dispatch) =>

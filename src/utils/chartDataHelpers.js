@@ -242,3 +242,84 @@ export const getCovidDataForCharts = (covidData, filters) => {
     return getSelectedCountryCovidChartData(covidData, filters);
   }
 };
+
+export const getStartDateForCountryDeathProjections = (
+  projectionsDataObject,
+  selectedCountry
+) => {
+  // 1. Find country projections data object
+  const countryProjectionsData = findCountryDataObject(
+    projectionsDataObject,
+    selectedCountry
+  );
+  // 2. If a country data object is found, execute this block.
+  if (countryProjectionsData) {
+    const objectKeys = Object.keys(countryProjectionsData.countryData);
+    // 3. Find the the date key for the start of the last week.
+    const startDateKey = objectKeys[objectKeys.length - 8];
+    // 4. Format the date and return the date string.
+    return dayjs(startDateKey).format("MMMM D");
+  }
+};
+
+export const getLast14DaysProjectionDataKeys = (countryDataObject) => {
+  const objectKeys = Object.keys(countryDataObject);
+  return objectKeys.slice(objectKeys.length - 14, objectKeys.length);
+};
+
+export const getCovidDeathProjectionsDataForChart = (
+  projectionsData,
+  deathData,
+  selectedCountry
+) => {
+  const chartData = [
+    [
+      { type: "date", label: "Date" },
+      { type: "number", label: "Observed Deaths" },
+      { type: "number", label: "Projected Deaths" },
+      { id: "interval-1", type: "number", role: "interval" },
+      { id: "interval-0", type: "number", role: "interval" },
+    ],
+  ];
+  // Find projections and deaths data objects for the selected country.
+  const countryProjectionsDataObject = findCountryDataObject(
+    projectionsData,
+    selectedCountry
+  );
+  const countryDeathDataObject = findCountryDataObject(
+    deathData,
+    selectedCountry
+  );
+  // If both projections and deaths data objects for the selected country are found execute this block.
+  if (countryProjectionsDataObject && countryDeathDataObject) {
+    // Get the day keys for the last 14 days of the country's projections data.
+    const last14DaysProjectionDataKeys = getLast14DaysProjectionDataKeys(
+      countryProjectionsDataObject.countryData
+    );
+    last14DaysProjectionDataKeys.forEach((dayKey, index) => {
+      // Determines whether this row is showing projections data.
+      const isProjectionsData = index > 6;
+      const dataRow = [new Date(dayKey)];
+      const deathCount = countryDeathDataObject.countryData[dayKey].totalCount;
+      // If the index is 6 (the midpoint of the last14DaysProjectionDataKeys), push the deathCount to the 4 data columns of the dataRow.
+      // We need these 4 identical values because this is where the "Observed Deaths" and "Projected Deaths" lines meet.
+      if (index === 6) {
+        dataRow.push(deathCount, deathCount, deathCount, deathCount);
+      } else if (isProjectionsData) {
+        // If isProjectionsData is true, add the "50" projections to the "Projected Deaths" column and the "2.5" and "97.5" projections to the interval columns.
+        dataRow.push(
+          null,
+          countryProjectionsDataObject.countryData[dayKey]["50"],
+          countryProjectionsDataObject.countryData[dayKey]["2.5"],
+          countryProjectionsDataObject.countryData[dayKey]["97.5"]
+        );
+      } else {
+        // Otherwise, add the deathCount to the "Observed Deaths" column and null values to the other 3 columns.
+        dataRow.push(deathCount, null, null, null);
+      }
+      //  Push the dataRow to the chartData array.
+      chartData.push(dataRow);
+    });
+  }
+  return chartData;
+};

@@ -4,6 +4,9 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 export const StyledAutocomplete = styled(Autocomplete)`
   .MuiInputBase-root {
     background-color: #fff;
+    border: 1px solid
+      ${(props) =>
+        props.bordercolor === "red" ? props.theme.primaryColor : "#fff"};
     font-size: 1.4rem;
     padding: 1.2rem !important;
   }
@@ -16,7 +19,7 @@ export const StyledAutocomplete = styled(Autocomplete)`
     box-shadow: 0 0 0 0;
   }
   .MuiAutocomplete-input {
-    padding: 0px !important;
+    padding: 0 !important;
     height: 2.4rem;
   }
   .MuiSvgIcon-root {

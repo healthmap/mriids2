@@ -12,17 +12,12 @@ import {
   setPopoverAnchorElement,
 } from "../../actions/ui";
 import Select from "../Select";
-import SidebarCount from "./SidebarCount";
-import EbolaRiskList from "./EbolaRiskList";
-import * as Styled from "./styles";
-import {
-  SelectCountryWrapper,
-  SelectOutbreakWrapper,
-} from "../styled-components/SelectWrappers";
-import { Button } from "../styled-components/Button";
-import { InputLabel } from "../styled-components/InputLabel";
+import SidebarCount from "../SidebarCount";
+import EbolaRiskList from "../EbolaRiskList";
+import { StyledInputLabel } from "../SharedStyledComponents/StyledInputLabel";
 import CountrySelect from "../CountrySelect";
 import DataRadioButtons from "../DataRadioButtons";
+import * as Styled from "./styles";
 
 const Sidebar = ({
   filters,
@@ -60,10 +55,10 @@ const Sidebar = ({
     <Styled.SidebarWrapper
       isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}
     >
-      <SelectCountryWrapper>
+      <Styled.SelectCountryWrapper>
         <CountrySelect />
-      </SelectCountryWrapper>
-      <SelectOutbreakWrapper>
+      </Styled.SelectCountryWrapper>
+      <Styled.SelectOutbreakWrapper>
         <Select
           name="outbreak"
           type="outbreak"
@@ -72,13 +67,13 @@ const Sidebar = ({
           value={filters.outbreak}
           changeFunction={changeOutbreak}
         />
-      </SelectOutbreakWrapper>
-      <InputLabel>Timespan</InputLabel>
+      </Styled.SelectOutbreakWrapper>
+      <StyledInputLabel>Timespan</StyledInputLabel>
       <div data-test-id="open-date-range-button" ref={popoverButtonDivRef}>
-        <Button onClick={() => handleDateRangePopoverOpen()}>
+        <Styled.Button onClick={() => handleDateRangePopoverOpen()}>
           {dayjs(filters.dateRange.from).format("MMM D, YYYY")} -{" "}
           {dayjs(filters.dateRange.to).format("MMM D, YYYY")}
-        </Button>
+        </Styled.Button>
       </div>
       <DataRadioButtons />
       {showSidebarCount && <SidebarCount />}

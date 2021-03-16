@@ -6,10 +6,8 @@ import {
   Geography,
   ZoomableGroup,
 } from "react-simple-maps";
-import { SnapshotMapContainer } from "../styled-components/MapContainers";
 import SnapshotMapLegend from "../SnapshotMapLegend";
 import MapZoomButtons from "../MapZoomButtons";
-import { StyledTooltip } from "../styled-components/MapTooltip";
 import SnapshotMapCountryPopup from "../SnapshotMapCountryPopup";
 import {
   getEbolaFillColorsDictionary,
@@ -18,6 +16,7 @@ import {
 } from "../../utils/snapshotMapHelpers";
 import { getCountryDiseaseCountDictionary } from "../../utils/snapshotMapHelpers";
 import { countriesCoordinates } from "../../constants/CountriesCoordinates";
+import * as Styled from "./styles";
 
 const SnapshotMap = ({
   filters,
@@ -83,10 +82,10 @@ const SnapshotMap = ({
   };
 
   return (
-    <SnapshotMapContainer
+    <Styled.SnapshotMapContainer
       isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}
     >
-      <StyledTooltip>{toolTipContent}</StyledTooltip>
+      <Styled.StyledTooltip>{toolTipContent}</Styled.StyledTooltip>
       <ComposableMap
         projection="geoMercator"
         width={800}
@@ -151,7 +150,7 @@ const SnapshotMap = ({
         maxZoom={35}
         minZoom={1}
       />
-    </SnapshotMapContainer>
+    </Styled.SnapshotMapContainer>
   );
 };
 

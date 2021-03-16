@@ -6,14 +6,10 @@ import { changeDateRange } from "../../actions/filters";
 import { changeDateSliderRange } from "../../actions/ui";
 import { Slider } from "@material-ui/core";
 import {
-  DateRangeComponentContainer,
-  DateRangeSliderContainer,
-  SliderDate,
-} from "../styled-components/DateRangeComponentContainer";
-import {
   getNumberOfWeeksBetweenDates,
   getOutbreakInitialDateRange,
 } from "../../utils/dateHelpers";
+import * as Styled from "./styles";
 
 const DateRange = ({
   filters,
@@ -65,13 +61,13 @@ const DateRange = ({
   };
 
   return (
-    <DateRangeComponentContainer
+    <Styled.DateRangeComponentContainer
       isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}
     >
-      <SliderDate>
+      <Styled.SliderDate>
         {dayjs(initialDateRange.from).format("MMM DD YYYY")}
-      </SliderDate>
-      <DateRangeSliderContainer>
+      </Styled.SliderDate>
+      <Styled.DateRangeSliderContainer>
         <Slider
           value={sliderRange}
           min={0}
@@ -82,9 +78,11 @@ const DateRange = ({
           )}
           onChange={handleRangeChange}
         />
-      </DateRangeSliderContainer>
-      <SliderDate>{dayjs(initialDateRange.to).format("MMM YYYY")}</SliderDate>
-    </DateRangeComponentContainer>
+      </Styled.DateRangeSliderContainer>
+      <Styled.SliderDate>
+        {dayjs(initialDateRange.to).format("MMM YYYY")}
+      </Styled.SliderDate>
+    </Styled.DateRangeComponentContainer>
   );
 };
 

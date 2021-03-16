@@ -12,16 +12,17 @@ import {
   fetchCovidProjectionsData,
 } from "./actions/covid";
 import SnapshotMap from "./components/SnapshotMap";
-import EbolaRiskMap from "./containers/EbolaRiskMap";
+import EbolaRiskMap from "./components/EbolaRiskMap";
 import Team from "./components/Team";
 import About from "./components/About";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ChartComponent from "./components/ChartComponent";
+import CovidProjectionsChart from "./components/CovidProjectionsChart";
 import ProjectionsPopup from "./components/ProjectionsPopup";
 import DateRangePopover from "./components/DateRangePopover";
 import DateRange from "./components/DateRange";
-import { StyledAppContainer } from "./styles";
+import * as Styled from "./styles";
 
 class App extends Component {
   componentDidMount() {
@@ -32,31 +33,41 @@ class App extends Component {
     this.props.fetchCovidProjectionsData();
   }
 
-  render() {
-    const isEbolaRiskDataSelected =
+  renderDataComponents = () => {
+    if (
       this.props.filters.dataType === "risk" &&
-      this.props.filters.outbreak === "Ebola Outbreak";
+      this.props.filters.outbreak === "Ebola Outbreak"
+    ) {
+      return <EbolaRiskMap />;
+    } else if (
+      this.props.filters.dataType === "projected deaths" &&
+      this.props.filters.outbreak === "COVID 19"
+    ) {
+      return <CovidProjectionsChart />;
+    } else {
+      return (
+        <>
+          <SnapshotMap />
+          <ChartComponent />
+          <DateRange />
+        </>
+      );
+    }
+  };
 
+  render() {
     return (
       <ThemeProvider theme={theme}>
         <StyledComponentsProvider theme={styledComponentsTheme}>
           <Router>
-            <StyledAppContainer>
+            <Styled.AppContainer>
               <Header />
               <Switch>
                 <Route exact path="/">
                   <Sidebar />
                   <ProjectionsPopup />
                   <DateRangePopover />
-                  {isEbolaRiskDataSelected ? (
-                    <EbolaRiskMap />
-                  ) : (
-                    <>
-                      <SnapshotMap />
-                      <ChartComponent />
-                      <DateRange />
-                    </>
-                  )}
+                  {this.renderDataComponents()}
                 </Route>
                 <Route exact path="/about">
                   <About />
@@ -65,7 +76,7 @@ class App extends Component {
                   <Team />
                 </Route>
               </Switch>
-            </StyledAppContainer>
+            </Styled.AppContainer>
           </Router>
         </StyledComponentsProvider>
       </ThemeProvider>

@@ -2,9 +2,11 @@ import { ebolaOutbreakCountries, allCountries } from "../constants/Countries";
 import { getCountriesCovidCounts } from "./covidDataHelpers";
 import { getCountriesEbolaCaseCounts } from "./ebolaDataHelpers";
 
-export const getEbolaScale = (countryCaseCount) => {
+export const getEbolaScale = (countriesCaseCountDictionary) => {
   // Gets the scaleValue to be used by the snapshotMap and map legend.
-  const maxCaseCountValue = Math.max(...Object.values(countryCaseCount));
+  const maxCaseCountValue = Math.max(
+    ...Object.values(countriesCaseCountDictionary)
+  );
   let scaleValue;
   if (maxCaseCountValue < 20) {
     scaleValue = 20;
@@ -99,29 +101,29 @@ export const getSnapshotColor = (caseCountValue = 0) => {
   return color;
 };
 
-export const getSnapshotDeathsColor = (caseCountValue = 0) => {
+export const getSnapshotDeathsColor = (deathCountValue = 0) => {
   //  Gets the color values for the snapshot map and death count legend.
   //  This is for non-projection data.
   let color;
-  if (caseCountValue === 0) {
+  if (deathCountValue === 0) {
     color = "#FDF1DD";
-  } else if (caseCountValue > 0 && caseCountValue <= 0.1) {
+  } else if (deathCountValue > 0 && deathCountValue <= 0.1) {
     color = "#EFDCDF";
-  } else if (caseCountValue > 0.1 && caseCountValue <= 0.2) {
+  } else if (deathCountValue > 0.1 && deathCountValue <= 0.2) {
     color = "#E1C7E0";
-  } else if (caseCountValue > 0.2 && caseCountValue <= 0.3) {
+  } else if (deathCountValue > 0.2 && deathCountValue <= 0.3) {
     color = "#D4B4E1";
-  } else if (caseCountValue > 0.3 && caseCountValue <= 0.4) {
+  } else if (deathCountValue > 0.3 && deathCountValue <= 0.4) {
     color = "#C49FE3";
-  } else if (caseCountValue > 0.4 && caseCountValue <= 0.5) {
+  } else if (deathCountValue > 0.4 && deathCountValue <= 0.5) {
     color = "#B48CE1";
-  } else if (caseCountValue > 0.5 && caseCountValue <= 0.6) {
+  } else if (deathCountValue > 0.5 && deathCountValue <= 0.6) {
     color = "#A178E3";
-  } else if (caseCountValue > 0.6 && caseCountValue <= 0.7) {
+  } else if (deathCountValue > 0.6 && deathCountValue <= 0.7) {
     color = "#8E65E3";
-  } else if (caseCountValue > 0.7 && caseCountValue <= 0.8) {
+  } else if (deathCountValue > 0.7 && deathCountValue <= 0.8) {
     color = "#7951E2";
-  } else if (caseCountValue > 0.8) {
+  } else if (deathCountValue > 0.8) {
     color = "#613DE3";
   }
   return color;
@@ -157,14 +159,14 @@ export const getSnapshotProjectionsColor = (caseCountValue = 0) => {
 
 // This gets a dictionary with key/value pairs of country/fillColor for each Ebola country.
 export const getEbolaFillColorsDictionary = (
-  ebolaCountriesCaseCounts,
+  countriesCaseCountDictionary,
   dataType
 ) => {
   let colorsDictionary = {};
-  // Get the scale using the ebolaCountriesCaseCounts object.
-  const scale = getEbolaScale(ebolaCountriesCaseCounts);
+  // Get the scale using the countriesCaseCountDictionary.
+  const scale = getEbolaScale(countriesCaseCountDictionary);
   ebolaOutbreakCountries.forEach((country) => {
-    const percentage = ebolaCountriesCaseCounts[country] / scale;
+    const percentage = countriesCaseCountDictionary[country] / scale;
     // If projections are enabled, get the fillColor value using the getSnapshotProjectionsColor function.
     // Otherwise get the fillColor value using the getSnapshotColor function.
     colorsDictionary[country] =
@@ -177,14 +179,14 @@ export const getEbolaFillColorsDictionary = (
 
 // This gets a dictionary with key/value pairs of country/fillColor for each country.
 export const getCovidFillColorsDictionary = (
-  covidCountriesDiseaseCounts,
+  countriesDiseaseCountDictionary,
   dataType
 ) => {
   let colorsDictionary = {};
-  // Get the scale using the covidCountriesCaseCounts object.
-  const scale = getCovidScale(covidCountriesDiseaseCounts);
+  // Get the scale using the countriesDiseaseCountDictionary.
+  const scale = getCovidScale(countriesDiseaseCountDictionary);
   allCountries.forEach((country) => {
-    const countryCountsData = covidCountriesDiseaseCounts[country];
+    const countryCountsData = countriesDiseaseCountDictionary[country];
     // If data is found for this country, execute this block.
     if (countryCountsData) {
       const percentage = countryCountsData.per100kCount / scale;
@@ -235,11 +237,9 @@ export const getCountryDiseaseCountDictionary = (
 
 export const getLegendTitle = (outbreakSelected, dataType) => {
   if (outbreakSelected === "Ebola Outbreak") {
-    if (dataType.includes("projected")) {
-      return "Total outbreak projections";
-    } else {
-      return "Case counts";
-    }
+    return dataType.includes("projected")
+      ? "Total outbreak projections"
+      : "Case counts";
   } else {
     const covidOutbreakDataType = dataType.includes("deaths")
       ? "Deaths"

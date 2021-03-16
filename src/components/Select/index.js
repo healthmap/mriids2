@@ -1,5 +1,5 @@
 import React from "react";
-import { InputLabel } from "../styled-components/InputLabel";
+import { StyledInputLabel } from "../SharedStyledComponents/StyledInputLabel";
 import * as Styled from "./styles";
 
 const Select = ({
@@ -11,14 +11,18 @@ const Select = ({
 }) => {
   const renderOptions = (optionsArray = []) =>
     optionsArray.map((value, index) => (
-      <Styled.StyledMenuItem disableRipple key={`select-option-${index}`} value={value}>
+      <Styled.StyledMenuItem
+        disableRipple
+        key={`select-option-${index}`}
+        value={value}
+      >
         {value}
       </Styled.StyledMenuItem>
     ));
 
   return (
     <>
-      <InputLabel>{name}</InputLabel>
+      <StyledInputLabel>{name}</StyledInputLabel>
       <Styled.StyledMuiSelect
         name={name}
         value={value}

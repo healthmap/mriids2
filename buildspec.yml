@@ -2,6 +2,7 @@ version: 0.2
 env:
     parameter-store:
       REACT_APP_MAPBOX_ACCESS_TOKEN: /MRIIDS/${ENV}/MAPBOX_KEY
+      REACT_APP_BACKEND_URL: /MRIIDS/${ENV}/BACKEND_URL
 phases:
   install:
     runtime-versions:

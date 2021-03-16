@@ -1,10 +1,10 @@
 import React from "react";
-import { ProjectionsBannerContainer } from "./styles";
+import * as Styled from "./styles";
 
 const ProjectionBanner = () => (
-  <ProjectionsBannerContainer>
+  <Styled.ProjectionsBannerContainer>
     Some of the data on this site is for research only.
-  </ProjectionsBannerContainer>
+  </Styled.ProjectionsBannerContainer>
 );
 
 export default ProjectionBanner;

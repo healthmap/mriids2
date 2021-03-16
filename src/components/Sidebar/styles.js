@@ -15,3 +15,56 @@ export const SidebarWrapper = styled.div`
   overflow: auto;
   z-index: 2; /* $z-index--sidebar make variable */
 `;
+
+export const Button = styled.button`
+  font-size: 1.4rem;
+  line-height: 2;
+  padding: 0.9rem 1.2rem;
+  width: 100%;
+  text-align: left;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid ${(props) => props.theme.borderColor};
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  &:focus {
+    background: #fff;
+    border: 1px solid ${(props) => props.theme.secondaryColor};
+  }
+  &:hover {
+    border: 1px solid #fff;
+    box-shadow: 0 0 0 4px ${(props) => props.theme.secondaryColorTint};
+  }
+
+  &:active {
+    background-color: #fff;
+    user-select: none;
+  }
+  &:disabled {
+    cursor: auto;
+    opacity: 0.65;
+  }
+`;
+
+export const SelectOutbreakWrapper = styled.div`
+  select {
+    color: #fff;
+    background-color: #e43b46;
+  }
+  option {
+    color: #fff;
+    background-color: #e43b46;
+  }
+`;
+
+export const SelectCountryWrapper = styled.div`
+  select {
+    color: #fff;
+    background-color: #000;
+  }
+  option {
+    color: #fff;
+    background-color: #000;
+  }
+`;

@@ -2,10 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Chart } from "react-google-charts";
 import {
-  ChartContainer,
-  ChartTitle,
-} from "../styled-components/ChartContainer";
-import {
   caseCountOptions,
   deathCountOptions,
 } from "../../constants/GoogleChartOptions";
@@ -14,6 +10,7 @@ import {
   getEbolaDataForCharts,
   getCovidDataForCharts,
 } from "../../utils/chartDataHelpers";
+import * as Styled from "./styles";
 
 const ChartComponent = ({
   filters,
@@ -43,8 +40,10 @@ const ChartComponent = ({
   );
 
   return (
-    <ChartContainer isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}>
-      <ChartTitle>{titleText}</ChartTitle>
+    <Styled.ChartContainer
+      isProjectionsBannerDisplayed={hasConfirmedProjectionsPopup}
+    >
+      <Styled.ChartTitle>{titleText}</Styled.ChartTitle>
       <Chart
         width="100%"
         height="100%"
@@ -54,7 +53,7 @@ const ChartComponent = ({
         options={chartOptions}
         legendToggle
       />
-    </ChartContainer>
+    </Styled.ChartContainer>
   );
 };
 

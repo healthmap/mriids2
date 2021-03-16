@@ -15,7 +15,7 @@ import {
 } from "../../utils/dateHelpers";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
-import { StyledDateRangePicker } from "./styles.js";
+import * as Styled from "./styles.js";
 
 class SidebarDateRange extends Component {
   updateDateRangeAndSlider = (startDate, endDate) => {
@@ -37,7 +37,7 @@ class SidebarDateRange extends Component {
         : covidDateRangeOptions;
     return (
       <div>
-        <StyledDateRangePicker
+        <Styled.StyledDateRangePicker
           onChange={(item) =>
             this.updateDateRangeAndSlider(
               item.selection.startDate,
